@@ -1,0 +1,206 @@
+
+
+<div id="mobilehide" class="fixed-bg" style="background-image:url(img/background/team19.jpg)">
+    <br>
+    <h1 id="startText" style="border: 3px solid #FFD521; ">Projektgruppen</h1>
+    <img id="downArrow" style="" src="img/icons/arrowDown.png" ng-click="scrollDown()" alt="" />
+</div>
+
+<div id="mobileshow" class="" style="height: 250px; background-image:url(img/background/team19.jpg); background-repeat: no-repeat; background-size: cover; align-content: center; text-align: center;">
+    <br>
+    <h1 id="startText" style="margin-top: 100px; border-top: 2px solid #FFD521; border-bottom: 2px solid #FFD521;">Projektgruppen</h1>
+</div>
+
+<div id="teamSection" style="display:flex;justify-content:center;flex-wrap:wrap; margin-top:30px; padding-left: 100px; padding-right: 100px;">
+    <div ng-repeat="person in getTeamMembers()" style="max-width:300px;height:auto;padding: 0 0;text-align:center" class="">
+        <img style="width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px; border: 2px solid #FFD521;" ng-src="img/profiles/{{person.image}}" alt="N/A" />
+        <h3 style="margin: 0px 0px">{{person.name}}</h3>
+        <h4 style="margin: 0px 0px">{{person.position}}</h4>
+        <a class="socialMediaLink" href="mailto:{{person.email}}"><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
+        <a class="socialMediaLink" ng-if="person.linkedin != ''" href="{{person.linkedin}}" target="_blank"><img src="img/icons/linkedin.png" alt="" style="height:auto;width:30px;margin:5px 0 30px 0" /></a>
+    </div>
+</div>
+<div class="" style="text-align:center;padding-bottom:50px">
+    Stort tack till Moa Engquist för foto!
+</div>
+
+
+
+<div class="" id="contactForm" style="background-color:#f7f5e6;display:flex;flex-direction:column;justify-content:center;align-items:center;padding: 50px 15px">
+    <h1 style="text-align:center;">Maila oss!</h1>
+    <hr class="titleLineBlack" style=""></hr>
+    <div id="mailInputForm" style="" class="">
+        <div class="" style="width:100%">
+            Namn* <input ng-model="name" style="border-radius:4px;border:none;margin: 5px 0;width:100%;padding:4px 0" type="text" name="mailTitle" value="" placeholder="">
+        </div>
+        <div class="" style="width:100%">
+            Epost* <input ng-model="email" style="border-radius:4px;border:none;margin: 5px 0;width:100%;padding:4px 0" type="text" name="mailTitle" value="" placeholder="">
+        </div>
+        <div class="" style="width:100%">
+            Ämne* <input ng-model="subject" style="border-radius:4px;border:none;margin: 5px 0;width:100%;padding:4px 0" type="text" name="mailSender" value="" placeholder="">
+        </div>
+        <div class="" style="width:100%">
+            Meddelande* <textarea ng-model="message" style="border:none;border-radius:4px;margin: 5px 0;width:100%;resize:vertical;padding:4px 0" name="mailMessage" rows="8" cols="" placeholder=""></textarea>
+        </div>
+        <div style="display:flex;align-items:baseline;width:100%;" class="">
+            <a class="myButton whiteText" id="contactEmailButton" style="background-color:black" ng-click="sendMail()">Skicka</a>
+            <div style="margin: 0 5px" id="contactFeedbackContainer">
+                {{successMessage}}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<ng-include src="'partials/footer.html'" ng-controller="FooterCtrl"></ng-include>
+
+
+
+
+
+
+<!--
+
+
+<div class="fixed-bg" style="background-image:url(img/background/all_smaller.png)">
+    <br>
+    <h1 id="startText" style="">Projektgruppen</h1>
+    <img id="downArrow" style="" src="img/icons/arrowDown.png" ng-click="scrollDown()" alt="" />
+</div>
+
+<h1 id="teamSection" style="text-align:center;padding-top:50px">Projektgruppen</h1>
+<hr class="titleLineBlack" style=""></hr>
+<div class="" style="display:flex;justify-content:center;flex-wrap:wrap;margin-top:30px; padding-left: 100px; padding-right: 100px;">
+
+
+
+
+<div style="max-width:250px;height:auto;padding: 0 0;text-align:center" class="">
+    <img style="width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px" ng-src="img/profiles/karl.png" alt="" />
+    <h3 style="margin: 0px 0px">Karl Andrén</h3>
+    <h4 style="margin: 0px 0px">Projektledare</h4>
+    <a href="mailto:branschdag@medieteknik.com"><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
+    <a href="https://se.linkedin.com/in/karl-andrén-606a02110" target="_blank"><img src="img/icons/linkedin.png" alt="" style="height:auto;width:30px;margin:5px 0 30px 0" /></a>
+</div>
+
+<div style="max-width:250px;height:auto;padding: 0 0;text-align:center" class="">
+    <img style="width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px" ng-src="img/profiles/jonas.png" alt="" />
+    <h3 style="margin: 0px 0px">Jonas Abu Nijmeh</h3>
+    <h4 style="margin: 0px 0px">PR & Kommunikation</h4>
+    <a href="mailto:jonas.abu.nijmeh@mediasbranschdag.com"><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
+    
+</div>
+
+<div style="max-width:250px;height:auto;padding: 0 0;text-align:center" class="">
+    <img style="width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px" ng-src="img/profiles/linette.png" alt="" />
+    <h3 style="margin: 0px 0px">Linette Nilsson</h3>
+    <h4 style="margin: 0px 0px">PR & Kommunikation</h4>
+    <a href="mailto:linette.nilsson@mediasbranschdag.com"><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
+    <a href="https://se.linkedin.com/in/linette-nilsson" target="_blank"><img src="img/icons/linkedin.png" alt="" style="height:auto;width:30px;margin:5px 0 30px 0" /></a>
+</div>
+
+<div style="max-width:250px;height:auto;padding: 0 0;text-align:center" class="">
+    <img style="width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px" ng-src="img/profiles/erik.png" alt="" />
+    <h3 style="margin: 0px 0px">Erik Lindström</h3>
+    <h4 style="margin: 0px 0px">Företagskontakt</h4>
+    <a href="mailto:erik.lindstrom@mediasbranschdag.com"><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
+    <a href="https://se.linkedin.com/in/erik-lindström-5bb325115" target="_blank"><img src="img/icons/linkedin.png" alt="" style="height:auto;width:30px;margin:5px 0 30px 0" /></a>
+</div>
+
+<div style="max-width:250px;height:auto;padding: 0 0;text-align:center" class="">
+    <img style="width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px" ng-src="img/profiles/magdalena.png" alt="" />
+    <h3 style="margin: 0px 0px">Magdalena Okurowska</h3>
+    <h4 style="margin: 0px 0px">Företagskontakt</h4>
+    <a href="mailto:magdalena.okurowska@mediasbranschdag.com"><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
+    <a href="https://se.linkedin.com/in/magdalenaok" target="_blank"><img src="img/icons/linkedin.png" alt="" style="height:auto;width:30px;margin:5px 0 30px 0" /></a>
+</div>
+
+<div style="max-width:250px;height:auto;padding: 0 0;text-align:center" class="">
+    <img style="width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px" ng-src="img/profiles/cecilia.png" alt="" />
+    <h3 style="margin: 0px 0px">Cecilia Huang</h3>
+    <h4 style="margin: 0px 0px">Företagskontakt</h4>
+    <a href="mailto:cecilia.huang@mediasbranschdag.com"><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
+    <a href="https://se.linkedin.com/in/ceciliayixihuang" target="_blank"><img src="img/icons/linkedin.png" alt="" style="height:auto;width:30px;margin:5px 0 30px 0" /></a>
+</div>
+
+<div style="max-width:250px;height:auto;padding: 0 0;text-align:center" class="">
+    <img style="width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px" ng-src="img/profiles/william.png" alt="" />
+    <h3 style="margin: 0px 0px">William Neem Laahanen</h3>
+    <h4 style="margin: 0px 0px">HR & Ekonomi</h4>
+    <a href="mailto:william.neem.laahanen@mediasbranschdag.com"><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
+    <a href="https://se.linkedin.com/in/williamneemlaahanen" target="_blank"><img src="img/icons/linkedin.png" alt="" style="height:auto;width:30px;margin:5px 0 30px 0" /></a>
+</div>
+
+<div style="max-width:250px;height:auto;padding: 0 0;text-align:center" class="">
+    <img style="width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px" ng-src="img/profiles/isabella.png" alt="" />
+    <h3 style="margin: 0px 0px">Isabella Johannesson</h3>
+    <h4 style="margin: 0px 0px">Logistik & Event</h4>
+    <a href="mailto:isabella.johannesson@mediasbranschdag.com"><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
+    <a href="https://se.linkedin.com/in/isabella-johannesson-08582b109" target="_blank"><img src="img/icons/linkedin.png" alt="" style="height:auto;width:30px;margin:5px 0 30px 0" /></a>
+</div>
+
+<div style="max-width:250px;height:auto;padding: 0 0;text-align:center" class="">
+    <img style="width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px" ng-src="img/profiles/lukas.png" alt="" />
+    <h3 style="margin: 0px 0px">Lukas Frösslund</h3>
+    <h4 style="margin: 0px 0px">Teknik & Logistik</h4>
+    <a href="mailto:lukas.frosslund@mediasbranschdag.com"><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
+    <a href="https://se.linkedin.com/in/lukas-frösslund-a54578112/" target="_blank"><img src="img/icons/linkedin.png" alt="" style="height:auto;width:30px;margin:5px 0 30px 0" /></a>
+</div>
+
+<div style="max-width:250px;height:auto;padding: 0 0;text-align:center" class="">
+    <img style="width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px" ng-src="img/profiles/linn.png" alt="" />
+    <h3 style="margin: 0px 0px">Linn Pagés Billai</h3>
+    <h4 style="margin: 0px 0px">Teknik & Logistik</h4>
+    <a href="mailto:linn.pages.billai@mediasbranschdag.com"><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
+    <a href="https://se.linkedin.com/in/linn-pagès-billai-504906109/" target="_blank"><img src="img/icons/linkedin.png" alt="" style="height:auto;width:30px;margin:5px 0 30px 0" /></a>
+</div>
+
+<div style="max-width:250px;height:auto;padding: 0 0;text-align:center" class="">
+    <img style="width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px" ng-src="img/profiles/louise.png" alt="" />
+    <h3 style="margin: 0px 0px">Louise Hellberg</h3>
+    <h4 style="margin: 0px 0px">Sponsansvarig</h4>
+    <a href="mailto:louise.hellberg@mediasbranschdag.com"><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
+    <a href="https://se.linkedin.com/in/louise-hellberg-0b973b114" target="_blank"><img src="img/icons/linkedin.png" alt="" style="height:auto;width:30px;margin:5px 0 30px 0" /></a>
+</div>
+
+<div style="max-width:250px;height:auto;padding: 0 0;text-align:center" class="">
+    <img style="width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px" ng-src="img/profiles/emil.png" alt="" />
+    <h3 style="margin: 0px 0px">Emil Erlandsson</h3>
+    <h4 style="margin: 0px 0px">Sittningsansvarig</h4>
+    <a href="mailto:emil.erlandsson@mediasbranschdag.com"><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
+    <a href="https://se.linkedin.com/in/emil-erlandsson-0b2102a5" target="_blank"><img src="img/icons/linkedin.png" alt="" style="height:auto;width:30px;margin:5px 0 30px 0" /></a>
+</div>
+
+</div>  _-------------
+
+
+<div class="" id="contactForm" style="background-color:#daede8;display:flex;flex-direction:column;justify-content:center;align-items:center;padding: 50px 15px">
+    <h1 style="text-align:center;">Maila oss!</h1>
+    <hr class="titleLineBlack" style=""></hr>
+    <div id="mailInputForm" style="" class="">
+        <div class="" style="width:100%">
+            Namn* <input ng-model="name" style="border-radius:4px;border:none;margin: 5px 0;width:100%;padding:4px 0" type="text" name="mailTitle" value="" placeholder="">
+        </div>
+        <div class="" style="width:100%">
+            Epost* <input ng-model="email" style="border-radius:4px;border:none;margin: 5px 0;width:100%;padding:4px 0" type="text" name="mailTitle" value="" placeholder="">
+        </div>
+        <div class="" style="width:100%">
+            Ämne* <input ng-model="subject" style="border-radius:4px;border:none;margin: 5px 0;width:100%;padding:4px 0" type="text" name="mailSender" value="" placeholder="">
+        </div>
+        <div class="" style="width:100%">
+            Meddelande* <textarea ng-model="message" style="border:none;border-radius:4px;margin: 5px 0;width:100%;resize:vertical;padding:4px 0" name="mailMessage" rows="8" cols="" placeholder=""></textarea>
+        </div>
+        <div style="display:flex;align-items:baseline;width:100%;" class="">
+            <a class="myButton whiteText" id="contactEmailButton" style="background-color:black" ng-click="sendMail()">Skicka</a>
+            <div style="margin: 0 5px" id="contactFeedbackContainer">
+                {{successMessage}}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<ng-include src="'partials/footer.html'" ng-controller="FooterCtrl"></ng-include>
+
+
+-->

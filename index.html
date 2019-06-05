@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="MBDApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>Medias Branschdag 2019</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="MBD 2019">
+    <meta name="mobile-web-app-title" content="MBD 2019">
+
+    <!-- Facebook og tags for miniature previews -->
+    <meta property="og:url" content="http://www.mediasbranschdag.com" />
+    <meta property=”og:type” content=”website” />
+    <meta property="og:title" content="Branschdagen 2019 | Nymble" />
+    <meta property="og:description" content="Medias Branschdag är medietekniks årliga arbetsmarknadsmässa där företag och studenter ges möjligheten att mötas och knyta kontakt. Fokus för mässan är att skapa ett forum för kontakt mellan studenter och framtida arbetsgivare som kan leda till sommarjobb, exjobb, anställningar och nya utmaningar." />
+    <meta property="og:site_name" content="Medias Branschdag 2019" />
+    <meta property="og:image" content="http://www.mediasbranschdag.com/img/banderoll19.png" />
+    <meta property="og:image:width" content="3000" />
+    <meta property="og:image:height" content="1000" />
+
+    <!-- <link rel="icon" type="image/ico" sizes="16x16" href="img/favicons/favicon_16x16.ico"> -->
+    <link rel="icon" type="image/ico" sizes="256x256" href="img/favicons/favicon_256x256.ico">
+
+    <link rel="stylesheet" href="./css/normalize.css" media="screen" title="no title" charset="utf-8">
+    <!--<link rel="stylesheet" href="./css/stylesheet.css" media="screen" title="no title" charset="utf-8">-->
+    <link rel="stylesheet" href="./css/style.css" media="screen" title="no title" charset="utf-8">
+    <!-- <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' type='text/css'> -->
+
+    <script type="text/javascript" src="./node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" src="./node_modules/angular-resource/angular-resource.min.js"></script>
+    <script type="text/javascript" src="./node_modules/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="./node_modules/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment-with-locales.min.js"></script>
+
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/model.js"></script>
+    <script type="text/javascript" src="js/navbarCtrl.js"></script>
+    <script type="text/javascript" src="js/startCtrl.js"></script>
+    <script type="text/javascript" src="js/companyCtrl.js"></script>
+    <script type="text/javascript" src="js/studentCtrl.js"></script>
+    <script type="text/javascript" src="js/scheduleCtrl.js"></script>
+    <script type="text/javascript" src="js/contactCtrl.js"></script>
+    <script type="text/javascript" src="js/footerCtrl.js"></script>
+    <script type="text/javascript" src="js/eventCtrl.js"></script>
+</head>
+
+<body id="body">
+    <div id="scrollTopButton" ng-click="scrollToTop()" ng-show="showScrollButton" ng-controller="NavbarCtrl">
+        <img style="width:75%;height:100%;vertical-align:middle;display:inline-block" src="img/icons/up_black.svg" alt="" />
+    </div>
+    <ng-include src="'partials/navbar.html'" ng-controller="NavbarCtrl"></ng-include>
+    <div ng-view autoscroll="" style="height:calc(100% - 75px);padding-top:75px"></div>
+</body>
+
+</html>
