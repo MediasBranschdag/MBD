@@ -15,6 +15,11 @@ MBDApp.controller('CompanyCtrl', function($scope, MBDModel) {
         }, 750);
     };
 
+    $scope.getTeamMembers = function(){
+        var members = MBDModel.getTeamMembers();
+		return members;
+	};
+
     /*    FADE      */
     $(document).ready(function() {
         $(window).scroll( function(){

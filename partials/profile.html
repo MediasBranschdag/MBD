@@ -1,0 +1,8 @@
+<!-- Needs a profile object to work, see getTeamMembers -->
+<div class="profile-container">
+    <img style="width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px; border: 2px solid #FFD521;" ng-src="img/profiles/{{person.image}}" alt="N/A" />
+    <h3 style="margin: 0px 0px">{{person.name}}</h3>
+    <h4 style="margin: 0px 0px">{{person.position}}</h4>
+    <a class="socialMediaLink" href="mailto:{{person.email}}"><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
+    <a class="socialMediaLink" ng-if="person.linkedin != ''" href="{{person.linkedin}}" target="_blank"><img src="img/icons/linkedin.png" alt="" style="height:auto;width:30px;margin:5px 0 30px 0" /></a>
+</div>

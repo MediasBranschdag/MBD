@@ -141,25 +141,11 @@
     <hr class="titleLineYellow"></hr>
     <br>
     <div class="" style="display:flex;justify-content:center;flex-wrap:wrap;margin-top:30px">
-        <div style="max-width:250px;height:auto; padding: 0 0;text-align:center" class="">
-            <img style="border: 2px solid #ffd521; width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px" ng-src="img/profiles/anna.jpg" alt="" />
-            <h3 style="margin: 0px 0px">Anna Gustavsson</h3>
-            <a href="mailto:anna@medieteknik.com""><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
-            <a href="https://www.linkedin.com/in/gustavssonanna/" target="_blank"><img src="img/icons/linkedin.png" alt="" style="height:auto;width:30px;margin:5px 0 30px 0" /></a>
+        <div ng-repeat="person in getTeamMembers()" style="max-width:250px;height:auto;padding: 0 0;text-align:center" class="">
+            <div ng-if="person.position.includes('Företagsansvarig')">
+                <ng-include src="'partials/profile.html'"></ng-include>
+            </div>
         </div>
-        <div style="max-width:250px;height:auto;padding: 0 0;text-align:center" class="">
-            <img style="border: 2px solid #ffd521; width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px" ng-src="img/profiles/filip.jpg" alt="" />
-            <h3 style="margin: 0px 0px">Filip Stål</h3>
-            <a href="mailto:filip@medieteknik.com"><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
-            <a href="https://www.linkedin.com/in/filip-stal" target="_blank"><img src="img/icons/linkedin.png" alt="" style="height:auto;width:30px;margin:5px 0 30px 0" /></a>
-        </div>
-        <div style="max-width:250px;height:auto;padding: 0 0;text-align:center" class="">
-            <img style="border: 2px solid #ffd521; width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px" ng-src="img/profiles/rasmus.jpg" alt="" />
-            <h3 style="margin: 0px 0px">Rasmus Rudling</h3>
-            <a href="mailto:rasmus@medieteknik.com"><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
-            <a href="https://www.linkedin.com/in/rasmus-rudling-b56652129/" target="_blank"><img src="img/icons/linkedin.png" alt="" style="height:auto;width:30px;margin:5px 0 30px 0" /></a>
-        </div>
-
     </div>
     <p style="text-align:center;font-size:16px;">
         Söker du någon annan? Klicka <a href="#contact" style="color: #dcb510;">här!</a>
