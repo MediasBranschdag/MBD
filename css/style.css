@@ -772,7 +772,7 @@ https://codepen.io/brissmyr/pen/egidw
     KEYFRAMES
 */
 
-@-webkit-keyframes super-rainbow {
+@keyframes super-rainbow {
   0% {
     background: #ffd521;
   }
@@ -784,7 +784,7 @@ https://codepen.io/brissmyr/pen/egidw
   }
 }
 
-@-webkit-keyframes shake {
+@keyframes shake {
   10%,
   90% {
     transform: translate3d(-1px, 0, 0);
