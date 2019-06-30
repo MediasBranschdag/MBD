@@ -43,33 +43,6 @@ MBDApp.controller('NavbarCtrl', function($scope, MBDModel, $route, $window) {
         }
     }
 
-
-    $(function(){
-        $(window).resize(function(){
-            var medie = document.getElementById('medieLogga');
-            var kth = document.getElementById('KTHLogga');
-            
-            if($(window).width() < 850){ 
-                medie.style.display = 'none';
-                kth.style.display = 'none';
-
-            }else{ 
-
-                if (medie.style.display === 'none') {
-                    medie.style.display = 'block';
-
-                };
-
-                if (kth.style.display === 'none') {
-
-                    kth.style.display = 'block';
-                };
-            }
-        });
-    });
-
-
-
 });
 
 
