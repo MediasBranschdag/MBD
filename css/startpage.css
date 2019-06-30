@@ -1,0 +1,7 @@
+@media screen and (max-width: 750px) {
+
+    /* Need to make font smaller to fit mobile screens */
+    #welcome-container h1 {
+        font-size: 30px;
+    }
+}

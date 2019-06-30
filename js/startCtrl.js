@@ -18,35 +18,34 @@ MBDApp.controller("StartCtrl", function($scope, MBDModel, $http) {
     return MBDModel.getInstagram();
   };
 
-  const startTimer = seconds => {
-    const d = document;
-    const countDownWrapper = d.querySelector(".countdown-wrapper");
-    const daysElement = d.querySelectorAll(".days");
-    const hoursElement = d.querySelectorAll(".hours");
-    const minutesElement = d.querySelectorAll(".minutes");
-    const secondsElement = d.querySelectorAll(".seconds");
+  /**
+   * Start a timer that starts a countdown until the event starts 
+   * @param {Date} startTimeInMilisecounds 
+   */
+  var startTimer = function(startTimeInMilisecounds) {
 
-    let countdown = setInterval(() => {
+    /**
+     * Getting the time in secounds until the event starts
+     */
+    function getTimeLeft() {
       const date_now = new Date();
-      var delta = (seconds - date_now) / 1000;
-      const secondsLeft = delta;
+      var delta = (startTimeInMilisecounds - date_now) / 1000;
+      return delta;
+    }
 
-      if (secondsLeft <= 0) {
-        countDownWrapper.innerHTML = "<h1 id='countdown-end'>TACK FÖR ÅRETS BRANSCHDAG!</h1>";
-        clearInterval(countdown);
-        return;
-      }
-      displayTimeLeft(secondsLeft, delta);
-    }, 1000);
-
-    function displayTimeLeft(seconds, delta) {
-      var days = Math.floor(delta / 86400);
-      delta -= days * 86400;
-      var hours = Math.floor(delta / 3600) % 24;
-      delta -= hours * 3600;
-      var minutes = Math.floor(delta / 60) % 60;
-      delta -= minutes * 60;
-      var seconds = Math.floor(delta % 60);
+    /**
+     * Show the time left in the page
+     * @param {number} seconds 
+     */
+    function displayTimeLeft(seconds) {
+      var secondsCopy = seconds;
+      var days = Math.floor(secondsCopy / 86400);
+      secondsCopy -= days * 86400;
+      var hours = Math.floor(secondsCopy / 3600) % 24;
+      secondsCopy -= hours * 3600;
+      var minutes = Math.floor(secondsCopy / 60) % 60;
+      secondsCopy -= minutes * 60;
+      var seconds = Math.floor(secondsCopy % 60);
 
       daysElement[0].textContent = days;
       daysElement[1].textContent = days;
@@ -57,6 +56,24 @@ MBDApp.controller("StartCtrl", function($scope, MBDModel, $http) {
       secondsElement[0].textContent = seconds;
       secondsElement[1].textContent = seconds;
     }
+
+    const countDownWrapper = document.querySelector(".countdown-wrapper");
+    const daysElement = document.querySelectorAll(".days");
+    const hoursElement = document.querySelectorAll(".hours");
+    const minutesElement = document.querySelectorAll(".minutes");
+    const secondsElement = document.querySelectorAll(".seconds");
+
+    //First we need to check if the event already happened
+    if(getTimeLeft() <= 0) {
+      countDownWrapper.innerHTML = "<h1 id='countdown-end'>TACK FÖR ÅRETS BRANSCHDAG!</h1>";
+      return;
+    }
+
+    //Start the countdown
+    setInterval(() => {
+      const secondsLeft = getTimeLeft();
+      displayTimeLeft(secondsLeft);
+    }, 1000);
   };
 
   startTimer(new Date("Feb 28, 2019 10:00:00").getTime());

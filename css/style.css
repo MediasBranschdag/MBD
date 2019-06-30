@@ -20,16 +20,15 @@
 
 /* fixerar bakgrundsbilder*/
 .fixed-bg {
-  min-height: 500px;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 @font-face {
@@ -290,6 +289,7 @@ a:hover {
 #startLogo {
   width: 250px;
   max-height: 250px;
+  margin: 10px;
 }
 
 #startText {
@@ -621,6 +621,10 @@ https://codepen.io/brissmyr/pen/egidw
 /* https://css-tricks.com/snippets/css/media-queries-for-standard-devices/ */
 
 @media only screen and (max-width: 769px) {
+  .fixed-bg {
+    background-attachment: local;
+  }
+
   .bannerHeader {
     height: 300px;
   }
