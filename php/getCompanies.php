@@ -3,6 +3,6 @@
     $dabaseModel = new DatabaseModel();
     $dabaseModel->establishDatabaseConnection();
     $result = $dabaseModel->dbSelectAllSimple(
-        'SELECT * FROM companies19', PDO::FETCH_ASSOC
+        'SELECT * FROM companies', PDO::FETCH_ASSOC
     );
     echo json_encode($result);
