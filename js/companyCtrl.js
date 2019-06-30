@@ -1,13 +1,17 @@
-MBDApp.controller('CompanyCtrl', function($scope, MBDModel) {
+MBDApp.controller('CompanyCtrl', function($scope, MBDModel, CompanyModel) {
+    $scope.lastYearsCompanies = [];
+
+    //Getting the last years companies and sponsors
+    CompanyModel.getCompanies(new Date(new Date().setFullYear(new Date().getFullYear() - 1)), null).success(function(data) {
+        $scope.lastYearsCompanies = data;
+    });
+
     var navbarHeight = 75;
     $scope.scrollTo = function(id){
-        console.log(id);
         $("html, body").animate({
             scrollTop: $(id).offset().top - navbarHeight
         }, 1000);
     };
-
-    var navbarHeight = 75;
 
     $scope.scrollDown = function(){
         $("html, body").animate({

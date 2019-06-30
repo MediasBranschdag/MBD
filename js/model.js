@@ -1,8 +1,50 @@
+MBDApp.factory("CompanyModel", function($http) {
+
+  /**
+   * Getting companies from the server
+   * @param {string} activeDate The date when the companies is active
+   * @param {number} exhibitor If the companies should be an exhibitor
+   */
+  this.getCompanies = function(activeDate, exhibitor = 1) {
+    return $http({
+      url: 'php/getCompanies.php', 
+      method: "GET",
+      params: {
+        exhibitor: exhibitor,
+        activeDate: this.formatDate(activeDate),
+      }
+    });
+  };
+
+  /**
+   * Format the a given date to be used in PHP
+   */
+  this.formatDate = function(date) {
+    var dd = date.getDate();
+    var mm = date.getMonth()+1; //As January is 0.
+    var yyyy = date.getFullYear();
+
+    if(dd<10) dd='0'+dd;
+    if(mm<10) mm='0'+mm;
+    return (yyyy+'-'+mm+'-'+dd);
+  }
+
+  /**
+   * Getting the active companies
+   */
+  this.getCurrentCompanies = function() {
+    return this.getCompanies(
+      new Date()
+    );
+  }
+
+  return this;
+});
+
 MBDApp.factory("MBDModel", function($http) {
   var li = true;
   var instagramPosts;
   var teamMembers;
-  var companies;
   var schedule;
   var lunchLectures;
   var sponsors;
@@ -27,17 +69,6 @@ MBDApp.factory("MBDModel", function($http) {
     },
     function(error) {
       console.log("Could not fetch team members");
-      console.log(error);
-    }
-  );
-
-  $http.get("php/getCompanies.php").then(
-    function(response) {
-      console.log("Fetching companies was a success!");
-      companies = response.data;
-    },
-    function(error) {
-      console.log("Could not fetch companies");
       console.log(error);
     }
   );

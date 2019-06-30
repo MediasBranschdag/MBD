@@ -1,0 +1,12 @@
+.center {
+    text-align: center;
+    margin: auto;
+}
+
+.content-wrapper-wide {
+    max-width: 1100px;
+}
+
+.content-block {
+    padding: 50px 0px;
+}

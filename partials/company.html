@@ -137,7 +137,7 @@
 
 
 <div id="companyContactsSection" class="" style="min-height:400px;padding:50px 15px;background-color:white;display:flex;flex-direction:column;align-items:center;justify-content:center">
-    <h1 style="text-align:center">Våra företagsansvariga</h1>
+    <h1 class="center">Våra företagsansvariga</h1>
     <hr class="titleLineYellow"></hr>
     <br>
     <div class="" style="display:flex;justify-content:center;flex-wrap:wrap;margin-top:30px">
@@ -150,6 +150,16 @@
     <p style="text-align:center;font-size:16px;">
         Söker du någon annan? Klicka <a href="#contact" style="color: #dcb510;">här!</a>
     </p>
+</div>
+
+<div class="content-block content-wrapper-wide center">
+    <h1 class="center">Förra årets medverkande</h1>
+    <hr class="titleLineYellow"></hr>
+    <div ng-repeat="company in lastYearsCompanies" style="display:inline;">
+        <a ng-href="http://{{company.website}}" target="_blank">
+            <img class="companyFooterIcon" ng-src="img/companies/{{company.logo}}"/>
+        </a>
+    </div>
 </div>
 
 <ng-include src="'partials/footer.html'" ng-controller="FooterCtrl"></ng-include>

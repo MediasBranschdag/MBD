@@ -1,38 +1,46 @@
-MBDApp.controller('StudentCtrl', function($scope, MBDModel, $route, $timeout) {
+MBDApp.controller('StudentCtrl', function($scope, MBDModel, CompanyModel, $route, $timeout) {
+
     var navbarHeight = 75;
     var companies = [];
-
+    $scope.companies = [];
+    
     $scope.scrollDown = function(){
         $("html, body").animate({
             scrollTop: $("#companySection").offset().top - navbarHeight
         }, 750);
     };
 
-    $scope.getCompanies = function(){
-        if(companies.length < 1){
-            // Slicing the return so that referencing to original array will be removed.
-            companies = MBDModel.getCompanies();
-            if (companies === undefined) {
-                companies = [];
-                return companies;
-            }
-            else {
-                companies.slice();
-            }
+    //Getting the companies
+    CompanyModel.getCurrentCompanies().success(function(data) {
+        companies = data;
 
-            var randomIndex = Math.floor(Math.random()*companies.length);
-            $scope.number = randomIndex;
-            setCompany(randomIndex);
-            
-            for (i = 0; i < companies.length; i++) {
-                if (companies[i].main_sponsor == 1) {
-                    $scope.number = i;
-                    setCompany(i);
-                }
-            };
+        if(companies.length == 0) {
+            return;
         }
-        return companies;
-    };
+
+        // Slicing the return so that referencing to original array will be removed.
+        if (companies === undefined) {
+            companies = [];
+            return companies;
+        }
+        else {
+            companies.slice();
+        }
+
+        var randomIndex = Math.floor(Math.random()*companies.length);
+        $scope.number = randomIndex;
+        setCompany(randomIndex);
+        
+        for (i = 0; i < companies.length; i++) {
+            if (companies[i].main_sponsor == 1) {
+                $scope.number = i;
+                setCompany(i);
+            }
+        };
+
+        $scope.companies = companies;
+    });
+
 
     $scope.presentCompanyContent = function(companyName){
         if( companyName === $scope.clickedCompany ){
@@ -98,7 +106,5 @@ MBDApp.controller('StudentCtrl', function($scope, MBDModel, $route, $timeout) {
     $scope.getLunchLectures = function(){
         return MBDModel.getLunchLectures();
     };
-
-
 
 });
