@@ -1,7 +1,6 @@
 MBDApp.controller('FooterCtrl', function($scope, MBDModel, CompanyModel) {
     $scope.companies;
     $scope.mainCompanies;
-    $scope.sponsors;
 
     CompanyModel.getCurrentCompanies().success(function(data) {
         console.log(data);
@@ -21,7 +20,7 @@ MBDApp.controller('FooterCtrl', function($scope, MBDModel, CompanyModel) {
         return mainCompanies
     };
 
-    CompanyModel.getCompanies(Date(), 0).success(function(data) {
-        $scope.sponsors = data;
-    });
+    $scope.getSponsors = function(){
+        return MBDModel.getSponsors();
+    };
 });
