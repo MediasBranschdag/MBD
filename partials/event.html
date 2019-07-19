@@ -97,46 +97,46 @@
 
 <section id="pastSection">
     <div id="mobilehide">
-            <div ng-repeat="event in getPastEvents()" class="event-wrapper" ng-class="$even ? 'odd' : 'even'">
-                <div class="event-info">
-                    <div ng-if="$odd" class="pic" style="background-image: url('img/events/{{event.image}}');"></div>
-                    <div class="col">
-                        <div class="col-text">
-                            <h1>{{event.title}}</h1>
-                            <h3>
-                                {{event.date}}
-                                <img src="img/icons/time_black.png" class="event-icon">{{event.time}}
-                                <img src="img/icons/location_black.png" class="event-icon">{{event.location}}
-                            </h3>
-                            <a href="{{event.fb_link}}" target="blank_"><img src="img/icons/facebook.svg" style="width:25px;" alt=""/></a>
-                            <div class="col-desc">
-                                {{event.description}}
-                            </div>
+        <div ng-repeat="event in getPastEvents()" class="event-wrapper" ng-class="$even ? 'odd' : 'even'">
+            <div class="event-info">
+                <div ng-if="$odd" class="pic" style="background-image: url('img/events/{{event.image}}');"></div>
+                <div class="col">
+                    <div class="col-text">
+                        <h1>{{event.title}}</h1>
+                        <h3>
+                            {{event.date}}
+                            <img src="img/icons/time_black.png" class="event-icon">{{event.time}}
+                            <img src="img/icons/location_black.png" class="event-icon">{{event.location}}
+                        </h3>
+                        <a href="{{event.fb_link}}" target="blank_"><img src="img/icons/facebook.svg" style="width:25px;" alt=""/></a>
+                        <div class="col-desc">
+                            {{event.description}}
                         </div>
                     </div>
-                    <div ng-if="$even" class="pic" style="background-image: url('img/events/{{event.image}}');"></div>
                 </div>
+                <div ng-if="$even" class="pic" style="background-image: url('img/events/{{event.image}}');"></div>
             </div>
         </div>
-        <div id="mobileshow">
-            <div ng-repeat="event in getPastEvents()" class="event-info" ng-class="$even ? 'odd' : 'even'">
-                    <div class="pic" style="background-image: url('img/events/{{event.image}}');"></div>
-                    <div class="col">
-                        <div class="col-text">
-                            <h1>{{event.title}}</h1>
-                            <h3>
-                                {{event.date}}
-                                <img src="img/icons/time_black.png" class="event-icon">{{event.time}}
-                                <br/><img src="img/icons/location_black.png" class="event-icon">{{event.location}}
-                            </h3>
-                            <a href="{{event.fb_link}}" target="blank_"><img src="img/icons/facebook.svg" style="width:25px;" alt=""/></a>
-                            <div class="col-desc">
-                                {{event.description}}
-                            </div>
+    </div>
+    <div id="mobileshow">
+        <div ng-repeat="event in getPastEvents()" class="event-info" ng-class="$even ? 'odd' : 'even'">
+                <div class="pic" style="background-image: url('img/events/{{event.image}}');"></div>
+                <div class="col">
+                    <div class="col-text">
+                        <h1>{{event.title}}</h1>
+                        <h3>
+                            {{event.date}}
+                            <img src="img/icons/time_black.png" class="event-icon">{{event.time}}
+                            <br/><img src="img/icons/location_black.png" class="event-icon">{{event.location}}
+                        </h3>
+                        <a href="{{event.fb_link}}" target="blank_"><img src="img/icons/facebook.svg" style="width:25px;" alt=""/></a>
+                        <div class="col-desc">
+                            {{event.description}}
                         </div>
                     </div>
-            </div>
+                </div>
         </div>
+    </div>
 </section>
 
 <ng-include src="'partials/footer.html'" ng-controller="FooterCtrl"></ng-include>

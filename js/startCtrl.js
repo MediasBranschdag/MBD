@@ -33,6 +33,12 @@ MBDApp.controller("StartCtrl", function($scope, MBDModel, $http) {
       return delta;
     }
 
+    var countDownWrapper = document.querySelector(".countdown-wrapper");
+    var daysElement = document.querySelectorAll(".days");
+    var hoursElement = document.querySelectorAll(".hours");
+    var minutesElement = document.querySelectorAll(".minutes");
+    var secondsElement = document.querySelectorAll(".seconds");
+
     /**
      * Show the time left in the page
      * @param {number} seconds 
@@ -48,20 +54,10 @@ MBDApp.controller("StartCtrl", function($scope, MBDModel, $http) {
       var seconds = Math.floor(secondsCopy % 60);
 
       daysElement[0].textContent = days;
-      daysElement[1].textContent = days;
       hoursElement[0].textContent = hours;
-      hoursElement[1].textContent = hours;
       minutesElement[0].textContent = minutes;
-      minutesElement[1].textContent = minutes;
       secondsElement[0].textContent = seconds;
-      secondsElement[1].textContent = seconds;
     }
-
-    const countDownWrapper = document.querySelector(".countdown-wrapper");
-    const daysElement = document.querySelectorAll(".days");
-    const hoursElement = document.querySelectorAll(".hours");
-    const minutesElement = document.querySelectorAll(".minutes");
-    const secondsElement = document.querySelectorAll(".seconds");
 
     //First we need to check if the event already happened
     if(getTimeLeft() <= 0) {
@@ -76,5 +72,5 @@ MBDApp.controller("StartCtrl", function($scope, MBDModel, $http) {
     }, 1000);
   };
 
-  startTimer(new Date("Feb 28, 2019 10:00:00").getTime());
+  startTimer(new Date("Feb 4, 2020 10:00:00").getTime());
 });
