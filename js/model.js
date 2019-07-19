@@ -55,7 +55,7 @@ MBDApp.factory("MBDModel", function($http) {
     return [
       { option: "Start", hash: "start" },
       { option: "För företag", hash: "companies" },
-      { option: "För studenter", hash: "students" },
+      // { option: "För studenter", hash: "students" },
       // { option: "Karta", hash: "map" },
       { option: "Evenemang", hash: "events" },
       { option: "Kontakt", hash: "contact" }
