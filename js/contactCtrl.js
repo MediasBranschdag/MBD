@@ -11,20 +11,6 @@ MBDApp.controller('ContactCtrl', function($scope, MBDModel, $http) {
             scrollTop: $("#teamSection").offset().top - navbarHeight
         }, 750);
     };
-
-    /*    FADE      */
-    $(document).ready(function() {
-        $(window).scroll( function(){
-            $('.hideme').each( function(i){
-                var bottom_of_object = $(this).position().top + $(this).outerHeight();
-                var bottom_of_window = $(window).scrollTop() + $(window).height();
-                
-                if( bottom_of_window > bottom_of_object ){
-                    $(this).animate({'opacity':'1'},500);
-                }
-            }); 
-        });
-    });
     
     function checkEmail(mailString){
         return pattern.test(mailString);
