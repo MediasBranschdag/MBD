@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="content-wrapper-wide center">
+    <div class="content-wrapper--wide center">
         <hr ng-if="companies.length != 0 && companies.length > getMainCompanies().length" class="titleLineYellow"></hr>
         <div class="" ng-repeat="company in companies" style="display:inline;">
             <a ng-if="company.main_sponsor != 1" ng-href="http://{{company.website}}" target="_blank">
