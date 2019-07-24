@@ -47,8 +47,11 @@
             </p>
         </div>
         <div id="projectLeaderWrapper">
-            <img id="projectLeader" src="img/profiles/placeholder.png" />
-            <span>Amaila Berglöf, Projektledare</span>
+            <div ng-repeat="person in getTeamMembers()" class="user-container">
+                <div ng-if="person.position.includes('Projektledare')">
+                    <ng-include src="'partials/profile.html'"></ng-include>
+                </div>
+            </div>
         </div>
     </div>
 </div>

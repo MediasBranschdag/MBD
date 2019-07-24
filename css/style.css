@@ -618,6 +618,14 @@ https://codepen.io/brissmyr/pen/egidw
   height: auto;
 }
 
+.user-container {
+  max-width: 250px;
+  height: auto;
+  display: inline-block;
+  padding: 0 0;
+  text-align: enter;
+}
+
 /* https://css-tricks.com/snippets/css/media-queries-for-standard-devices/ */
 
 @media only screen and (max-width: 769px) {

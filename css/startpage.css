@@ -1,3 +1,9 @@
+
+#projectLeaderWrapper .user-container {
+    max-width: 125px;
+}
+
+
 @media screen and (max-width: 750px) {
 
     /* Need to make font smaller to fit mobile screens */

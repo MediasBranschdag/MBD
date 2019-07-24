@@ -18,6 +18,11 @@ MBDApp.controller("StartCtrl", function($scope, MBDModel, $http) {
     return MBDModel.getInstagram();
   };
 
+  $scope.getTeamMembers = function(){
+    var members = MBDModel.getTeamMembers();
+    return members;
+  };
+
   /**
    * Start a timer that starts a countdown until the event starts 
    * @param {Date} startTimeInMilisecounds 
