@@ -47,9 +47,14 @@
             </p>
         </div>
         <div id="projectLeaderWrapper">
-            <div ng-repeat="person in getTeamMembers()" class="user-container">
-                <div ng-if="person.position.includes('Projektledare')">
-                    <ng-include src="'partials/profile.html'"></ng-include>
+            <div class="profile-container">
+                <div style="background-image: url('img/profiles/projectleaders.jpg')" class="profile-image card">
+                    <div class="profile-info__container">
+                        <div class="profile-info__text-container">
+                            <h3>Rasmus Rudling & <br> Ella Klara Westerlund</h3>
+                            <h4>Projektledare</h4>
+                        </div>
+                    </div>    
                 </div>
             </div>
         </div>

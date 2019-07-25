@@ -860,13 +860,6 @@ https://codepen.io/brissmyr/pen/egidw
   z-index: -1;
 }
 
-#projectLeaderWrapper {
-  min-width: 150px;
-  max-width: 275px;
-  margin: 30px 35px;
-  text-align: center;
-}
-
 #projectLeader {
   border: 2px solid #ffd521;
   border-radius: 50%;

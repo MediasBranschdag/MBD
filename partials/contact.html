@@ -11,9 +11,9 @@
     <h1 id="startText" style="margin-top: 100px; border-top: 2px solid #FFD521; border-bottom: 2px solid #FFD521;">Projektgruppen</h1>
 </div>
 
-<div id="teamSection" style="display:flex;justify-content:center;flex-wrap:wrap; margin-top:30px; padding-left: 100px; padding-right: 100px;">
-    <div ng-repeat="person in getTeamMembers()" style="max-width:300px;height:auto;padding: 0 0;text-align:center" class="">
-        <ng-include src="'partials/profile.html'"></ng-include>
+<div id="teamSection" class="content-block">
+    <div class="content-wrapper--wide list-wrapper center">
+        <ng-include class="profile-container" ng-repeat="person in getTeamMembers()" src="'partials/profile.html'"></ng-include>
     </div>
 </div>
 

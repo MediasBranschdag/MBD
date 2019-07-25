@@ -1,8 +1,21 @@
 <!-- Needs a profile object to work, see getTeamMembers -->
-<div class="profile-container">
-    <img style="width:80%;height:auto;border-radius:50%;box-shadow: 0px 0px 20px -5px; border: 2px solid #FFD521;" ng-src="img/profiles/{{person.image}}" alt="N/A" />
-    <h3 style="margin: 0px 0px">{{person.name}}</h3>
-    <h4 style="margin: 0px 0px">{{person.position}}</h4>
-    <a class="socialMediaLink" href="mailto:{{person.email}}"><img src="img/icons/mail_black_copy.png" alt="" style="height:auto;width:30px;margin: 5px 0 30px 0" /></a>
-    <a class="socialMediaLink" ng-if="person.linkedin != ''" href="{{person.linkedin}}" target="_blank"><img src="img/icons/linkedin.png" alt="" style="height:auto;width:30px;margin:5px 0 30px 0" /></a>
+<div style="background-image: url('img/profiles/{{person.image}}')" class="profile-image card">
+    <div class="profile-info__container">
+        <div class="profile-info__text-container">
+            <h3>{{person.name}}</h3>
+            <h4>{{person.position}}</h4>
+        </div>
+        <div class="profile-info__link-container ">
+            <a target="_blank" href="mailto:{{person.email}}">
+                <div class="profile-info__link mail-link">
+                    <img src="img/icons/mail-white-material.svg" alt="Mail"/>
+                </div>
+            </a>
+            <a target="_blank" href="{{person.linkedin}}">
+                <div class="profile-info__link linkedin-link">
+                    <img src="img/icons/linkedin.png" alt="Linkedin"/>
+                </div>
+            </a>
+        </div>
+    </div>    
 </div>

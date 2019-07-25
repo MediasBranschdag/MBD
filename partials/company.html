@@ -136,16 +136,17 @@
 </div>
 
 
-<div id="companyContactsSection" class="" style="min-height:400px;padding:50px 15px;background-color:white;display:flex;flex-direction:column;align-items:center;justify-content:center">
+<div id="companyContactsSection" class="content-wrapper--wide center">
     <h1 class="center">Våra företagsansvariga</h1>
     <hr class="titleLineYellow"></hr>
     <br>
-    <div class="" style="display:flex;justify-content:center;flex-wrap:wrap;margin-top:30px">
-        <div ng-repeat="person in getTeamMembers()" style="max-width:250px;height:auto;padding: 0 0;text-align:center" class="">
-            <div ng-if="person.position.includes('Företagsansvarig')">
-                <ng-include src="'partials/profile.html'"></ng-include>
-            </div>
-        </div>
+    <div class="list-wrapper">
+        <ng-include 
+            class="profile-container"
+            src="'partials/profile.html'"
+            ng-repeat="person in getTeamMembers()"
+            ng-if="person.position.includes('Företagsansvarig')">
+        </ng-include>
     </div>
     <p style="text-align:center;font-size:16px;">
         Söker du någon annan? Klicka <a href="#contact" style="color: #dcb510;">här!</a>

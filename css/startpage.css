@@ -1,6 +1,13 @@
 
-#projectLeaderWrapper .user-container {
-    max-width: 125px;
+#projectLeaderWrapper {
+    text-align: center;
+}
+#projectLeaderWrapper .profile-container {
+    max-width: unset;
+    width: 350px;
+}
+#projectLeaderWrapper .profile-image {
+    height: 325px;
 }
 
 
@@ -9,5 +16,12 @@
     /* Need to make font smaller to fit mobile screens */
     #welcome-container h1 {
         font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #projectLeaderWrapper,
+    #projectLeaderWrapper .profile-container {
+        width: 100%;
     }
 }
