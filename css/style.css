@@ -827,50 +827,6 @@ https://codepen.io/brissmyr/pen/egidw
   flex-wrap: wrap;
 }
 
-#welcomeText {
-  max-width: 500px;
-  margin: 10px;
-}
-
-#welcomeText > p {
-  position: relative;
-  margin: 10px;
-  padding: 10px;
-  opacity: 0;
-}
-
-#welcomeBoxCornerRotate {
-  position: absolute;
-  top: -20px;
-  right: -20px;
-  width: 150px;
-  height: auto;
-  -ms-transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
-  z-index: -1;
-}
-
-#welcomeBoxCorner {
-  position: absolute;
-  bottom: -20px;
-  left: -20px;
-  width: 150px;
-  height: auto;
-  z-index: -1;
-}
-
-#projectLeader {
-  border: 2px solid #ffd521;
-  border-radius: 50%;
-  width: 100%;
-  height: auto;
-}
-
-#projectLeader span {
-  margin: 0;
-}
-
 #instagramHeader {
   padding-top: 50px;
   text-align: center;

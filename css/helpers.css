@@ -12,7 +12,8 @@
 }
 
 .content-block {
-    padding: 50px 0px;
+    margin: auto;
+    padding: 50px 20px;
 }
 
 
@@ -24,11 +25,27 @@
 }
 
 .card {
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #fff;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
+
+.line-gradient {
+    height: 4px;
+}
+.line-gradient--half {
+    width: 50%;
+}
+.line-gradient--helf--left {
+    margin-top: 4px;
+    background: linear-gradient(to left, #ffd52100, #ffd521aa);
+}
+.line-gradient--helf--right {
+    margin-left: 50%;
+    margin-bottom: 4px;
+    background: linear-gradient(to right, #ffd52100, #ffd521aa);
+}
 
 
 @media screen and (max-width: 500px) {

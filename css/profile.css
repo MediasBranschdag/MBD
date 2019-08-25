@@ -84,7 +84,8 @@
 @media screen and (max-width: 500px) {
 
     /* Need to make font smaller to fit mobile screens */
-    .profile-container {
+    .profile-image {
+        margin: 20px 0;
         max-width: unset;
         box-sizing: border-box;
     }
