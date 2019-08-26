@@ -1,7 +1,7 @@
 <?php
     include_once('config.php');
     $connection = dbConnect($hostname, $username, $password, $database);
-    $query = "SELECT * FROM team20 ORDER BY name";
+    $query = "SELECT * FROM team20 ORDER BY position, name";
     $result = queryDB($connection, $query);
 
     $team = array();
