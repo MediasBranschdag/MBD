@@ -4,7 +4,7 @@ MBDApp.controller("StartCtrl", function($scope, MBDModel, $http) {
   $scope.scrollDown = function() {
     $("html, body").animate(
       {
-        scrollTop: $("#welcomeWrapper").offset().top - navbarHeight
+        scrollTop: $(".content-block").first().offset().top - navbarHeight
       },
       750
     );
