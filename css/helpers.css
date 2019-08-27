@@ -1,6 +1,15 @@
+/* Wrappers and containers */
 .center {
     text-align: center;
     margin: auto;
+}
+
+.text-wrapper--center,
+.text-wrapper {
+    max-width: 500px;
+}
+.text-wrapper--center {
+    text-align: center;
 }
 
 .content-wrapper--wide,
@@ -14,8 +23,8 @@
 .content-block {
     margin: auto;
     padding: 50px 20px;
+    box-sizing: border-box;
 }
-
 
 .list-wrapper {
     display: flex;
@@ -24,6 +33,8 @@
     flex-wrap: wrap; 
 }
 
+
+/* Cards */
 .card {
     border-radius: 10px;
     background-color: #fff;
@@ -31,6 +42,7 @@
 }
 
 
+/* Grandients */
 .line-gradient {
     height: 4px;
 }
@@ -48,10 +60,23 @@
 }
 
 
+/* Other */
 .hideme {
     opacity: 0;
 }
 
+.center-background {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.text-dark-background {
+    color: #fff;
+}
+
+
+/* Mobile */
 @media screen and (max-width: 500px) {
     .list-wrapper {
         width: 100%;
