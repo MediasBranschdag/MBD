@@ -77,5 +77,5 @@ MBDApp.controller("StartCtrl", function($scope, MBDModel, $http) {
     }, 1000);
   };
 
-  startTimer(new Date("Feb 4, 2020 10:00:00").getTime());
+  startTimer(new Date("Feb 4, 2020 11:00:00").getTime());
 });
