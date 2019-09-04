@@ -1,11 +1,47 @@
-<div id="mapSection">
+<div id="map-section">
+    <div class="side-bar">
+        <div id="map-input" class="input-container">
+            <input ng-model="search" ng-change="searchCompany(this)" class="input-with-image" type="text"
+                placeholder="Sök företag">
+            <img src="../img/icons/search.svg" alt="">
+        </div>
+        <div class="side-bar-data">
+            <div class="company-list-item" ng-repeat="company in companyList">
+                <div class="company-list-item__image" style="background-image: url('img/companies/{{company.logo}}')">
+                </div>
+                <div class="company-list-item__info">
+                    <div class="company-list-item__title">
+                        <h3>{{company.name}}</h3>
+                    </div>
+                    <div>
+                        <p>
+                            {{company.description}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="no-search-result" class="side-bar-overlay">
+                <div>
+                    <h3>
+                        Hittade inga resultat
+                    </h3>
+                    <p>
+                        Tyvärr hittade vi inget företag med din sökning.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="map-container">
-        <img
-        src="../img/map_nymble.png"
-        alt="Something went wrong with loading the map."
-        class="floorPlan"
-      />
+        <div class="map-image-wrapper">
+            <img src="../img/map_nymble.svg" alt="Something went wrong with loading the map." class="floor-plan" />
+            <div style="float: right" ng-repeat="(key, company) in companiesOnMap">
+                <div style="top: {{company.mapPositionY}}%; left: {{company.mapPositionX}}%" class="map-marker-container" id="company-{{comapny.id}}">
+                    <div id="company-{{comapny.id}}">
+                        {{key + 1}}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-  
-  <ng-include src="'partials/footer.html'" ng-controller="FooterCtrl" ></ng-include>

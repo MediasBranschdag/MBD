@@ -1034,10 +1034,6 @@ https://codepen.io/brissmyr/pen/egidw
 .map-container {
   text-align: center;
 }
-img.floorPlan {
-  width: 100%;
-  max-height: 100%;
-}
 
 #countdown-end {
   font-size: 50px;
@@ -1046,12 +1042,6 @@ img.floorPlan {
   font-weight: 100;
 }
 
-@media screen and (min-width: 1200px) {
-  img.floorPlan {
-    width: 1200px;
-    max-height: 100%;
-  }
-}
 @media screen and (max-width: 770px) {
   .event-info {
     background-color: #ffffff;

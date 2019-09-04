@@ -1,0 +1,161 @@
+#map-section {
+    position: absolute;
+    top: 75px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#map-input input {
+    border-radius: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+#map-input img {
+    top: 23px;
+}
+
+.side-bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    
+    height: 100%;
+    width: 325px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #eee;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+
+    overflow: hidden;
+}
+
+.side-bar-data {
+    position: relative;
+
+    height: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+
+    overflow-y: scroll;
+}
+
+.map-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 325px;
+    
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+    text-align: center;
+}
+
+.map-image-wrapper {
+    position: relative;
+    height: 90%;
+    display: inline-block;
+    width: auto;
+    overflow: hidden;
+    margin: 5vh 40px;
+    box-sizing: border-box;
+}
+
+.floor-plan {
+    height: 100%;
+}
+
+.side-bar-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: #eee;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.1s linear;
+}
+.side-bar-overlay--active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.company-list-item {
+    margin-bottom: 15px;
+    padding: 15px;
+
+    border-radius: 10px;
+    background-color: #fff;
+}
+.company-list-item:hover {
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.company-list-item__info {
+    display: none;
+}
+.company-list-item__image {
+    width: 100%;
+    max-width: 200px;
+    margin: auto;
+    height: 75px;
+
+    box-sizing: border-box;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.map-marker-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 5vh;
+    width: 5vh;
+
+    padding-bottom: 2px;
+    border: 0.5vh solid #ffd521;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
+    border-radius: 5vh;
+
+    background-color: #fff;
+    font-weight: bold;
+    font-size: 2vh;
+    cursor: pointer;
+}
+.map-marker-container:hover {
+    background-color: #ffd521;
+    color: #fff;
+}
+
+@media screen and (max-width: 700px) {
+    .side-bar {
+        width: 100%;
+    }
+    .map-container {
+        left: 0;
+    }
+}
