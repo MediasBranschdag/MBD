@@ -1,0 +1,6 @@
+@media screen and (max-width: 900px) {
+    .paning-background  {
+        background-position: 0% 90%;
+        animation: paning-background-animation 60s ease infinite;
+    }
+}

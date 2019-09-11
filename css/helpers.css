@@ -38,7 +38,7 @@
 .card {
     border-radius: 10px;
     background-color: #fff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 
@@ -65,6 +65,21 @@
     opacity: 0;
 }
 
+.yellow-line {
+    display: inline-block;
+    width: 100%;
+    margin: 5px;
+
+    border: 0;
+    height: 3px;
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 213, 33, 0),
+        rgba(255, 213, 33, 0.8),
+        rgba(255, 213, 33, 0)
+    );
+}
+
 .center-background {
     background-size: cover;
     background-position: center;
@@ -81,6 +96,16 @@
     background-color: #fafafa;
 }
 
+
+/* Animation */
+@keyframes paning-background-animation {
+	0% { background-position: 0% 100%; }
+	50% { background-position: 90% 100%; }
+}
+@keyframes paning-background-animation {
+	50% { background-position: 90% 100%; }
+	100% { background-position: 0% 100%; }
+}
 
 /* Mobile */
 @media screen and (max-width: 500px) {
