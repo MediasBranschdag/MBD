@@ -10,7 +10,8 @@
         }
 
         /**
-         * Getting all the team members
+         * Getting all the team members.
+         * We use a custom order depending on position, se below
          */
         public function getAllTeamMembers() {
             return $this->dbSelectAllSimple(
@@ -23,7 +24,8 @@
                         WHEN "Företagssamordnare" THEN 1
                         WHEN "Företagsansvarig" THEN 2
                         WHEN "Projektledare" THEN 3
-                        ELSE 4
+                        WHEN "Sittningsansvarig" THEN 4
+                        ELSE 5
                     END,
                     position
                     ASC'
