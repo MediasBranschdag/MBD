@@ -43,7 +43,13 @@ class CompanyController {
         //Check request
         switch ($_GET['action']) {
             case 'search':
-                $data = $companyModel->getCompaniesFromSearch($_GET['q']);
+                $searchString = $_GET['q'];
+                if($searchString == '') {
+                    $data = $companyModel->getAllActiveCompanies();
+                }
+                else {
+                    $data = $companyModel->getCompaniesFromSearch($searchString);
+                }
                 break;
 
             case 'all-active':

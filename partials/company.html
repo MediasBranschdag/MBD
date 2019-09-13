@@ -144,8 +144,7 @@
             <ng-include 
                 class="profile-container"
                 src="'partials/profile.html'"
-                ng-repeat="person in getTeamMembers()"
-                ng-if="person.position.includes('Företagsansvarig')">
+                ng-repeat="person in companyResponsibleTeamMembers">
             </ng-include>
         </div>
         <p style="text-align:center;font-size:16px;">

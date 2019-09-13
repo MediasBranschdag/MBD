@@ -1,22 +1,31 @@
 <div id="map-section">
     <div class="side-bar">
         <div id="map-input" class="input-container">
-            <input ng-model="search" ng-change="searchCompany(this)" class="input-with-image" type="text"
+            <input ng-model="search" ng-change="searchCompany(this)" class="js-search-input input-with-image" type="text"
                 placeholder="Sök företag">
             <img src="../img/icons/search.svg" alt="">
         </div>
         <div class="side-bar-data">
-            <div class="company-list-item" ng-repeat="company in companyList">
-                <div class="company-list-item__image" style="background-image: url('img/companies/{{company.logo}}')">
-                </div>
-                <div class="company-list-item__info">
-                    <div class="company-list-item__title">
-                        <h3>{{company.name}}</h3>
-                    </div>
-                    <div>
-                        <p>
-                            {{company.description}}
-                        </p>
+            <div id="show-map-btn" class="btn">
+                <span class="btn-text">Öppna karta</span>
+                <img src="../img/icons/map_location.svg" alt="" class="btn-image">
+            </div>
+            <div ng-repeat="company in companyList">
+                <div id="company-list-{{company.id}}" class="company-list-item js-marker-active" data-company-id="{{company.id}}">
+                    <div class="company-list-item__image" style="background-image: url('img/companies/{{company.logo}}')"></div>
+                    <div class="company-list-item__info">
+                        <div class="company-list-item__title">
+                            <h3>{{company.name}}</h3>
+                        </div>
+                        <div class="btn">
+                            <span class="btn-text show-on-map-btn">Visa på kartan</span>
+                            <img src="../img/icons/map_location.svg" alt="" class="btn-image">
+                        </div>
+                        <div>
+                            <p>
+                                {{company.description}}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -32,12 +41,19 @@
             </div>
         </div>
     </div>
+    <div id="find-companies-btn" class="btn">
+        <span class="btn-text">Sök företag</span>
+        <img src="../img/icons/map_location.svg" alt="" class="btn-image">
+    </div>
     <div class="map-container">
         <div class="map-image-wrapper">
             <img src="../img/map_nymble.svg" alt="Something went wrong with loading the map." class="floor-plan" />
             <div style="float: right" ng-repeat="(key, company) in companiesOnMap">
-                <div style="top: {{company.mapPositionY}}%; left: {{company.mapPositionX}}%" class="map-marker-container" id="company-{{comapny.id}}">
-                    <div id="company-{{comapny.id}}">
+                <div id="company-marker-{{company.id}}" data-company-id="{{company.id}}" style="top: {{company.mapPositionY}}%; left: {{company.mapPositionX}}%" class="map-marker-container js-marker-active">
+                    <div class="map-marker">
+                        <div class="company-map-logo">
+                            <img src="img/companies/{{company.logo}}" alt="">
+                        </div>
                         {{key + 1}}
                     </div>
                 </div>

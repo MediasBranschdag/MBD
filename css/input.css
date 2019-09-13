@@ -1,5 +1,6 @@
 .input-container {
     position: relative;
+    z-index: 1;
 }
 
 .input-container img {
@@ -21,10 +22,10 @@ input {
     box-sizing: border-box;
     border: none;
 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     transition: box-shadow 100ms;
 }
 
 input:focus {
     outline: none !important;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }

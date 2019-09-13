@@ -1,5 +1,6 @@
-MBDApp.controller('CompanyCtrl', function($scope, MBDModel, CompanyModel) {
+MBDApp.controller('CompanyCtrl', function($scope, MBDModel, CompanyModel, $http) {
     $scope.lastYearsCompanies = [];
+    $scope.companyResponsibleTeamMembers = [];
 
     //Getting the last years companies and sponsors
     CompanyModel.getCompanies(new Date(new Date().setFullYear(new Date().getFullYear() - 1)), null).success(function(data) {
@@ -19,8 +20,14 @@ MBDApp.controller('CompanyCtrl', function($scope, MBDModel, CompanyModel) {
         }, 750);
     };
 
-    $scope.getTeamMembers = function(){
-        var members = MBDModel.getTeamMembers();
-		return members;
-	};
+    function getTeamMembers() {
+        $http({
+            method: 'GET',
+            url: '/php/getTeam.php?action=company-responsible'
+        }).then(function successCallback(response) {
+            $scope.companyResponsibleTeamMembers = response.data;
+        });
+    }
+    getTeamMembers();
+
 });
