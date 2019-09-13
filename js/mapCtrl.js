@@ -205,17 +205,19 @@ MBDApp.controller("MapController", function($scope, MBDModel, $http) {
     });
 
     //Hover map marker or company list
-    $('#map-section').on({
-        mouseenter: function () {
-            let companyID = $(this).data('company-id');
-            toggleMapMarkerSelect(companyID, true);
-            console.log('Mouse enter');
-        },
-        mouseleave: function () {
-            let companyID = $(this).data('company-id');
-            toggleMapMarkerSelect(companyID, false);
-        }
-    }, '.js-marker-active');
+    if(!("ontouchstart" in document.documentElement)) {
+        $('#map-section').on({
+            mouseenter: function () {
+                let companyID = $(this).data('company-id');
+                toggleMapMarkerSelect(companyID, true);
+                console.log('Mouse enter');
+            },
+            mouseleave: function () {
+                let companyID = $(this).data('company-id');
+                toggleMapMarkerSelect(companyID, false);
+            }
+        }, '.js-marker-active');
+    }
 
     //Click map company logo
     $('.map-container').on('click touchstart', '.map-marker-container', function(e) {
