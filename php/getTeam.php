@@ -21,9 +21,9 @@
                     team20 
                 ORDER BY
                     CASE position
-                        WHEN "Företagssamordnare" THEN 1
-                        WHEN "Företagsansvarig" THEN 2
-                        WHEN "Projektledare" THEN 3
+                        WHEN "Projektledare" THEN 1
+                        WHEN "Företagssamordnare" THEN 2
+                        WHEN "Företagsansvarig" THEN 3
                         WHEN "Sittningsansvarig" THEN 4
                         ELSE 5
                     END,
