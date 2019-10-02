@@ -286,12 +286,6 @@ a:hover {
 }
 /*--- ---*/
 
-#startLogo {
-  width: 250px;
-  max-height: 250px;
-  margin: 10px;
-}
-
 #startText {
   background-color: rgba(0, 0, 0, 0.8);
   padding: 10px 20px;
@@ -655,11 +649,6 @@ https://codepen.io/brissmyr/pen/egidw
     -webkit-user-select: none;
   }
 
-  #startLogo {
-    width: 40vw;
-    height: auto;
-  }
-
   #startText {
     font-size: 20px;
   }
@@ -739,13 +728,6 @@ https://codepen.io/brissmyr/pen/egidw
 
   #mailInputForm {
     width: 100%;
-  }
-}
-
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-  #startLogo {
-    width: 18vw;
-    height: auto;
   }
 }
 

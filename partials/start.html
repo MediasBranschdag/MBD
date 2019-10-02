@@ -1,6 +1,5 @@
-<div id="welcome-container" class="fixed-bg"
-    style="background-image: url('img/background/leaf_dark.png'); background-color: #f3f3f3;">
-    <img id="startLogo" src="img/logo/logo_yellowBred.svg" alt="" />
+<div class="intro-screen__background" style="background-image:url('img/background/leaf_dark.png')">
+    <img id="start-logo" src="img/logo/logo_yellowBred.svg" alt="" />
     <h1 id="startHeader" class="dateFade"> 4 FEBRUARI 2020<br />NYMBLE</h1>
     <div class="countdown-wrapper dateFade">
         <section class="countdown-container">
@@ -22,7 +21,9 @@
             </div>
         </section>
     </div>
-    <img id="downArrow" src="img/icons/arrowDown.png" ng-click="scrollDown()" alt="" />
+    <div ng-click="scrollDown()" class="btn btn--icon intro-screen__scroll-down-btn">
+        <img class="btn--icon-image" src="img/icons/arrows/down_black.svg"  alt="" />
+    </div>
 </div>
 
 
