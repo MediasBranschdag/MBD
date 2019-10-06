@@ -1,16 +1,16 @@
 <nav class="navbar">
     <a id="navbarLogo" style="display:flex;align-items:center;height:100%;" ng-click="closeNavbar()" href="#/">
-        <img src="img/logo/logo_yellowBred.svg"  style="width:60px;height:60px"alt="" />
+        <img src="img/logo/logo_yellow.svg"  style="width:auto;height:50px"alt="" />
     </a>
 
     <a ng-repeat="item in navbarOptions" class="navLink" ng-class="{active: route.current.activeTab == '{{item.hash}}'}" href="#/{{item.hash}}">{{item.option}}    
 
-        <div id="mobilehide" style="position: absolute; right: 0; margin: 2px;">
+        <div id="mobilehide" style="position: absolute; right: 15px; margin: 2px;">
             <a href="http://www.medieteknik.com">
-                <img src="img/logo/medieteknik_logo.png"  style="width:50px;height:60px"alt="" />  <!--  id="medieLogga" -->
+                <img src="img/logo/medieteknik_logo.png"  style="height:45px; width: auto"alt="" />  <!--  id="medieLogga" -->
             </a>
             <a href="https://www.kth.se">
-                <img src="img/logo/KTH_logo.png"  style="width:60px;height:60px"alt=""/>     <!--  id="KTHLogga"  -->
+                <img src="img/logo/KTH_logo.png"  style="height:45px; width: auto"alt=""/>     <!--  id="KTHLogga"  -->
             </a>
         </div> 
 
