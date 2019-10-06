@@ -32,6 +32,15 @@
     margin-top: 40px;
 }
 
+.social-media-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.social-media-buttons .btn {
+    margin: 0 10px;
+}
+
 @media screen and (max-width: 750px) {
     #projectLeaderWrapper,
     #projectLeaderWrapper .profile-container {

@@ -93,8 +93,10 @@
 </div>
 
 <div class="content-block content-wrapper--wide center">
-    <h1>Medias Branschdag på Instagram!</h1>
-    <hr class="yellow-line">
+    <div class="compact">
+        <h1 class="compact">Medias Branschdag på Instagram!</h1>
+        <hr class="yellow-line">
+    </div>
     <br><br>
 
     <div class="list-wrapper">
@@ -110,22 +112,26 @@
     </div>
 </div>
 
-<div id="followUsWrapper">
-    <div id="mobilehide">
-        <p id="followUsText">Följ oss på sociala medier! </p>
+<div class="content-block content-wrapper--wide center">
+    <div class="compact">
+        <h1 class="compact">Följ oss på sociala medier!</h1>
+        <hr class="yellow-line">
     </div>
-    <div id="mobileshow">
-        <h2 style="color:black; margin: 5px; padding: 10px;">Följ oss på sociala medier! </h2>
+    <br><br>
+    <div class="social-media-buttons">
+        <a href="https://www.facebook.com/mediasbranschdag/">
+            <div class="btn btn--icon btn--icon--big">
+                <img class="btn--icon-image" src="img/icons/facebook.svg"  alt="" />
+            </div>
+        </a>
+        <a href="https://www.instagram.com/mediasbranschdag/">
+            <div class="btn btn--icon btn--icon--big">
+                <img class="btn--icon-image" src="img/icons/instagram.svg"  alt="" />
+            </div>
+        </a>
     </div>
 </div>
-<div id="socialMediaLinkWrapper">
-    <div>
-        <a class="socialMediaLink" href="https://www.facebook.com/mediasbranschdag/" target="_blank"><img
-                src="img/icons/facebook_gold.svg" alt="" /></a>
-        <a class="socialMediaLink" href="https://www.instagram.com/mediasbranschdag/" target="_blank"><img
-                src="img/icons/instagram_gold.svg" alt="" /></a>
-    </div>
-</div>
+
 </div>
 
 <ng-include src="'partials/footer.html'" ng-controller="FooterCtrl"></ng-include>

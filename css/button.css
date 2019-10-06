@@ -26,10 +26,17 @@
     height: 25px;
     padding: 17px;
     border-radius: 50%;
+    text-align: center;
+}
+.btn--icon--big {
+    width: 40px;
+    height: 40px;
+    padding: 20px;
 }
 .btn--icon-image {
     max-width: 100%;
     max-height: 100%;
+    margin: auto;
 }
 
 .btn-image {

@@ -33,6 +33,10 @@
     flex-wrap: wrap; 
 }
 
+.compact {
+    display: inline-block;
+}
+
 
 /* Cards */
 .card {
