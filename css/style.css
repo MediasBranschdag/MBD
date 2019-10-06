@@ -444,32 +444,20 @@ input.myButton:focus {
 .hidden {
   display: none;
 }
-#scrollTopButton.ng-hide-add,
-#scrollTopButton.ng-hide-remove {
-  -webkit-transition: all 500ms ease-in-out;
-  -moz-transition: all 500ms ease-in-out;
-  -o-transition: all 500ms ease-in-out;
-  -ms-transition: all 500ms ease-in-out;
-  transition: all 500ms ease-in-out;
-}
 
-#scrollTopButton.ng-hide {
-  opacity: 0;
-}
-
-#scrollTopButton {
-  opacity: 1;
+#scroll-to-top-btn {
   position: fixed;
+  opacity: 0;
   right: 10px;
   bottom: 10px;
-  width: 50px;
-  height: 50px;
-  border-radius: 4px;
-  box-shadow: 0px 0px 15px -10px;
-  background-color: #ffd521;
   z-index: 9999;
-  text-align: center;
-  cursor: pointer;
+
+  transform: translateY(50px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+#scroll-to-top-btn.btn-active {
+  opacity: 1;
+  transform: translateY(0px);
 }
 /*
 https://codepen.io/brissmyr/pen/egidw

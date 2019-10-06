@@ -26,20 +26,20 @@ MBDApp.controller('NavbarCtrl', function($scope, MBDModel, $route, $window) {
         }, 750);
     };
 
-    $window.addEventListener('scroll', function(val){
-        showScrollTopButton();
+    $window.addEventListener('scroll', function(val) {
+        toggleScrollTopButton();
     });
 
-    function showScrollTopButton(){
-        var oldState = $scope.showScrollButton;
+    /**
+     * Show or hides the top button depending on the scroll amount
+     */
+    function toggleScrollTopButton() {
+        var $scrollButton = $('#scroll-to-top-btn');
         if($window.pageYOffset > 700){
-            $scope.showScrollButton = true;
+            $scrollButton.addClass('btn-active');
         }
         else{
-            $scope.showScrollButton = false;
-        }
-        if($scope.showScrollButton !== oldState){
-            $scope.$digest();
+            $scrollButton.removeClass('btn-active');
         }
     }
 
