@@ -45,7 +45,7 @@
                     position = "Företagsansvarig" OR
                     position = "Företagssamordnare"
                 ORDER BY
-                    position, name'
+                    position DESC, name'
             );
         }
     }
