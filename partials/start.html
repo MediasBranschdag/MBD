@@ -92,45 +92,19 @@
     </div>    
 </div>
 
-<div class="" style="position:relative;z-index:1">
-    <h1 id="instagramHeader">Medias Branschdag på Instagram!</h1>
+<div class="content-block content-wrapper--wide center">
+    <h1>Medias Branschdag på Instagram!</h1>
+    <hr class="yellow-line">
+    <br><br>
 
-    <!--<hr class="titleLineYellow"></hr>-->
-
-    <div id="mobilehide">
-        <div id="instagramWrapper">
-            <img id="instagramDivider" src="img/icons/divider.svg" alt="" />
-            <div ng-repeat="post in getInstagram()" style="max-width:300px;margin:20px 50px;">
-                <a class="instagramLink" ng-href="{{post.link}}" target="_blank">
-                    <div class="thumbnail">
-                        <img class="{{post.class}}" ng-src="{{post.images.standard_resolution.url}}" alt="N/A" />
-                    </div>
-                    <div class="instagramStatBar">
-                        <div class="likes">
-                            <img src="img/icons/heart_red.png" alt="" /> {{post.likes.count}}
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div id="mobileshow">
-        <div id="instagramWrapper">
-            <img id="instagramDivider" src="img/icons/divider.svg" alt="" />
-            <div ng-repeat="post in getInstagram()" ng-if="$index < 3" style="max-width:300px;margin:20px 50px;">
-                <a class="instagramLink" ng-href="{{post.link}}" target="_blank">
-                    <div class="" style="position:relative;">
-                        <img ng-src="{{post.images.standard_resolution.url}}"
-                            style="width:100%;height:auto;border-radius:0px;" alt="N/A" />
-                    </div>
-                    <div class="" style="bottom:0;right:0;left:0;height:25px;text-align:right;color:black">
-                        <div class="" style="display:inline-block;margin:0 2px">
-                            <img style="width:15px;height:auto;vertical-align:middle;" src="img/icons/heart_red.png"
-                                alt="" /> {{post.likes.count}}
-                        </div>
-                    </div>
-                </a>
+    <div class="list-wrapper">
+        <div class="instagram-container card card--clickable" ng-repeat="post in getInstagram()">
+            <a ng-href="{{post.link}}" target="_blank">
+                <div style="background-image: url('{{post.images.standard_resolution.url}}')" class="instagram-image {{post.class}}" alt="Instagram image"></div>
+            </a>
+            <div class="instagram-like-container">
+                <img class="instagram-heart" src="img/icons/heart_white_stroke.svg" alt="" /> 
+                <span class="instagram-like-count">{{post.likes.count}}</span>
             </div>
         </div>
     </div>
