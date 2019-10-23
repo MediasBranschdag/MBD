@@ -1,5 +1,5 @@
 <?php
-
+require_once 'config.php';
 class DatabaseModel {
 
     /**
@@ -21,13 +21,11 @@ class DatabaseModel {
             $this->db = self::$staticDB;
             return false;
         }
-
-        $hostname = 'mediasbranschdag-166397.mysql.binero.se';
-        $database = '166397-mediasbranschdag';
-        $dsn = 'mysql:host=' . $hostname . ';dbname=' . $database . ';charset=utf8';
-        $username = '166397_lt74885';
-        $password = 'Cxj75RZk56';
-        self::$staticDB = new PDO($dsn, $username, $password);
+        self::$staticDB = new PDO(
+            'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8', 
+            DB_USERNAME, 
+            DB_PASSWORD
+        );
         $this->db = self::$staticDB;
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }

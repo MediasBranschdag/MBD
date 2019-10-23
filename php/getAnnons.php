@@ -1,20 +1,43 @@
 <?php
-    include_once('config.php');
-    $connection = dbConnect($hostname, $username, $password, $database);
-    $query = "SELECT * FROM annons19;";
-    $result = queryDB($connection, $query);
 
-    $ads = array();
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_object()) {
-            $ad;
-            $ad['title'] = $row->title;
-            $ad['id'] = $row->id;
-            $ad['description'] = $row->description;
-            $ad['image'] = $row->image;
-            array_push($ads, $ad);
+    include_once('database.php');
+
+    class AdModel extends DatabaseModel {
+        const SELECT_ATTRIBUTES = "*";
+
+        public function __construct() {
+            $this->establishDatabaseConnection();
+        }
+
+        /**
+         * Getting all the events
+         */
+        public function getAllEvents() {
+            return $this->dbSelectAllSimple(
+                'SELECT * FROM annons19'
+            );
         }
     }
-    echo json_encode($ads);
-    $connection->close();
+
+    class AdController {
+
+        public function init() {
+            //Create model
+            $adModel = new AdModel();
+
+            //Check request
+            switch ($_GET['action']) {
+                case 'all-ads':
+                    $data = $adModel->getAllEvents();
+                break;
+            }
+
+            //Convert the data to json
+            header('Content-Type: application/json');
+            echo json_encode($data);
+        }
+    }
+
+    $controller = new adController();
+    $controller->init();
 ?>

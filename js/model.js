@@ -99,7 +99,7 @@ MBDApp.factory("MBDModel", function($http) {
     }
   );
 
-  $http.get("php/getEvents.php").then(
+  $http.get("php/getEvents.php?action=all-events").then(
     function(response) {
       console.log("Fetching events was a success!");
       events = response.data;
@@ -109,10 +109,12 @@ MBDApp.factory("MBDModel", function($http) {
       console.log(error);
     }
   );
-  $http.get("php/getAnnons.php").then(
+
+  $http.get("php/getAnnons.php?action=all-ad").then(
     function(response) {
       console.log("Fetching ads was a success!");
       annonser = response.data;
+      console.log(annonser);
     },
     function(error) {
       console.log("Could not fetch ads");
