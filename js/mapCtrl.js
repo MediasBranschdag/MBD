@@ -1,4 +1,5 @@
-MBDApp.controller("MapController", function($scope, MBDModel, $http) {
+MBDApp.controller("MapController", function($scope, MBDModel, $http, $routeParams, $location) {
+
 
     //This stores the search timeout id
     var searchTimeoutID;
@@ -136,7 +137,6 @@ MBDApp.controller("MapController", function($scope, MBDModel, $http) {
         });       
     }
 
-
     /**
      * This reset all the search result and shows all the companies again
      */
@@ -153,19 +153,30 @@ MBDApp.controller("MapController", function($scope, MBDModel, $http) {
      * @param {number} companyID The id of the company to scroll to 
      */
     function scrollToCompanyMarker(companyID) {
-        let $map = $('.map-container');
         let $marker = $('#company-marker-' + companyID);
-
-        console.log(window.innerWidth);
 
         //First disable the activ marker
         toggleMapMarkerSelect(companyID, false);
 
-        $map.animate({
-            scrollLeft: $marker.offset().left + $marker.innerWidth() / 2 + $map.scrollLeft() - $map.innerWidth() / 2 - $map.offset().left
-        }, 500, function() {
+        scrollToMapElement($marker, function() {
             //Now after the scroll we can activate the marker again
             toggleMapMarkerSelect(companyID, true);
+        })
+    }
+
+
+    /**
+     * Scrolls to an map element
+     * @param {JQuery} $mapElement The element to scroll to
+     * @param {Function} doneScrolling When the map is done scrolling
+     */
+    function scrollToMapElement($mapElement, doneScrolling) {
+        let $map = $('.map-container');
+
+        $map.animate({
+            scrollLeft: $mapElement.offset().left + $mapElement.innerWidth() / 2 + $map.scrollLeft() - $map.innerWidth() / 2 - $map.offset().left
+        }, 500, function() {
+            doneScrolling()
         });
     }
 
@@ -179,6 +190,31 @@ MBDApp.controller("MapController", function($scope, MBDModel, $http) {
         $('.side-bar').toggleClass('hidden', 250);
     }
 
+
+    /**
+     * Places a QR code and scrolls to it
+     * @param {Number} xPosition 
+     * @param {Number} yPosition 
+     */
+    function placeQRCode(xPosition, yPosition) {
+
+        //Get the qr code element
+        let $qrCode = $('#qr-code');
+
+        //Hide the side bar
+        toggleSideBar();
+
+        //Show the qr code marker
+        $qrCode.css({
+            'display': 'block',
+            'top': '15%',
+            'left': '50%'
+        })
+
+        setTimeout(function() {
+            scrollToMapElement($qrCode, function() {});
+        }, 1000);
+    }
 
     //When the user clicks on a company block
     $('.side-bar-data').on('click', '.company-list-item:not(.open)', function() {
@@ -243,6 +279,21 @@ MBDApp.controller("MapController", function($scope, MBDModel, $http) {
     });
 
 
+    //When the user scroll the map
+    $('.map-container').scroll(function() {
+        $('#map-scroll-indicator').addClass('removed');
+    });
+
+
     //List all the companies on start
     getAllActiveCompanies();
+
+
+    //Check if we should load a QR code
+    if($routeParams.qrcode != null) {
+        $location.search('qrcode', null)
+        // window.history.pushState('map', 'Map', '/map/');
+        placeQRCode();
+    }
+
 });

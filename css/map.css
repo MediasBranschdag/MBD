@@ -225,6 +225,48 @@
     bottom: 25px;
 }
 
+@keyframes arrow-focus {
+    0% { 
+        transform: translate(0, -50%);
+    }
+    50% {
+        transform: translate(10px, -50%);
+    }
+    100% {
+        transform: translate(0, -50%);
+    }
+}
+
+#map-scroll-indicator {
+    display: none;
+
+    position: absolute;
+    z-index: 1;
+    right: 25px;
+    top: 50%;
+
+    height: 40px;
+    transform: translate(0, -50%);
+    pointer-events: none;
+
+    animation: arrow-focus 2s infinite;
+    transition: opacity 1s, visibility 1s;
+}
+#map-scroll-indicator.removed {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#qr-code {
+    display: none;
+    border-color: #aaaaaa;
+
+    background-image: url('/img/qrcode.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 @media screen and (max-width: 700px) {
     #show-map-btn {
         display: block;
@@ -232,6 +274,10 @@
     #find-companies-btn  {
         display: block;
     }
+
+    #map-scroll-indicator {
+        display: block;
+    } 
 
     .side-bar {
         width: 100%;

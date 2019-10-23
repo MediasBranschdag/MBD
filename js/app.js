@@ -34,7 +34,12 @@ MBDApp.config([
         controller: "EventCtrl",
         activeTab: "events"
       })
-      .when("/map", {
+      .when("/map/:qrcode", {
+        templateUrl: "partials/map.html",
+        controller: "MapController",
+        activeTab: "map"
+      })
+      .when("/map/", {
         templateUrl: "partials/map.html",
         controller: "MapController",
         activeTab: "map"
