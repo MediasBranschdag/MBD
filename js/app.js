@@ -19,11 +19,6 @@ MBDApp.config([
         controller: "CompanyCtrl",
         activeTab: "companies"
       })
-      .when("/schedule", {
-        templateUrl: "partials/schema.html",
-        controller: "ScheduleCtrl",
-        activeTab: "schedule"
-      })
       .when("/contact", {
         templateUrl: "partials/contact.html",
         controller: "ContactCtrl",
