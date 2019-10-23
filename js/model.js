@@ -45,8 +45,6 @@ MBDApp.factory("MBDModel", function($http) {
   var li = true;
   var instagramPosts;
   var teamMembers;
-  var schedule;
-  var lunchLectures;
   var sponsors;
   var events;
   var annonser; // Heter annons för att förbigå adblocker
@@ -73,20 +71,6 @@ MBDApp.factory("MBDModel", function($http) {
     }
   );
 
-  $http.get("php/getSchedule.php").then(
-    function(response) {
-      console.log("Fetching schedule was a success!");
-      schedule = response.data;
-
-      lunchLectures = schedule.filter(function(obj) {
-        return obj.type == "Lunchföreläsning";
-      });
-    },
-    function(error) {
-      console.log("Could not fetch schedule");
-      console.log(error);
-    }
-  );
 
   $http.get("php/getSponsors.php").then(
     function(response) {
@@ -94,8 +78,7 @@ MBDApp.factory("MBDModel", function($http) {
       sponsors = response.data;
     },
     function(error) {
-      console.log("Could not fetch schedule");
-      console.log(error);
+      console.log("Could not fetch sponsors");
     }
   );
 
@@ -163,10 +146,6 @@ MBDApp.factory("MBDModel", function($http) {
 
   this.getCompanies = function() {
     return companies;
-  };
-
-  this.getSchedule = function() {
-    return schedule;
   };
 
   this.getSponsors = function() {
