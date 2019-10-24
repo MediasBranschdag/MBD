@@ -25,11 +25,96 @@
 }
 
 #start-logo {
+    position: relative;
+    height: 250px;
     width: 250px;
-    max-width: 50%; 
-    max-height: 250px;
-    margin: 10px;
-    margin-top: 40px;
+    margin-top: 8vh;
+}
+.start-logo-part {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    transform: scale(0.85);
+    fill: #ccc;
+    transition: all 750ms;
+}
+.start-logo-part.active {
+    transform: scale(1); 
+    fill: #ffd521;
+}
+.title-part {
+    color: #ccc;
+    transition: all 750ms;
+}
+.title-part.active {
+    color: #ffd521;
+}
+
+#start-header {
+    width: 100%;
+    color: #ffd521;
+    margin: 10px 0;
+    font-size: 35px;
+}
+
+#start-intro-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 100;
+}
+
+#start-mbd-title {
+    margin: 0;
+    color: #ffd521;
+    font-size: 50px;
+}
+
+.countdown-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 580px;
+    width: 100%;
+    margin: 15px 0;
+    font-weight: 100;
+}
+.countdown-wrapper .horizontal-split {
+    background-color: #ffd521;
+}
+
+.countdown-block-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 85px;
+    height: 85px;
+    border: 5px solid #ffd521;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.countdown-time-type {
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.countdown-time {
+  font-size: 30px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.start-intro-info__section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .social-media-buttons {
@@ -40,6 +125,42 @@
 .social-media-buttons .btn {
     margin: 0 10px;
 }
+
+.start-intro-icon {
+    height: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    #start-logo {
+        width: 200px;
+        height: 200px;
+    }
+    #start-mbd-title {
+        font-size: 27px;
+    }
+    #start-intro-info {
+        font-size: 15px;
+    }
+    .start-intro-icon {
+        height: 15px;
+    }
+    .countdown-wrapper {
+        max-width: 330px;
+    }
+    .countdown-block-container {
+        border-radius: 15px;
+        height: 50px;
+        width: 50px;
+    }
+    .countdown-time {
+        margin: 0;
+        font-size: 20px;
+    }
+    .countdown-time-type {
+        font-size: 7px;
+    }
+}
+
 
 @media screen and (max-width: 750px) {
     #projectLeaderWrapper,

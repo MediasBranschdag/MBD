@@ -11,6 +11,8 @@
     background-position: bottom;
     background-size: cover;
     background-attachment: fixed;
+    
+    font-family: 'Open Sans', sans-serif;
 }
 .intro-screen__top-content {
     padding: 35px;

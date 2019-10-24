@@ -37,6 +37,20 @@
     display: inline-block;
 }
 
+.vertical-split {
+    height: 15px;
+    width: 1px;
+    background-color: #fff;
+}
+
+.horizontal-split {
+    height: 1px;
+    width: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #fff;
+}
+
 
 /* Cards */
 .card {

@@ -71,6 +71,7 @@ MBDApp.controller("StartCtrl", function($scope, MBDModel, $http) {
     }
 
     //Start the countdown
+    displayTimeLeft(getTimeLeft());
     setInterval(() => {
       const secondsLeft = getTimeLeft();
       displayTimeLeft(secondsLeft);
@@ -78,4 +79,24 @@ MBDApp.controller("StartCtrl", function($scope, MBDModel, $http) {
   };
 
   startTimer(new Date("Feb 4, 2020 10:00:00").getTime());
+
+  function animateLogo($logoParts, $titleParts, index) {
+    if($logoParts.length < index + 1) {
+      return;
+    }
+    $logoParts.eq(index).addClass("active");
+    $titleParts.eq(index).addClass("active");
+    setTimeout(function() {
+      animateLogo($logoParts, $titleParts, index + 1);
+    }, 500);
+  }
+  
+  // Animate the logo and text
+  setTimeout(function() {
+    animateLogo(
+      $('.start-logo-part'),
+      $('.title-part'),
+      0
+    );
+  }, 500);
 });
