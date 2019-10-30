@@ -23,7 +23,7 @@
 }
 .intro-screen__text {
     display: inline-block;
-    font-size: 27px;
+    font-size: 20px;
     text-align: center;
     color: #ffd521;
 }
@@ -58,7 +58,7 @@
     justify-content: center;
     min-width: 225px;
     min-height: 100px;
-    margin: 25px;
+    margin: 20px;
 
     overflow: hidden;
     border-radius: 15px;

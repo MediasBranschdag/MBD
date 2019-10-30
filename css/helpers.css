@@ -9,6 +9,7 @@
     max-width: 500px;
 }
 .text-wrapper--center {
+    margin: auto;
     text-align: center;
 }
 
@@ -136,6 +137,8 @@
 @media screen and (max-width: 500px) {
     .list-wrapper {
         width: 100%;
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
     }
 }

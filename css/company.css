@@ -1,0 +1,23 @@
+.package-offer-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 100%;
+    max-width: 175px;
+    height: 140px;
+    padding: 15px;
+    margin: 10px;
+
+    text-align: center;
+    font-weight: bold;
+
+    background: linear-gradient(135deg, #ffd521, #ffe531)
+}
+
+.package-offer-card__icon {
+    opacity: 0.75;
+    height: 60px;
+}
+

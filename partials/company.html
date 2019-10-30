@@ -5,7 +5,7 @@
             <hr class="yellow-line">
         </div>
     </div>
-    <div class="intro-screen__link-container">
+    <div class="intro-screen__link-container content-wrapper">
         <div class="btn intro-screen__link-btn" ng-click="scrollTo('#mediatechnologySection')">
             <h2>Om oss</h2>
             <div class="intro-screen__link-icon">
@@ -36,8 +36,8 @@
     </div>
 </div>
 
-<div class="content-block content-wrapper">
-    <div id="mediatechnologySection" class="hideme">
+<div id="mediatechnologySection" class="content-block content-wrapper">
+    <div class="hideme">
         <h1>Vilka är vi?</h1>
         <div class="line-gradient line-gradient--half line-gradient--helf--right"></div>
         <div>
@@ -69,42 +69,47 @@
 </div>
 
 
-<div id="packageSection" class="fixed-bg" style="background-image: url('img/background/blueflower_blurred.png'); background-color: #6668a7">
-    <div class="" style="padding-bottom: 20px; max-width: 1100px;z-index: 1;display: flex;flex-wrap: wrap;justify-content: center;align-items: center;margin: 0 auto;position: relative;flex-direction: column; color:white;">
-        <h1>Utställarpaketet</h1>
-        <hr class="titleLineWhite"></hr>
-        <h3 style="text-align:center">I utställarpaketet ingår:</h3>
-        <div class="" style="display: flex;align-items: center;flex-wrap: wrap;justify-content: center;padding: 20px 0;">
-            <div style="height:200px;width:200px;text-align:center;padding:0 20px" class="">
-                <img style="width:80px;height:auto" src="img/icons/booth.png" alt="" />
-                <h4>Monterplats: 6m²</h4>
+<div id="packageSection" class="center-background" style="background-image: url('img/background/blue_flower_dark_blur.jpg');">
+    <div class="content-wrapper content-block hideme">
+        <div class="text-wrapper--center text-dark-background">
+            <h1>Utställarpaketet</h1>
+            Följande ingår
+            <br><br>
+        </div>
+        <div class="list-wrapper">
+            <div class="card package-offer-card">
+                <img class="package-offer-card__icon" src="../img/icons/booth_black.svg" alt="">
+                Monterplats: 6m²
             </div>
-            <div style="height:200px;width:200px;text-align:center;padding:0 20px" class="">
-                <img style="width:80px;height:auto" src="img/icons/food.png" alt="" />
-                <h4>Lunch och fika för två företagsrepresentanter</h4>
+            <div class="card package-offer-card">
+                <img class="package-offer-card__icon" src="../img/icons/food_black.svg" alt="">
+                Lunch och fika för två företagsrepresentanter
             </div>
-            <div style="height:200px;width:200px;text-align:center;padding:0 20px" class="">
-                <img style="width:80px;height:auto" src="img/icons/host2.png" alt="" />
-                <h4>Personlig företagsvärd</h4>
+            <div class="card package-offer-card">
+                <img class="package-offer-card__icon" src="../img/icons/profileIcon_black.svg" alt="">
+                Personlig företagsvärd
             </div>
-            <div style="height:200px;width:200px;text-align:center;padding:0 20px" class="">
-                <img style="width:80px;height:auto" src="img/icons/marketing.png" alt="" />
-                <h4>Aktiv marknadsföring</h4>
+            <div class="card package-offer-card">
+                <img class="package-offer-card__icon" src="../img/icons/sound_black.svg" alt="">
+                Aktiv marknadsföring
             </div>
-            <div style="height:200px;width:200px;text-align:center;padding:0 20px" class="">
-                <img style="width:80px;height:auto" src="img/icons/coffee.png" alt="" />
-                <h4>Tillgång till företagslounge</h4>
+            <div class="card package-offer-card">
+                <img class="package-offer-card__icon" src="../img/icons/cup_black.svg" alt="">
+                Tillgång till företagslounge
             </div>
-            <div style="height:200px;width:200px;text-align:center;padding:0 20px" class="">
-                <img style="width:80px;height:auto" src="img/icons/party.png" alt="" />
-                <h4>Två sittningsbiljetter till era representanter</h4>
+            <div class="card package-offer-card">
+                <img class="package-offer-card__icon" src="../img/icons/tickets_black.svg" alt="">
+                Två sittningsbiljetter till era representanter
             </div>
         </div>
-        <h4 style="text-align: center;">Kontakta oss gärna för anmälan, frågor eller information om våra andra paket!</h4>
-        <a ng-href="#contact#teamSection" class="myButton" style="background-color:white;">Till kontakt</a>
-    </div>
+        <br>
+        <div class="text-wrapper--center text-dark-background">
+            Kontakta oss gärna för anmälan, frågor eller information om våra andra paket!
+            <br><br>
+            <a ng-href="#contact#teamSection" class="btn btn--compact">Till kontakt</a>
+        </div>
+    </div>    
 </div>
-
 
 <div id="fairSection" class="" style="padding:50px 15px;background-color:white; align-content: center;">
     <div class="hideme" style="align-content: center; text-align: center; opacity: 0; padding: 0; margin:0;">
