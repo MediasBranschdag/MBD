@@ -1,47 +1,40 @@
-
-<!--
-<div class="notice-banner">
-    <div class="notice-text">
-        <br/>
-        Tyvärr är ansökan stängd för iår, men det finns fortfarande möjlighet till andra samarbeten med medieteknik. 
-        Kontakta NLG <a target="_blank" href="https:/www.facebook.com/NLGmedieteknik/">här</a>!
+<div class="intro-screen__background" style="background-image:url('img/background/flower_dark_blur.jpg')">
+    <div class="intro-screen__top-content">
+        <div class="intro-screen__text">
+            <h1 style="font-weight: 900">FÖR FÖRETAG</h1>
+            <hr class="yellow-line">
+        </div>
     </div>
-</div>
--->
-<div class="fixed-bg" style="background-image: url('img/background/flower_smaller.png');">
-    <br>
     <div class="" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;height:100%;z-index:1;position:relative">
-        <div ng-click="scrollTo('#mediatechnologySection')">
-            <div class="companyHeaderMenu" style="border-color: #FFD521; background-color: black; opacity: 0.7">
-                <h2>Om oss</h2>
+        <div class="btn intro-screen__link-btn" ng-click="scrollTo('#mediatechnologySection')">
+            <h2>Om oss</h2>
+            <div class="intro-screen__link-icon">
+                ?
             </div>
-            <!--<img src="img/icons/down3.svg" style="width: 245px; padding-left: 50px; margin-top: 0;padding-top: 0;">-->
         </div>
-        <div  ng-click="scrollTo('#packageSection')">
-            <div class="companyHeaderMenu" style="border-color: #FFD521; background-color: black; opacity: 0.7">
-                <h2>Deltag</h2>
+        <div class="btn intro-screen__link-btn" ng-click="scrollTo('#packageSection')">
+            <h2>Deltag</h2>
+            <div class="intro-screen__link-icon">
+                <img style="height: 75%" src="../img/icons/tickets_black.svg" alt="">
             </div>
-            <!--<img src="img/icons/down3.svg" style="width: 245px; padding-left: 50px; margin-top: 0;padding-top: 0;">-->
         </div>
-        <div ng-click="scrollTo('#fairSection')">
-            <div class="companyHeaderMenu" style="border-color: #FFD521; background-color: black; opacity: 0.7">
-                <h2>Mässan</h2>
+        <div class="btn intro-screen__link-btn" ng-click="scrollTo('#fairSection')">
+            <h2>Mässan</h2>
+            <div class="intro-screen__link-icon">
+                <img src="../img/icons/booth_black.svg" alt="">
             </div>
-            <!--<img src="img/icons/down3.svg" style="width: 245px; padding-left: 50px; margin-top: 0;padding-top: 0;">-->
         </div>
-        <div ng-click="scrollTo('#companyContactsSection')">
-            <div class="companyHeaderMenu" style="border-color: #FFD521; background-color: black; opacity: 0.7">
-                <h2>Företagskontakter</h2>
+        <div class="btn intro-screen__link-btn" ng-click="scrollTo('#companyContactsSection')">
+            <h2>Företagskontakter</h2>
+            <div class="intro-screen__link-icon">
+                <img src="../img/icons/profileIcon_black.svg" alt="">
             </div>
-            <!--<img src="img/icons/down3.svg" style="width: 245px; padding-left: 50px; margin-top: 0;padding-top: 0;">-->
         </div>
     </div>
-    <img id="downArrow" style="" src="img/icons/arrowDown.png" ng-click="scrollDown()" alt="" />
+    <div ng-click="scrollDown()" class="btn btn--icon intro-screen__scroll-down-btn">
+        <img class="btn--icon-image" src="img/icons/arrows/down_black.svg"  alt="" />
+    </div>
 </div>
-
-
-
-
 
 <div id="mediatechnologySection" class="" style="background-color:white; display:flex; flex-direction:column; align-items:center;padding:50px 15px; padding-left: 30px;">
 

@@ -38,9 +38,43 @@
 }
 
 .intro-screen__scroll-down-btn {
+    margin-top: 30px;
     margin-bottom: 40px;
 }
 
+.intro-screen__link-btn {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 225px;
+    min-height: 100px;
+    margin: 25px;
+
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.intro-screen__link-icon {
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    height: 85px;
+    width: 85px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    color: #000;
+    border: 5px solid #000;
+    border-radius: 65px;
+    font-size: 70px;
+
+    opacity: 0.075;
+}
+.intro-screen__link-icon img {
+    height: 60%;
+}
 
 @media screen and (max-width: 900px) {
     .intro-screen__background {
