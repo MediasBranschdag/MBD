@@ -24,6 +24,10 @@
     max-width: 500px;
 }
 
+#startpage__intro-screen {
+    padding: 0 10px;
+}
+
 #start-logo {
     position: relative;
     height: 250px;
@@ -130,10 +134,30 @@
     height: 20px;
 }
 
+@media screen and (max-width: 750px) {
+    #projectLeaderWrapper,
+    #projectLeaderWrapper .profile-container {
+        width: 100%;
+        margin-left: 0;
+    }
+    #projectLeaderWrapper .profile-image {
+        margin: 20px 0;
+    }
+    
+    #welcome-text-container {
+        flex-direction: column;
+    }
+    /* Need to make font smaller to fit mobile screens */
+    #welcome-container h1 {
+        font-size: 30px;
+    }
+}
+
+
 @media screen and (max-width: 600px) {
     #start-logo {
-        width: 200px;
-        height: 200px;
+        width: 175px;
+        height: 175px;
     }
     #start-mbd-title {
         font-size: 27px;
@@ -162,21 +186,23 @@
 }
 
 
-@media screen and (max-width: 750px) {
-    #projectLeaderWrapper,
-    #projectLeaderWrapper .profile-container {
-        width: 100%;
-        margin-left: 0;
+
+
+@media screen and (max-width: 350px) {
+    #start-logo {
+        width: 150px;
+        height: 150px;
     }
-    #projectLeaderWrapper .profile-image {
-        margin: 20px 0;
+    #start-mbd-title {
+        font-size: 20px;
     }
-    
-    #welcome-text-container {
-        flex-direction: column;
+    .countdown-wrapper .horizontal-split {
+        display: none;
     }
-    /* Need to make font smaller to fit mobile screens */
-    #welcome-container h1 {
-        font-size: 30px;
+    #start-intro-info .horizontal-split {
+        display: none;
+    }
+    .start-intro-icon {
+        margin-right: 5px;
     }
 }
