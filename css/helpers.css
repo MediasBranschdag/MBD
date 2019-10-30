@@ -12,8 +12,7 @@
     text-align: center;
 }
 
-.content-wrapper--wide,
-.content-wrapper {
+.content-wrapper {
     max-width: 800px;
 }
 .content-wrapper--wide {
