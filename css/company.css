@@ -21,3 +21,12 @@
     height: 60px;
 }
 
+
+/* Mobile */
+@media screen and (max-width: 500px) {
+    .package-offer-card {
+        max-width: unset;
+        margin: 15px 0;
+        box-sizing: border-box;
+    }
+}
