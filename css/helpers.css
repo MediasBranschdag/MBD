@@ -58,6 +58,9 @@
     background-color: #fff;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
+.card--light {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05), 0 3px 6px rgba(0,0,0,0.1);
+}
 .card--clickable {
     cursor: pointer;
     transition: box-shadow 0.25s, transform 0.25s;
@@ -116,6 +119,9 @@
     color: #fff;
 }
 
+.link--black {
+    color: #000;
+}
 
 /* Background */
 .sec-background-color {
