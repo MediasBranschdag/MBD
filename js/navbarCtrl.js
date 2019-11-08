@@ -1,23 +1,10 @@
 MBDApp.controller('NavbarCtrl', function($scope, MBDModel, $route, $window) {
-    var body = document.getElementById('body');
 
     $scope.route = $route;
     $scope.navbarOptions = MBDModel.getNavbarOptions();
 
     $scope.closeNavbar = function(){
-        body.style.overflow = "initial";
-        var input = document.getElementById('menuInput');
-        input.checked = false;
-    };
-
-    $scope.preventScroll = function(){
-        var input = document.getElementById('menuInput');
-        if(input.checked){
-            body.style.overflow = "hidden";
-        }
-        else{
-            body.style.overflow = "initial";
-        }
+        toggleMobileMenu(false);
     };
 
     $scope.scrollToTop = function(){
@@ -30,6 +17,13 @@ MBDApp.controller('NavbarCtrl', function($scope, MBDModel, $route, $window) {
         toggleScrollTopButton();
     });
 
+    //Open and closes the mobile menu
+    $scope.toogleMobileNavbar = function(){
+        var $hamburgerButton = $('#menu__hamburger')
+        var buttonActive = $hamburgerButton.hasClass('mobile-menu-active');
+        toggleMobileMenu(!buttonActive);
+    };
+
     /**
      * Show or hides the top button depending on the scroll amount
      */
@@ -40,6 +34,25 @@ MBDApp.controller('NavbarCtrl', function($scope, MBDModel, $route, $window) {
         }
         else{
             $scrollButton.removeClass('btn-active');
+        }
+    }
+
+    /**
+     * Show or hide the mobile menu for the navbar
+     * @param {boolean} shouldBeVisible 
+     */
+    function toggleMobileMenu(shouldBeVisible) {
+        var $mobileNavbar = $('#menu__mobile-navbar');
+        var $hamburgerButton = $('#menu__hamburger')
+        if(shouldBeVisible) {
+            $mobileNavbar.addClass('mobile-menu-active');
+            $hamburgerButton.addClass('mobile-menu-active');
+            $('body').css('overflow', 'hidden');
+        }
+        else {
+            $mobileNavbar.removeClass('mobile-menu-active');
+            $hamburgerButton.removeClass('mobile-menu-active');
+            $('body').css('overflow', 'auto');
         }
     }
 
