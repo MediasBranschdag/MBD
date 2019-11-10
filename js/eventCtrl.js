@@ -61,6 +61,13 @@ MBDApp.controller("EventCtrl", function ($scope, MBDModel) {
     return annonser;
   };
 
+  $scope.toggleEventInfo = function (eventID) {
+    var $eventContainer = $('#event-' + eventID);
+    $eventContainer.find('.event-quiz-info-container').addClass('event-info-active');
+    $eventContainer.find('.event-info').addClass('event-info-active');
+    $eventContainer.find('.event-image-container').addClass('event-info-active');
+  };
+
   // function fixLinks(text) {
   //   var urls = /(\b(https?|ftp):\/\/[A-Z0-9+&@#\/%?=~_|!:,.;-]*[-A-Z0-9+&@#\/%=~_|])/gim;
   //   if (text.match(urls)) {
