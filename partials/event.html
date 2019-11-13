@@ -9,7 +9,7 @@
 </div>
 
 <div id="event-content">
-    <div class="event-wrapper" ng-repeat="event in getPastEvents()" ng-class="$even ? 'event-odd' : 'event-even'">
+    <div class="event-wrapper" ng-repeat="event in getAllEvents()" ng-class="$even ? 'event-odd' : 'event-even'">
         <div class="timline-split"></div>
         <div id="event-{{event.ID}}" class="event-container card">
             <div style="background-image: url('img/events/{{event.image}}')" class="event-image-container">
