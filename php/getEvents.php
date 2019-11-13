@@ -14,7 +14,8 @@
          */
         public function getAllEvents() {
             return $this->dbSelectAllSimple(
-                'SELECT * FROM events19'
+                'SELECT * FROM events19
+                ORDER BY date DESC'
             );
         }
     }

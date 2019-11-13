@@ -40,6 +40,14 @@ MBDApp.controller("EventCtrl", function ($scope, MBDModel) {
     return upcoming;
   };
 
+  $scope.getAllEvents = function () {
+    events = MBDModel.getEvents();
+    events.sort(function (a, b) {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
+    return events;
+  };
+
   $scope.getPastEvents = function () {
     events = MBDModel.getEvents();
     var past = [];
@@ -59,6 +67,13 @@ MBDApp.controller("EventCtrl", function ($scope, MBDModel) {
   $scope.getAnnonser = function () {
     var annonser = MBDModel.getAnnonser();
     return annonser;
+  };
+
+  $scope.toggleEventInfo = function (eventID) {
+    var $eventContainer = $('#event-' + eventID);
+    $eventContainer.find('.event-quiz-info-container').addClass('event-info-active');
+    $eventContainer.find('.event-info').addClass('event-info-active');
+    $eventContainer.find('.event-image-container').addClass('event-info-active');
   };
 
   // function fixLinks(text) {

@@ -1,142 +1,54 @@
-<div class="fixed-bg" style="min-height: 100px; background-image: url('img/background/green-dark.png'); background-color: #6668a7" ng-show="getUpcomingEvents().length">
-    <div class="" style="position: relative; text-align: center;">
-            <h1 style="color: white; padding-top:50px">Kommande evenemang</h1>
-            <hr class="titleLineYellow"></hr>
-            <br/>
+<div id="event-intro-screen" class="intro-screen__background" style="background-image:url('img/background/green_leaves_dark_blur.jpg')">
+    <div class="intro-screen__top-content">
+        <div class="intro-screen__text">
+            <h1 style="font-weight: 900">EVENEMANG</h1>
+            <hr class="yellow-line">
+        </div>
     </div>
+    <div id="event-intro-screen__white-gradient"></div>
 </div>
 
-<section id="upcomingSection">
-    <div id="mobilehide">
-        <div ng-repeat="event in getUpcomingEvents()" class="event-wrapper" ng-class="$even ? 'odd' : 'even'">
-            <div class="event-info">
-                <div ng-if="$odd" class="pic" style="background-image: url('img/events/{{event.image}}');"></div>
-                <div class="col">
-                    <div class="col-text">
-                        <h1>{{event.title}}</h1>
-                        <h3>
-                            {{event.date}}
-                            <img src="img/icons/time_black.png" class="event-icon">{{event.time}}
-                            <img src="img/icons/location_black.png" class="event-icon">{{event.location}}
-                        </h3>
-                        <a href="{{event.fb_link}}" target="blank_"><img src="img/icons/facebook.svg" style="width:25px;" alt=""/></a>
-                        <div class="col-desc">
-                            {{event.description}}
-                        </div>
-                    </div>
+<div id="event-content">
+    <div class="event-wrapper" ng-repeat="event in getAllEvents()" ng-class="$even ? 'event-odd' : 'event-even'">
+        <div class="timline-split"></div>
+        <div id="event-{{event.ID}}" class="event-container card">
+            <div style="background-image: url('img/events/{{event.image}}')" class="event-image-container">
+                <img src="img/events/{{event.image}}" class="event-image"/>
+            </div>
+            <div class="event-quiz-info-container">
+                <div class="event-title">
+                    <h2>{{event.title}}</h2>
+                    <h3>
+                        {{event.date}} | {{event.time}}
+                    </h3>
                 </div>
-                <div ng-if="$even" class="pic" style="background-image: url('img/events/{{event.image}}');"></div>
+                <div class="btn" ng-click="toggleEventInfo(event.ID)">
+                    Mer information
+                </div>
+            </div>
+            <div class="event-info">
+                <div class="event-title-container">
+                    <div class="event-title">
+                        <h2>{{event.title}}</h2>
+                        <h3>
+                            {{event.date}} | {{event.time}}<br>
+                            <i>{{event.location}}</i>
+                        </h3>
+                    </div>
+                    <a target="_blank" href="{{event.fb_link}}">
+                        <div class="btn btn--icon">
+                            <img class="btn--icon-image" src="img/icons/facebook.svg"  alt="" />
+                        </div>
+                    </a>
+                </div>
+                <div class="event-description">
+                    {{event.description}}
+                </div>
             </div>
         </div>
-    </div>
-    <div id="mobileshow">
-        <div ng-repeat="event in getUpcomingEvents()" class="event-info" ng-class="$even ? 'odd' : 'even'">
-                <div class="pic" style="background-image: url('img/events/{{event.image}}');"></div>
-                <div class="col">
-                    <div class="col-text">
-                        <h1>{{event.title}}</h1>
-                        <h3>
-                            {{event.date}}
-                            <img src="img/icons/time_black.png" class="event-icon">{{event.time}}
-                            <br/><img src="img/icons/location_black.png" class="event-icon">{{event.location}}
-                        </h3>
-                        <a href="{{event.fb_link}}" target="blank_"><img src="img/icons/facebook.svg" style="width:25px;" alt=""/></a>
-                        <div class="col-desc">
-                            {{event.description}}
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </div>
-</section>
-<div class="fixed-bg" style="min-height: 100px; background-image: url('img/background/green-dark.png'); background-color: #6668a7" ng-show="getAnnonser().length">
-    <div class="" style="position: relative; text-align: center;">
-            <h1 style="color: white; padding-top:50px">Sponsrade inlägg / Jobbannonser</h1>
-            <hr class="titleLineYellow"></hr>
-            <br/>
+        <div class="timline-split"></div>
+        <div class="timline-line" ng-class="$even ? 'event-odd' : 'event-even'"></div>
     </div>
 </div>
-<section id="annonsSection">
-    <div id="mobilehide">
-        <div ng-repeat="annons in getAnnonser()" class="event-wrapper" ng-class="$even ? 'odd' : 'even'">
-            <div class="event-info">
-                <div ng-if="$odd" class="annons-pic" style="background-image: url('img/events/{{annons.image}}');"></div>
-                <div class="col">
-                    <div class="col-text">
-                        <h3>{{annons.title}}</h3>
-                        <div class="col-desc">
-                            {{annons.description}}
-                        </div>
-                    </div>
-                </div>
-                <div ng-if="$even" class="annons-pic" style="background-image: url('img/events/{{annons.image}}');"></div>
-            </div>
-        </div>
-    </div>
-    <div id="mobileshow">
-        <div ng-repeat="annons in getAnnonser()" class="event-info" ng-class="$even ? 'odd' : 'even'">
-                <div class="annons-pic" style="background-image: url('img/events/{{annons.image}}');"></div>
-                <div class="col">
-                    <div class="col-text">
-                        <h3>{{annons.title}}</h3>
-                        <div class="col-desc">
-                            {{annons.description}}
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </div>
-</section>
-<div class="fixed-bg" style="min-height: 100px; background-image: url('img/background/green-dark.png'); background-color: #6668a7">
-    <div class="" style="position: relative; text-align: center;">
-            <h1 style="color: white; padding-top:50px">Tidigare evenemang</h1>
-            <hr class="titleLineYellow"></hr>
-            <br/>
-    </div>
-</div>
-
-<section id="pastSection">
-    <div id="mobilehide">
-        <div ng-repeat="event in getPastEvents()" class="event-wrapper" ng-class="$even ? 'odd' : 'even'">
-            <div class="event-info">
-                <div ng-if="$odd" class="pic" style="background-image: url('img/events/{{event.image}}');"></div>
-                <div class="col">
-                    <div class="col-text">
-                        <h1>{{event.title}}</h1>
-                        <h3>
-                            {{event.date}}
-                            <img src="img/icons/time_black.png" class="event-icon">{{event.time}}
-                            <img src="img/icons/location_black.png" class="event-icon">{{event.location}}
-                        </h3>
-                        <a href="{{event.fb_link}}" target="blank_"><img src="img/icons/facebook.svg" style="width:25px;" alt=""/></a>
-                        <div class="col-desc">
-                            {{event.description}}
-                        </div>
-                    </div>
-                </div>
-                <div ng-if="$even" class="pic" style="background-image: url('img/events/{{event.image}}');"></div>
-            </div>
-        </div>
-    </div>
-    <div id="mobileshow">
-        <div ng-repeat="event in getPastEvents()" class="event-info" ng-class="$even ? 'odd' : 'even'">
-                <div class="pic" style="background-image: url('img/events/{{event.image}}');"></div>
-                <div class="col">
-                    <div class="col-text">
-                        <h1>{{event.title}}</h1>
-                        <h3>
-                            {{event.date}}
-                            <img src="img/icons/time_black.png" class="event-icon">{{event.time}}
-                            <br/><img src="img/icons/location_black.png" class="event-icon">{{event.location}}
-                        </h3>
-                        <a href="{{event.fb_link}}" target="blank_"><img src="img/icons/facebook.svg" style="width:25px;" alt=""/></a>
-                        <div class="col-desc">
-                            {{event.description}}
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </div>
-</section>
 
 <ng-include src="'partials/footer.html'" ng-controller="FooterCtrl"></ng-include>
