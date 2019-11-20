@@ -1,190 +1,104 @@
-
-<div class="fixed-bg" style="background-image: url('img/background/street.jpg');">
-    <br>
-
-    <div class="" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;height:100%;z-index:1;position:relative">
-        <div  ng-click="scrollTo('#companySection')">
-            <div class="companyHeaderMenu" style="border-color: #FFD521; background-color: black; opacity: 0.7">
-                <h2>Utställare</h2>
+<div class="intro-screen__background" style="background-image:url('img/background/street_dark_blur.jpg')">
+    <div class="intro-screen__top-content">
+        <div class="intro-screen__text">
+            <h1 style="font-weight: 900">FÖR STUDENTER</h1>
+            <hr class="yellow-line">
+        </div>
+    </div>
+    <div class="intro-screen__link-container content-wrapper">
+        <div class="btn intro-screen__link-btn" ng-click="scrollTo('#packageSection')">
+            <h2>Sittningen</h2>
+            <div class="intro-screen__link-icon">
+                <img style="height: 75%" src="../img/icons/tickets_black.svg" alt="">
             </div>
         </div>
-        <div ng-click="scrollTo('#partySection')">
-            <div class="companyHeaderMenu" style="border-color: #FFD521; background-color: black; opacity: 0.7">
-                <h2>Sittningen</h2>
+        <div class="btn intro-screen__link-btn" ng-click="scrollTo('#company-list-section')">
+            <h2>Utställare</h2>
+            <div class="intro-screen__link-icon">
+                <img src="../img/icons/booth_black.svg" alt="">
             </div>
         </div>
     </div>
-    <img id="downArrow" style="" src="img/icons/arrowDown.png" ng-click="scrollDown()" alt="" />
+    <div ng-click="scrollDown()" class="btn btn--icon intro-screen__scroll-down-btn">
+        <img class="btn--icon-image" src="img/icons/arrows/down_black.svg"  alt="" />
+    </div>
 </div>
 
-
-<div id="companySection" style="padding-bottom: 25px;">
-    <div id="mobileshow" style="padding-top: 25px; width: 100%;">
-        <h1 style="margin-bottom: 20px; text-align: center;">Utställare</h1>
-        <div class="" style="display:flex;flex-direction:column;width:100%;">
-
-            <div class="companyListWrapper" ng-repeat="company in companies" style="margin-bottom:50px">
-                <div ng-if="company.logo != 'dice.png'" class="companyHeader" ng-click="presentCompanyContent(company.id)" id="{{company.id}}" style="">
-                    <img ng-src="img/companies/{{company.logo}}" alt="" style="height:auto;width:auto;max-height: 80px;max-width: 180px;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;"/>
-                    <div class="" style="width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 20px solid white;position:absolute;bottom:-20px;left:calc(50% - 20px)"></div>
-                </div>
-
-
-                <div ng-show="company.id == clickedCompany" class="companyContent" id="" style="">
-                    <div ng-click="presentCompanyContent(company.id)" class="companyContentClose" style="position:absolute;top:10px;right:15px;color:black;cursor:pointer;height:32px;width:32px;"></div>
-
-                    <div class="" style="width:100%;height:100%;margin:10px 20px">
-                        <h1 style="">{{company.name}}</h1>
-                        <p style="white-space:pre-line">{{company.description}}</p>
-                        <div class="" style="text-align:left">
-                            <a ng-class="{'hidden': !company.website}" class="myButton" style="color: black; background-color:#FFD521" ng-href="http://{{company.website}}" target="_blank">Läs Mer!</a>
-                        </div>
-                    </div>
-                </div>
+<div id="companySection">
+    <div id="company-list-section" class="content-block content-wrapper">
+        <div class="center">
+            <div class="compact">
+                <h1 class="compact">Utställare</h1>
+                <hr class="yellow-line">
             </div>
-
         </div>
-    </div>
 
-
-    <div class="companyDesktop" style="">
-        <div style="align-content: center; text-align: center;">
-            <h1>Utställare</h1>
-            <img style="width: 70%; height:20px; align-self: center; text-align: center;" src="img/icons/divider.svg" alt=""/>
-        </div>
-        <div ng-if="companies.length == 0" class="company-wrapper">
+        <div ng-if="companies.length == 0">
             <br>
-            <h1 class="center">Branschdagen förbereds för nuvarande...</h1>
+            <h2 class="center">Branschdagen förbereds för nuvarande...</h2>
             <br>
         </div>
-        <div ng-if="companies.length != 0" class="company-wrapper">
-            <div id="contentWrapper" style="min-height:410px;background-color:white;padding:20px 3% 20px 3%;display:flex;flex-direction:column;position:relative;">
-                <div ng-click="incrementIndex(1)" class="" style="color:#FFD521; cursor:pointer;border-top:2px solid;border-right:2px solid;width:40px;height:40px;transform:rotate(45deg);position:absolute;right:30px;top:calc(50% - 82px);z-index:1000"></div>
-                <div ng-click="incrementIndex(-1)" class="" style="color:#FFD521; cursor:pointer;border-top:2px solid;border-left:2px solid;width:40px;height:40px;transform:rotate(-45deg);position:absolute;left:30px;top:calc(50% - 82px);z-index:1000"></div>
-                
-                <h1 style="margin:15px 0 0 50px">{{name}}</h1> 
-                <div class="" style="display:flex;margin-left:50px;">
-                    <div style="width:60%;">
-                        <p style="width:100%;white-space: pre-wrap;min-height:275px;max-height:275px;overflow:auto;">{{description}}</p>
-                        <a ng-class="{'hidden': !website}" class="myButton whiteText" style="background-color:#FFD521; color:black;" ng-href="http://{{website}}" target="_blank">Läs mer!</a>
-                    </div>
-                    
-                    <div ng-if="image != 'sverigesingenjorer.png'" class="" style="width:40%;background-color:#fff;position:relative;">
-                        <img ng-src="img/companies/{{image}}" alt="" style="max-width:50%;max-height:150px;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;"/>
-                    </div>
 
-                    <div ng-if="image == 'sverigesingenjorer.png'" class="" style="width:40%;background-color:#fff;position:relative;display:flex;flex-direction:column;align-items:center">
-                        <img ng-src="img/companies/{{image}}" alt="" style="max-width:50%;max-height:150px;margin:auto;"/>
-                    </div>
+
+        <div id="contentWrapper" ng-if="companies.length != 0">
+            <h2>{{name}}</h2>
+            <div class="company-container">
+                <div ng-click="incrementIndex(1)" class="btn btn--icon company-change-btn company-change-btn--right">
+                    <img class="btn--icon-image" src="img/icons/arrows/right_black.svg" alt="">
                 </div>
+                <div ng-click="incrementIndex(-1)" class="btn btn--icon company-change-btn company-change-btn--left">
+                    <img class="btn--icon-image" src="img/icons/arrows/left_black.svg" alt="">
+                </div>
+
+                <div class="company__description">
+                    <img class="company__logo" src="img/companies/{{image}}" alt="">
+                    <div class="company__description-overflow"></div>
+                    <p>{{description}}</p>
+                </div>
+                <div id="show-company-description-btn" class="btn btn--compact" target="_blank" ng-click="toogleCompanyText()">
+                    Läs mer
+                </div>
+                <a class="btn btn--compact" target="_blank" ng-href="http://{{website}}">
+                    Gå till företaget
+                </a>
             </div>
-            <div style="background-color:#f7f5e6;padding: 15px 0">
-                <div class="" style="display:flex;flex-wrap:wrap;max-width:1300px;margin:0 auto;justify-content:center;align-items:center;">
-                    <div ng-class="{'activeCompany': $index == number}" ng-click="showCompany(company, $index)" class="" ng-repeat="company in companies" style="cursor:pointer;width:200px;height:100px;background-color:white;margin:20px 20px;">
-                        <div class="" style="position:relative;height:100%;">
-                            <img style="position: absolute; top: -17px; right: -17px;  width:150px;height:auto; -ms-transform: rotate(180deg); -webkit-transform: rotate(180deg);transform: rotate(180deg); z-index: 0" src="img/icons/x_lb_corner.svg" alt=""/>
-                            <img style="position: absolute; bottom: -17px; left: -17px; width:150px;height:auto; z-index: 0" src="img/icons/x_lb_corner.svg" alt=""/>  
-
-                            <img ng-src="img/companies/{{company.logo}}" alt="" style="height:auto;width:auto;max-height: 70px;max-width: 150px;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!---
-<div style="min-height:300px;">
-    <div id="extrasOnFair" style="padding: 50px 0;width:100%">
-        <h1 style="text-align:center">Annat på Branschdagen</h1>
-        <div class="titleLineYellow" style="margin: 0 auto"></div>
-
-        <div class="" style="display:flex;justify-content:center;flex-wrap:wrap">
-            <div class="" style="width:350px;">
-                <div style="height:150px;position:relative"class="">
-                    <img style="position:absolute;left:0;top:0;right:0;bottom:0;max-height:100px;max-width:200px;margin:auto" src="img/icons/mic2.png" alt="" />
-                </div>
-
-                <div class="" style="padding:0 15px">
-                    <h3 style="text-align:center">Tal</h3>
-                    <p>Under dagen kommer föreläsningar att hållas från speciellt inbjudna personer. Mer information om föreläsare, tid och plats finns <a href="http://www.mediasbranschdag.com/#/schedule" onMouseOver="this.style.color='#FFD521'" onMouseOut="this.style.color='#3366BB'" style="color: #3366BB; text-align: center">här</a>! </p>
-                </div>
-            </div>
-
-            <div class="" style="width:350px;">
-                <div style="height:150px;position:relative"class="">
-                    <img style="position:absolute;left:0;top:0;right:0;bottom:0;max-height:100px;max-width:200px;margin:auto" src="img/icons/fotogruppen.png" alt="" />
-                </div>
-
-                <div class="" style="padding:0 15px">
-                    <h3 style="text-align:center">Fotogruppen</h3>
-                    <p>Medietekniks egna fotogrupp kommer och fotar besökare helt gratis! Ett perfekt tillfälle att uppdatera ditt foto på CV:t och LinkedIn-profilen!</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
-<div style="display:flex">
-    <div id="lunchLecture" style="padding: 50px 15px 0 15px">
-        <h1 style="text-align:center">Lunchföreläsningar</h1>
-        <div class="titleLineBlack" style="margin: 0 auto"></div>
-        <div class="" style="max-width: 600px;height:400px; display:flex; flex-direction: column; align-items: flex-start;justify-content:space-around;margin:0 auto">
-
-            <div ng-repeat="lecture in getLunchLectures()" class="" style="display:flex;align-items:center;width:100%;justify-content:space-between">
-                <div class="">
-                    <h2 class="" style="margin-top: 0">
-                        {{lecture.title}}
-                    </h2>
-                    <div class="" style="">
-                        {{lecture.day}}
-                    </div>
-                    <div class="" style="">
-                        <img src="img/icons/time_black.png" style="width:20px;vertical-align:middle;" alt="" /> {{lecture.duration}}
-                        <img src="img/icons/location_black.png" style="width:20px;vertical-align:middle;margin:0 5px" alt="" />{{lecture.location}}
-                        <a target="_blank" style="vertical-align:middle" ng-href="http://{{lecture.locationlink}}"><img style="width:15px;" src="img/icons/link.svg" alt="" /></a>
-                    </div>
-                </div>
-                <a href="http://{{lecture.signuplink}}" class="myButton" style="background-color:#daede8;" target="_blank">Anmäl</a>
-            </div>
-        </div>
-    </div>
-</div>
--->
-<div id="partySection" class="fixed-bg " style="display:flex;justify-content:center;flex-wrap:wrap; background-image: url(img/background/systerobror.png); background-color: #9fd1a4">
-    <div id="mobilehide">
-        <h1>Branschdagssittningen</h1>
-        <div class="titleLineWhite" style="margin: 0 auto"></div>
-        <div class="party-info-wrapper">
-            <div class="party-info">
-            Medias Branschdag kommer att avslutas med en sittning där företag och studenter får chansen att utveckla samtal om framtiden mer på djupet. Detta är en utmärkt möjlighet för företag att ta del av Medietekniks många traditioner och lära känna potentiella framtida kollegor på ett mer avslappnat plan.
-
-                Sittningen kommer även vara ett ypperligt tillfälle för studenter att få marknadsföra sig själva som civilingenjörer. Vi ser fram emot att få anordna en spektakulär kväll och vi hoppas att ni är lika upprymda som vi är!
-
-                Sittningen börjar 18:00 och kommer hållas på restaurangen Syster och Bror<a target="_blank" style="vertical-align:middle" href="https://www.google.se/maps/place/Syster+O+Bror/@59.3484292,18.0707255,19.43z/data=!4m5!3m4!1s0x465f9d6a85432dbf:0x7b0fa65dcaf7ef2d!8m2!3d59.348517!4d18.0710728"><img style="width:15px;" src="img/icons/link.svg" alt=""/></a>. Mer detaljerad information kommer upp allt eftersom på vår <a href="https://www.facebook.com/events/515817568940260/" target="_blank" onMouseOver="this.style.color='#3366BB'" onMouseOut="this.style.color='#FFD521'" style="color: #FFD521;"> Facebook-sida</a>.
-
-            </div>
-        </div>
-    </div>
-    <div id="mobileshow">
-        <div class="party-wrapper">
-            <h1>Branschdagssittningen</h1>
-            <div class="titleLineWhite" style="margin: 0 auto"></div>
-            <div class="party-info-wrapper">
-                <div class="party-info">
-                Medias Branschdag kommer att avslutas med en sittning där företag och studenter får chansen att utveckla samtal om framtiden mer på djupet. Detta är en utmärkt möjlighet för företag att ta del av Medietekniks många traditioner och lära känna potentiella framtida kollegor på ett mer avslappnat plan.
-
-                    Sittningen kommer även vara ett ypperligt tillfälle för studenter att få marknadsföra sig själva som civilingenjörer. Vi ser fram emot att få anordna en spektakulär kväll och vi hoppas att ni är lika upprymda som vi är!
-
-                    Sittningen börjar 18:00 och kommer hållas på restaurangen Syster och Bror<a target="_blank" style="vertical-align:middle" href="https://www.google.se/maps/place/Syster+O+Bror/@59.3484292,18.0707255,19.43z/data=!4m5!3m4!1s0x465f9d6a85432dbf:0x7b0fa65dcaf7ef2d!8m2!3d59.348517!4d18.0710728"><img style="width:15px;" src="img/icons/link.svg" alt=""/></a>. Mer detaljerad information kommer upp allt eftersom på vår <a href="https://www.facebook.com/events/515817568940260/" onMouseOver="this.style.color='#3366BB'" onMouseOut="this.style.color='#FFD521'" style="color: #FFD521;"> Facebook-sida</a>.
+            <br>
+            <div class="row-alignment-container--three">
+                <div ng-class="{'company__card-active': $index == number}" ng-click="showCompany(company, $index)" class="card card--light card--clickable row-alignment-item--three company__card" ng-repeat="company in companies">
+                    <div class="contain-background" style="background-image: url('img/companies/{{company.logo}}')"></div>
                 </div>
             </div>
         </div>
     </div>
+
+<div id="party-section" class="center-background" style="background-image: url('img/background/systerobror.png');">
+    <div class="content-wrapper--wide content-block list-wrapper">
+        <div class="hideme">
+            <div class="text-wrapper--center text-dark-background">
+                <div class="compact">
+                    <h1 class="compact">Branschdagssittningen</h1>
+                    <hr class="yellow-line">
+                </div>
+                <p>
+                    Medias Branschdag kommer att avslutas med en sittning där företag och studenter får chansen 
+                    att utveckla samtal om framtiden mer på djupet. Detta är en utmärkt möjlighet för företag att 
+                    ta del av Medietekniks många traditioner och lära känna potentiella framtida kollegor på ett 
+                    mer avslappnat plan.
+                    <br/><br/>
+                    Sittningen kommer även vara ett ypperligt tillfälle för studenter att få marknadsföra sig 
+                    själva som civilingenjörer. Vi ser fram emot att få anordna en spektakulär kväll och vi 
+                    hoppas att ni är lika upprymda som vi är!
+                    <br/><br/>
+                    Sittningen börjar 18:00 och kommer hållas på restaurangen Syster och Bror
+                    <a target="_blank" style="vertical-align:middle" href="https://www.google.se/maps/place/Syster+O+Bror/@59.3484292,18.0707255,19.43z/data=!4m5!3m4!1s0x465f9d6a85432dbf:0x7b0fa65dcaf7ef2d!8m2!3d59.348517!4d18.0710728">
+                        <img style="width:15px;" src="img/icons/link.svg" alt=""/>
+                    </a>. 
+                    Mer detaljerad information kommer upp allt eftersom på vår 
+                    <a href="https://www.facebook.com/events/515817568940260/" onMouseOver="this.style.color='#3366BB'" onMouseOut="this.style.color='#FFD521'" style="color: #FFD521;"> Facebook-sida</a>.
+                </p>
+            </div>
+        </div>
+    </div>    
 </div>
 <br/>
 <ng-include src="'partials/footer.html'" ng-controller="FooterCtrl"></ng-include>
