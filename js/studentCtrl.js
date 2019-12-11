@@ -1,6 +1,7 @@
 MBDApp.controller('StudentCtrl', function($scope, MBDModel, CompanyModel, $route, $timeout) {
 
     var navbarHeight = 75;
+    var companyDescriptionOpen = false;
     var companies = [];
     $scope.companies = [];
     
@@ -41,21 +42,6 @@ MBDApp.controller('StudentCtrl', function($scope, MBDModel, CompanyModel, $route
         $scope.companies = companies;
     });
 
-
-    $scope.presentCompanyContent = function(companyName){
-        if( companyName === $scope.clickedCompany ){
-            $scope.clickedCompany = '';
-        }
-        else{
-            $scope.clickedCompany = companyName;
-            $timeout(function(){
-                $('html, body').animate({
-                    scrollTop: $('#' + companyName).offset().top - navbarHeight - 15
-                });
-            }, 400);
-        }
-    };
-
     $scope.showCompany = function(company, index){
         $scope.number = index;
         setCompany($scope.number);
@@ -75,6 +61,34 @@ MBDApp.controller('StudentCtrl', function($scope, MBDModel, CompanyModel, $route
         setCompany($scope.number);
     };
 
+    /**
+     * If the company description is to long, it is hidden.
+     * This function shows or hide the text by expanding or 
+     * collapsing the description container.
+     */
+    $scope.toogleCompanyText = function(shouldShow) {
+        var $companyDescriptionElement = $('.company__description');
+        var $showDescriptionButton = $('#show-company-description-btn');
+        var $descriptionFade = $('.company__description-overflow');
+
+        if(shouldShow == null) {
+            shouldShow = !companyDescriptionOpen;
+        }
+        if(!shouldShow) {
+            $companyDescriptionElement.css('height', '');
+            $descriptionFade.fadeIn();
+            $showDescriptionButton.html('Läs mer');
+        }
+        else {
+            // Getting the amount we should expand with
+            var scrollHeight = $companyDescriptionElement[0].scrollHeight;
+            $companyDescriptionElement.css('height', scrollHeight + 'px');
+            $showDescriptionButton.html('Visa mindre');
+            $descriptionFade.fadeOut();
+        }
+        companyDescriptionOpen = shouldShow;
+    }
+
     $scope.scrollTo = function(id){
         $("html, body").animate({
             scrollTop: $(id).offset().top - navbarHeight
@@ -82,6 +96,7 @@ MBDApp.controller('StudentCtrl', function($scope, MBDModel, CompanyModel, $route
     };
 
     function setCompany(index){
+        $scope.toogleCompanyText(false);
         $scope.name = companies[index].name;
         $scope.image = companies[index].logo;
         $scope.description = companies[index].description;

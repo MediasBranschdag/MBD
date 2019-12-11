@@ -16,6 +16,7 @@
     cursor: pointer;
 }
 .btn:hover {
+    transition: all 0.2s ease 0s;
     color: #222;
     background-color: #ffe531;
     box-shadow: 0px 8px 20px rgba(255, 229, 49, 0.4);
@@ -42,6 +43,7 @@
     max-width: 100%;
     max-height: 100%;
     margin: auto;
+    user-select: none;
 }
 
 .btn-image {

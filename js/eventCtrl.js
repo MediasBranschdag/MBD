@@ -41,11 +41,7 @@ MBDApp.controller("EventCtrl", function ($scope, MBDModel) {
   };
 
   $scope.getAllEvents = function () {
-    events = MBDModel.getEvents();
-    events.sort(function (a, b) {
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
-    });
-    return events;
+    return MBDModel.getEvents();
   };
 
   $scope.getPastEvents = function () {
