@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="intro-screen__link-container content-wrapper">
-        <div class="btn intro-screen__link-btn" ng-click="scrollTo('#packageSection')">
+        <div class="btn intro-screen__link-btn" ng-click="scrollTo('#party-section')">
             <h2>Sittningen</h2>
             <div class="intro-screen__link-icon">
                 <img style="height: 75%" src="../img/icons/tickets_black.svg" alt="">
@@ -53,7 +53,12 @@
                 <div class="company__description">
                     <img class="company__logo" src="img/companies/{{image}}" alt="">
                     <div class="company__description-overflow"></div>
-                    <p>{{description}}</p>
+                    <div ng-if="!description">
+                        <p>Mer information kommer snart</p>
+                    </div>
+                    <div ng-if="description">
+                        <p>{{description}}</p>
+                    </div>
                 </div>
                 <div id="show-company-description-btn" class="btn btn--compact" target="_blank" ng-click="toogleCompanyText()">
                     Läs mer
@@ -97,5 +102,4 @@
         </div>
     </div>    
 </div>
-<br/>
 <ng-include src="'partials/footer.html'" ng-controller="FooterCtrl"></ng-include>
