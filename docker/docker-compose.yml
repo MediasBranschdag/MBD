@@ -12,7 +12,7 @@ services:
       - "30001:80"
 
   mysql:
-    image: mysql:5.7
+    build: './sql/'
     container_name: MBD-mysql
     networks:
       - backend

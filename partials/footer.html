@@ -1,32 +1,39 @@
-<div class="" style="background-color:white ;text-align:center;padding-bottom:15px;">
-    <div ng-show="mainCompanies.length" style="margin: 0 auto;">
-        <h1 ng-if="mainCompanies.length == 1" style="padding-top:20px">Huvudsponsor</h1>
-        <h1 ng-if="mainCompanies.length > 1" style="padding-top:20px">Huvudsponsorer</h1>
-        <hr class="titleLineYellow"></hr>
+<div ng-show="mainCompanies.length" id="main-sponsor" class="content-block center center-background">
+    <div style="margin: 0 auto;">
+        <div class="compact">
+            <h1 ng-if="mainCompanies.length == 1">Huvudsponsor</h1>
+            <h1 ng-if="mainCompanies.length > 1">Huvudsponsorer</h1>
+            <hr class="yellow-line">
+        </div>
+        <br>
         <div ng-repeat="company in mainCompanies" style="display:inline;">
             <a ng-href="http://{{company.website}}" target="_blank">
                 <img class="mainSponsorFooterIcon" ng-src="img/companies/{{company.logo}}"/>
             </a>
         </div>
     </div>
+</div>
 
-    <div class="content-wrapper--wide center">
-        <hr ng-if="companies.length != 0 && companies.length > getMainCompanies().length" class="titleLineYellow"></hr>
-        <div class="" ng-repeat="company in companies" style="display:inline;">
-            <a ng-if="company.main_sponsor != 1" ng-href="http://{{company.website}}" target="_blank">
-                <img class="companyFooterIcon" ng-src="img/companies/{{company.logo}}"/>
-            </a>
-        </div>
-
-        <h1 style="padding-top:100px" ng-show="sponsors.length">Vi tackar våra sponsorer</h1>
-        <hr class="titleLineYellow" ng-show="sponsors.length"></hr>
-        <div class="" style="display:inline" ng-repeat="sponsor in sponsors">
-            <a ng-href="http://{{sponsor.website}}" target="_blank">
-                <img class="companyFooterIcon" ng-src="img/sponsors/{{sponsor.logo}}"/>
-            </a>
-        </div>
+<div ng-if="companies.length != 0" class="content-wrapper--wide content-block center">
+    <div class="compact">
+        <h1>Utställare</h1>
+        <hr class="yellow-line">
     </div>
-    
+    <br>
+    <hr ng-if="companies.length != 0 && companies.length > getMainCompanies().length" class="titleLineYellow"></hr>
+    <div class="" ng-repeat="company in companies" style="display:inline;">
+        <a ng-if="company.main_sponsor != 1" ng-href="http://{{company.website}}" target="_blank">
+            <img class="companyFooterIcon" ng-src="img/companies/{{company.logo}}"/>
+        </a>
+    </div>
+
+    <h1 style="padding-top:100px" ng-show="sponsors.length">Vi tackar våra sponsorer</h1>
+    <hr class="titleLineYellow" ng-show="sponsors.length"></hr>
+    <div class="" style="display:inline" ng-repeat="sponsor in sponsors">
+        <a ng-href="http://{{sponsor.website}}" target="_blank">
+            <img class="companyFooterIcon" ng-src="img/sponsors/{{sponsor.logo}}"/>
+        </a>
+    </div>
 </div>
 
 <footer>

@@ -33,6 +33,22 @@
     flex-wrap: wrap; 
 }
 
+.row-alignment-container--three,
+.row-alignment-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+}
+.row-alignment-container--three {
+    margin-left: -2%;
+}
+.row-alignment-item--three {
+    width: 31.33%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+}
+
 .compact {
     display: inline-block;
 }
@@ -59,7 +75,7 @@
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 .card--light {
-    box-shadow: 0 3px 6px rgba(0,0,0,0.05), 0 3px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 0px 8px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.1);
 }
 .card--clickable {
     cursor: pointer;
@@ -68,6 +84,9 @@
 .card--clickable:hover {
     box-shadow: 0 3px 6px rgba(0,0,0,0.26), 0 5px 10px rgba(0,0,0,0.43);
     transform: translateY(-5px);
+}
+.card--clickable.card--light:hover {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.2);
 }
 
 
@@ -109,11 +128,18 @@
     );
 }
 
+.contain-background,
 .center-background {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
+.contain-background {
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+}
+ 
 
 .text-dark-background {
     color: #fff;
@@ -126,6 +152,12 @@
 /* Background */
 .sec-background-color {
     background-color: #fafafa;
+}
+
+.grey-background {
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    padding: 15px;
 }
 
 

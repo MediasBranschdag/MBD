@@ -1,0 +1,65 @@
+.company-container {
+    position: relative;
+}
+
+.company__description {
+    position: relative;
+    height: 200px;
+    margin-bottom: 20px;
+    overflow: hidden;
+
+    transition: height 0.5s;
+}
+.company__description p{
+    text-align: left;
+    white-space: pre-wrap;
+    flex: 6;
+}
+.company__description-overflow {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: linear-gradient(#ffffff00,#ffffffff);
+    position: absolute;
+}
+
+.company-container .btn {
+    margin-bottom: 15px;
+}
+
+.company-change-btn {
+    position: absolute;
+    top: 75px;
+}
+.company-change-btn--left {
+    left: -75px;
+}
+.company-change-btn--right {
+    right: -75px;
+}
+
+.company__card{
+    height: 80px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.company__card-active {
+    padding: 15px;
+    border: 5px solid #ffd521
+}
+
+.company__logo {
+    float: right;
+    max-width: 150px;
+    max-height: 75px;
+    margin: 25px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 930px) {
+    .company-change-btn {
+        display: none;
+    }
+}
