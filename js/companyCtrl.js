@@ -2,9 +2,11 @@ MBDApp.controller('CompanyCtrl', function($scope, MBDModel, CompanyModel, $http)
     $scope.lastYearsCompanies = [];
     $scope.companyResponsibleTeamMembers = [];
 
-    //Getting the last years companies and sponsors
-    CompanyModel.getCompanies(new Date(new Date().setFullYear(new Date().getFullYear() - 1)), null).success(function(data) {
-        $scope.lastYearsCompanies = data;
+    $http({
+        method: 'GET',
+        url: '/php/companyMC.php?action=last-year-involvement'
+    }).then(function successCallback(response) {
+        $scope.lastYearsCompanies = response.data;
     });
 
     var navbarHeight = 75;

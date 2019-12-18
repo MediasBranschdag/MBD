@@ -55,6 +55,21 @@ class DatabaseModel {
         return $result;
     }
 
+    /**
+     * Selecting a data from a query direclty.
+     * @param string $sql The sql to run.
+     * @param int The fetch type, how the data is to be returned.
+     */
+    public function dbSelectSimple($sql, $fetchType = PDO::FETCH_OBJ) {
+        $stmt = self::$staticDB->query($sql);
+
+        if(!$stmt) {
+            return null;
+        }
+
+        return $stmt->fetch($fetchType);
+    }
+
 
     /**
      * Selecting data from a prepared

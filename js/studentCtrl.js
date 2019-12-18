@@ -2,45 +2,13 @@ MBDApp.controller('StudentCtrl', function($scope, MBDModel, CompanyModel, $route
 
     var navbarHeight = 75;
     var companyDescriptionOpen = false;
-    var companies = [];
-    $scope.companies = [];
+    $scope.companies = CompanyModel.getCurrentYearExhibitCompanies();;
     
     $scope.scrollDown = function(){
         $("html, body").animate({
             scrollTop: $("#companySection").offset().top - navbarHeight
         }, 750);
     };
-
-    //Getting the companies
-    CompanyModel.getCurrentCompanies().success(function(data) {
-        companies = data;
-
-        if(companies.length == 0) {
-            return;
-        }
-
-        // Slicing the return so that referencing to original array will be removed.
-        if (companies === undefined) {
-            companies = [];
-            return companies;
-        }
-        else {
-            companies.slice();
-        }
-
-        var randomIndex = Math.floor(Math.random()*companies.length);
-        $scope.number = randomIndex;
-        setCompany(randomIndex);
-        
-        for (i = 0; i < companies.length; i++) {
-            if (companies[i].main_sponsor == 1) {
-                $scope.number = i;
-                setCompany(i);
-            }
-        };
-
-        $scope.companies = companies;
-    });
 
     $scope.showCompany = function(company, index){
         $scope.number = index;
@@ -52,11 +20,11 @@ MBDApp.controller('StudentCtrl', function($scope, MBDModel, CompanyModel, $route
 
     $scope.incrementIndex = function(increment){
         $scope.number += increment;
-        if( $scope.number === companies.length){
+        if( $scope.number === $scope.companies.length){
             $scope.number = 0;
         }
         else if($scope.number === -1){
-            $scope.number = companies.length -1;
+            $scope.number = $scope.companies.length -1;
         }
         setCompany($scope.number);
     };
@@ -97,10 +65,10 @@ MBDApp.controller('StudentCtrl', function($scope, MBDModel, CompanyModel, $route
 
     function setCompany(index){
         $scope.toogleCompanyText(false);
-        $scope.name = companies[index].name;
-        $scope.image = companies[index].logo;
-        $scope.description = companies[index].description;
-        $scope.website = companies[index].website;
+        $scope.name = $scope.companies[index].name;
+        $scope.image = $scope.companies[index].logo;
+        $scope.description = $scope.companies[index].description;
+        $scope.website = $scope.companies[index].website;
     }
 
     document.addEventListener('keydown', function(e){
@@ -122,4 +90,29 @@ MBDApp.controller('StudentCtrl', function($scope, MBDModel, CompanyModel, $route
         return MBDModel.getLunchLectures();
     };
 
+    function setActiveCompany() {
+        var companies = $scope.companies;
+        if(companies.length == 0) {
+            return;
+        }
+    
+        // Should always have main sponsor active. if no main sponsor
+        // exist, shoose a random company
+        var activeIndex = Math.floor(Math.random() * companies.length);
+        for (i = 0; i < companies.length; i++) {
+            if (companies[i].isMainSponsor == 1) {
+                activeIndex = i;
+                break;
+            }
+        };
+
+        // Make a company
+        $scope.number = activeIndex;
+        setCompany(activeIndex);
+    }
+
+    CompanyModel.listenOnCompaniesLoaded(function() {
+        setActiveCompany();
+    });
+    setActiveCompany();
 });

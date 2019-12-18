@@ -246,7 +246,6 @@ MBDApp.controller("MapController", function($scope, MBDModel, $http, $routeParam
             mouseenter: function () {
                 let companyID = $(this).data('company-id');
                 toggleMapMarkerSelect(companyID, true);
-                console.log('Mouse enter');
             },
             mouseleave: function () {
                 let companyID = $(this).data('company-id');

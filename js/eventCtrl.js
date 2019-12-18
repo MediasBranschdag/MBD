@@ -72,13 +72,4 @@ MBDApp.controller("EventCtrl", function ($scope, MBDModel) {
     $eventContainer.find('.event-image-container').addClass('event-info-active');
   };
 
-  // function fixLinks(text) {
-  //   var urls = /(\b(https?|ftp):\/\/[A-Z0-9+&@#\/%?=~_|!:,.;-]*[-A-Z0-9+&@#\/%=~_|])/gim;
-  //   if (text.match(urls)) {
-  //     console.log(text);
-  //     text = text.replace(urls, '<a href="$1" target="_blank">$1</a>');
-  //   }
-  //   return text;
-  // }
-  /*    FADE      */
 });

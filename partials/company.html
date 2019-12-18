@@ -162,8 +162,10 @@
 
 <div class="content-block">
     <div id="companyContactsSection" class="content-wrapper center">
-        <h1 class="center">Våra företagsansvariga</h1>
-        <hr class="titleLineYellow"></hr>
+        <div class="compact">
+            <h1>Våra företagsansvariga</h1>
+            <hr class="yellow-line">
+        </div>
         <br>
         <div class="list-wrapper">
             <ng-include 
@@ -179,8 +181,11 @@
 </div>
 
 <div class="content-block content-wrapper--wide center">
-    <h1 class="center">Förra årets medverkande</h1>
-    <hr class="titleLineYellow"></hr>
+    <div class="compact">
+        <h1>Förra årets medverkande</h1>
+        <hr class="yellow-line">
+    </div>
+    <br>
     <div ng-repeat="company in lastYearsCompanies" style="display:inline;">
         <a ng-href="http://{{company.website}}" target="_blank">
             <img class="companyFooterIcon" ng-src="img/companies/{{company.logo}}"/>
