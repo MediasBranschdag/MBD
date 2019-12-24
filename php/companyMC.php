@@ -92,7 +92,6 @@ class CompanyModel extends DatabaseModel {
      * sql query
      */
     private function getExhibitorSQLString() {
-        // We end with a white space 
         return 'SELECT 
                 companies.*,
                 ci.isSponsor, ci.isExhibitor, ci.isMainSponsor,
