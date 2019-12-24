@@ -22,11 +22,14 @@ class CompanyModel extends DatabaseModel {
      * @param string $searchString
      * @return object[]
      */
-    public function getCompaniesFromSearch($searchString) {
+    public function getCurrentYearExhibitorsFromSearch($searchString) {
+        $currentYear = $this->exhibitDateModel->getCurrentYear();
         return $this->dbSelectAllPrepared(
-            'SELECT *
-            FROM companies
-            WHERE name LIKE ?', array('%' . $searchString . '%')
+            $this->getExhibitorSQLString() . 
+            'WHERE 
+                ci.year = ' . $currentYear . ' AND
+                ci.isExhibitor = 1 AND
+                name LIKE ?', array('%' . $searchString . '%')
         );
     }
 
@@ -53,6 +56,21 @@ class CompanyModel extends DatabaseModel {
 
 
     /**
+     * Getting all the companies that is an exhibitor for 
+     * the latest year
+     */
+    public function getCurrentYearExhibitor() {
+        $currentYear = $this->exhibitDateModel->getCurrentYear();
+        return $this->dbSelectAllSimple(
+            $this->getExhibitorSQLString() . 
+            'WHERE 
+                ci.year = ' . $currentYear . ' AND
+                ci.isExhibitor = 1'
+        );
+    }
+
+
+    /**
      * Get company data from a given year
      * @param int $year The year that the companies was active in
      */
@@ -60,11 +78,31 @@ class CompanyModel extends DatabaseModel {
         return $this->dbSelectAllSimple(
             'SELECT 
                 companies.*,
-                ci.isSponsor, ci.isExhibitor, ci.isMainSponsor
+                ci.isSponsor, ci.isExhibitor, ci.isMainSponsor,
+                cmp.mapPositionY, cmp.mapPositionX
             FROM companies
-            LEFT JOIN company_involvement AS ci ON ci.companyID = companies.ID
+            LEFT JOIN company_involvement AS ci 
+                ON ci.companyID = companies.ID
             WHERE ci.year = ' . $year
         );
+    }
+
+    /**
+     * Getting the basic attributes for exhibitors when doing an
+     * sql query
+     */
+    private function getExhibitorSQLString() {
+        // We end with a white space 
+        return 'SELECT 
+                companies.*,
+                ci.isSponsor, ci.isExhibitor, ci.isMainSponsor,
+                cmp.mapPositionY, cmp.mapPositionX
+            FROM companies
+            LEFT JOIN company_involvement AS ci 
+                ON ci.companyID = companies.ID
+            LEFT JOIN company_map_position AS cmp
+                ON cmp.companyID = ci.companyID AND
+                cmp.year = ci.year ';
     }
 }
 
@@ -76,14 +114,18 @@ class CompanyController {
 
         //Check request
         switch ($_GET['action']) {
-            case 'search':
+            case 'search-current-year-exhibitor':
                 $searchString = $_GET['q'];
                 if($searchString == '') {
-                    $data = $companyModel->getCurrentYearInvolvement();
+                    $data = $companyModel->getCurrentYearExhibitor();
                 }
                 else {
-                    $data = $companyModel->getCompaniesFromSearch($searchString);
+                    $data = $companyModel->getCurrentYearExhibitorsFromSearch($searchString);
                 }
+                break;
+
+            case 'current-year-exhibitor':
+                $data = $companyModel->getCurrentYearExhibitor();
                 break;
 
             case 'current-year-involvement':

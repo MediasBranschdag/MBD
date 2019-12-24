@@ -32,7 +32,7 @@ MBDApp.controller("MapController", function($scope, MBDModel, $http, $routeParam
     function getCompanies(searchString) {
         $http({
             method: 'GET',
-            url: '/php/companyMC.php?action=search&q=' + searchString,
+            url: '/php/companyMC.php?action=search-current-year-exhibitor&q=' + searchString,
         }).then(function successCallback(response) {
 
             //Check if we got any result
@@ -63,7 +63,7 @@ MBDApp.controller("MapController", function($scope, MBDModel, $http, $routeParam
     function getAllActiveCompanies() {
         $http({
             method: 'GET',
-            url: '/php/companyMC.php?action=all-active',
+            url: '/php/companyMC.php?action=current-year-exhibitor',
         }).then(function successCallback(response) {
             allCompanies = response.data;
             $scope.companyList = response.data;
