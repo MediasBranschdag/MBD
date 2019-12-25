@@ -78,8 +78,7 @@ class CompanyModel extends DatabaseModel {
         return $this->dbSelectAllSimple(
             'SELECT 
                 companies.*,
-                ci.isSponsor, ci.isExhibitor, ci.isMainSponsor,
-                cmp.mapPositionY, cmp.mapPositionX
+                ci.isSponsor, ci.isExhibitor, ci.isMainSponsor
             FROM companies
             LEFT JOIN company_involvement AS ci 
                 ON ci.companyID = companies.ID
@@ -133,10 +132,6 @@ class CompanyController {
 
             case 'last-year-involvement':
                 $data = $companyModel->getLastYearInvolvement();
-                break;
-            
-            default:
-                # code...
                 break;
         }
 
