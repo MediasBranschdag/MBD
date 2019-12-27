@@ -1,3 +1,47 @@
+MBDApp.factory("TranslationModel", function($http) {
+
+  var phrases = {};
+  this.getPhrases = function() {
+    return phrases;
+  }
+
+  $http({
+    method: 'GET',
+    url: '/translations.json'
+  }).then(function successCallback(response) {
+    setLanguageFromCookie(response.data);
+  });
+
+  function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
+
+  function setLanguageFromCookie(translations) {
+    var lang = readCookie('lang');
+    if (lang == null) {
+      lang = 'se'
+    }
+
+    for (var phraseKey in translations) {
+      phrases[phraseKey] = translations[phraseKey][lang];
+    }
+  }
+
+  this.setLanugage = function(lang) {
+    document.cookie = "lang= " + lang;
+    location.reload();
+  }
+
+  return this;
+});
+
 MBDApp.factory("CompanyModel", function($http) {
   var onCompaniesLoaded;
   var allCurrentYearCompanies = [];

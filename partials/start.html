@@ -18,6 +18,7 @@
     </div>
     <div>
         <h1 id="start-mbd-title" class="compact">
+            <span>{{MBDModel.lang_test}}</span>
             <span class="title-part">MEDIAS</span> 
             <span class="title-part">BRANSCH</span><span class="title-part">DAG</span>
         </h1>
@@ -38,7 +39,9 @@
     <div class="countdown-wrapper">
         <div class="countdown-block-container days-container">
             <div class="days countdown-time"></div>
-            <div class="countdown-time-type">Dagar</div>
+            <div class="countdown-time-type">
+                {{phrases()['days']}}
+            </div>
         </div>
         <div class="horizontal-split"></div>
         <div class="countdown-block-container hours-container">
