@@ -250,5 +250,9 @@
     "send": {
         "se": "Skicka",
         "en": "Send"
+    },
+    "map": {
+        "se": "Karta",
+        "en": "Map"
     }
 }
