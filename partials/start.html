@@ -46,17 +46,17 @@
         <div class="horizontal-split"></div>
         <div class="countdown-block-container hours-container">
             <div class="hours countdown-time"></div>
-            <div class="countdown-time-type">Timmar</div>
+            <div class="countdown-time-type">{{phrases()['hours']}}</div>
         </div>
         <div class="horizontal-split"></div>
         <div class="countdown-block-container minutes-container">
             <div class="minutes countdown-time"></div>
-            <div class="countdown-time-type">Minuter</div>
+            <div class="countdown-time-type">{{phrases()['minutes']}}</div>
         </div>
         <div class="horizontal-split"></div>
         <div class="countdown-block-container seconds-container">
             <div class="seconds countdown-time"></div>
-            <div class="countdown-time-type">Sekunder</div>
+            <div class="countdown-time-type">{{phrases()['seconds']}}</div>
         </div>
     </div>
     <div ng-click="scrollDown()" class="btn btn--icon intro-screen__scroll-down-btn">
@@ -68,21 +68,9 @@
 <div class="content-block content-wrapper--wide">
     <div id="welcome-text-container">
         <div id="welcome-text" class="hideme">
-            <h1>Hej!</h1>
+            <h1>{{phrases()['hello']}}!</h1>
             <div class="line-gradient line-gradient--half line-gradient--helf--right"></div>
-            <div>
-                Inspiration och framtidstro.
-                Det kommer kårhuset Nymble genomsyras av den 4e februari 2020 när dörrarna öppnas till Medias
-                Branschdag!
-                Vår årliga branschdagsmässa hålls för att studenter och företag ska kunna mötas för utbyten
-                - oavsett om det som söks är ett eventuellt sommarjobb eller insikt i vad det egentligen innebär att
-                jobba som medietekniker i praktiken.
-                Branschdagen ger inte bara studenter ett smakprov på vad arbetslivet har att ge,
-                utan bidrar likväl till att företagen får ett smakprov av vad framtida medieteknologer har att bidra
-                med.
-                <br><br>
-                Vi ses på branschdagen i februari!
-            </div>
+            <div class="long-text">{{phrases()['home_welcome_text']}}</div>
             <div class="line-gradient line-gradient--half line-gradient--helf--left"></div>
         </div>
         <div id="projectLeaderWrapper">
@@ -91,7 +79,7 @@
                     <div class="profile-info__container">
                         <div class="profile-info__text-container">
                             <h3>Rasmus Rudling & <br> Ella Klara Westerlund</h3>
-                            <h4>Projektledare</h4>
+                            <h4>{{phrases()['project_leader']}}</h4>
                         </div>
                     </div>    
                 </div>
@@ -115,14 +103,13 @@
             <br> -->
             <div class="text-wrapper--center text-dark-background">
                 <img style="width:100px;height:auto" src="img/icons/student.png" alt="" />
-                <h2>Är du en student?</h2>
+                <h2>{{phrases()['are_you_student']}}</h2>
                 <p>
-                    Läs mer om vilka företag som ställer ut på Medias Branschdag 2020.
-                    Kanske hittar du din framtida arbetsgivare redan nu?
+                    {{phrases()['home_student_info']}}
                 </p>
                 <br>
                 <a href="#/students" class="btn btn--compact">
-                    Läs mer
+                    {{phrases()['read_more']}}
                 </a>
             </div>
         </div>
@@ -131,7 +118,7 @@
 
 <div class="content-block content-wrapper--wide center">
     <div class="compact">
-        <h1 class="compact">Medias Branschdag på Instagram!</h1>
+        <h1 class="compact">Medias branschdag {{phrases()['on_instagram'].toLowerCase()}}!</h1>
         <hr class="yellow-line">
     </div>
     <br><br>
@@ -151,7 +138,7 @@
 
 <div class="content-block content-wrapper--wide center">
     <div class="compact">
-        <h1 class="compact">Följ oss på sociala medier!</h1>
+        <h1 class="compact">{{phrases()['follow_social_media']}}!</h1>
         <hr class="yellow-line">
     </div>
     <br><br>

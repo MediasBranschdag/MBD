@@ -1,4 +1,4 @@
-MBDApp.factory("TranslationModel", function($http) {
+MBDApp.factory("TranslationModel", function($http, $window) {
 
   var phrases = {};
   this.getPhrases = function() {
@@ -36,7 +36,8 @@ MBDApp.factory("TranslationModel", function($http) {
 
   this.setLanugage = function(lang) {
     document.cookie = "lang= " + lang;
-    location.reload();
+    $window.location.reload();
+    location.re
   }
 
   return this;

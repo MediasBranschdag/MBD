@@ -20,12 +20,13 @@
     position: absolute;
     right: 0;
     height: 100%;
-    width: 175px;
+    width: 200px;
     padding: 15px;
     box-sizing: border-box;
 
     display: flex;
     flex-direction: row;
+    align-items: stretch;
     justify-content: space-between;
 }
 
@@ -35,10 +36,13 @@
     height: 100%;
     margin-left: 15px;
     margin-right: 15px;
-
 }
 
 .navbar-extra-logo {
+    overflow: visible;
+    height: 45px;
+}
+.navbar-extra-logo img {
     height: 100%;
 }
 
@@ -46,6 +50,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    border-right: 1px solid #aaa;
+    padding-right: 20px;
 }
 
 .lang-btn {
@@ -169,6 +176,8 @@
     }
 
     .language-select {
+        border: none;
+        padding-right: none;
         flex-direction: row;
     }
     .lang-btn {

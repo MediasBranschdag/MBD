@@ -165,6 +165,12 @@
     filter: grayscale(100%);
 }
 
+.long-text {
+    white-space: pre-line;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
 
 /* Animation */
 @keyframes paning-background-animation {
