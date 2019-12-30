@@ -1,4 +1,8 @@
 {
+    "start": {
+        "se": "Start",
+        "en": "Start"
+    },
     "february": {
         "se": "Februari",
         "en": "February"

@@ -5,7 +5,7 @@
     </a>
 
     <a ng-repeat="item in navbarOptions" class="navLink" ng-class="{active: route.current.activeTab == '{{item.hash}}'}" href="#/{{item.hash}}">
-        {{item.option}}    
+        {{phrases()[item.option]}}    
     </a>
 
     <div class="navbar__right-content" id="mobilehide">

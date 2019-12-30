@@ -109,12 +109,12 @@ MBDApp.factory("MBDModel", function($http) {
 
   this.getNavbarOptions = function() {
     return [
-      { option: "Start", hash: "start" },
-      { option: "För företag", hash: "companies" },
-      { option: "För studenter", hash: "students" },
+      { option: "start", hash: "start" },
+      { option: "for_companies", hash: "companies" },
+      { option: "for_students", hash: "students" },
       // { option: "Karta", hash: "map" },
-      { option: "Evenemang", hash: "events" },
-      { option: "Kontakt", hash: "contact" }
+      { option: "events", hash: "events" },
+      { option: "contact", hash: "contact" }
     ];
   };
 

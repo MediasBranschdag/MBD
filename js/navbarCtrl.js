@@ -3,6 +3,10 @@ MBDApp.controller('NavbarCtrl', function($scope, MBDModel, TranslationModel, $ro
     $scope.route = $route;
     $scope.navbarOptions = MBDModel.getNavbarOptions();
 
+    $scope.phrases = function() {
+        return TranslationModel.getPhrases();
+    }
+
     $scope.closeNavbar = function(){
         toggleMobileMenu(false);
     };
