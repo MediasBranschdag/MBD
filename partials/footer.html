@@ -1,8 +1,8 @@
 <div ng-show="mainCompanies.length" id="main-sponsor" class="content-block center center-background">
     <div style="margin: 0 auto;">
         <div class="compact">
-            <h1 ng-if="mainCompanies.length == 1">Huvudsponsor</h1>
-            <h1 ng-if="mainCompanies.length > 1">Huvudsponsorer</h1>
+            <h1 ng-if="mainCompanies.length == 1">{{phrases()['main_sponsor']}}</h1>
+            <h1 ng-if="mainCompanies.length > 1">{{phrases()['main_sponsors']}}</h1>
             <hr class="yellow-line">
         </div>
         <br>
@@ -16,7 +16,7 @@
 
 <div ng-if="companies.length != 0" class="content-wrapper--wide content-block center">
     <div class="compact">
-        <h1>Utställare</h1>
+        <h1>{{phrases()['exhibitors']}}</h1>
         <hr class="yellow-line">
     </div>
     <br>
@@ -29,7 +29,7 @@
 
 <div ng-if="sponsors.length != 0" class="content-wrapper--wide content-block center">
     <div class="compact">
-        <h1>Vi tackar våra sponsorer</h1>
+        <h1>{{phrases()['thankyou_sponsor']}}</h1>
         <hr class="yellow-line">
     </div>
     <br>

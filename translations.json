@@ -51,9 +51,17 @@
         "se": "Huvudsponsor",
         "en": "Main sponsor"
     },
+    "main_sponsors": {
+        "se": "Huvudsponsorer",
+        "en": "Main sponsors"
+    },
     "exhibitors": {
         "se": "Utställare",
         "en": "Exhibitors"
+    },
+    "thankyou_sponsor": {
+        "se": "Vi tackar våra sponsorer",
+        "en": "We want to thank our sponsors"
     },
     "for_companies": {
         "se": "För företag",
