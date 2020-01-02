@@ -34,6 +34,10 @@ MBDApp.factory("TranslationModel", function($http, $window) {
     }
   }
 
+  this.getActiveLanguage = function() {
+    return readCookie('lang');
+  }
+
   this.setLanugage = function(lang) {
     document.cookie = "lang= " + lang;
     $window.location.reload();

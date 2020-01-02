@@ -1,19 +1,19 @@
 <div class="intro-screen__background" style="background-image:url('img/background/street_dark_blur.jpg')">
     <div class="intro-screen__top-content">
         <div class="intro-screen__text">
-            <h1 style="font-weight: 900">FÖR STUDENTER</h1>
+            <h1 style="font-weight: 900">{{phrases()['for_students']}}</h1>
             <hr class="yellow-line">
         </div>
     </div>
     <div class="intro-screen__link-container content-wrapper">
         <div class="btn intro-screen__link-btn" ng-click="scrollTo('#party-section')">
-            <h2>Sittningen</h2>
+            <h2>{{phrases()['dinner_party']}}</h2>
             <div class="intro-screen__link-icon">
                 <img style="height: 75%" src="../img/icons/tickets_black.svg" alt="">
             </div>
         </div>
         <div class="btn intro-screen__link-btn" ng-click="scrollTo('#company-list-section')">
-            <h2>Utställare</h2>
+            <h2>{{phrases()['exhibitors']}}</h2>
             <div class="intro-screen__link-icon">
                 <img src="../img/icons/booth_black.svg" alt="">
             </div>
@@ -28,7 +28,7 @@
     <div id="company-list-section" class="content-block content-wrapper">
         <div class="center">
             <div class="compact">
-                <h1 class="compact">Utställare</h1>
+                <h1 class="compact">{{phrases()['exhibitors']}}</h1>
                 <hr class="yellow-line">
             </div>
         </div>
@@ -54,17 +54,17 @@
                     <img class="company__logo" ng-src="img/companies/{{image}}" alt="">
                     <div class="company__description-overflow"></div>
                     <div ng-if="!description">
-                        <p>Mer information kommer snart</p>
+                        <p>{{phrases()['more_info_soon']}}</p>
                     </div>
                     <div ng-if="description">
                         <p>{{description}}</p>
                     </div>
                 </div>
                 <div id="show-company-description-btn" class="btn btn--compact" target="_blank" ng-click="toogleCompanyText()">
-                    Läs mer
+                    {{phrases()['read_more']}}
                 </div>
                 <a class="btn btn--compact" target="_blank" ng-href="http://{{website}}">
-                    Gå till företaget
+                    {{phrases()['go_to_companies']}}
                 </a>
             </div>
             <br>
@@ -81,23 +81,16 @@
         <div class="hideme">
             <div class="text-wrapper--center text-dark-background">
                 <div class="compact">
-                    <h1 class="compact">Branschdagssittningen</h1>
+                    <h1 class="compact">{{phrases()['fair_dinner_party_title']}}</h1>
                     <hr class="yellow-line">
                 </div>
-                <p>
-                    Medias Branschdag kommer att avslutas med en sittning där företag och studenter får chansen 
-                    att utveckla samtal om framtiden mer på djupet. Detta är en utmärkt möjlighet för företag att 
-                    ta del av Medietekniks många traditioner och lära känna potentiella framtida kollegor på ett 
-                    mer avslappnat plan.
-                    <br/><br/>
-                    Sittningen kommer även vara ett ypperligt tillfälle för studenter att få marknadsföra sig 
-                    själva som civilingenjörer. Vi ser fram emot att få anordna en spektakulär kväll och vi 
-                    hoppas att ni är lika upprymda som vi är!
-                    <br/><br/>
-                    Sittningen börjar 18:00.
-                    Mer detaljerad information kommer upp allt eftersom på vår 
-                    <a href="https://www.facebook.com/events/564321737680291/" onMouseOver="this.style.color='#3366BB'" onMouseOut="this.style.color='#FFD521'" style="color: #FFD521;"> Facebook-sida</a>.
-                </p>
+                <div class="long-text">{{phrases()['fair_dinner_party_description']}}</div>
+                <br>
+                <div class="btn btn--compact">
+                    <a href="https://www.facebook.com/events/564321737680291/" > 
+                        {{phrases()['our_facebook_page']}}
+                    </a>
+                </div>
             </div>
         </div>
     </div>    

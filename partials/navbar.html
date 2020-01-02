@@ -4,7 +4,7 @@
         <img src="img/logo/logo_yellow.svg"  style="width:auto;height:50px" alt="" />
     </a>
 
-    <a ng-repeat="item in navbarOptions" class="navLink" ng-class="{active: route.current.activeTab == '{{item.hash}}'}" href="#/{{item.hash}}">
+    <a ng-repeat="item in navbarOptions" class="nav-link" ng-class="{active: route.current.activeTab == '{{item.hash}}'}" href="#/{{item.hash}}">
         {{phrases()[item.option]}}    
     </a>
 

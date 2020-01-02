@@ -171,6 +171,10 @@
         "se": "Sittningen",
         "en": "Dinner party"
     },
+    "more_info_soon": {
+        "se": "Mer information kommer snart",
+        "en": "More information is comming soon"
+    },
     "go_to_companies": {
         "se": "Gå till företagets webbsida",
         "en": "Visit the company website"
@@ -182,6 +186,10 @@
     "fair_dinner_party_description": {
         "se": "Medias Branschdag kommer att avslutas med en sittning där företag och studenter får chansen att utveckla samtal om framtiden mer på djupet. Detta är en utmärkt möjlighet för företag att ta del av Medietekniks många traditioner och lära känna potentiella framtida kollegor på ett mer avslappnat plan.\n\nSittningen kommer även vara ett ypperligt tillfälle för studenter att få marknadsföra sig själva som civilingenjörer. Vi ser fram emot att få anordna en spektakulär kväll och vi hoppas att ni är lika upprymda som vi är!\n\nSittningen börjar 18:00. Mer detaljerad information kommer upp allt eftersom på vår Facebook-sida.",
         "en": "At the end of Medias Branschdag, a dinner party is held where companies and students have the chance to connect on a deeper level. This is a great oppurtunity for companies to take part in the many traditions of the Media Technology programme and get to know their potential future peers in a more relaxed setting.\n\nThe dinner party is also  a perfect way for students to promote themselves as future engineers. We are really excited to arrange this spectacular evening and hope you are just as exhilarated as us!\n\nThe dinner party will start at 18:00. More details can be found at our Facebook-page closer to the event."
+    },
+    "our_facebook_page": {
+        "se": "Vår Facebook sida",
+        "en": "Our Facebook page"
     },
     "events": {
         "se": "Evenemang",
