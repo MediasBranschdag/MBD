@@ -34,6 +34,26 @@ MBDApp.factory("TranslationModel", function($http, $window) {
     }
   }
 
+  /**
+   * Returning the correct phrase
+   */
+  this.choosePhrase = function(phraseSE, phraseEN) {
+    var language = this.getActiveLanguage();
+
+    if (language == 'se') {
+        if (phraseSE == '') {
+            return phraseEN;
+        }
+        return phraseSE;
+    }
+    if (language == 'en') {
+        if (phraseEN == '') {
+            return phraseSE;
+        }
+        return phraseEN;
+    }
+  }
+
   this.getActiveLanguage = function() {
     return readCookie('lang');
   }

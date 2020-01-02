@@ -75,22 +75,7 @@ MBDApp.controller('StudentCtrl', function($scope, MBDModel, CompanyModel, Transl
         
         var description_en = $scope.companies[index].description_en;
         var description_se = $scope.companies[index].description_se;
-        var language = TranslationModel.getActiveLanguage();
-
-        console.log(language);
-
-        if (language == 'se') {
-            $scope.description = description_se;
-            if (description_se == '') {
-                $scope.description = description_en;
-            }
-        }
-        if (language == 'en') {
-            $scope.description = description_en;
-            if (description_en == '') {
-                $scope.description = description_se;
-            }
-        }
+        $scope.description = TranslationModel.choosePhrase(description_se, description_en);
     }
 
     document.addEventListener('keydown', function(e){
