@@ -1,10 +1,14 @@
-MBDApp.controller('ContactCtrl', function($scope, MBDModel, $http) {
+MBDApp.controller('ContactCtrl', function($scope, MBDModel, TranslationModel, $http) {
     $scope.successMessage = "";
     var email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
     var pattern = new RegExp(email_regex);
     var feedbackText = document.getElementById("contactFeedbackContainer");
 
     var navbarHeight = 75;
+
+    $scope.phrases = function() {
+        return TranslationModel.getPhrases();
+    }
 
     $scope.scrollDown = function(){
         $("html, body").animate({

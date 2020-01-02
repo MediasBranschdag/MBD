@@ -1,9 +1,9 @@
 <!-- Needs a profile object to work, see getTeamMembers -->
-<div style="background-image: url('img/profiles/{{person.image}}')" class="profile-image card">
+<div ng-controller="ProfileCtrl" style="background-image: url('img/profiles/{{person.image}}')" class="profile-image card">
     <div class="profile-info__container">
         <div class="profile-info__text-container">
             <h3>{{person.name}}</h3>
-            <h4>{{person.position}}</h4>
+            <h4>{{getPosition(person)}}</h4>
         </div>
         <div class="profile-info__link-container ">
             <a target="_blank" href="mailto:{{person.email}}">

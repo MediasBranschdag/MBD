@@ -239,9 +239,13 @@
         "se": "Webbutvecklare",
         "en": "Web Developer"
     },
-    "thank_photo": {
-        "se": "Stort tack till %?% för foto!",
-        "en": "Big thanks to %?% for taking our photos!"
+    "big_thanks": {
+        "se": "Stort tack till",
+        "en": "Big thanks to"
+    },
+    "for_photo": {
+        "se": "för foto!",
+        "en": "for taking our photos!"
     },
     "contact_us": {
         "se": "Maila oss",
