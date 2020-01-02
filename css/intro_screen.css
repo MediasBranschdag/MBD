@@ -28,6 +28,7 @@
     color: #ffd521;
 }
 .intro-screen__text h1{
+    text-transform: uppercase;
     display: inline-block;
     width: auto;
     margin-bottom: 0;
