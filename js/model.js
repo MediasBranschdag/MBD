@@ -145,6 +145,7 @@ MBDApp.factory("MBDModel", function($http) {
   $http.get("php/getTeam.php").then(
     function(response) {
       teamMembers = response.data;
+      console.log(response);
     },
     function(error) {
       console.log("Could not fetch team members");

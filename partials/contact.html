@@ -1,7 +1,7 @@
 <div class="intro-screen__background paning-background" style="background-image:url(img/profiles/PG20.jpg)">
     <div class="intro-screen__top-content">
         <div class="intro-screen__text">
-            <h1 style="font-weight: 900">PROJEKTGRUPPEN</h1>
+            <h1 style="font-weight: 900">{{phrases()['the_project_group']}}</h1>
             <hr class="yellow-line">
         </div>
     </div>
@@ -16,28 +16,32 @@
     </div>
     <br>
     <div class="center">
-        <h4>Stort tack till Linnea Holm för foto!</h4>
+        <h4>
+            {{phrases()['big_thanks']}}
+            Linnea Holm
+            {{phrases()['for_photo']}}
+        </h4>
     </div>
 </div>
 
 <div class="" id="contactForm" style="background-color:#f7f5e6;display:flex;flex-direction:column;justify-content:center;align-items:center;padding: 50px 15px">
-    <h1 style="text-align:center;">Maila oss!</h1>
+    <h1 style="text-align:center;">{{phrases()['contact_us']}}!</h1>
     <hr class="titleLineBlack" ></hr>
     <div id="mailInputForm" class="">
         <div class="" style="width:100%">
-            Namn* <input ng-model="name" style="border-radius:4px;border:none;margin: 5px 0;width:100%;padding:4px 0" type="text" name="mailTitle" value="" placeholder="">
+            {{phrases()['name']}}* <input ng-model="name" style="border-radius:4px;border:none;margin: 5px 0;width:100%;padding:4px 0" type="text" name="mailTitle" value="" placeholder="">
         </div>
         <div class="" style="width:100%">
-            Epost* <input ng-model="email" style="border-radius:4px;border:none;margin: 5px 0;width:100%;padding:4px 0" type="text" name="mailTitle" value="" placeholder="">
+            {{phrases()['email']}}* <input ng-model="email" style="border-radius:4px;border:none;margin: 5px 0;width:100%;padding:4px 0" type="text" name="mailTitle" value="" placeholder="">
         </div>
         <div class="" style="width:100%">
-            Ämne* <input ng-model="subject" style="border-radius:4px;border:none;margin: 5px 0;width:100%;padding:4px 0" type="text" name="mailSender" value="" placeholder="">
+            {{phrases()['subject']}}* <input ng-model="subject" style="border-radius:4px;border:none;margin: 5px 0;width:100%;padding:4px 0" type="text" name="mailSender" value="" placeholder="">
         </div>
         <div class="" style="width:100%">
-            Meddelande* <textarea ng-model="message" style="border:none;border-radius:4px;margin: 5px 0;width:100%;resize:vertical;padding:4px 0" name="mailMessage" rows="8" cols="" placeholder=""></textarea>
+            {{phrases()['message']}}* <textarea ng-model="message" style="border:none;border-radius:4px;margin: 5px 0;width:100%;resize:vertical;padding:4px 0" name="mailMessage" rows="8" cols="" placeholder=""></textarea>
         </div>
         <div style="display:flex;align-items:baseline;width:100%;" class="">
-            <a class="myButton whiteText" id="contactEmailButton" style="background-color:black" ng-click="sendMail()">Skicka</a>
+            <a class="myButton whiteText" id="contactEmailButton" style="background-color:black" ng-click="sendMail()">{{phrases()['send']}}</a>
             <div style="margin: 0 5px" id="contactFeedbackContainer">
                 {{successMessage}}
             </div>

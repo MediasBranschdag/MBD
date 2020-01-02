@@ -20,14 +20,14 @@
                 FROM 
                     team20 
                 ORDER BY
-                    CASE position
+                    CASE position_se
                         WHEN "Projektledare" THEN 1
                         WHEN "Företagssamordnare" THEN 2
                         WHEN "Företagsansvarig" THEN 3
                         WHEN "Sittningsansvarig" THEN 4
                         ELSE 5
                     END,
-                    position
+                    position_se
                     ASC'
             );
         }
@@ -42,10 +42,10 @@
                 FROM 
                     team20 
                 WHERE
-                    position = "Företagsansvarig" OR
-                    position = "Företagssamordnare"
+                    position_se = "Företagsansvarig" OR
+                    position_se = "Företagssamordnare"
                 ORDER BY
-                    position DESC, name'
+                    position_se DESC, name'
             );
         }
     }
