@@ -151,9 +151,17 @@
         "se": "Våra företagsansvariga",
         "en": "Our sales team"
     },
-    "search_other_click": {
-        "se": "Söker du någon annan? Klicka här!",
-        "en": "Looking for someone else? Click here!"
+    "search_other": {
+        "se": "Söker du någon annan?",
+        "en": "Looking for someone else?"
+    },
+    "click_here": {
+        "se": "Klicka här",
+        "en": "Click here"
+    },
+    "last_year_participants": {
+        "se": "Förra årets medverkande",
+        "en": "Last year's participants"
     },
     "for_students": {
         "se": "För studenter",

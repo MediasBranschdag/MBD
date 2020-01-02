@@ -1,7 +1,11 @@
-MBDApp.controller('CompanyCtrl', function($scope, MBDModel, CompanyModel, $http) {
+MBDApp.controller('CompanyCtrl', function($scope, MBDModel, CompanyModel, TranslationModel, $http) {
     $scope.lastYearsCompanies = [];
     $scope.companyResponsibleTeamMembers = [];
 
+    $scope.phrases = function() {
+        return TranslationModel.getPhrases();
+    }
+    
     $http({
         method: 'GET',
         url: '/php/companyMC.php?action=last-year-involvement'
