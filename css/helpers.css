@@ -160,6 +160,17 @@
     padding: 15px;
 }
 
+.force-grey {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+.long-text {
+    white-space: pre-line;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
 
 /* Animation */
 @keyframes paning-background-animation {

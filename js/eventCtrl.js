@@ -1,5 +1,10 @@
-MBDApp.controller("EventCtrl", function ($scope, MBDModel) {
+MBDApp.controller("EventCtrl", function ($scope, MBDModel, TranslationModel) {
   var navbarHeight = 75;
+
+  $scope.phrases = function() {
+    return TranslationModel.getPhrases();
+  }
+
   $scope.scrollTo = function (id) {
     $("html, body").animate(
       {
@@ -59,6 +64,14 @@ MBDApp.controller("EventCtrl", function ($scope, MBDModel) {
     }
     return past;
   };
+
+  $scope.getEventDescription = function(event) {
+    return TranslationModel.choosePhrase(event.description_se, event.description_en);
+  }
+
+  $scope.getEventTitle = function(event) {
+    return TranslationModel.choosePhrase(event.title_se, event.title_en);
+  }
 
   $scope.getAnnonser = function () {
     var annonser = MBDModel.getAnnonser();

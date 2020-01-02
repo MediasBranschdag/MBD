@@ -1,5 +1,9 @@
-MBDApp.controller("StartCtrl", function($scope, MBDModel, $http) {
+MBDApp.controller("StartCtrl", function($scope, MBDModel, TranslationModel) {
   var navbarHeight = 75;
+  
+  $scope.phrases = function() {
+    return TranslationModel.getPhrases();
+  }
 
   $scope.scrollDown = function() {
     $("html, body").animate(

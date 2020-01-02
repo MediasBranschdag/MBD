@@ -61,17 +61,12 @@ h1 {
 
 a {
   text-decoration: none;
-  color: rgb(246, 246, 246);
+  color: unset;
   transition: color 0.5s ease;
   -webkit-transition: color 0.5s ease;
 }
 a:visited {
   color: default;
-}
-a:hover {
-  color: #ffd521;
-  transition: color 0.5s ease;
-  -webkit-transition: color 0.5s ease;
 }
 
 .active {

@@ -1,8 +1,12 @@
-MBDApp.controller('StudentCtrl', function($scope, MBDModel, CompanyModel, $route, $timeout) {
+MBDApp.controller('StudentCtrl', function($scope, MBDModel, CompanyModel, TranslationModel, $route, $timeout) {
 
     var navbarHeight = 75;
     var companyDescriptionOpen = false;
-    $scope.companies = CompanyModel.getCurrentYearExhibitCompanies();;
+    $scope.companies = CompanyModel.getCurrentYearExhibitCompanies();
+
+    $scope.phrases = function() {
+        return TranslationModel.getPhrases();
+    }
     
     $scope.scrollDown = function(){
         $("html, body").animate({
@@ -67,8 +71,11 @@ MBDApp.controller('StudentCtrl', function($scope, MBDModel, CompanyModel, $route
         $scope.toogleCompanyText(false);
         $scope.name = $scope.companies[index].name;
         $scope.image = $scope.companies[index].logo;
-        $scope.description = $scope.companies[index].description;
         $scope.website = $scope.companies[index].website;
+        
+        var description_en = $scope.companies[index].description_en;
+        var description_se = $scope.companies[index].description_se;
+        $scope.description = TranslationModel.choosePhrase(description_se, description_en);
     }
 
     document.addEventListener('keydown', function(e){

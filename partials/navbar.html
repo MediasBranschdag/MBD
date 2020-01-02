@@ -1,18 +1,33 @@
 <nav class="navbar">
-    <a id="navbarLogo" style="display:flex;align-items:center;height:100%;" ng-click="closeNavbar()" href="#/">
-        <img src="img/logo/logo_yellow.svg"  style="width:auto;height:50px"alt="" />
+
+    <a id="navbarLogo" ng-click="closeNavbar()" href="#/">
+        <img src="img/logo/logo_yellow.svg"  style="width:auto;height:50px" alt="" />
     </a>
 
-    <a ng-repeat="item in navbarOptions" class="navLink" ng-class="{active: route.current.activeTab == '{{item.hash}}'}" href="#/{{item.hash}}">{{item.option}}    
-        <div id="mobilehide" style="position: absolute; right: 15px; margin: 2px;">
-            <a href="http://www.medieteknik.com">
-                <img src="img/logo/medieteknik_logo.png"  style="height:45px; width: auto"alt="" />  <!--  id="medieLogga" -->
-            </a>
-            <a href="https://www.kth.se">
-                <img src="img/logo/KTH_logo.png"  style="height:45px; width: auto"alt=""/>     <!--  id="KTHLogga"  -->
-            </a>
-        </div> 
+    <a ng-repeat="item in navbarOptions" class="nav-link" ng-class="{active: route.current.activeTab == '{{item.hash}}'}" href="#/{{item.hash}}">
+        {{phrases()[item.option]}}    
     </a>
+
+    <div class="navbar__right-content" id="mobilehide">
+        <div class="language-select">
+            <div
+                style="background-image: url('img/flag_se.svg')" 
+                class="lang-btn" ng-click="setLanugage('se')"></div>
+            <div 
+                style="background-image: url('img/flag_en.svg')" 
+                class="lang-btn" ng-click="setLanugage('en')"></div>
+        </div>
+        <div class="navbar-extra-logo">
+            <a ng-href="http://www.medieteknik.com">
+                <img src="img/logo/medieteknik_logo.png" alt="" />
+            </a>
+        </div>
+        <div class="navbar-extra-logo">
+            <a ng-href="https://www.kth.se">
+                <img src="img/logo/KTH_logo.png" alt=""/>
+            </a>
+        </div>
+    </div> 
 
     <div ng-click="toogleMobileNavbar()" id="menu__hamburger">
         <div></div>
@@ -27,6 +42,16 @@
                 {{item.option}}
             </a>
         </h2>
+        <div class="navMobileLink">
+            <div class="language-select">
+                <div
+                style="background-image: url('img/flag_se.svg')" 
+                class="lang-btn" ng-click="setLanugage('se')"></div>
+            <div 
+                style="background-image: url('img/flag_en.svg')" 
+                class="lang-btn" ng-click="setLanugage('en')"></div>
+            </div>
+        </div>
     </div>
 
 </nav>

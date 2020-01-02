@@ -1,3 +1,72 @@
+MBDApp.factory("TranslationModel", function($http, $window) {
+
+  var phrases = {};
+  this.getPhrases = function() {
+    return phrases;
+  }
+
+  $http({
+    method: 'GET',
+    url: '/translations.json'
+  }).then(function successCallback(response) {
+    setLanguageFromCookie(response.data);
+  });
+
+  function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
+
+  function setLanguageFromCookie(translations) {
+    var lang = readCookie('lang');
+    if (lang == null) {
+      lang = 'se'
+    }
+
+    for (var phraseKey in translations) {
+      phrases[phraseKey] = translations[phraseKey][lang];
+    }
+  }
+
+  /**
+   * Returning the correct phrase
+   */
+  this.choosePhrase = function(phraseSE, phraseEN) {
+    var language = this.getActiveLanguage();
+
+    if (language == 'se') {
+        if (phraseSE == '') {
+            return phraseEN;
+        }
+        return phraseSE;
+    }
+    if (language == 'en') {
+        if (phraseEN == '') {
+            return phraseSE;
+        }
+        return phraseEN;
+    }
+  }
+
+  this.getActiveLanguage = function() {
+    return readCookie('lang');
+  }
+
+  this.setLanugage = function(lang) {
+    document.cookie = "lang= " + lang;
+    $window.location.reload();
+    location.re
+  }
+
+  return this;
+});
+
 MBDApp.factory("CompanyModel", function($http) {
   var onCompaniesLoaded;
   var allCurrentYearCompanies = [];
@@ -64,12 +133,12 @@ MBDApp.factory("MBDModel", function($http) {
 
   this.getNavbarOptions = function() {
     return [
-      { option: "Start", hash: "start" },
-      { option: "För företag", hash: "companies" },
-      { option: "För studenter", hash: "students" },
-      // { option: "Karta", hash: "map" },
-      { option: "Evenemang", hash: "events" },
-      { option: "Kontakt", hash: "contact" }
+      { option: "start", hash: "start" },
+      { option: "for_companies", hash: "companies" },
+      { option: "for_students", hash: "students" },
+      // { option: "map", hash: "map" },
+      { option: "events", hash: "events" },
+      { option: "contact", hash: "contact" }
     ];
   };
 

@@ -1,7 +1,11 @@
-MBDApp.controller('NavbarCtrl', function($scope, MBDModel, $route, $window) {
+MBDApp.controller('NavbarCtrl', function($scope, MBDModel, TranslationModel, $route, $window) {
 
     $scope.route = $route;
     $scope.navbarOptions = MBDModel.getNavbarOptions();
+
+    $scope.phrases = function() {
+        return TranslationModel.getPhrases();
+    }
 
     $scope.closeNavbar = function(){
         toggleMobileMenu(false);
@@ -37,6 +41,10 @@ MBDApp.controller('NavbarCtrl', function($scope, MBDModel, $route, $window) {
         }
     }
 
+    $scope.setLanugage = function(lang) {
+        TranslationModel.setLanugage(lang);
+    }
+
     /**
      * Show or hide the mobile menu for the navbar
      * @param {boolean} shouldBeVisible 
@@ -55,7 +63,6 @@ MBDApp.controller('NavbarCtrl', function($scope, MBDModel, $route, $window) {
             $('body').css('overflow', 'auto');
         }
     }
-
 });
 
 

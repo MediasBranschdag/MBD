@@ -1,7 +1,7 @@
 <div id="event-intro-screen" class="intro-screen__background" style="background-image:url('img/background/green_leaves_dark_blur.jpg')">
     <div class="intro-screen__top-content">
         <div class="intro-screen__text">
-            <h1 style="font-weight: 900">EVENEMANG</h1>
+            <h1 style="font-weight: 900">{{phrases()['events']}}</h1>
             <hr class="yellow-line">
         </div>
     </div>
@@ -17,19 +17,19 @@
             </div>
             <div class="event-quiz-info-container">
                 <div class="event-title">
-                    <h2>{{event.title}}</h2>
+                    <h2><h2>{{getEventTitle(event)}}</h2></h2>
                     <h3>
                         {{event.date}} | {{event.time}}
                     </h3>
                 </div>
                 <div class="btn" ng-click="toggleEventInfo(event.ID)">
-                    Mer information
+                    {{phrases()['read_more']}}
                 </div>
             </div>
             <div class="event-info">
                 <div class="event-title-container">
                     <div class="event-title">
-                        <h2>{{event.title}}</h2>
+                        <h2>{{getEventTitle(event)}}</h2>
                         <h3>
                             {{event.date}} | {{event.time}}<br>
                             <i>{{event.location}}</i>
@@ -42,7 +42,7 @@
                     </a>
                 </div>
                 <div class="event-description">
-                    {{event.description}}
+                    {{getEventDescription(event)}}
                 </div>
             </div>
         </div>
