@@ -40,6 +40,8 @@ MBDApp.factory("TranslationModel", function($http, $window) {
   this.choosePhrase = function(phraseSE, phraseEN) {
     var language = this.getActiveLanguage();
 
+    if (language)
+
     if (language == 'se') {
         if (phraseSE == '') {
             return phraseEN;
@@ -55,7 +57,11 @@ MBDApp.factory("TranslationModel", function($http, $window) {
   }
 
   this.getActiveLanguage = function() {
-    return readCookie('lang');
+    var lang = readCookie('lang');
+    if (lang == null) {
+      lang = 'se'
+    }
+    return lang;
   }
 
   this.setLanugage = function(lang) {
