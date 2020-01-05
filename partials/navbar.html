@@ -39,7 +39,7 @@
     <div id="menu__mobile-navbar">
         <h2 ng-repeat="item in navbarOptions">
             <a ng-click="closeNavbar()" class="navMobileLink" ng-class="{active: route.current.activeTab == '{{item.hash}}'}" href="#/{{item.hash}}">
-                {{item.option}}
+                {{phrases()[item.option]}}
             </a>
         </h2>
         <div class="navMobileLink">

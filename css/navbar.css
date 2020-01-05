@@ -16,6 +16,7 @@
     margin: 0 15px;
 }
 
+.navMobileLink,
 .nav-link  {
     text-decoration: none;
     color: rgb(246, 246, 246);
