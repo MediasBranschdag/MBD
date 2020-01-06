@@ -1,5 +1,8 @@
-MBDApp.controller("MapController", function($scope, MBDModel, $http, $routeParams, $location) {
+MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, $http, $routeParams, $location) {
 
+    $scope.phrases = function() {
+        return TranslationModel.getPhrases();
+    }
 
     //This stores the search timeout id
     var searchTimeoutID;
@@ -23,6 +26,10 @@ MBDApp.controller("MapController", function($scope, MBDModel, $http, $routeParam
         searchTimeoutID = setTimeout(function () {
             getCompanies(inputText);
         }, 250);
+    }
+
+    $scope.chooseCompanyDescriptionLanguage = function(company) {
+        return TranslationModel.choosePhrase(company.description_se, company.description_en);
     }
 
     /**

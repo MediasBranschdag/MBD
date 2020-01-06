@@ -274,5 +274,21 @@
     "map": {
         "se": "Karta",
         "en": "Map"
+    },
+    "search_company": {
+        "se": "Sök företag",
+        "en": "Search companies"
+    },
+    "show_on_map": {
+        "se": "Visa på kartan",
+        "en": "Show location on map"
+    },
+    "no_result_title": {
+        "se": "Hittade inga resultat",
+        "en": "No result"
+    },
+    "no_result_description": {
+        "se": "Tyvärr hittade vi inget företag med din sökning.",
+        "en": "We did not find any companies that matched your query."
     }
 }

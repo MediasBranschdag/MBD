@@ -2,7 +2,7 @@
     <div class="side-bar">
         <div id="map-input" class="input-container">
             <input ng-model="search" ng-change="searchCompany(this)" class="js-search-input input-with-image" type="text"
-                placeholder="Sök företag">
+                placeholder="{{phrases()['search_company']}}">
             <img src="../img/icons/search.svg" alt="">
         </div>
         <div class="side-bar-data">
@@ -18,12 +18,12 @@
                             <h3>{{company.name}}</h3>
                         </div>
                         <div class="btn">
-                            <span class="btn-text show-on-map-btn">Visa på kartan</span>
+                            <span class="btn-text show-on-map-btn">{{phrases()['show_on_map']}}</span>
                             <img src="../img/icons/map_location.svg" alt="" class="btn-image">
                         </div>
                         <div>
                             <p class="long-text">
-                                {{company.description_se}}
+                                {{chooseCompanyDescriptionLanguage(company)}}
                             </p>
                         </div>
                     </div>
@@ -32,17 +32,17 @@
             <div id="no-search-result" class="side-bar-overlay">
                 <div>
                     <h3>
-                        Hittade inga resultat
+                        {{phrases()['no_result_title']}}
                     </h3>
                     <p>
-                        Tyvärr hittade vi inget företag med din sökning.
+                        {{phrases()['no_result_description']}}
                     </p>
                 </div>
             </div>
         </div>
     </div>
     <div id="find-companies-btn" class="btn">
-        <span class="btn-text">Sök företag</span>
+        <span class="btn-text">{{phrases()['search_company']}}</span>
         <img src="../img/icons/map_location.svg" alt="" class="btn-image">
     </div>
     <img id="map-scroll-indicator" src="../img/icons/arrows/right_yellow.svg" alt="Right arrow">
