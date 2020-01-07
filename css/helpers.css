@@ -139,6 +139,10 @@
     width: 100%;
     background-size: contain;
 }
+.contain-background--limited {
+    margin: auto;
+    width: 75%;
+}
  
 
 .text-dark-background {
