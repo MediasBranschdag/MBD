@@ -43,13 +43,13 @@ MBDApp.factory("TranslationModel", function($http, $window) {
     if (language)
 
     if (language == 'se') {
-        if (phraseSE == '') {
+        if (phraseSE == '' || phraseSE == null) {
             return phraseEN;
         }
         return phraseSE;
     }
     if (language == 'en') {
-        if (phraseEN == '') {
+        if (phraseEN == '' || phraseEN == null) {
             return phraseSE;
         }
         return phraseEN;
