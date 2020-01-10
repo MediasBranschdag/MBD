@@ -29,8 +29,6 @@ MBDApp.factory("TranslationModel", function($http, $window, CookieModel) {
   this.choosePhrase = function(phraseSE, phraseEN) {
     var language = this.getActiveLanguage();
 
-    if (language)
-
     if (language == 'se') {
         if (phraseSE == '' || phraseSE == null) {
             return phraseEN;
