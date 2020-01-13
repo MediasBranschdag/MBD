@@ -290,5 +290,9 @@
     "no_result_description": {
         "se": "Tyvärr hittade vi inget företag med din sökning.",
         "en": "We did not find any companies that matched your query."
+    },
+    "your_location": {
+        "se": "Du är här",
+        "en": "You are here"
     }
 }

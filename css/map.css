@@ -163,10 +163,11 @@
     color: #fff;
 }
 
-.company-map-logo {
+.map-marker-info-bubble {
     opacity: 0;
 
     position: absolute;
+    z-index: 999;
     bottom: 135%;
     height: 50px;
     width: 100px;
@@ -180,24 +181,25 @@
     justify-content: center;
     align-items: center;
 
+    font-size: 15px;
     background-color: #fff;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 
     transition: opacity .2s ease, transform 0.5s ease;
     pointer-events: none;
 }
-.company-map-logo.visible {
+.map-marker-info-bubble.visible {
     opacity: 1;
     transition: opacity .3s ease, transform 0.3s ease;
     transform: translate(-50px, 0%);
     pointer-events: all;
 }
-.company-map-logo img {
+.map-marker-info-bubble img {
     max-width: 100%;
     max-height: 100%;
 }
 
-.company-map-logo:after {
+.map-marker-info-bubble:after {
 	top: 100%;
 	left: 50%;
 	border: solid transparent;
@@ -238,8 +240,8 @@
 }
 
 #map-scroll-indicator {
-    display: none;
-
+    opacity: 0;
+    visibility: hidden;
     position: absolute;
     z-index: 1;
     right: 25px;
@@ -249,7 +251,7 @@
     transform: translate(0, -50%);
     pointer-events: none;
 
-    animation: arrow-focus 2s infinite;
+    animation: arrow-focus 1s infinite;
     transition: opacity 1s, visibility 1s;
 }
 #map-scroll-indicator.removed {
@@ -258,13 +260,49 @@
 }
 
 #qr-code {
+    z-index: 1;
     display: none;
+    border-radius: 5px;
     border-color: #aaaaaa;
 
     background-image: url('/img/qrcode.svg');
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.qr-code-perspective-person {
+    position: absolute;
+    width: 44px;
+}
+
+.qr-code-perspective-person.left {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%) translateX(-100%) rotate(90deg);
+}
+.qr-code-perspective-person.right {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%) translateX(100%) rotate(-90deg);
+}
+.qr-code-perspective-person.top {
+    top: 0;
+    left: 50%;
+    transform: translateY(-150%) translateX(-50%) rotate(180deg);
+}
+.qr-code-perspective-person.bottom {
+    bottom: 0;
+    left: 50%;
+    transform: translateY(150%) translateX(-50%);
+}
+
+
+@media screen and (max-width: 1400px) {
+    #map-scroll-indicator {
+        opacity: 1;
+        visibility: visible;
+    } 
 }
 
 @media screen and (max-width: 700px) {
@@ -274,10 +312,6 @@
     #find-companies-btn  {
         display: block;
     }
-
-    #map-scroll-indicator {
-        display: block;
-    } 
 
     .side-bar {
         width: 100%;

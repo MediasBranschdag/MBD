@@ -1,4 +1,5 @@
-MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, $http, $routeParams, $location) {
+MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, CookieModel, $http, $routeParams, $location) {
+    console.log('Map controller is running');
 
     $scope.phrases = function() {
         return TranslationModel.getPhrases();
@@ -31,6 +32,33 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
     $scope.chooseCompanyDescriptionLanguage = function(company) {
         return TranslationModel.choosePhrase(company.description_se, company.description_en);
     }
+
+    $scope.onMarkerHover = function(companyID, isEnter) {
+        toggleMapMarkerSelect(companyID, isEnter);
+    }
+
+    function handelQRCode() {
+        //Check if we should load a QR code
+        var qrData = JSON.parse(CookieModel.readCookie('qrData'));
+        if (qrData != null && $routeParams.qrX == null) {
+            CookieModel.deleteCookie('qrData');
+            setTimeout(function() {
+                placeQRCode(qrData['x'], qrData['y'], qrData['side']);
+            }, 1000);
+        }
+
+        //Check if we should load a QR code
+        if($routeParams.qrX != null) {
+            CookieModel.setCookie('qrData', JSON.stringify({
+                'x': $routeParams.qrX ,
+                'y': $routeParams.qrY,
+                'side': $routeParams.qrSide
+            }), 100);
+            $location.url($location.path());
+            // window.location.reload(true);
+        }
+    }
+    handelQRCode();
 
     /**
      * Get companies and notify scope.companyList
@@ -102,11 +130,11 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
         //First we need to unselect all the markers
         $allMarkers = $('.map-marker-container');
         $allMarkers.removeClass('active');
-        $allMarkers.find('.company-map-logo').removeClass('visible');
+        $allMarkers.find('.map-marker-info-bubble').removeClass('visible');
 
         if(isOn) {
             let $companyMarker = $('#company-marker-' + companyID);
-            let $companyLogo = $companyMarker.find('.company-map-logo');
+            let $companyLogo = $companyMarker.find('.map-marker-info-bubble');
             $companyMarker.addClass('active');
             $companyLogo.addClass('visible');
         }
@@ -202,8 +230,11 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
      * Places a QR code and scrolls to it
      * @param {Number} xPosition 
      * @param {Number} yPosition 
+     * @param {String} side The side witch the QR code is scanned
      */
-    function placeQRCode(xPosition, yPosition) {
+    function placeQRCode(xPosition, yPosition, side) {
+
+        console.log('Placing QR code');
 
         //Get the qr code element
         let $qrCode = $('#qr-code');
@@ -214,92 +245,81 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
         //Show the qr code marker
         $qrCode.css({
             'display': 'block',
-            'top': '15%',
-            'left': '50%'
+            'top': yPosition + '%',
+            'left': xPosition + '%'
         })
 
+        $qrCode.find('.qr-code-perspective-person').addClass(side);
+
         setTimeout(function() {
-            scrollToMapElement($qrCode, function() {});
+            scrollToMapElement($qrCode, function() {
+                $qrCode.find('.map-marker-info-bubble').addClass('visible');
+            });
+            setTimeout(function() {
+                $qrCode.find('.map-marker-info-bubble').removeClass('visible');
+            }, 3500);
         }, 1000);
+
     }
 
-    //When the user clicks on a company block
-    $('.side-bar-data').on('click', '.company-list-item:not(.open)', function() {
-        let companyID = $(this).data('company-id');
-        toggleCompanyInfo(companyID, true);
-    });
+    $(document).ready(function() {
 
-    //When user click on search company btn
-    $('#show-map-btn, #find-companies-btn').click(function() {
-        toggleSideBar();
-    });
-
-    //When user want to see compay on map
-    $('.side-bar-data').on('click', '.show-on-map-btn', function(e) {
-        e.preventDefault();
-
-        let compayID = $(this).parents('.company-list-item').data('company-id');
-
-        //First we hide the result if mobile
-        toggleSideBar();
-
-        //Then we scroll to the marker
-        scrollToCompanyMarker(compayID);
-    });
-
-    //Hover map marker or company list
-    if(!("ontouchstart" in document.documentElement)) {
-        $('#map-section').on({
-            mouseenter: function () {
-                let companyID = $(this).data('company-id');
+        //When the user clicks on a company block
+        $('.side-bar-data').on('click', '.company-list-item:not(.open)', function() {
+            let companyID = $(this).data('company-id');
+            toggleCompanyInfo(companyID, true);
+        });
+    
+        //When user click on search company btn
+        $('#show-map-btn, #find-companies-btn').click(function() {
+            toggleSideBar();
+        });
+    
+        //When user want to see compay on map
+        $('.side-bar-data').on('click', '.show-on-map-btn', function(e) {
+            e.preventDefault();
+    
+            let compayID = $(this).parents('.company-list-item').data('company-id');
+    
+            //First we hide the result if mobile
+            toggleSideBar();
+    
+            //Then we scroll to the marker
+            scrollToCompanyMarker(compayID);
+        });
+    
+        //Click map company logo
+        $('.map-container').on('click touchstart', '.map-marker-container', function(e) {
+    
+            //Need to prevent default to not trigger this function twice.
+            e.preventDefault();
+    
+            //Get the company the user clicked on
+            let companyID = $(this).data('company-id');
+    
+            //Check if this is active
+            if(!$(this).hasClass('active')) {
                 toggleMapMarkerSelect(companyID, true);
-            },
-            mouseleave: function () {
-                let companyID = $(this).data('company-id');
-                toggleMapMarkerSelect(companyID, false);
+                return;
             }
-        }, '.js-marker-active');
-    }
-
-    //Click map company logo
-    $('.map-container').on('click touchstart', '.map-marker-container', function(e) {
-
-        //Need to prevent default to not trigger this function twice.
-        e.preventDefault();
-
-        //Get the company the user clicked on
-        let companyID = $(this).data('company-id');
-
-        //Check if this is active
-        if(!$(this).hasClass('active')) {
-            toggleMapMarkerSelect(companyID, true);
-            return;
-        }
-
-        resetSearchResult();
-
-        //Show the compay list if mobile
-        toggleSideBar();
-
-        toggleCompanyInfo(companyID, true);
+    
+            resetSearchResult();
+    
+            //Show the compay list if mobile
+            toggleSideBar();
+    
+            toggleCompanyInfo(companyID, true);
+        });
+    
+    
+        //When the user scroll the map
+        $('.map-container').scroll(function() {
+            $('#map-scroll-indicator').addClass('removed');
+        });
+    
+    
+        //List all the companies on start
+        getAllActiveCompanies();
     });
-
-
-    //When the user scroll the map
-    $('.map-container').scroll(function() {
-        $('#map-scroll-indicator').addClass('removed');
-    });
-
-
-    //List all the companies on start
-    getAllActiveCompanies();
-
-
-    //Check if we should load a QR code
-    if($routeParams.qrcode != null) {
-        $location.search('qrcode', null)
-        // window.history.pushState('map', 'Map', '/map/');
-        placeQRCode();
-    }
 
 });
