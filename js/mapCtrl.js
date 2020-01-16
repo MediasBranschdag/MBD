@@ -37,6 +37,10 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
         toggleMapMarkerSelect(companyID, isEnter);
     }
 
+    $scope.onCompanyCardClick = function(companyID) {
+        
+    }
+
     function handelQRCode() {
         //Check if we should load a QR code
         var qrData = JSON.parse(CookieModel.readCookie('qrData'));
@@ -129,13 +133,13 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
 
         //First we need to unselect all the markers
         $allMarkers = $('.map-marker-container');
-        $allMarkers.removeClass('active');
+        $allMarkers.find('.map-marker').removeClass('active');
         $allMarkers.find('.map-marker-info-bubble').removeClass('visible');
 
         if(isOn) {
             let $companyMarker = $('#company-marker-' + companyID);
             let $companyLogo = $companyMarker.find('.map-marker-info-bubble');
-            $companyMarker.addClass('active');
+            $companyMarker.find('.map-marker').addClass('active');
             $companyLogo.addClass('visible');
         }
     }
@@ -228,13 +232,12 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
 
     /**
      * Places a QR code and scrolls to it
+     * Nose
      * @param {Number} xPosition 
      * @param {Number} yPosition 
      * @param {String} side The side witch the QR code is scanned
      */
     function placeQRCode(xPosition, yPosition, side) {
-
-        console.log('Placing QR code');
 
         //Get the qr code element
         let $qrCode = $('#qr-code');
@@ -249,7 +252,7 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
             'left': xPosition + '%'
         })
 
-        $qrCode.find('.qr-code-perspective-person').addClass(side);
+        $qrCode.find('.qr-code-perspective-arrow').addClass(side);
 
         setTimeout(function() {
             scrollToMapElement($qrCode, function() {
@@ -265,7 +268,7 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
     $(document).ready(function() {
 
         //When the user clicks on a company block
-        $('.side-bar-data').on('click', '.company-list-item:not(.open)', function() {
+        $('.side-bar-data').on('click', '.company-list-item:not(.open)', function(e) {
             let companyID = $(this).data('company-id');
             toggleCompanyInfo(companyID, true);
         });
@@ -289,13 +292,14 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
         });
     
         //Click map company logo
-        $('.map-container').on('click touchstart', '.map-marker-container', function(e) {
+        $('.map-container').on('click touchstart', '.map-marker', function(e) {
     
             //Need to prevent default to not trigger this function twice.
             e.preventDefault();
     
             //Get the company the user clicked on
-            let companyID = $(this).data('company-id');
+            let companyID = $(this).parent('.map-marker-container').data('company-id');
+            console.log(companyID);
     
             //Check if this is active
             if(!$(this).hasClass('active')) {

@@ -1,4 +1,4 @@
-<div id="map-section">
+cx<div id="map-section">
     <div class="side-bar">
         <div id="map-input" class="input-container">
             <input ng-model="search" ng-change="searchCompany(this)" class="js-search-input input-with-image" type="text"
@@ -56,26 +56,34 @@
             <img src="../img/map_nymble.svg" alt="Something went wrong with loading the map." class="floor-plan" />
             <div id="qr-code" class="map-marker-container">
                 <div class="map-marker">
-                    <img class="qr-code-perspective-person" src="../img/icons/person_overhead.svg" alt="Person"/>
+                    <div class="qr-code-perspective-arrow">
+                        <img src="../img/icons/arrows/right_yellow.svg" alt="Person"/>
+                    </div>
                     <div class="map-marker-info-bubble">
                         {{phrases()['your_location']}}
                     </div>
                 </div>
+                <div class="marker-dot"></div>
             </div>
-            <div style="float: right" ng-repeat="(key, company) in companiesOnMap">
+            <div ng-repeat="(key, company) in companiesOnMap">
                 <div 
-                    ng-mouseover="onMarkerHover(company.id, true)"
-                    ng-mouseleave="onMarkerHover(company.id, false)"
                     id="company-marker-{{company.id}}" 
                     data-company-id="{{company.id}}" 
                     style="top: {{company.mapPositionY}}%; left: {{company.mapPositionX}}%" 
                     class="map-marker-container">
-                    <div class="map-marker">
-                        <div class="map-marker-info-bubble">
-                            <img src="img/companies/{{company.logo}}" alt="">
+                    <div
+                        ng-mouseover="onMarkerHover(company.id, true)"
+                        ng-mouseleave="onMarkerHover(company.id, false)" 
+                        class="map-marker">
+                        <div class="map-marker-content">
+                            <div class="map-marker-info-bubble">
+                                <img src="img/companies/{{company.logo}}" alt="">
+                            </div>
+                            {{key + 1}}
                         </div>
-                        {{key + 1}}
-                    </div>
+                    </div
+                    >
+                    <div class="marker-dot"></div>
                 </div>
             </div>
         </div>
