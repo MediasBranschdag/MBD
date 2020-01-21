@@ -1,4 +1,4 @@
-MBDApp.controller('StudentCtrl', function($scope, MBDModel, CompanyModel, TranslationModel, $route, $timeout) {
+MBDApp.controller('StudentCtrl', function($scope, $sce, MBDModel, CompanyModel, TranslationModel, $route, $timeout) {
 
     var navbarHeight = 75;
     var companyDescriptionOpen = false;
@@ -76,15 +76,15 @@ MBDApp.controller('StudentCtrl', function($scope, MBDModel, CompanyModel, Transl
         $scope.image = activeCompany.logo;
         $scope.website = activeCompany.website;
         
-        $scope.description = TranslationModel.choosePhrase(
+        $scope.description = $sce.trustAsHtml(TranslationModel.choosePhrase(
             activeCompany.description_se, 
             activeCompany.description_en
-        );
+        ));
 
-        $scope.seekingDescription = TranslationModel.choosePhrase(
+        $scope.seekingDescription = $sce.trustAsHtml(TranslationModel.choosePhrase(
             activeCompany.seekingDescription_se, 
             activeCompany.seekingDescription_en
-        );
+        ));
     }
 
     document.addEventListener('keydown', function(e){
