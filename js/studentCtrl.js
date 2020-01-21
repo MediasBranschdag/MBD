@@ -69,13 +69,22 @@ MBDApp.controller('StudentCtrl', function($scope, MBDModel, CompanyModel, Transl
 
     function setCompany(index){
         $scope.toogleCompanyText(false);
-        $scope.name = $scope.companies[index].name;
-        $scope.image = $scope.companies[index].logo;
-        $scope.website = $scope.companies[index].website;
+
+        let activeCompany = $scope.companies[index];
+
+        $scope.name = activeCompany.name;
+        $scope.image = activeCompany.logo;
+        $scope.website = activeCompany.website;
         
-        var description_en = $scope.companies[index].description_en;
-        var description_se = $scope.companies[index].description_se;
-        $scope.description = TranslationModel.choosePhrase(description_se, description_en);
+        $scope.description = TranslationModel.choosePhrase(
+            activeCompany.description_se, 
+            activeCompany.description_en
+        );
+
+        $scope.seekingDescription = TranslationModel.choosePhrase(
+            activeCompany.seekingDescription_se, 
+            activeCompany.seekingDescription_en
+        );
     }
 
     document.addEventListener('keydown', function(e){

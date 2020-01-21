@@ -78,7 +78,8 @@ class CompanyModel extends DatabaseModel {
         return $this->dbSelectAllSimple(
             'SELECT 
                 companies.*,
-                ci.isSponsor, ci.isExhibitor, ci.isMainSponsor
+                ci.isSponsor, ci.isExhibitor, ci.isMainSponsor,
+                ci.seekingDescription_en, ci.seekingDescription_se
             FROM companies
             LEFT JOIN company_involvement AS ci 
                 ON ci.companyID = companies.ID
@@ -94,6 +95,7 @@ class CompanyModel extends DatabaseModel {
         return 'SELECT 
                 companies.*,
                 ci.isSponsor, ci.isExhibitor, ci.isMainSponsor,
+                ci.seekingDescription_en, ci.seekingDescription_se,
                 cmp.mapPositionY, cmp.mapPositionX
             FROM companies
             LEFT JOIN company_involvement AS ci 

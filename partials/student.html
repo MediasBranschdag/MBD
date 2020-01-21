@@ -58,6 +58,8 @@
                     </div>
                     <div ng-if="description">
                         <p>{{description}}</p>
+                        <h3 ng-show="seekingDescription">{{phrases()['what_we_seek']}}</h3>
+                        <p>{{seekingDescription}}</p>
                     </div>
                 </div>
                 <div id="show-company-description-btn" class="btn btn--compact" target="_blank" ng-click="toogleCompanyText()">
