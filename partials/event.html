@@ -44,6 +44,14 @@
                 <div class="event-description">
                     {{getEventDescription(event)}}
                 </div>
+                <div class="event-tickets" ng-if="event.tickets_link">
+                    <a target="_blank" href="{{event.tickets_link}}">
+                        <div class="btn btn--rectangular btn--icon">
+                            <img class="btn--icon-image" src="img/icons/tickets_black.svg"  alt="" />
+                            <span class="btn--icon-image">{{phrases()['tickets']}}</span>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="timline-split"></div>
