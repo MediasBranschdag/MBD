@@ -302,5 +302,9 @@
     "your_location": {
         "se": "Du är här",
         "en": "You are here"
+    },
+    "tickets": {
+        "se": "Biljetter",
+        "en": "Tickets"
     }
 }

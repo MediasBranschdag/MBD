@@ -137,6 +137,12 @@
     word-wrap: break-word;
 }
 
+.event-tickets {
+    display: flex;
+    float: right;
+    padding-bottom: 17px;
+}
+
 @media screen and (max-width: 850px) {
     #event-content {
         display: block;
