@@ -14,6 +14,7 @@
                 <div 
                     ng-mouseover="onMarkerHover(company.id, true)"
                     ng-mouseleave="onMarkerHover(company.id, false)"
+                    ng-click="onCompanyCardClick(company.id)"
                     id="company-list-{{company.id}}" 
                     class="company-list-item" 
                     data-company-id="{{company.id}}">
@@ -26,7 +27,7 @@
                             <span class="btn-text show-on-map-btn">{{phrases()['show_on_map']}}</span>
                             <img src="../img/icons/map_location.svg" alt="" class="btn-image">
                         </div>
-                        <div>
+                        <div ng-if="chooseCompanyDescriptionLanguage(company)">
                             <p class="long-text">
                                 {{chooseCompanyDescriptionLanguage(company)}}
                             </p>

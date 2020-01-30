@@ -37,8 +37,12 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
         toggleMapMarkerSelect(companyID, isEnter);
     }
 
+    if (('ontouchstart' in window) == true) {
+        $scope.onMarkerHover = null;
+    }
+
     $scope.onCompanyCardClick = function(companyID) {
-        
+        toggleCompanyInfo(companyID, true);
     }
 
     function handelQRCode() {
@@ -150,6 +154,13 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
      * @param {boolean} isOn 
      */
     function toggleCompanyInfo(companyID, isOn) {
+        //Getting the target list item
+        let $companyListItem = $('#company-list-' + companyID);
+
+        if ($companyListItem.hasClass('open')) {
+            return;
+        }
+
         let $allCompanyListItems = $('.company-list-item');
 
         //Hide all the other info
@@ -161,8 +172,6 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
             return;
         }
         
-        //Getting the target list item
-        let $companyListItem = $('#company-list-' + companyID);
 
         //Indicate that this compay is active
         $companyListItem.addClass('open');
@@ -268,10 +277,10 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
     $(document).ready(function() {
 
         //When the user clicks on a company block
-        $('.side-bar-data').on('click', '.company-list-item:not(.open)', function(e) {
-            let companyID = $(this).data('company-id');
-            toggleCompanyInfo(companyID, true);
-        });
+        // $('.side-bar-data').on('click', '.company-list-item:not(.open)', function(e) {
+        //     let companyID = $(this).data('company-id');
+        //     toggleCompanyInfo(companyID, true);
+        // });
     
         //When user click on search company btn
         $('#show-map-btn, #find-companies-btn').click(function() {
