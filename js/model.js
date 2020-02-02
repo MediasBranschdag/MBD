@@ -128,7 +128,7 @@ MBDApp.factory("MBDModel", function($http) {
       { option: "start", hash: "start" },
       { option: "for_companies", hash: "companies" },
       { option: "for_students", hash: "students" },
-      // { option: "map", hash: "map" },
+      { option: "map", hash: "map" },
       { option: "events", hash: "events" },
       { option: "contact", hash: "contact" }
     ];
