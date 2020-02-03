@@ -23,6 +23,10 @@
         "se": "Sekunder",
         "en": "Seconds"
     },
+    "ongoing": {
+        "se": "PÅGÅR JUST NU",
+        "en": "CURRENTLY ONGOING"
+    },
     "hello": {
         "se": "Hej",
         "en": "Hello"

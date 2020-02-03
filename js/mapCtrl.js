@@ -37,7 +37,7 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
         toggleMapMarkerSelect(companyID, isEnter);
     }
 
-    if (('ontouchstart' in window) == true) {
+    if ('ontouchstart' in window == true) {
         $scope.onMarkerHover = null;
     }
 
@@ -62,8 +62,7 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
                 'y': $routeParams.qrY,
                 'side': $routeParams.qrSide
             }), 100);
-            $location.url($location.path());
-            // window.location.reload(true);
+            window.location.hash = $location.path()
         }
     }
     handelQRCode();
@@ -108,10 +107,14 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
             method: 'GET',
             url: '/php/companyMC.php?action=current-year-exhibitor',
         }).then(function successCallback(response) {
-            allCompanies = response.data;
-            $scope.companyList = response.data;
-            $scope.companiesOnMap = response.data;
+            allCompanies = response.data.sort(applyMapOrder);
+            $scope.companyList = allCompanies;
+            $scope.companiesOnMap = allCompanies;
         });
+    }
+
+    function applyMapOrder(companyA, companyB) {
+        return companyA.mapOrder - companyB.mapOrder;
     }
 
     /**

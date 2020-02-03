@@ -115,6 +115,13 @@
   font-weight: bold;
 }
 
+.countdown-ongoing {
+    font-size: 22px;
+    color: #ffd521;
+    text-align: center;
+    display: none;
+}
+
 .start-intro-info__section {
     display: flex;
     flex-direction: row;

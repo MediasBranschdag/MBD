@@ -43,6 +43,7 @@ MBDApp.controller("StartCtrl", function($scope, MBDModel, TranslationModel) {
     }
 
     var countDownWrapper = document.querySelector(".countdown-wrapper");
+    var countDownEnd = document.querySelector('.countdown-ongoing');
     var daysElement = document.querySelectorAll(".days");
     var hoursElement = document.querySelectorAll(".hours");
     var minutesElement = document.querySelectorAll(".minutes");
@@ -70,7 +71,8 @@ MBDApp.controller("StartCtrl", function($scope, MBDModel, TranslationModel) {
 
     //First we need to check if the event already happened
     if(getTimeLeft() <= 0) {
-      countDownWrapper.innerHTML = "<h1 id='countdown-end'>TACK FÖR ÅRETS BRANSCHDAG!</h1>";
+      countDownWrapper.remove();
+      countDownEnd.style.display = "block";
       return;
     }
 

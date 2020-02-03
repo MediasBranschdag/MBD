@@ -96,7 +96,7 @@ class CompanyModel extends DatabaseModel {
                 companies.*,
                 ci.isSponsor, ci.isExhibitor, ci.isMainSponsor,
                 ci.seekingDescription_en, ci.seekingDescription_se,
-                cmp.mapPositionY, cmp.mapPositionX
+                cmp.mapPositionY, cmp.mapPositionX, cmp.customOrder AS mapOrder
             FROM companies
             LEFT JOIN company_involvement AS ci 
                 ON ci.companyID = companies.ID

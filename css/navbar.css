@@ -161,13 +161,16 @@
 }
 
 
-@media only screen and (max-width: 769px) {
+@media only screen and (max-width: 900px) {
     .navbar {
         justify-content: space-between;
     }
+
+    .navbar__right-content,
     .navbar .nav-link {
         display: none;
     }
+
     #navbarLogo {
         position: relative;
         left: calc(50% - 45px);
