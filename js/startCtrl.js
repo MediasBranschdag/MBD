@@ -49,11 +49,16 @@ MBDApp.controller("StartCtrl", function($scope, MBDModel, TranslationModel) {
     var minutesElement = document.querySelectorAll(".minutes");
     var secondsElement = document.querySelectorAll(".seconds");
 
+    var interval;
+
     /**
      * Show the time left in the page
      * @param {number} seconds 
      */
     function displayTimeLeft(seconds) {
+      if (getTimeLeft() <= 0) {
+        return;
+      }
       var secondsCopy = seconds;
       var days = Math.floor(secondsCopy / 86400);
       secondsCopy -= days * 86400;
@@ -71,20 +76,21 @@ MBDApp.controller("StartCtrl", function($scope, MBDModel, TranslationModel) {
 
     //First we need to check if the event already happened
     if(getTimeLeft() <= 0) {
-      countDownWrapper.remove();
+      countDownWrapper.style.display = "none";
+      clearInterval(interval);
       countDownEnd.style.display = "block";
       return;
     }
 
     //Start the countdown
     displayTimeLeft(getTimeLeft());
-    setInterval(() => {
+    interval = setInterval(() => {
       const secondsLeft = getTimeLeft();
       displayTimeLeft(secondsLeft);
     }, 1000);
   };
 
-  startTimer(new Date("Feb 4, 2020 10:00:00").getTime());
+  startTimer(new Date("Feb 4, 2021 10:00:00").getTime());
 
   function animateLogo($logoParts, $titleParts, index) {
     if($logoParts.length < index + 1) {

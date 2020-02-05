@@ -62,7 +62,9 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
                 'y': $routeParams.qrY,
                 'side': $routeParams.qrSide
             }), 100);
-            window.location.hash = $location.path()
+            setTimeout(function() {
+                window.location.href = window.location.origin + "/#" +  $location.path();
+            }, 10);
         }
     }
     handelQRCode();
@@ -264,6 +266,7 @@ MBDApp.controller("MapController", function($scope, MBDModel, TranslationModel, 
             'left': xPosition + '%'
         })
 
+        $qrCode.find('.map-marker').addClass(side);
         $qrCode.find('.qr-code-perspective-arrow').addClass(side);
 
         setTimeout(function() {
