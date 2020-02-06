@@ -1,6 +1,0 @@
-@media screen and (max-width: 900px) {
-    .paning-background  {
-        background-position: 0% 90%;
-        animation: paning-background-animation 30s cubic-bezier(0.2,0,0.8,1) infinite;
-    }
-}
