@@ -1,0 +1,44 @@
+version: "3.2"
+services:
+  php:
+    build: './php/'
+    container_name: MBD-php
+    networks:
+      - backend
+    working_dir: /var/www/html/
+    volumes:
+      - ../public/backend/:/var/www/html/
+    ports:
+      - "30001:80"
+
+  mysql:
+    build: './sql/'
+    container_name: MBD-mysql
+    networks:
+      - backend
+    restart: always
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=166397-mediasbranschdag
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: MBD-phpmyadmin
+    restart: always
+    depends_on:
+      - mysql
+    networks:
+      - backend
+    ports:
+      - "30002:80"
+    environment:
+      - PMA_HOST=MBD-mysql
+      - PMA_PORT=3306
+
+networks:
+  frontend:
+  backend:
