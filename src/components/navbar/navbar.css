@@ -1,0 +1,56 @@
+.navbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--theme-text-bright);
+    background-color: var(--theme-dark-color-normal);
+}
+
+.navbar-padding {
+    padding: 12px;
+}
+
+.navbar-leading {
+    height: 40px;
+}
+
+.navbar-mbd-logo {
+    width: auto;
+    height: 100%;
+}
+
+.navbar-trailing {
+    height: 40px;
+}
+
+.side-logo {
+    margin-left: 14px;
+    height: 100%;
+}
+
+.navbar-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navbar-link {
+    padding: 10px;
+
+    font-weight: bold;
+    transition: color 0.5s;
+    cursor: pointer;
+}
+
+.navbar-link.active,
+.navbar-link:hover {
+    color: var(--theme-primary-color-normal);
+}

@@ -8,4 +8,7 @@
     --theme-dark-color-normal: #212121;
     --theme-dark-color-dark: #000000;
     --theme-dark-color-light: #484848;
+
+    --theme-text-bright: #ffffff;
+    --theme-text-dark: #000000;
 }
