@@ -3,6 +3,7 @@
     left: 0;
     right: 0;
     top: 0;
+    height: 66px;
 
     display: flex;
     flex-direction: row;
@@ -14,11 +15,12 @@
 }
 
 .navbar-padding {
+    box-sizing: border-box;
     padding: 12px;
 }
 
 .navbar-leading {
-    height: 40px;
+    height: 100%;
 }
 
 .navbar-mbd-logo {
@@ -27,7 +29,7 @@
 }
 
 .navbar-trailing {
-    height: 40px;
+    height: 100%;
 }
 
 .side-logo {

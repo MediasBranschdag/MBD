@@ -1,5 +1,9 @@
 import React from 'react';
 import './navbar.css';
+
+import Routes from '../../routes/routes';
+import { NavLink } from "react-router-dom";
+
 import mbdLogo from '../../assets/mbd-logo/mbd-logo-yellow.svg';
 import kthLogo from '../../assets/KTH_logo.png';
 import medieteknikLogo from '../../assets/medieteknik_logo.png';
@@ -11,8 +15,18 @@ const Navbar = () => {
                 <img className="navbar-mbd-logo" src={mbdLogo} alt="MBD Logo"/>
             </div>
             <div className="navbar-content navbar-padding">
-                <div className="navbar-link">Starsida</div>
-                <div className="navbar-link">För studenter</div>
+                {
+                    Routes.map((route) => {
+                        return <NavLink 
+                            exact
+                            className="navbar-link"
+                            activeClassName="navbar-link active"
+                            to={route.path} 
+                            key={route.path}>
+                            {route.name}
+                        </NavLink>
+                    })
+                }
             </div>
             <div className="navbar-trailing navbar-padding">
                 <img className="side-logo" src={medieteknikLogo} alt=""/>
