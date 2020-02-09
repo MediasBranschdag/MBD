@@ -34,7 +34,6 @@ export default class MBDDate {
     }
 
     getTimeLeft(): TimeLeft {
-        
         if (this.isEmpty) {
             return {
                 days: 0,
@@ -71,6 +70,13 @@ export async function getNextExhibitDate(): Promise<MBDDate> {
     const reponse = await fetch(
         BACKEND_PATH + 'getDates.php?action=next-exhibit-date'
     );
+
+    // Extract the date from the json response
     const data = await reponse.json();
-    return new MBDDate(new Date(data.date));
+
+    // We need to convert the mysql date to a js compatable format
+    var jsDate = data.date.replace(/-/g, '/')
+
+    // Create new MBDDate object with the jsDate
+    return new MBDDate(new Date(jsDate));
 }
