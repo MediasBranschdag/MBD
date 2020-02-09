@@ -1,0 +1,23 @@
+.intro-screen {
+    position: relative;
+    height: calc(100vh - 66px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    text-align: center;
+    background-position: bottom;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.intro-screen-content {
+    flex-grow: 1;
+}
+
+.intro-screen-scroll-button {
+    margin-bottom: 35px;
+    margin-top: 35px;
+}

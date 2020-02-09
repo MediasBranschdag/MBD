@@ -1,0 +1,65 @@
+
+.countdown-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 15px 0;
+    font-weight: 100;
+}
+
+.countdown-block-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 85px;
+    height: 85px;
+    border: 5px solid var(--theme-primary-color-normal);
+    border-radius: 20px;
+    color: #fff;
+}
+
+.countdown-time-type {
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.countdown-time {
+  font-size: 30px;
+  line-height: 1;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.countdown-ongoing {
+    font-size: 22px;
+    color: var(--theme-primary-color-normal);
+    text-align: center;
+    display: none;
+}
+
+.start-intro-info__section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+@media (max-width: 610px) {
+    .countdown-block-container {
+        width: 50px;
+        height: 50px;
+    }
+    .countdown-time {
+        font-size: 17px;
+    }
+    .countdown-time-type {
+        font-size: 7px;
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 360px) {
+    .countdown-container .line {
+        display: none;
+    }
+}

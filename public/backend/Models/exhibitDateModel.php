@@ -21,9 +21,9 @@
         }
 
         /**
-         * Getting the year of the last year.
+         * Getting the year of the current year exhibit.
          * This is taken from the exhibit_dates
-         * @return int The last year
+         * @return int The current year
          */
         public function getCurrentYear() {
             return $this->dbSelectSimple(
@@ -31,6 +31,20 @@
                 FROM exhibit_dates
                 ORDER BY date DESC
                 LIMIT 1', PDO::FETCH_COLUMN
+            );
+        }
+
+        /**
+         * Getting the year of the current year exhibit.
+         * This is taken from the exhibit_dates
+         * @return int The current year
+         */
+        public function getNextExhibitDate() {
+            return $this->dbSelectSimple(
+                'SELECT *
+                FROM exhibit_dates
+                ORDER BY date DESC
+                LIMIT 1', PDO::FETCH_OBJ
             );
         }
     }

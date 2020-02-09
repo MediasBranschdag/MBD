@@ -1,0 +1,16 @@
+.line {
+    border-width: 1px;
+    border-color: var(--theme-light-color-normal);
+    border-style: none;
+}
+
+.line.vertical {
+    height: 15px;
+    border-left-style: solid;
+}
+.line.horizontal {
+    width: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-top-style: solid;
+}

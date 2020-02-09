@@ -1,0 +1,103 @@
+.animated-logo-container {
+    position: relative;
+    height: 225px;
+    width: 225px;
+}
+
+.animated-logo-part {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: scale(0.85);
+    fill: var(--theme-light-color-dark);
+    transition: all 750ms;
+}
+.animated-logo-part.active {
+    transform: scale(1); 
+    fill: var(--theme-primary-color-normal);
+}
+
+.animated-logo-container svg {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke-linejoin: round;
+    stroke-miterlimit: 2;
+}
+
+.animated-logo-title {
+    margin-left: -4px;
+    font-weight: 900;
+    font-size: 50px;
+    line-height: 1;
+}
+.animated-logo-title-part {
+    display: inline-block;
+
+    white-space: pre;
+    color: var(--theme-light-color-dark);
+
+    transform: translateY(5px);
+    transition: all 750ms;
+}
+.animated-logo-title-part.active {
+    color: var(--theme-primary-color-normal);
+
+    animation-name: jumping-text;
+    animation-duration: 0.75s;
+    transform: translateY(0px);
+}
+
+.animated-logo-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 100;
+}
+
+.animated-logo-info-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.animated-logo-info-section img {
+    height: 20px;
+}
+
+@media (max-width: 610px) {
+    .animated-logo-title {
+        font-size: 30px;
+    }
+    .animated-logo-info {
+        font-size: 15px;
+    }
+    .animated-logo-info-section img {
+        height: 15px;
+    }
+    .animated-logo-container {
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media (max-width: 360px) {
+    .animated-logo-title {
+        font-size: 25px;
+    }
+    .animated-logo-info {
+        font-size: 12px;
+    }
+    .animated-logo-info-section img {
+        height: 12px;
+    }
+    .animated-logo-container {
+        height: 175px;
+        width: 175px;
+    }
+}
