@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import IntroScreen from '../components/intro-screen/intro-screen';
 import IntroScreenBackground from '../assets/backgrounds/leaf_dark_blur.jpg';
 import AnimatedMBDLogo from '../components/animated-mbd-logo/animated-mbd-logo';

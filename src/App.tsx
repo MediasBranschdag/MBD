@@ -1,9 +1,8 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import Navbar from './components/navbar/navbar';
 import Routes from './routes/routes';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PageWrapper from './components/page-wrapper/page-wrapper';
-import MBDDateContext from './contexts/mbd-date-context';
 import MBDDateProvider from './contexts/mbd-date-provider';
 
 const App: FC = () => {
