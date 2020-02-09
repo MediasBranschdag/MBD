@@ -12,9 +12,13 @@ const Countdown: FC<CountdownProps> = (props) => {
     const [timeLeft, setTimeLeft] = useState(props.mbdDate.getTimeLeft())
 
     useEffect(() => {
+
+        // Update the countdown every secound
         var timeout = setTimeout(() => {
             setTimeLeft(props.mbdDate.getTimeLeft());
         }, 1000);
+
+        // Remove the timer when this compontent is destroyed
         return () => {
             clearTimeout(timeout);
         }
@@ -22,41 +26,29 @@ const Countdown: FC<CountdownProps> = (props) => {
 
     return (
         <div className="countdown-container">
-            <div className="countdown-block-container days-container">
-                <div className="days countdown-time">
-                    {timeLeft.days}
-                </div>
-                <div className="countdown-time-type">
-                    Dagar
-                </div>
-            </div>
+            <CountdownBlock value={timeLeft.days} unit={'Dagar'}/>
             <Line lineType={LineType.horizontal} />
-            <div className="countdown-block-container hours-container">
-                <div className="hours countdown-time">
-                    {timeLeft.hours}
-                </div>
-                <div className="countdown-time-type">Timmar</div>
-            </div>
+            <CountdownBlock value={timeLeft.hours} unit={'Timmar'}/>
             <Line lineType={LineType.horizontal} />
-            <div className="countdown-block-container minutes-container">
-                <div className="minutes countdown-time">
-                    {timeLeft.minutes}
-                </div>
-                <div className="countdown-time-type">
-                    Minuter
-                </div>
-            </div>
+            <CountdownBlock value={timeLeft.minutes} unit={'Minuter'}/>
             <Line lineType={LineType.horizontal} />
-            <div className="countdown-block-container seconds-container">
-                <div className="seconds countdown-time">
-                    {timeLeft.secounds}
-                </div>
-                <div className="countdown-time-type">
-                    Sekunder
-                </div>
-            </div>
+            <CountdownBlock value={timeLeft.secounds} unit={'Sekunder'}/>
         </div>
     );
 }
+
+const CountdownBlock: FC<{value: number, unit: string}> = (props) => {
+    return (
+        <div className="countdown-block-container">
+            <div className="countdown-time">
+                {props.value}
+            </div>
+            <div className="countdown-time-type">
+                {props.unit}
+            </div>
+        </div>
+    )
+}
+
 
 export default Countdown;
