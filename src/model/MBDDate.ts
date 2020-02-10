@@ -1,4 +1,7 @@
 import BACKEND_PATH from "../backend-environment";
+import TranslationModel from './translationModel'
+import qhrases from '../data/translations.json'
+
 
 interface TimeLeft {
     days: number,
@@ -12,9 +15,20 @@ export default class MBDDate {
     startDate: Date;
     isEmpty = true;
 
-    monthNames = 
-        ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"];
+    monthNames = [
+        TranslationModel.translate(qhrases.months.january),
+        TranslationModel.translate(qhrases.months.february),
+        TranslationModel.translate(qhrases.months.march),
+        TranslationModel.translate(qhrases.months.april),
+        TranslationModel.translate(qhrases.months.may),
+        TranslationModel.translate(qhrases.months.june),
+        TranslationModel.translate(qhrases.months.july),
+        TranslationModel.translate(qhrases.months.august),
+        TranslationModel.translate(qhrases.months.september),
+        TranslationModel.translate(qhrases.months.october),
+        TranslationModel.translate(qhrases.months.november),
+        TranslationModel.translate(qhrases.months.december),
+    ];
 
     constructor(start?: Date) {
         this.startDate = start || new Date();

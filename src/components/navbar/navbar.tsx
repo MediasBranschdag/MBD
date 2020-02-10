@@ -9,6 +9,10 @@ import kthLogo from '../../assets/KTH_logo.png';
 import medieteknikLogo from '../../assets/medieteknik_logo.png';
 import HamburgerButton from '../hamburger-button/hamburger-button';
 
+import TranslationModel from '../../model/translationModel';
+import LanguageSelect from './language-select/language-select';
+import { Line, LineType } from '../lines/line';
+
 const Navbar = () => {
 
     const [mobileMenuOpen, toogleMobileMenuOpen] = useState(false);
@@ -28,16 +32,24 @@ const Navbar = () => {
                             onClick={() => toogleMobileMenuOpen(!mobileMenuOpen)}
                             to={route.path} 
                             key={route.path}>
-                            {route.name}
+                            {TranslationModel.translate(route.name)}
                         </NavLink>
                     })
                 }
             </div>
             <div className="navbar-trailing navbar-padding">
-                <img className="side-logo" src={medieteknikLogo} alt=""/>
-                <img className="side-logo" src={kthLogo} alt=""/>
+                <div className="navbar-trailing-item">
+                    <LanguageSelect/>
+                </div>
 
-                <div className="navbar-mobile-menu-button">
+                <div className="navbar-trailing-item">
+                    <Line lineType={LineType.vertical}/>
+                </div>
+
+                <img className="side-logo navbar-trailing-item " src={medieteknikLogo} alt=""/>
+                <img className="side-logo navbar-trailing-item " src={kthLogo} alt=""/>
+
+                <div className="navbar-mobile-menu-button navbar-trailing-item ">
                     <HamburgerButton 
                         onClick={() => {toogleMobileMenuOpen(!mobileMenuOpen)}} 
                         isActive={mobileMenuOpen}/>

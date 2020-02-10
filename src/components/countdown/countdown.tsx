@@ -2,6 +2,8 @@ import React, { FC, useEffect, useState } from 'react';
 import './countdown.css';
 import { Line, LineType } from '../lines/line';
 import MBDDate from '../../model/MBDDate';
+import TranslationModel from '../../model/translationModel';
+import phrases from '../../data/translations.json';
 
 type CountdownProps = {
     mbdDate: MBDDate
@@ -26,13 +28,21 @@ const Countdown: FC<CountdownProps> = (props) => {
 
     return (
         <div className="countdown-container">
-            <CountdownBlock value={timeLeft.days} unit={'Dagar'}/>
+            <CountdownBlock 
+                value={timeLeft.days} 
+                unit={TranslationModel.translate(phrases.days)}/>
             <Line lineType={LineType.horizontal} />
-            <CountdownBlock value={timeLeft.hours} unit={'Timmar'}/>
+            <CountdownBlock 
+                value={timeLeft.hours} 
+                unit={TranslationModel.translate(phrases.hours)}/>
             <Line lineType={LineType.horizontal} />
-            <CountdownBlock value={timeLeft.minutes} unit={'Minuter'}/>
+            <CountdownBlock 
+                value={timeLeft.minutes} 
+                unit={TranslationModel.translate(phrases.minutes)}/>
             <Line lineType={LineType.horizontal} />
-            <CountdownBlock value={timeLeft.secounds} unit={'Sekunder'}/>
+            <CountdownBlock 
+                value={timeLeft.secounds} 
+                unit={TranslationModel.translate(phrases.seconds)}/>
         </div>
     );
 }

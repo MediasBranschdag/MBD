@@ -1,0 +1,364 @@
+{
+    "months": {
+        "january": {
+            "en": "January",
+            "se": "Januari"
+        }, 
+        "february": {
+            "en": "February",
+            "se": "Februari"
+        }, 
+        "march": {
+            "en": "March",
+            "se": "Mars"
+        }, 
+        "april": {
+            "en": "April",
+            "se": "April"
+        }, 
+        "may": {
+            "en": "May",
+            "se": "Maj"
+        }, 
+        "june": {
+            "en": "June",
+            "se": "Juni"
+        },
+        "july": {
+            "en": "July",
+            "se": "Juli"
+        }, 
+        "august": {
+            "en": "August",
+            "se": "Augusti"
+        }, 
+        "september": {
+            "en": "September",
+            "se": "September"
+        }, 
+        "october": {
+            "en": "October",
+            "se": "Oktober"
+        }, 
+        "november": {
+            "en": "November",
+            "se": "November"
+        }, 
+        "december": {
+            "en": "December",
+            "se": "December"
+        }
+    },
+    "start": {
+        "se": "Start",
+        "en": "Start"
+    },
+    "february": {
+        "se": "Februari",
+        "en": "February"
+    },
+    "days": {
+        "se": "Dagar",
+        "en": "Days"
+    },
+    "hours": {
+        "se": "Timmar",
+        "en": "Hours"
+    },
+    "minutes": {
+        "se": "Minuter",
+        "en": "Minutes"
+    },
+    "seconds": {
+        "se": "Sekunder",
+        "en": "Seconds"
+    },
+    "ongoing": {
+        "se": "PÅGÅR JUST NU",
+        "en": "CURRENTLY ONGOING"
+    },
+    "hello": {
+        "se": "Hej",
+        "en": "Hello"
+    },
+    "home_welcome_text": {
+        "se": "Inspiration och framtidstro. Det kommer kårhuset Nymble genomsyras av den 4e februari 2020 när dörrarna öppnas till Medias Branschdag! Vår årliga branschdagsmässa hålls för att studenter och företag ska kunna mötas för utbyten - oavsett om det som söks är ett eventuellt sommarjobb eller insikt i vad det egentligen innebär att jobba som medietekniker i praktiken. Branschdagen ger inte bara studenter ett smakprov på vad arbetslivet har att ge, utan bidrar likväl till att företagen får ett smakprov av vad framtida medieteknologer har att bidra med.\n\nVi ses på branschdagen i februari!",
+        "en": "The student union building Nymble will be filled with inspiration on the 4th of February 2020 when the doors to Medias Branschdag are opened! Our annual job fair is held to connect students with companies, whether students might be searching for their future employer or just want to see what a career as a Media Technology graduate will entail. The job fair not only gives the students knowledge of their future, but also serves to show the companies what future media engineers have to offer.\n\nWe can’t wait to meet you at the fair in February!"
+    },
+    "are_you_student": {
+        "se": "Är du en student?",
+        "en": "Are you a student?"
+    },
+    "home_student_info": {
+        "se": "Läs mer om vilka företag som ställer ut på Medias Branschdag 2020. Kanske hittar du din framtida arbetsgivare redan nu.",
+        "en": "Read more about what companies are participating in Medias Branschdag 2020. Maybe you’ll find your future employer there."
+    },
+    "read_more": {
+        "se": "Läs mer",
+        "en": "Read more"
+    },
+    "on_instagram": {
+        "se": "På Instagram",
+        "en": "On Instagram"
+    },
+    "follow_social_media": {
+        "se": "Följ oss på sociala medier",
+        "en": "Follow us on social media"
+    },
+    "main_sponsor": {
+        "se": "Huvudsponsor",
+        "en": "Main sponsor"
+    },
+    "main_sponsors": {
+        "se": "Huvudsponsorer",
+        "en": "Main sponsors"
+    },
+    "exhibitors": {
+        "se": "Utställare",
+        "en": "Exhibitors"
+    },
+    "thankyou_sponsor": {
+        "se": "Vi tackar våra sponsorer",
+        "en": "We want to thank our sponsors"
+    },
+    "for_companies": {
+        "se": "För företag",
+        "en": "For companies"
+    },
+    "about_us": {
+        "se": "Om oss",
+        "en": "About us"
+    },
+    "participate": {
+        "se": "Deltag",
+        "en": "Participate"
+    },
+    "the_fair": {
+        "se": "Mässan",
+        "en": "The fair"
+    },
+    "company_contact": {
+        "se": "Företagskontakter",
+        "en": "Contact"
+    },
+    "who_are_we_title": {
+        "se": "Vilka är vi",
+        "en": "Who are we"
+    },
+    "who_are_we_description": {
+        "se": "Vi är studenter från civilingenjörsprogrammet i Medieteknik på KTH. Vi har masterprogram inom interaktiva medier, datalogi och maskininlärning. Många av oss sysslar med bland annat system- webb- och apputveckling. Interaktionsdesigners, grafiker och till och med spelutvecklare. Hos oss hittar ni blivande projektledare inom IT och studenter som älskar management. Vi medietekniker är speciellt bra på att kommunicera mellan teknik- och business-avdelningen. Medietekniker har en bred bas and oändligt med möjligheter inom teknik-sektorn. Alla de här studenterna, kommer att vara på vår branschdag den 4e februari 2020, där vi vill att ni deltar. Att synas på Medias Branschdag är en otroligt bra möjlighet för er att marknadsföra ert företag och för oss studenter är branschdagen ett uppskattat tillfälle kunna nätverka med morgondagens arbetsgivare. Medias branschdag är årets bästa tillfälle för er att visa upp er verksamhet mot potentiella medarbetare.\n\nVälkommen!",
+        "en": "We are students from the degree programme in Media Technology at KTH. We have master programmes in interactive media, data science and machine learning. A lot of our students are focused on system, web and app development. Some like IxD, graphics and game development. Among our students you can find future project leaders within the IT sector and lovers of management. We are especially good at communicating between different departments such as the tech and business. Media Technology students have a diverse foundation and endless of possibilities within the tech sector. These students will be present at our job fair the 4th of February 2020, and we want you to join them. To be seen at Medias Branschdag is a terrific opportunity to promote your company to them. For us students, it is a much appreciated occasion to network with future employers. Medias Branschdag is simply the best way for you to connect with our students and future employees.\n\nWelcome!"
+    },
+    "exhibitor_package": {
+        "se": "Utställarpaketet",
+        "en": "Exhibitor Package"
+    },
+    "package_showcase_area": {
+        "se": "Monterplats",
+        "en": "Showcase area"
+    },
+    "package_fika": {
+        "se": "Lunch och fika för två företagsrepresentanter",
+        "en": "Lunch and fika for two company representatives"
+    },
+    "package_host": {
+        "se": "Personlig företagsvärd",
+        "en": "Personal company host"
+    },
+    "package_promotion": {
+        "se": "Aktiv marknadsföring",
+        "en": "Active promotion"
+    },
+    "package_lounge": {
+        "se": "Tillgång till företagslounge",
+        "en": "Access to company lounge"
+    },
+    "package_tickets": {
+        "se": "Två sittningsbiljetter till era representanter",
+        "en": "Two dinner party tickets for company "
+    },
+    "package_contact": {
+        "se": "Kontakta oss gärna för anmälan, frågor eller information om våra andra paket!",
+        "en": "Contact us to apply, ask a question or get information about our other packages!"
+    },
+    "to_contacts": {
+        "se": "Till kontakt",
+        "en": "To contacts"
+    },
+    "company_fair_description": {
+        "se": "Mässan startar den 4e februari 2020 och innehåller en heldag spännande företag. Vi kommer att hålla till i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 vid Kungliga Tekniska Högskolan.\n\nUnder dagen är mässan öppen för alla studenter på KTH, men vi riktar oss särskilt mot medieteknikstudenter då dessa har ett brett intresse för design, programmering, och entreprenörskap. Ett perfekt tillfälle för ditt företag att hitta studenter för framtiden!\n\nDagen avslutas med en stor sittning där era företagsrepresentanter har möjlighet att komma och äta och mingla med våra studenter i en mer avslappnad miljö.",
+        "en": "The job fair starts the 4th of February 2020 and consists of a whole day of exciting companies happy to network with students. It is held in THS Student Union building, Nymble, that is located at Drottnings Kristinas väg 15 at KTH.\n\nDuring the day the fair is open to all students at KTH, but is specifically targeted at Media Technology students since these have a great interest in design, programming and entrepreneurship. A perfect occasion for your company to find your future employees!\n\nAt the end of the day a big dinner party is held where your company representatives can attend and network with our students in a more relaxed setting."
+    },
+    "when": {
+        "se": "När",
+        "en": "When"
+    },
+    "where": {
+        "se": "Var",
+        "en": "Where"
+    },
+    "date_suffix": {
+        "se": "e",
+        "en": "th"
+    },
+    "sales_team": {
+        "se": "Våra företagsansvariga",
+        "en": "Our sales team"
+    },
+    "search_other": {
+        "se": "Söker du någon annan?",
+        "en": "Looking for someone else?"
+    },
+    "click_here": {
+        "se": "Klicka här",
+        "en": "Click here"
+    },
+    "last_year_participants": {
+        "se": "Förra årets medverkande",
+        "en": "Last year's participants"
+    },
+    "for_students": {
+        "se": "För studenter",
+        "en": "For students"
+    },
+    "dinner_party": {
+        "se": "Sittningen",
+        "en": "Dinner party"
+    },
+    "more_info_soon": {
+        "se": "Mer information kommer snart",
+        "en": "More information is comming soon"
+    },
+    "go_to_companies": {
+        "se": "Gå till företagets webbsida",
+        "en": "Visit the company website"
+    },
+    "what_we_seek": {
+        "se": "Vad vi söker",
+        "en": "What we seek"
+    },
+    "fair_dinner_party_title": {
+        "se": "Branschdagssittningen",
+        "en": "Job Fair Dinner Party"
+    },
+    "fair_dinner_party_description": {
+        "se": "Medias Branschdag kommer att avslutas med en sittning där företag och studenter får chansen att utveckla samtal om framtiden mer på djupet. Detta är en utmärkt möjlighet för företag att ta del av Medietekniks många traditioner och lära känna potentiella framtida kollegor på ett mer avslappnat plan.\n\nSittningen kommer även vara ett ypperligt tillfälle för studenter att få marknadsföra sig själva som civilingenjörer. Vi ser fram emot att få anordna en spektakulär kväll och vi hoppas att ni är lika upprymda som vi är!\n\nSittningen börjar 18:00 i Restaurang Q. Mer detaljerad information kommer upp allt eftersom på vår Facebook-sida.",
+        "en": "At the end of Medias Branschdag, a dinner party is held where companies and students have the chance to connect on a deeper level. This is a great oppurtunity for companies to take part in the many traditions of the Media Technology programme and get to know their potential future peers in a more relaxed setting.\n\nThe dinner party is also  a perfect way for students to promote themselves as future engineers. We are really excited to arrange this spectacular evening and hope you are just as exhilarated as us!\n\nThe dinner party will start at 18:00 in Restaurang Q. More details can be found at our Facebook-page closer to the event."
+    },
+    "our_facebook_page": {
+        "se": "Vår Facebook sida",
+        "en": "Our Facebook page"
+    },
+    "book_dinner_party": {
+        "se": "Fixa biljetter",
+        "en": "Get tickets"
+    },
+    "events": {
+        "se": "Evenemang",
+        "en": "Events"
+    },
+    "more_information": {
+        "se": "Mer information",
+        "en": "More information"
+    },
+    "contact": {
+        "se": "Kontakt",
+        "en": "Contact"
+    },
+    "the_project_group": {
+        "se": "Projektgruppen",
+        "en": "The Project Group"
+    },
+    "project_leader": {
+        "se": "Projektledare",
+        "en": "Project Leader"
+    },
+    "sales_team_coordinator": {
+        "se": "Företagssamordnare",
+        "en": "Sales Team Coordinator"
+    },
+    "sales_associate": {
+        "se": "Företagsansvarig",
+        "en": "Sales Associate"
+    },
+    "dinner_party_organizer": {
+        "se": "Sittningsansvarig",
+        "en": "Dinner Party Organizer"
+    },
+    "art_director": {
+        "se": "Art Director",
+        "en": "Art Director"
+    },
+    "logistics": {
+        "se": "Logistik",
+        "en": "Logistics"
+    },
+    "public_relations": {
+        "se": "PR-ansvarig",
+        "en": "Public Relations"
+    },
+    "web_developer": {
+        "se": "Webbutvecklare",
+        "en": "Web Developer"
+    },
+    "big_thanks": {
+        "se": "Stort tack till",
+        "en": "Big thanks to"
+    },
+    "for_photo": {
+        "se": "för foto!",
+        "en": "for taking our photos!"
+    },
+    "contact_us": {
+        "se": "Maila oss",
+        "en": "Contact us"
+    },
+    "name": {
+        "se": "Namn",
+        "en": "Name"
+    },
+    "email": {
+        "se": "Epost",
+        "en": "E-mail"
+    },
+    "subject": {
+        "se": "Ämne",
+        "en": "Subject"
+    },
+    "message": {
+        "se": "Meddelande",
+        "en": "Message"
+    },
+    "send": {
+        "se": "Skicka",
+        "en": "Send"
+    },
+    "map": {
+        "se": "Karta",
+        "en": "Map"
+    },
+    "search_company": {
+        "se": "Sök företag",
+        "en": "Search companies"
+    },
+    "show_on_map": {
+        "se": "Visa på kartan",
+        "en": "Show location on map"
+    },
+    "no_result_title": {
+        "se": "Hittade inga resultat",
+        "en": "No result"
+    },
+    "no_result_description": {
+        "se": "Tyvärr hittade vi inget företag med din sökning.",
+        "en": "We did not find any companies that matched your query."
+    },
+    "your_location": {
+        "se": "Du är här",
+        "en": "You are here"
+    },
+    "tickets": {
+        "se": "Biljetter",
+        "en": "Tickets"
+    }
+}

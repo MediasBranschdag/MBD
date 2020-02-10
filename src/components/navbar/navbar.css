@@ -46,8 +46,11 @@
 }
 
 .side-logo {
-    margin-left: 14px;
     height: 100%;
+}
+
+.navbar-trailing-item {
+    margin-left: 14px
 }
 
 .navbar-link {
