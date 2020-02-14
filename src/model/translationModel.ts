@@ -18,7 +18,7 @@ export default class TranslationModel {
     }
 
     static getLanguage(): TranslationLanguages {
-        return <TranslationLanguages> getCookie(this.cookieName) || 'se';
+        return getCookie(this.cookieName) as TranslationLanguages || 'se';
     }
 
     static setLanguage(lang: TranslationLanguages) {
