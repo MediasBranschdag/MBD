@@ -1,0 +1,9 @@
+.text-section {
+    white-space: pre-line;
+    line-height: 1.5;
+    font-weight: normal;
+}
+
+.text-section h1 {
+    margin-top: 0
+}

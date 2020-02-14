@@ -1,0 +1,8 @@
+.content-section {
+    max-width: 1000px;
+    width: 100%;
+
+    padding: 50px 20px;
+    margin: auto;
+    box-sizing: border-box;
+}
