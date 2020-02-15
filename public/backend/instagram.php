@@ -1,4 +1,5 @@
 <?php
+    require_once 'devConfig.php';
 
     //$access_token = "260572790.4b60dde.cd792e4418a149008c21bfe67fc28951"; // emil
     $access_token = "3254827429.a11a3fa.df05ebc0ed3247b3bc97ae2c3cdc71b4"; //MBD16

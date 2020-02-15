@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import './homepage.css';
 
 import IntroScreen from '../components/intro-screen/intro-screen';
@@ -20,8 +20,23 @@ import ProfileCard from '../components/profile-card/profile-card';
 import CenterBackground from '../components/center-background/center-background';
 import CircleIcon from '../components/circle-icon/circle-icon';
 import { Button, ButtonTypes } from '../components/button/button';
+import { InstagramModel, InstagramPost } from '../model/instagramModel';
+import InstagramCard from '../components/instagram-post/instagram-card';
 
 const Homepage: FC = () => {
+
+    const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
+    
+    useEffect(() => {
+
+        // Should only be loaded once
+        if(instagramPosts.length === 0) {
+            InstagramModel.getInstagramImages().then(posts => {
+                setInstagramPosts(posts);
+            });
+        }
+    }, []);
+
     return (
         <div className="homepage">
 
@@ -124,6 +139,18 @@ const Homepage: FC = () => {
                     </TextSection>
                 </ContentSection>
             </CenterBackground>
+
+            {/* "Are you a student" section */}
+            <ContentSection>
+                {instagramPosts.slice(0, 6).map(post => {
+                    return <InstagramCard
+                        key={post.id}
+                        imageUrl={post.imageUrl}
+                        linkToPost={post.linkToPost}
+                        linkes={post.numberOfLikes}
+                    />
+                })}
+            </ContentSection>
         </div>
     );
 }

@@ -1,0 +1,37 @@
+.instagram-card {
+    position: relative;
+    width: 100%;
+}
+
+.instagram-card-image {
+    width: 100%;
+    padding: 100% 0 0 0;
+
+    background-size: cover;
+    background-position: center;
+}
+
+.instagram-card-like-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5));
+}
+
+.instagram-card-heart {
+    height: 15px;
+    margin-right: 5px;
+}
+
+.instagram-card-like-count {
+    color: #fff;
+    font-weight: bold;
+}
