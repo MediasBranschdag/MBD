@@ -1,0 +1,28 @@
+.text-with-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.text-with-content-text {
+    flex: 1;
+}
+
+.text-with-content-content {
+    min-width: 325px;
+    margin-left: 50px;
+}
+
+
+@media screen and (max-width: 700px) {
+
+    .text-with-content {
+        flex-direction: column;
+    }
+
+    .text-with-content-content {
+        margin-left: 0;
+        margin-top: 30px;
+        width: 100%;
+    }
+}

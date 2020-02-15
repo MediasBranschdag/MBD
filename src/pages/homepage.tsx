@@ -3,66 +3,117 @@ import './homepage.css';
 
 import IntroScreen from '../components/intro-screen/intro-screen';
 import IntroScreenBackground from '../assets/backgrounds/leaf_dark_blur.jpg';
+import StudentInfoBackground from '../assets/backgrounds/purple_chives_blur.jpg';
+
 import AnimatedMBDLogo from '../components/animated-mbd-logo/animated-mbd-logo';
 import Countdown from '../components/countdown/countdown';
 import MBDDateContext from '../contexts/mbd-date-context';
-import ContentSection from '../components/layout/content-section/content-section';
-import TextSection from '../components/text-section/text-section';
+import ContentSection, { ContentSectionSize } from '../components/layout/content-section/content-section';
+import TextSection, { TextSectionAlignment } from '../components/text-section/text-section';
 
 import TranslationModel from '../model/translationModel';
 import phrases from '../data/translations.json';
+import TextWithContent from '../components/text-with-content/text-with-content';
+import ProfileCard from '../components/profile-card/profile-card';
+import CenterBackground from '../components/center-background/center-background';
 
 const Homepage: FC = () => {
-  return (
-    <div className="homepage">
+    return (
+        <div className="homepage">
 
-      <IntroScreen backgroundImage={IntroScreenBackground}>
-        <div className="homepage-intro-content">
-          <AnimatedMBDLogo/>
-          <MBDDateContext.Consumer>
-            {mbdDate => <Countdown mbdDate={mbdDate}/>}
-          </MBDDateContext.Consumer>
+            {/* Logo and countdown */}
+            <IntroScreen backgroundImage={IntroScreenBackground}>
+                <div className="homepage-intro-content">
+                    <AnimatedMBDLogo />
+                    <MBDDateContext.Consumer>
+                        {mbdDate => <Countdown mbdDate={mbdDate} />}
+                    </MBDDateContext.Consumer>
+                </div>
+            </IntroScreen>
+
+            {/* Introduction page */}
+            <ContentSection>
+                <TextWithContent
+                    text={
+                        <TextSection>
+                            <h1>
+                                {TranslationModel.translate(phrases.hello)}!
+                            </h1>
+                            <MBDDateContext.Consumer>
+                                {mbdDate =>
+                                    TranslationModel.translate({
+                                        "se":
+                                            <span>
+                                                Inspiration och framtidstro. Det kommer kårhuset Nymble genomsyras
+                                                av den {mbdDate.getStartDate()}e {mbdDate.getStartMonth()} {mbdDate.getStartYear()} när
+                                                dörrarna öppnas till Medias Branschdag!
+                                                Vår årliga branschdagsmässa hålls för att studenter och företag ska
+                                                kunna mötas för utbyten - oavsett om det som söks är ett eventuellt
+                                                sommarjobb eller insikt i vad det egentligen innebär att jobba som
+                                                medietekniker i praktiken. Branschdagen ger inte bara studenter ett
+                                                smakprov på vad arbetslivet har att ge, utan bidrar likväl till att
+                                                företagen får ett smakprov av vad framtida medieteknologer har att
+                                                bidra med.
+                                                <br /><br />
+                                                Vi ses på branschdagen i februari!
+                                            </span>,
+
+                                        "en":
+                                            <span>
+                                                The student union building Nymble will be filled with inspiration on
+                                                the {mbdDate.getStartDate()}th of {mbdDate.getStartMonth()} {mbdDate.getStartYear()} when
+                                                the doors to Medias Branschdag are
+                                                opened! Our annual job fair is held to connect students with
+                                                companies, whether students might be searching for their future
+                                                employer or just want to see what a career as a Media Technology
+                                                graduate will entail. The job fair not only gives the students
+                                                knowledge of their future, but also serves to show the companies what
+                                                future media engineers have to offer.
+                                                <br /><br />
+                                                We can’t wait to meet you at the fair in February!
+                                            </span>
+                                    })
+                                }
+                            </MBDDateContext.Consumer>
+                        </TextSection>
+                    }
+                    content={
+                        <ProfileCard
+                            imagePath="assets/team/projectleaders.jpg"
+                            name={`Rasmus Rudling & \nElla Klara Westerlund`}
+                            roll="Projektledare" />
+                    }
+                />
+            </ContentSection>
+
+            {/* "Are you a student" section */}
+            <CenterBackground backgroundURL={StudentInfoBackground}>
+                <ContentSection size={ContentSectionSize.small}>
+                    <TextSection align={TextSectionAlignment.center}>
+                        <h1>
+                            {TranslationModel.translate(phrases.are_you_student)}
+                        </h1>
+                        <MBDDateContext.Consumer>
+                            {mbdDate =>
+                                TranslationModel.translate({
+                                    "se":
+                                        <span>
+                                            Läs mer om vilka företag som ställer ut på Medias Branschdag {mbdDate.getStartYear()}. Kanske
+                                            hittar du din framtida arbetsgivare redan nu.
+                                        </span>,
+                                    "en":
+                                        <span>
+                                            Read more about what companies are participating in Medias Branschdag {mbdDate.getStartYear()}.
+                                            Maybe you’ll find your future employer there.
+                                        </span>,
+                                })
+                            }
+                        </MBDDateContext.Consumer>
+                    </TextSection>
+                </ContentSection>
+            </CenterBackground>
         </div>
-      </IntroScreen>
-
-      <ContentSection>
-        <TextSection>
-          <h1>
-            {TranslationModel.translate(phrases.hello)}!
-          </h1>
-          <MBDDateContext.Consumer>
-            {mbdDate => 
-              TranslationModel.translate({
-                "se": 
-                  `Inspiration och framtidstro. Det kommer kårhuset Nymble genomsyras ` + 
-                  `av den ${mbdDate.getStartDate()}e ${mbdDate.getStartMonth()} ${mbdDate.getStartYear()} när dörrarna öppnas till Medias Branschdag! ` + 
-                  `Vår årliga branschdagsmässa hålls för att studenter och företag ska ` + 
-                  `kunna mötas för utbyten - oavsett om det som söks är ett eventuellt ` + 
-                  `sommarjobb eller insikt i vad det egentligen innebär att jobba som  ` +
-                  `medietekniker i praktiken. Branschdagen ger inte bara studenter ett ` + 
-                  `smakprov på vad arbetslivet har att ge, utan bidrar likväl till att ` + 
-                  `företagen får ett smakprov av vad framtida medieteknologer har att  ` +
-                  `bidra med. \n\n` +
-                  `Vi ses på branschdagen i februari!`,
-
-                "en": 
-                  `The student union building Nymble will be filled with inspiration on` +
-                  `the ${mbdDate.getStartDate()}th of ${mbdDate.getStartMonth()} ${mbdDate.getStartYear()} when the doors to Medias Branschdag are ` +
-                  `opened! Our annual job fair is held to connect students with ` +
-                  `companies, whether students might be searching for their future ` +
-                  `employer or just want to see what a career as a Media Technology ` +
-                  `graduate will entail. The job fair not only gives the students ` +
-                  `knowledge of their future, but also serves to show the companies what` +
-                  `future media engineers have to offer.\n\n` +
-                  `We can’t wait to meet you at the fair in February!`
-              })
-            }
-        </MBDDateContext.Consumer>
-        </TextSection>
-      </ContentSection>
-      
-    </div>
-  );
+    );
 }
 
 export default Homepage;

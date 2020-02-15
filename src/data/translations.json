@@ -81,17 +81,9 @@
         "se": "Hej",
         "en": "Hello"
     },
-    "home_welcome_text": {
-        "se": "Inspiration och framtidstro. Det kommer kårhuset Nymble genomsyras av den 4e februari 2020 när dörrarna öppnas till Medias Branschdag! Vår årliga branschdagsmässa hålls för att studenter och företag ska kunna mötas för utbyten - oavsett om det som söks är ett eventuellt sommarjobb eller insikt i vad det egentligen innebär att jobba som medietekniker i praktiken. Branschdagen ger inte bara studenter ett smakprov på vad arbetslivet har att ge, utan bidrar likväl till att företagen får ett smakprov av vad framtida medieteknologer har att bidra med.\n\nVi ses på branschdagen i februari!",
-        "en": "The student union building Nymble will be filled with inspiration on the 4th of February 2020 when the doors to Medias Branschdag are opened! Our annual job fair is held to connect students with companies, whether students might be searching for their future employer or just want to see what a career as a Media Technology graduate will entail. The job fair not only gives the students knowledge of their future, but also serves to show the companies what future media engineers have to offer.\n\nWe can’t wait to meet you at the fair in February!"
-    },
     "are_you_student": {
         "se": "Är du en student?",
         "en": "Are you a student?"
-    },
-    "home_student_info": {
-        "se": "Läs mer om vilka företag som ställer ut på Medias Branschdag 2020. Kanske hittar du din framtida arbetsgivare redan nu.",
-        "en": "Read more about what companies are participating in Medias Branschdag 2020. Maybe you’ll find your future employer there."
     },
     "read_more": {
         "se": "Läs mer",

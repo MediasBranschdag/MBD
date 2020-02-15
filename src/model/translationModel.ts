@@ -1,14 +1,14 @@
 import {setCookie, getCookie} from './cookieModel';
 type TranslationLanguages = 'se' | 'en';
 export type Phrase = {
-    en: string,
-    se: string
+    en: React.ReactNode,
+    se: React.ReactNode
 }
 
 export default class TranslationModel {
     static cookieName = 'activeLanguage';
 
-    static translate(phrase: {se: string, en: string}): string {
+    static translate(phrase: Phrase): React.ReactNode {
         switch (this.getLanguage()) {
             case 'en':
                 return phrase.en;

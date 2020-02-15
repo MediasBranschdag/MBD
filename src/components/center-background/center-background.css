@@ -1,5 +1,11 @@
 .center-background {
+    color: var(--theme-text-bright);
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.center-background-light {
+    color: var(--theme-text-dark);
 }

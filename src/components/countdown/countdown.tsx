@@ -47,7 +47,7 @@ const Countdown: FC<CountdownProps> = (props) => {
     );
 }
 
-const CountdownBlock: FC<{value: number, unit: string}> = (props) => {
+const CountdownBlock: FC<{value: number, unit: React.ReactNode}> = (props) => {
     return (
         <div className="countdown-block-container">
             <div className="countdown-time">
