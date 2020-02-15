@@ -1,5 +1,5 @@
 .section-title-container {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 
     text-align: center;
     font-weight: bold;
@@ -20,13 +20,10 @@
     overflow: hidden;
 }
 
-.section-title-underline-color {
-    position: absolute;
-    width: 300%;
-    height: 200%;
-    left: -100%;
-    top: 0;
-
+.section-title-text {
+    background-position: 0 36px;
+    background-repeat: repeat-x;
+    background-size: 300% 4px;
     background-image: linear-gradient(
         to right, 
         var(--theme-primary-color-normal),
@@ -43,9 +40,9 @@
 
 @keyframes section-title-underline-color-animation {
     0% {
-        left: -200%
+        background-position: 0 35px;
     }
     100% {
-        left: 0%;
+        background-position: 100% 35px;
     }
 }

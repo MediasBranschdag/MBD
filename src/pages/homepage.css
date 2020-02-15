@@ -14,6 +14,14 @@
     row-gap: 25px;
 }
 
+.homepage-social-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    max-width: 250px;
+    margin: auto;
+}
+
 @media screen and (max-width: 700px) {
     .homepage-instagram-section {
         grid-template-columns: repeat(2, auto);

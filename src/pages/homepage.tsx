@@ -7,10 +7,12 @@ import IntroScreenBackground from '../assets/backgrounds/leaf_dark_blur.jpg';
 import StudentInfoBackground from '../assets/backgrounds/purple_chives_blur.jpg';
 import AnimatedMBDLogo from '../components/animated-mbd-logo/animated-mbd-logo';
 import BookIcon from '../assets/icons/other/book.png';
+import FacebookIcon from '../assets/icons/other/facebook.svg';
+import InstagramIcon from '../assets/icons/other/instagram.svg';
 
 import Countdown from '../components/countdown/countdown';
 import MBDDateContext from '../contexts/mbd-date-context';
-import ContentSection, { ContentSectionSize } from '../components/layout/content-section/content-section';
+import ContentSection, { ContentSectionSize, ContentSectionBackground } from '../components/layout/content-section/content-section';
 import TextSection, { TextSectionAlignment } from '../components/text-section/text-section';
 
 import TranslationModel from '../model/translationModel';
@@ -141,9 +143,11 @@ const Homepage: FC = () => {
                 </ContentSection>
             </CenterBackground>
 
-            {/* "Are you a student" section */}
+            {/* Instagram section */}
             <ContentSection>
-                <SectionTitle>Medias branschdag på instagram!</SectionTitle>
+                <SectionTitle>
+                    Medias branschdag {TranslationModel.translate(phrases.on_instagram)?.toString().toLowerCase()}
+                </SectionTitle>
                 <div className="homepage-instagram-section">
                     {instagramPosts.slice(0, 6).map(post => {
                         return <InstagramCard
@@ -153,6 +157,25 @@ const Homepage: FC = () => {
                             likes={post.numberOfLikes}
                         />
                     })}
+                </div>
+            </ContentSection>
+
+            {/* Social media section */}
+            <ContentSection size={ContentSectionSize.small} background={ContentSectionBackground.dark}>
+                <SectionTitle>
+                    {TranslationModel.translate(phrases.follow_social_media)}
+                </SectionTitle>
+                <div className="homepage-social-buttons">
+                    <a href="https://www.facebook.com/mediasbranschdag/">
+                        <Button buttonType={ButtonTypes.bigIcon}>
+                            <img src={FacebookIcon} alt=""/>
+                        </Button>
+                    </a>
+                    <a href="https://www.instagram.com/mediasbranschdag/">
+                        <Button buttonType={ButtonTypes.bigIcon}>
+                            <img src={InstagramIcon} alt=""/>
+                        </Button>
+                    </a>
                 </div>
             </ContentSection>
         </div>

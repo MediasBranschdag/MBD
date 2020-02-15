@@ -11,6 +11,16 @@
     max-width: 600px;
 }
 
+.content-section-background-light {
+    color: var(--theme-text-dark);
+    background-color: var(--theme-light-color-normal);
+}
+
+.content-section-background-dark {
+    color: var(--theme-text-bright);
+    background-color: var(--theme-dark-color-normal);
+}
+
 @media screen and (max-width: 700px) {
     .content-section {
         padding: 50px 20px;

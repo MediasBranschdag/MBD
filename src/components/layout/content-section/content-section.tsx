@@ -6,10 +6,17 @@ export enum ContentSectionSize {
     normal = '',
 }
 
-const ContentSection: FC<{size?: ContentSectionSize}> = (props) => {
+export enum ContentSectionBackground {
+    light = 'content-section-background-light',
+    dark = 'content-section-background-dark',
+}
+
+const ContentSection: FC<{size?: ContentSectionSize, background?: ContentSectionBackground}> = (props) => {
     return (
-        <div className={'content-section ' + props.size}>
-            {props.children}
+        <div className={'content-section-background ' + props.background ?? ''}>
+            <div className={'content-section ' + props.size}>
+                {props.children}
+            </div>
         </div>
     );
 }

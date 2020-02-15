@@ -6,10 +6,9 @@ const SectionTitle: FC = (props) => {
     return (
         <div className='section-title-container'>
             <div className='section-title'>
-                {props.children}
-                <div className='section-title-underline'>
-                    <div className='section-title-underline-color'></div>
-                </div>
+                <span className='section-title-text'>
+                    {props.children}
+                </span>
             </div>
         </div>
     );

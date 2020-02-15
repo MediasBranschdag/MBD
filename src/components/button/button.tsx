@@ -5,7 +5,7 @@ export enum ButtonTypes {
     normal = '',
     normalCompact = 'btn--compact',
     icon = 'btn--icon',
-    bigIcon = 'btn-icon--big'
+    bigIcon = 'btn--icon btn--icon--big'
 }
 
 type ButtonProps = {
