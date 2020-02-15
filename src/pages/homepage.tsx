@@ -142,14 +142,17 @@ const Homepage: FC = () => {
 
             {/* "Are you a student" section */}
             <ContentSection>
-                {instagramPosts.slice(0, 6).map(post => {
-                    return <InstagramCard
-                        key={post.id}
-                        imageUrl={post.imageUrl}
-                        linkToPost={post.linkToPost}
-                        linkes={post.numberOfLikes}
-                    />
-                })}
+                <h1>Medias branschdag på instagram!</h1>
+                <div className="homepage-instagram-section">
+                    {instagramPosts.slice(0, 6).map(post => {
+                        return <InstagramCard
+                            key={post.id}
+                            imageUrl={post.imageUrl}
+                            linkToPost={post.linkToPost}
+                            likes={post.numberOfLikes}
+                        />
+                    })}
+                </div>
             </ContentSection>
         </div>
     );

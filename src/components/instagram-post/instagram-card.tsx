@@ -6,7 +6,7 @@ import HeartIcon from '../../assets/icons/other/heart_white_stroke.svg';
 
 interface InstagramCardProps {
     imageUrl: string,
-    linkes: number,
+    likes: number,
     linkToPost: String,
 }
 
@@ -22,7 +22,9 @@ const InstagramCard: FC<InstagramCardProps> = (props) => {
                         className="instagram-card-heart" 
                         src={HeartIcon} 
                         alt="Heart Icon"/> 
-                    <span className="instagram-card-like-count">49</span>
+                    <span className="instagram-card-like-count">
+                        {props.likes}
+                    </span>
                 </div>
             </div>
         </Card>
