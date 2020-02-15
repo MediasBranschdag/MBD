@@ -9,7 +9,7 @@ export enum ButtonTypes {
 }
 
 type ButtonProps = {
-    buttonType: ButtonTypes,
+    buttonType?: ButtonTypes,
 }
 
 export const Button: FC<ButtonProps> = (props) => {

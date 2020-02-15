@@ -2,10 +2,12 @@ import React, { FC } from 'react';
 import './homepage.css';
 
 import IntroScreen from '../components/intro-screen/intro-screen';
+
 import IntroScreenBackground from '../assets/backgrounds/leaf_dark_blur.jpg';
 import StudentInfoBackground from '../assets/backgrounds/purple_chives_blur.jpg';
-
 import AnimatedMBDLogo from '../components/animated-mbd-logo/animated-mbd-logo';
+import BookIcon from '../assets/icons/other/book.png';
+
 import Countdown from '../components/countdown/countdown';
 import MBDDateContext from '../contexts/mbd-date-context';
 import ContentSection, { ContentSectionSize } from '../components/layout/content-section/content-section';
@@ -16,6 +18,8 @@ import phrases from '../data/translations.json';
 import TextWithContent from '../components/text-with-content/text-with-content';
 import ProfileCard from '../components/profile-card/profile-card';
 import CenterBackground from '../components/center-background/center-background';
+import CircleIcon from '../components/circle-icon/circle-icon';
+import { Button, ButtonTypes } from '../components/button/button';
 
 const Homepage: FC = () => {
     return (
@@ -90,6 +94,9 @@ const Homepage: FC = () => {
             <CenterBackground backgroundURL={StudentInfoBackground}>
                 <ContentSection size={ContentSectionSize.small}>
                     <TextSection align={TextSectionAlignment.center}>
+
+                        <CircleIcon imagePath={BookIcon}/>
+                        <br />
                         <h1>
                             {TranslationModel.translate(phrases.are_you_student)}
                         </h1>
@@ -109,6 +116,11 @@ const Homepage: FC = () => {
                                 })
                             }
                         </MBDDateContext.Consumer>
+                        <br />
+                        <br />
+                        <Button buttonType={ButtonTypes.normalCompact}>
+                            {TranslationModel.translate(phrases.read_more)}
+                        </Button>
                     </TextSection>
                 </ContentSection>
             </CenterBackground>
