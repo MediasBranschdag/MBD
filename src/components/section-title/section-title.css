@@ -1,0 +1,51 @@
+.section-title-container {
+    margin-bottom: 25px;
+
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.section-title {
+    display: inline-block;
+    margin: auto;
+}
+
+.section-title-underline {
+    position: relative;
+    height: 4px;
+    width: 100%;
+    margin-top: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.section-title-underline-color {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    left: -100%;
+    top: 0;
+
+    background-image: linear-gradient(
+        to right, 
+        var(--theme-primary-color-normal) , 
+        #ffff00
+    );
+
+    animation-name: section-title-underline-color-animation;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes section-title-underline-color-animation {
+    0% {
+        left: -100%
+    }
+    50% {
+        left: 0%;
+    }
+    100% {
+        left: -100%;
+    }
+}

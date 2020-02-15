@@ -22,6 +22,7 @@ import CircleIcon from '../components/circle-icon/circle-icon';
 import { Button, ButtonTypes } from '../components/button/button';
 import { InstagramModel, InstagramPost } from '../model/instagramModel';
 import InstagramCard from '../components/instagram-post/instagram-card';
+import SectionTitle from '../components/section-title/section-title';
 
 const Homepage: FC = () => {
 
@@ -142,7 +143,7 @@ const Homepage: FC = () => {
 
             {/* "Are you a student" section */}
             <ContentSection>
-                <h1>Medias branschdag på instagram!</h1>
+                <SectionTitle>Medias branschdag på instagram!</SectionTitle>
                 <div className="homepage-instagram-section">
                     {instagramPosts.slice(0, 6).map(post => {
                         return <InstagramCard
