@@ -27,7 +27,7 @@
 .btn:hover {
     transition: all 0.2s ease 0s;
     color: #222;
-    background-color: var(--theme-primary-color-normal);
+    background-color: var(--theme-primary-color-light);
     box-shadow: 0px 8px 20px rgba(255, 229, 49, 0.4);
     transform: translateY(-3px);
 }
