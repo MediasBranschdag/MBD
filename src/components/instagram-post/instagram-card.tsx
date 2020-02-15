@@ -7,27 +7,29 @@ import HeartIcon from '../../assets/icons/other/heart_white_stroke.svg';
 interface InstagramCardProps {
     imageUrl: string,
     likes: number,
-    linkToPost: String,
+    linkToPost: string,
 }
 
 const InstagramCard: FC<InstagramCardProps> = (props) => {
     return (
-        <Card>
-            <div className='instagram-card'>
-                <div 
-                    style={{backgroundImage: `url('${props.imageUrl}')`}} 
-                    className='instagram-card-image'></div>
-                <div className="instagram-card-like-container">
-                    <img 
-                        className="instagram-card-heart" 
-                        src={HeartIcon} 
-                        alt="Heart Icon"/> 
-                    <span className="instagram-card-like-count">
-                        {props.likes}
-                    </span>
+        <a target="_blank" href={props.linkToPost}>
+            <Card isClickable={true}>
+                <div className='instagram-card'>
+                    <div 
+                        style={{backgroundImage: `url('${props.imageUrl}')`}} 
+                        className='instagram-card-image'></div>
+                    <div className="instagram-card-like-container">
+                        <img 
+                            className="instagram-card-heart" 
+                            src={HeartIcon} 
+                            alt="Heart Icon"/> 
+                        <span className="instagram-card-like-count">
+                            {props.likes}
+                        </span>
+                    </div>
                 </div>
-            </div>
-        </Card>
+            </Card>
+        </a>
     );
 }
 

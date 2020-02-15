@@ -2,9 +2,15 @@ import React, { FC } from 'react';
 import './card.css';
 
 
-const Card: FC<{}> = (props) => {
+
+const Card: FC<{isClickable?: boolean}> = (props) => {
+    let className = 'card ';
+    if (props.isClickable) {
+        className += 'card--clickable ';
+    }
+
     return (
-        <div className='card'>
+        <div className={className}>
             {props.children}
         </div>
     );
