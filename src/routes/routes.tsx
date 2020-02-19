@@ -8,13 +8,11 @@ class Route {
     path: string;
     name: Phrase;
     component: React.ComponentType;
-    showFooter: boolean;
 
-    constructor(path: string, name: Phrase, component: React.ComponentType, showFooter: boolean = true) {
+    constructor(path: string, name: Phrase, component: React.ComponentType) {
         this.path = path;
         this.name = name;
         this.component = component;
-        this.showFooter = showFooter;
     }
 }
 
@@ -22,7 +20,7 @@ const Routes = {
     homePage: new Route('/', phrases.start, Homepage),
     compnayPage: new Route('/company', phrases.for_companies, Companypage),
     studentPage: new Route('/student', phrases.for_students, Companypage),
-    mapPage: new Route('/map', phrases.map, Companypage, false),
+    mapPage: new Route('/map', phrases.map, Companypage),
     contactPage: new Route('/contact', phrases.contact, Companypage),
     eventPage: new Route('/event', phrases.events, Companypage),
 };
