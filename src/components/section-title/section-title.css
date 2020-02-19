@@ -21,7 +21,9 @@
 }
 
 .section-title-text {
-    background-position: 0 36px;
+    line-height: 1.5;
+    background-position: 0 45px;
+    padding-bottom: 15px;
     background-repeat: repeat-x;
     background-size: 300% 4px;
     background-image: linear-gradient(
@@ -33,16 +35,16 @@
     );
 
     animation-name: section-title-underline-color-animation;
-    animation-duration: 4s;
+    animation-duration: 3s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
 
 @keyframes section-title-underline-color-animation {
     0% {
-        background-position: 0 35px;
+        background-position-x: 0;
     }
     100% {
-        background-position: 100% 35px;
+        background-position-x: 100%;
     }
 }
