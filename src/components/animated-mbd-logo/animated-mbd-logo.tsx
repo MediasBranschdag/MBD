@@ -4,7 +4,7 @@ import { Line, LineType } from '../lines/line';
 
 import CalendarIcon from '../../assets/icons/other/calendar_white.svg';
 import MapIcon from '../../assets/icons/other/map_location_white.svg';
-import MBDDateContext from '../../contexts/mbd-date-context';
+import { MBDDateContext } from '../../contexts/mbd-date-provider';
 
 const AnimatedMBDLogo: FC = () => {
     const logoParts = 3;

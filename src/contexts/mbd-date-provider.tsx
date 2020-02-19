@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
-import MBDDateContext from './mbd-date-context';
 import MBDDate, {getNextExhibitDate} from '../model/MBDDate';
+
+export const MBDDateContext = React.createContext(new MBDDate());
 
 const MBDDateProvider: FC = (props) => {
   const [mbdDate, setMbdDate] = useState(

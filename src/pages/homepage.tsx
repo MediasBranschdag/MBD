@@ -11,7 +11,7 @@ import FacebookIcon from '../assets/icons/other/facebook.svg';
 import InstagramIcon from '../assets/icons/other/instagram.svg';
 
 import Countdown from '../components/countdown/countdown';
-import MBDDateContext from '../contexts/mbd-date-context';
+import { MBDDateContext } from '../contexts/mbd-date-provider';
 import ContentSection, { ContentSectionSize, ContentSectionBackground } from '../components/layout/content-section/content-section';
 import TextSection, { TextSectionAlignment } from '../components/text-section/text-section';
 
@@ -25,6 +25,7 @@ import { Button, ButtonTypes } from '../components/button/button';
 import { InstagramModel, InstagramPost } from '../model/instagramModel';
 import InstagramCard from '../components/instagram-post/instagram-card';
 import SectionTitle from '../components/section-title/section-title';
+import Footer from '../components/footer/fotter';
 
 const Homepage: FC = () => {
 
@@ -178,6 +179,7 @@ const Homepage: FC = () => {
                     </a>
                 </div>
             </ContentSection>
+            <Footer/>
         </div>
     );
 }

@@ -1,0 +1,27 @@
+.company-logo-list {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    justify-content: center;
+    column-gap: 50px;
+    row-gap: 25px;
+    align-items: center;
+}
+
+.company-logo-item {
+    cursor: pointer;
+    text-align: center;
+}
+
+.company-logo-item img{
+    height: auto;
+    max-height: 55px;
+    max-width: 100%;
+}
+
+@media screen and (max-width: 700px) {
+    .company-logo-list {
+        grid-template-columns: repeat(3, auto);
+        column-gap: 25px;
+        row-gap: 25px;
+    }
+}
