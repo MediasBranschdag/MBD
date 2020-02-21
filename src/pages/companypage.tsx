@@ -84,7 +84,8 @@ const Companypage = () => {
                                             Vi medietekniker är speciellt bra på att kommunicera mellan teknik- och 
                                             business-avdelningen. Medietekniker har en bred bas and oändligt med möjligheter 
                                             inom teknik-sektorn. Alla de här studenterna, kommer att vara på vår branschdag 
-                                            den 4e februari 2020, där vi vill att ni deltar. Att synas på Medias Branschdag 
+                                            den <b>{mbdDate.getStartDate()}e {mbdDate.getStartMonth()} {mbdDate.getStartYear()}</b>, 
+                                            där vi vill att ni deltar. Att synas på Medias Branschdag 
                                             är en otroligt bra möjlighet för er att marknadsföra ert företag och för oss 
                                             studenter är branschdagen ett uppskattat tillfälle kunna nätverka med morgondagens 
                                             arbetsgivare. Medias branschdag är årets bästa tillfälle för er att visa upp er 
@@ -101,7 +102,8 @@ const Companypage = () => {
                                             leaders within the IT sector and lovers of management. We are especially good at 
                                             communicating between different departments such as the tech and business. Media 
                                             Technology students have a diverse foundation and endless of possibilities within 
-                                            the tech sector. These students will be present at our job fair the 4th of February 2020, 
+                                            the tech sector. These students will be present at our job fair the 
+                                            <b>{mbdDate.getStartDate()}th {mbdDate.getStartMonth()} {mbdDate.getStartYear()}, </b>
                                             and we want you to join them. To be seen at Medias Branschdag is a terrific opportunity 
                                             to promote your company to them. For us students, it is a much appreciated occasion to 
                                             network with future employers. Medias Branschdag is simply the best way for you to 
