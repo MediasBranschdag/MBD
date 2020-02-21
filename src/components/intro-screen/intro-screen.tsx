@@ -6,7 +6,7 @@ import {Button, ButtonTypes} from '../../components/button/button';
 import ArrowDownIcon from '../../assets/icons/arrows/down_black.svg';
 import IntroScreenTitle from './intro-screen-title/intro-screen-title';
 
-import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import { animateScroll as scroll } from 'react-scroll'
 
 type IntroScreenProps = {
     backgroundImage: string
