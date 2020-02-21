@@ -32,6 +32,8 @@ const Homepage: FC = () => {
     const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
     
     useEffect(() => {
+        window.scrollTo(0, 0);
+
         // Should only be loaded once
         InstagramModel.getInstagramImages().then(posts => {
             setInstagramPosts(posts);

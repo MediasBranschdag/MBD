@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Footer from '../components/footer/fotter';
 import IntroScreen from '../components/intro-screen/intro-screen';
 
@@ -14,6 +14,11 @@ import ProfileIcon from '../assets/icons/other/profileIcon_black.svg';
 import QuestionIcon from '../assets/icons/other/question_mark_black.svg';
 
 const Companypage = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className="companypage">
             <IntroScreen 
