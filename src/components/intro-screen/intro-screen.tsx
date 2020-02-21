@@ -6,6 +6,8 @@ import {Button, ButtonTypes} from '../../components/button/button';
 import ArrowDownIcon from '../../assets/icons/arrows/down_black.svg';
 import IntroScreenTitle from './intro-screen-title/intro-screen-title';
 
+import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+
 type IntroScreenProps = {
     backgroundImage: string
     title?: React.ReactNode
@@ -29,7 +31,7 @@ const IntroScreen: FC<IntroScreenProps> = (props) => {
             </div>
 
             <div className="intro-screen-scroll-button">
-                <Button buttonType={ButtonTypes.icon}>
+                <Button onClick={() => scroll.scrollTo(window.innerHeight - 66)} buttonType={ButtonTypes.icon}>
                     <img src={ArrowDownIcon} alt="Down"/>
                 </Button>
             </div>
