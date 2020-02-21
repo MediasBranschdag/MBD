@@ -20,7 +20,7 @@ export default class CompanyModel {
         return fetch(BACKEND_PATH + 'companyMC.php?action=current-year-involvement')
         .then(r => r.json())
         .then(parsedResponsed => {
-            if (parsedResponsed == false) {
+            if (parsedResponsed === false) {
                 return [];
             }
             return parsedResponsed.map((company: any) => {

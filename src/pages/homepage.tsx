@@ -32,13 +32,10 @@ const Homepage: FC = () => {
     const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
     
     useEffect(() => {
-
         // Should only be loaded once
-        if(instagramPosts.length === 0) {
-            InstagramModel.getInstagramImages().then(posts => {
-                setInstagramPosts(posts);
-            });
-        }
+        InstagramModel.getInstagramImages().then(posts => {
+            setInstagramPosts(posts);
+        });
     }, []);
 
     return (

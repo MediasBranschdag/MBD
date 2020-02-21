@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import './footer.css';
 import CompanyLogoList from '../company-logo-list/company-logo-list';
 import { MBDCompanyContext } from '../../contexts/mbd-company-provider';

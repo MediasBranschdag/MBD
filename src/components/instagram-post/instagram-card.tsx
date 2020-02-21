@@ -12,7 +12,7 @@ interface InstagramCardProps {
 
 const InstagramCard: FC<InstagramCardProps> = (props) => {
     return (
-        <a target="_blank" href={props.linkToPost}>
+        <a target="_blank" rel="noopener noreferrer" href={props.linkToPost}>
             <Card isClickable={true}>
                 <div className='instagram-card'>
                     <div 
