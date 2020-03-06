@@ -165,17 +165,9 @@
         "se": "Två sittningsbiljetter till era representanter",
         "en": "Two dinner party tickets for company "
     },
-    "package_contact": {
-        "se": "Kontakta oss gärna för anmälan, frågor eller information om våra andra paket!",
-        "en": "Contact us to apply, ask a question or get information about our other packages!"
-    },
     "to_contacts": {
         "se": "Till kontakt",
         "en": "To contacts"
-    },
-    "company_fair_description": {
-        "se": "Mässan startar den 4e februari 2020 och innehåller en heldag spännande företag. Vi kommer att hålla till i THS kårhus, Nymble, som ligger på Drottning Kristinas väg 15 vid Kungliga Tekniska Högskolan.\n\nUnder dagen är mässan öppen för alla studenter på KTH, men vi riktar oss särskilt mot medieteknikstudenter då dessa har ett brett intresse för design, programmering, och entreprenörskap. Ett perfekt tillfälle för ditt företag att hitta studenter för framtiden!\n\nDagen avslutas med en stor sittning där era företagsrepresentanter har möjlighet att komma och äta och mingla med våra studenter i en mer avslappnad miljö.",
-        "en": "The job fair starts the 4th of February 2020 and consists of a whole day of exciting companies happy to network with students. It is held in THS Student Union building, Nymble, that is located at Drottnings Kristinas väg 15 at KTH.\n\nDuring the day the fair is open to all students at KTH, but is specifically targeted at Media Technology students since these have a great interest in design, programming and entrepreneurship. A perfect occasion for your company to find your future employees!\n\nAt the end of the day a big dinner party is held where your company representatives can attend and network with our students in a more relaxed setting."
     },
     "when": {
         "se": "När",

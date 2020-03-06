@@ -1,0 +1,22 @@
+.offer-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    justify-items: stretch;
+
+    height: 125px;
+    width: auto;
+    padding: 15px;
+
+    background-image: linear-gradient(var(--theme-primary-color-normal), var(--theme-primary-color-light));
+    color: var(--theme-text-dark);
+    
+    font-weight: bold;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.offer-card img {
+    height: 50px;
+}
