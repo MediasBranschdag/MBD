@@ -10,6 +10,7 @@ interface ProfileCardProps {
     name: string,
     roll: React.ReactNode,
     email?: string,
+    linkedinLink?: string
 }
 
 const ProfileCard: FC<ProfileCardProps> = (props) => {
@@ -29,9 +30,18 @@ const ProfileCard: FC<ProfileCardProps> = (props) => {
                                 {
                                     props.email
                                     ? <a 
-                                        className="profile-info-link mail-link" 
-                                        href={`mailto:${props.email}`}>
+                                    className="profile-info-link mail-link" 
+                                    href={`mailto:${props.email}`}>
                                         <img src={MailIcon} alt=""/>
+                                    </a>
+                                    : <></>
+                                }
+                                {
+                                    props.linkedinLink
+                                    ? <a 
+                                        className="profile-info-link linkedin-link" 
+                                        href={`${props.linkedinLink}`}>
+                                        <img src={LinkedinIcon} alt=""/>
                                     </a>
                                     : <></>
                                 }

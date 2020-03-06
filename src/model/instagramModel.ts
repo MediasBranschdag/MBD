@@ -28,6 +28,9 @@ export class InstagramModel {
                     post.likes.count,
                     post.link
                 );
-            }));
+            }))
+            .catch(r => {
+                
+            });
     };
 }

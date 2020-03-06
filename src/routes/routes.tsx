@@ -3,6 +3,7 @@ import Homepage from '../pages/home-page/homepage';
 import Companypage from '../pages/company-page/companypage';
 import phrases from '../data/translations.json';
 import { Phrase } from '../model/translationModel';
+import Contactpage from '../pages/contact-page/contact-page';
 
 class Route {
     path: string;
@@ -21,7 +22,7 @@ const Routes = {
     compnayPage: new Route('/company', phrases.for_companies, Companypage),
     studentPage: new Route('/student', phrases.for_students, Companypage),
     mapPage: new Route('/map', phrases.map, Companypage),
-    contactPage: new Route('/contact', phrases.contact, Companypage),
+    contactPage: new Route('/contact', phrases.contact, Contactpage),
     eventPage: new Route('/event', phrases.events, Companypage),
 };
 

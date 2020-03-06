@@ -9,7 +9,7 @@ import IntroScreenTitle from './intro-screen-title/intro-screen-title';
 import { animateScroll as scroll } from 'react-scroll'
 
 type IntroScreenProps = {
-    backgroundImage: string
+    backgroundImage?: string
     title?: React.ReactNode
 }
 
@@ -17,7 +17,10 @@ const IntroScreen: FC<IntroScreenProps> = (props) => {
 
     return (
         <div style={{
-            backgroundImage: `url("${props.backgroundImage}")`
+            backgroundImage: 
+                props.backgroundImage 
+                    ? `url("${props.backgroundImage}")`
+                    : "none"
         }} className="intro-screen">
 
             {
