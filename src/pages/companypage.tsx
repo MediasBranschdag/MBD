@@ -27,12 +27,14 @@ import PackageFlowerBackground from '../assets/backgrounds/blue_flower_dark_blur
 import MapBackground from '../assets/backgrounds/map_nymble.jpg';
 import Card from '../components/card/card';
 import { ContentPadding } from '../components/content-padding';
+import { getAllTeamMemebers, getSalesTeamMemebers } from '../model/teamModel';
 
 
 const Companypage = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        getSalesTeamMemebers().then(console.log);
     }, []);
 
     return (
