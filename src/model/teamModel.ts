@@ -3,8 +3,10 @@ import BACKEND_PATH from "../backend-environment";
 export class TeamMember {
     constructor(
         public name: string,
-        public position_se: string,
-        public position_en: string,
+        public position: {
+            se: string,
+            en: string
+        },
         public imagePath: string,
         public email: string,
         public linkedInURL: string
@@ -13,9 +15,11 @@ export class TeamMember {
     public static memberFromJSON(json: any): TeamMember {
         return new TeamMember(
             json.name,
-            json.position_se,
-            json.position_en,
-            json.image,
+            {
+                se: json.position_se,
+                en: json.position_en
+            },
+            '/assets/team/' + json.image,
             json.email,
             json.linkedin
         );

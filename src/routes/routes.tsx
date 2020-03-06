@@ -1,6 +1,6 @@
 import React from 'react';
 import Homepage from '../pages/homepage';
-import Companypage from '../pages/companypage';
+import Companypage from '../pages/company-page/companypage';
 import phrases from '../data/translations.json';
 import { Phrase } from '../model/translationModel';
 

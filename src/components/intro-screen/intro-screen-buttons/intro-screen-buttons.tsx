@@ -8,7 +8,7 @@ type IntroScreenButtonsProps = {
     buttons: {
         title: React.ReactNode,
         iconPath: string,
-        idRef: string
+        scrollTargetID: string
     }[]
 }
 
@@ -17,8 +17,8 @@ const IntroScreenButtons: FC<IntroScreenButtonsProps> = (props) => {
     return (
         <div className="intro-screen-button-container">
             {props.buttons.map(buttonProps => {
-                return <div key={buttonProps.idRef} className="intro-screen-button-item">
-                    <Link offset={-66} to={buttonProps.idRef} spy={true} smooth={true} duration={500}>
+                return <div key={buttonProps.scrollTargetID} className="intro-screen-button-item">
+                    <Link offset={-66} to={buttonProps.scrollTargetID} spy={true} smooth={true} duration={500}>
                         <ButtonBackgroundIcon iconPath={buttonProps.iconPath}>
                             {buttonProps.title}
                         </ButtonBackgroundIcon>

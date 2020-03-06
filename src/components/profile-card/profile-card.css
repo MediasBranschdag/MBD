@@ -47,14 +47,14 @@
     font-size: 15px;
 }
 
-.profile-info__link-container {
+.profile-info-link-container {
     position: absolute;
     right: 0;
     top: 0;
     bottom: 0;
 }
 
-.profile-info__link {
+.profile-info-link {
     display: flex;
     align-items: center;
     justify-content: center;

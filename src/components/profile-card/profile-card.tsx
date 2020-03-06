@@ -2,8 +2,17 @@ import React, { FC } from 'react';
 import './profile-card.css';
 import Card from '../card/card';
 
+import MailIcon from '../../assets/icons/other/mail-white-material.svg';
+import LinkedinIcon from '../../assets/icons/other/linkedin.png';
 
-const ProfileCard: FC<{imagePath: string, name: string, roll: string}> = (props) => {
+interface ProfileCardProps {
+    imagePath: string,
+    name: string,
+    roll: React.ReactNode,
+    email?: string,
+}
+
+const ProfileCard: FC<ProfileCardProps> = (props) => {
     return (
         <Card>
             <div className='profile-card'>
@@ -15,6 +24,17 @@ const ProfileCard: FC<{imagePath: string, name: string, roll: string}> = (props)
                             </div>
                             <div className="profile-card-roll">
                                 {props.roll}
+                            </div>
+                            <div className="profile-info-link-container">
+                                {
+                                    props.email
+                                    ? <a 
+                                        className="profile-info-link mail-link" 
+                                        href={`mailto:${props.email}`}>
+                                        <img src={MailIcon} alt=""/>
+                                    </a>
+                                    : <></>
+                                }
                             </div>
                         </div>
                     </div>    
