@@ -1,5 +1,5 @@
 import React from 'react';
-import Homepage from '../pages/homepage';
+import Homepage from '../pages/home-page/homepage';
 import Companypage from '../pages/company-page/companypage';
 import phrases from '../data/translations.json';
 import { Phrase } from '../model/translationModel';

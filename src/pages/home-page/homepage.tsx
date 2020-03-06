@@ -1,31 +1,31 @@
 import React, { FC, useEffect, useState } from 'react';
 import './homepage.css';
 
-import IntroScreen from '../components/intro-screen/intro-screen';
+import IntroScreen from '../../components/intro-screen/intro-screen';
 
-import IntroScreenBackground from '../assets/backgrounds/leaf_dark_blur.jpg';
-import StudentInfoBackground from '../assets/backgrounds/purple_chives_blur.jpg';
-import AnimatedMBDLogo from '../components/animated-mbd-logo/animated-mbd-logo';
-import BookIcon from '../assets/icons/other/book.png';
-import FacebookIcon from '../assets/icons/other/facebook.svg';
-import InstagramIcon from '../assets/icons/other/instagram.svg';
+import IntroScreenBackground from '../../assets/backgrounds/leaf_dark_blur.jpg';
+import StudentInfoBackground from '../../assets/backgrounds/purple_chives_blur.jpg';
+import AnimatedMBDLogo from '../../components/animated-mbd-logo/animated-mbd-logo';
+import BookIcon from '../../assets/icons/other/book.png';
+import FacebookIcon from '../../assets/icons/other/facebook.svg';
+import InstagramIcon from '../../assets/icons/other/instagram.svg';
 
-import Countdown from '../components/countdown/countdown';
-import { MBDDateContext } from '../contexts/mbd-date-provider';
-import ContentSection, { ContentSectionSize, ContentSectionBackground } from '../components/layout/content-section/content-section';
-import TextSection, { TextSectionAlignment } from '../components/text-section/text-section';
+import Countdown from '../../components/countdown/countdown';
+import { MBDDateContext } from '../../contexts/mbd-date-provider';
+import ContentSection, { ContentSectionSize, ContentSectionBackground } from '../../components/layout/content-section/content-section';
+import TextSection, { TextSectionAlignment } from '../../components/text-section/text-section';
 
-import TranslationModel from '../model/translationModel';
-import phrases from '../data/translations.json';
-import TextWithContent from '../components/text-with-content/text-with-content';
-import ProfileCard from '../components/profile-card/profile-card';
-import CenterBackground from '../components/center-background/center-background';
-import CircleIcon from '../components/circle-icon/circle-icon';
-import { Button, ButtonTypes } from '../components/button/button';
-import { InstagramModel, InstagramPost } from '../model/instagramModel';
-import InstagramCard from '../components/instagram-post/instagram-card';
-import SectionTitle from '../components/section-title/section-title';
-import Footer from '../components/footer/fotter';
+import TranslationModel from '../../model/translationModel';
+import phrases from '../../data/translations.json';
+import TextWithContent from '../../components/text-with-content/text-with-content';
+import ProfileCard from '../../components/profile-card/profile-card';
+import CenterBackground from '../../components/center-background/center-background';
+import CircleIcon from '../../components/circle-icon/circle-icon';
+import { Button, ButtonTypes } from '../../components/button/button';
+import { InstagramModel, InstagramPost } from '../../model/instagramModel';
+import InstagramCard from '../../components/instagram-post/instagram-card';
+import SectionTitle from '../../components/section-title/section-title';
+import Footer from '../../components/footer/fotter';
 
 const Homepage: FC = () => {
 
