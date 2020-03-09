@@ -8,7 +8,7 @@ export type Phrase = {
 export default class TranslationModel {
     static cookieName = 'activeLanguage';
 
-    static translate(phrase: Phrase): React.ReactNode {
+    static translate(phrase: Phrase): React.ReactNode | string {
         switch (this.getLanguage()) {
             case 'en':
                 return phrase.en;

@@ -18,3 +18,15 @@
         font-size: 35px;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .intro-screen-title {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .intro-screen-title {
+        font-size: 25px;
+    }
+}

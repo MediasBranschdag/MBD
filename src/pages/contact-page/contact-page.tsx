@@ -8,9 +8,13 @@ import Footer from '../../components/footer/fotter';
 import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';
 import { url } from 'inspector';
-import ContentSection from '../../components/layout/content-section/content-section';
+import ContentSection, { ContentSectionBackground } from '../../components/layout/content-section/content-section';
 import { TeamMember, getAllTeamMemebers } from '../../model/teamModel';
 import ProfileCard from '../../components/profile-card/profile-card';
+import TextSection from '../../components/text-section/text-section';
+import { InputInfo } from '../../components/input-info/input-info';
+import { Button, ButtonTypes } from '../../components/button/button';
+import ContactForm from '../company-page/contact-form/contact-form';
 
 const Contactpage: FC = () => {
 
@@ -24,7 +28,7 @@ const Contactpage: FC = () => {
     return (
         <div className="contactpage">
 
-            {/* Logo and countdown */}
+            {/* Image on PG */}
             <IntroScreen 
                 title={TranslationModel.translate(phrases.the_project_group)}>
                 <div
@@ -32,6 +36,7 @@ const Contactpage: FC = () => {
                     className="contactpage-background"></div>
             </IntroScreen>
 
+            {/* List of every memeber in PG */}
             <ContentSection>
                 <div className="contactpage-pg-members">
                     {pgMembers.map(member => {
@@ -44,6 +49,16 @@ const Contactpage: FC = () => {
                             roll={TranslationModel.translate(member.position)}/>
                     })}
                 </div>
+            </ContentSection>
+
+            {/* Contact form*/}
+            <ContentSection background={ContentSectionBackground.dark}>
+                <TextSection>
+                    <h1>
+                        {TranslationModel.translate(phrases.contact_us)}!
+                    </h1>
+                    <ContactForm/>
+                </TextSection>
             </ContentSection>
 
             <Footer/>

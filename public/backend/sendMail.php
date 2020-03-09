@@ -1,4 +1,6 @@
 <?php
+    include_once "devConfig.php";
+
     $mailContent = json_decode($_GET["mailContent"], TRUE);
 
     $to = "branschdag@medieteknik.com";
@@ -12,11 +14,9 @@
     . "Meddelande:" . "\n" . $mailContent['message'];
 
     $headers = "From: notifikation@branschdag.com";
-
 	if( mail($to,$subject,$message,$headers) ){
         echo true;
     }
     else{
-        echo false;
+        throw new Exception('Could not send mail');
     }
-?>

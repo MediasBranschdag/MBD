@@ -49,6 +49,10 @@
             "se": "December"
         }
     },
+    "loading": {
+        "se": "Laddar",
+        "en": "Loading"
+    },
     "start": {
         "se": "Start",
         "en": "Start"
