@@ -4,8 +4,8 @@ export class Company {
     constructor(
         public id: string,
         public name: string,
-        public description_se: string,
-        public description_en: string,
+        private description_se: string,
+        private description_en: string,
         public logo_path: string,
         public url: string,
     
@@ -13,6 +13,17 @@ export class Company {
         public isExhibitor: boolean,
         public isMainSponsor: boolean,
     ) {}
+
+    public getDescription(): {se: string, en: string} {
+        return {
+            se: this.description_se === null || this.description_se === "" 
+                ? this.description_en
+                : this.description_se,
+            en: this.description_en === null || this.description_en  === "" 
+                ? this.description_se
+                : this.description_en
+        }
+    }
 }
 
 export default class CompanyModel {
