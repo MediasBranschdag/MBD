@@ -11,11 +11,14 @@ export enum ButtonTypes {
 type ButtonProps = {
     onClick?: Function,
     buttonType?: ButtonTypes,
+    className?: string,
 }
 
 export const Button: FC<ButtonProps> = (props) => {
     return (
-        <div onClick={() => props.onClick === undefined ? {} : props.onClick()} className={`btn ${props.buttonType}`}>
+        <div 
+            onClick={() => props.onClick === undefined ? {} : props.onClick()} 
+            className={`btn ${props.buttonType ?? ''} ${props.className ?? ''}`}>
             {props.children}
         </div>
     );
