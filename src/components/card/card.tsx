@@ -3,8 +3,8 @@ import './card.css';
 
 
 
-const Card: FC<{isClickable?: boolean}> = (props) => {
-    let className = 'card ';
+const Card: FC<{isClickable?: boolean, className?: string}> = (props) => {
+    let className = `card ${props.className ?? ""} `;
     if (props.isClickable) {
         className += 'card--clickable ';
     }
