@@ -1,7 +1,5 @@
 # Medias branschdag
-
 ## Development
-
 ### Start local development
 #### Requirements
 You need to have have the following installed in order to run the website locally:
