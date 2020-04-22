@@ -4,6 +4,7 @@
 
 .company-card {
     height: 80px;
+    width: 100%;
     padding: 20px;
     box-sizing: border-box;
 

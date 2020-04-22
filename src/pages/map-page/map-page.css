@@ -1,0 +1,47 @@
+.map-page {
+    height: calc(100vh - var(--shared-navbar-height));
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.map-page-company-list-container {
+    min-width: 250px;
+    max-width: 250px;
+    height: 100%;
+    background-color: var(--theme-light-color-dark);
+}
+.map-page-company-list {
+    height: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.map-page-company-list-end {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.map-page-blur-print-container {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.map-page-blur-print {
+    background-color: var(--theme-light-color-normal);
+    height: 100%;
+    width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+    .map-page-company-list-container {
+        display: none;
+    }
+}

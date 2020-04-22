@@ -1,0 +1,99 @@
+.map-marker-container {
+    transform: translateY(-100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.marker-dot {
+    width: 5px;
+    height: 5px;
+    margin: auto;
+    border-radius: 100%;
+    border: 3px solid #ffd521;
+
+    transform: translateY(100%);
+}
+
+.map-marker {
+    position: relative;
+    height: 35px;
+    width: 35px;
+    z-index: 1;
+
+    border: 3px solid #ffd521;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    text-align: center;
+
+    border-radius: 20px 20px 0 20px;
+
+    background-color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
+    opacity: 0.9;
+
+    transform: rotate(45deg);
+}
+.map-marker.active,
+.map-marker:hover{ 
+    z-index: 2;
+    background-color: #ffd521;
+    color: #fff;
+    opacity: 1;
+}
+
+.map-marker-content {
+    transform: rotate(-45deg);
+}
+
+.map-marker-info-bubble {
+    opacity: 0;
+
+    position: absolute;
+    bottom: 135%;
+    height: 50px;
+    width: 100px;
+    left: 50%;
+    transform: translate(-50px, 10%);
+
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 15px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+    transition: opacity .2s ease, transform 0.5s ease;
+    pointer-events: none;
+}
+.map-marker.active .map-marker-info-bubble,
+.map-marker:hover .map-marker-info-bubble {
+    opacity: 1;
+    transition: opacity .3s ease, transform 0.3s ease;
+    transform: translate(-50px, -20%);
+    pointer-events: all;
+}
+
+.map-marker-info-bubble:after {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(136, 183, 213, 0);
+	border-top-color: #fff;
+	border-width: 5px;
+	margin-left: -5px;
+}

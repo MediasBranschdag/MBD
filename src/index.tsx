@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './theme/colors.css';
 import './theme/shapes.css';
+import './theme/shared.css';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';

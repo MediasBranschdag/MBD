@@ -8,6 +8,9 @@ export class Company {
         private description_en: string,
         public logo_path: string,
         public url: string,
+
+        public mapXPos: number,
+        public mapYPos: number,
     
         public isSponsor: boolean,
         public isExhibitor: boolean,
@@ -27,14 +30,14 @@ export class Company {
 }
 
 export default class CompanyModel {
-    static getCurrentYearExhibitors(): Promise<Array<Company>> {
+    static getCurrentYearInvolvement(): Promise<Array<Company>> {
         return fetch(BACKEND_PATH + 'companyMC.php?action=current-year-involvement')
         .then(r => r.json())
-        .then(parsedResponsed => {
-            if (parsedResponsed === false) {
+        .then(parsedResponse => {
+            if (parsedResponse === false) {
                 return [];
             }
-            return parsedResponsed.map((company: any) => {
+            return parsedResponse.map((company: any) => {
                 return new Company(
                     company.id,
                     company.name,
@@ -42,6 +45,8 @@ export default class CompanyModel {
                     company.description_en,
                     company.logo,
                     company.website,
+                    company.mapPositionX,
+                    company.mapPositionY,
                     company.isSponsor === '1',
                     company.isExhibitor === '1',
                     company.isMainSponsor === '1'

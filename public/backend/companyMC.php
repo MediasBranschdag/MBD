@@ -76,14 +76,8 @@ class CompanyModel extends DatabaseModel {
      */
     private function getCompanies($year) {
         return $this->dbSelectAllSimple(
-            'SELECT 
-                companies.*,
-                ci.isSponsor, ci.isExhibitor, ci.isMainSponsor,
-                ci.seekingDescription_en, ci.seekingDescription_se
-            FROM companies
-            LEFT JOIN company_involvement AS ci 
-                ON ci.companyID = companies.ID
-            WHERE ci.year = ' . $year
+            $this->getExhibitorSQLString() .
+            'WHERE ci.year = ' . $year
         );
     }
 

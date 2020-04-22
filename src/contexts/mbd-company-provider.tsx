@@ -10,7 +10,7 @@ const defaultValue: CompanyInvolment = {
 
 export const MBDCompanyContext = React.createContext<CompanyInvolment>(defaultValue);
 
-interface CompanyInvolment {
+export interface CompanyInvolment {
   all: Array<Company>
   isExhibitor: Array<Company>,
   isSponsor: Array<Company>,
@@ -21,7 +21,7 @@ const MBDCompanyProvider: FC = (props) => {
   const [companies, setCompanies] = useState<CompanyInvolment>(defaultValue);
 
   useEffect(() => {
-    CompanyModel.getCurrentYearExhibitors().then(companies => {
+    CompanyModel.getCurrentYearInvolvement().then(companies => {
         setCompanies({
           all: companies,
           isExhibitor: companies.filter(company => company.isExhibitor),
