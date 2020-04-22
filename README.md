@@ -3,14 +3,18 @@
 ### Start local development
 #### Requirements
 You need to have have the following installed in order to run the website locally:
-* **Docker** 
-  Windows Home you can test WSL: https://www.docker.com/blog/docker-desktop-for-windows-home-is-here/ or Toolbox
+* **Docker**  
+  For Windows Home users: You can test WSL: https://www.docker.com/blog/docker-desktop-for-windows-home-is-here/ or Toolbox
   https://docs.docker.com/toolbox/toolbox_install_windows/
 * **NodeJS & NPM**
 #### Run the website locally
 * Begin by running `docker-compose up --build` in the "Docker" folder
 * Open a new terminal and run `npm start` on the *root* folder. 
 * Done
+#### Access phpMyAdmin locally
+* Go to `localhost:30002`
+* Username: *user*
+* Password: *root*
 
 ### Deploy site
 TODO
