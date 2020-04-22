@@ -1,0 +1,45 @@
+.contactpage-background {
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: bottom;
+}
+
+.contactpage-pg-members {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+    row-gap: 20px;
+}
+
+@media screen and (max-width: 900px) {
+    .contactpage-background {
+        background-position: 0% 90%;
+        animation: paning-background-animation 30s cubic-bezier(0.2,0,0.8,1) infinite;
+    }
+    .contactpage-pg-members {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .contactpage-pg-members {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Animation */
+@keyframes paning-background-animation {
+	0% { background-position: 0% 100%; }
+	50% { background-position: 90% 100%; }
+}
+@keyframes paning-background-animation {
+	50% { background-position: 90% 100%; }
+	100% { background-position: 0% 100%; }
+}

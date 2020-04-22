@@ -1,0 +1,50 @@
+.section-title-container {
+    margin-bottom: 30px;
+
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.section-title {
+    display: inline-block;
+    margin: auto;
+}
+
+.section-title-underline {
+    position: relative;
+    height: 4px;
+    width: 100%;
+    margin-top: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.section-title-text {
+    line-height: 1.5;
+    background-position: 0 45px;
+    padding-bottom: 15px;
+    background-repeat: repeat-x;
+    background-size: 300% 4px;
+    background-image: linear-gradient(
+        to right, 
+        var(--theme-primary-color-normal),
+        #ffff00,
+        var(--theme-primary-color-normal),
+        #ffff00
+    );
+
+    animation-name: section-title-underline-color-animation;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes section-title-underline-color-animation {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 100%;
+    }
+}

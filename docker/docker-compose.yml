@@ -7,7 +7,7 @@ services:
       - backend
     working_dir: /var/www/html/
     volumes:
-      - ../:/var/www/html/
+      - ../public/backend/:/var/www/html/
     ports:
       - "30001:80"
 

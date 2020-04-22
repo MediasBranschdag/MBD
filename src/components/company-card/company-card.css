@@ -1,0 +1,27 @@
+.company-card-container {
+    border: 5px solid transparent;
+}
+
+.company-card {
+    height: 80px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+}
+.company-card.active {
+    height: 70px;
+    padding: 15px;
+}
+
+.company-card-active {
+    border: 5px solid var(--theme-primary-color-normal);
+}
+
+.company-card img {
+    max-height: 100%;
+    max-width: 60%;
+    margin: auto;
+}

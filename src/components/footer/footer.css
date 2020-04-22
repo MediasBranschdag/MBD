@@ -1,0 +1,19 @@
+.footer-bottom {
+
+}
+
+.footer-main-sponsor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-main-sponsor-item {
+    margin: 10px;
+}
+
+.footer-main-sponsor-item img {
+    width: 100%;
+    max-width: 350px;
+    max-height: 150px;
+}

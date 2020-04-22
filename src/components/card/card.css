@@ -1,0 +1,21 @@
+.card {
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    height: 100%;
+}
+.card--light {
+    box-shadow: 0 0px 8px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.1);
+}
+.card--clickable {
+    cursor: pointer;
+    transition: box-shadow 0.25s, transform 0.25s;
+}
+.card--clickable:hover {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.26), 0 5px 10px rgba(0,0,0,0.43);
+    transform: translateY(-5px);
+}
+.card--clickable.card--light:hover {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.2);
+}

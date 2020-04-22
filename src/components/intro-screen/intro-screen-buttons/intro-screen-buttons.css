@@ -1,0 +1,14 @@
+.intro-screen-button-container {
+    max-width: 650px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.intro-screen-button-item {
+    margin: 15px;
+}
