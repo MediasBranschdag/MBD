@@ -211,9 +211,11 @@ const Studentpage = () => {
                                 })
                             }
                             <br /><br />
-                            <Button buttonType={ButtonTypes.normalCompact}>
-                                {TranslationModel.translate(phrases.read_more)}
-                            </Button>
+                            <a href="https://www.facebook.com/mediasbranschdag/" target="_blank">
+                                <Button buttonType={ButtonTypes.normalCompact}>
+                                    {TranslationModel.translate(phrases.read_more)}
+                                </Button>
+                            </a>
                         </TextSection>
                     </ContentSection>
                 </CenterBackground>

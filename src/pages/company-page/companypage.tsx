@@ -197,7 +197,7 @@ const Companypage = () => {
                                     </span>
                                 })}
                             </p>
-                            <NavLink to="/contacts">
+                            <NavLink to="/contact">
                                 <Button buttonType={ButtonTypes.normalCompact}>
                                     {TranslationModel.translate(phrases.contact)}
                                 </Button>
