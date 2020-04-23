@@ -57,4 +57,21 @@
                     pos.priority ASC'
             );
         }
+
+        public function getProjectLeaders() {
+            $currentYear = $this->exhibitDateModel->getCurrentYear();
+            return $this->dbSelectAllSimple(
+                'SELECT 
+                    ' . TeamModel::SELECT_ATTRIBUTES . '
+                FROM 
+                    team_involvement ti INNER JOIN
+                    persons per ON ti.personId = per.id INNER JOIN
+                    positions pos ON ti.positionId = pos.id
+                WHERE
+                    ti.year = ' . $currentYear . ' AND
+                    pos.id IN (1)
+                ORDER BY
+                    pos.priority ASC'
+            );
+        }
     }

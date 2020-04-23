@@ -16,6 +16,10 @@
                 case 'company-responsible':
                     $data = $teamModel->getCompanyResponsible();
                     break;
+
+                case 'project-leaders':
+                    $data = $teamModel->getProjectLeaders();
+                    break;
                 
                 default:
                     $data = $teamModel->getAllTeamMembers();

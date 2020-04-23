@@ -51,3 +51,10 @@ export async function getSalesTeamMemebers(): Promise<TeamMember[]> {
     );
     return parseMembersJson(response);
 }
+
+export async function getProjectLeaders(): Promise<TeamMember[]> {
+    const response = await fetch(
+        BACKEND_PATH + 'getTeam.php?action=project-leaders'
+    );
+    return parseMembersJson(response);
+}

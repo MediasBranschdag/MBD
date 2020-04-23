@@ -2,51 +2,51 @@
     "months": {
         "january": {
             "en": "January",
-            "se": "Januari"
+            "se": "januari"
         }, 
         "february": {
             "en": "February",
-            "se": "Februari"
+            "se": "februari"
         }, 
         "march": {
             "en": "March",
-            "se": "Mars"
+            "se": "mars"
         }, 
         "april": {
             "en": "April",
-            "se": "April"
+            "se": "april"
         }, 
         "may": {
             "en": "May",
-            "se": "Maj"
+            "se": "maj"
         }, 
         "june": {
             "en": "June",
-            "se": "Juni"
+            "se": "juni"
         },
         "july": {
             "en": "July",
-            "se": "Juli"
+            "se": "juli"
         }, 
         "august": {
             "en": "August",
-            "se": "Augusti"
+            "se": "augusti"
         }, 
         "september": {
             "en": "September",
-            "se": "September"
+            "se": "september"
         }, 
         "october": {
             "en": "October",
-            "se": "Oktober"
+            "se": "oktober"
         }, 
         "november": {
             "en": "November",
-            "se": "November"
+            "se": "november"
         }, 
         "december": {
             "en": "December",
-            "se": "December"
+            "se": "december"
         }
     },
     "loading": {
