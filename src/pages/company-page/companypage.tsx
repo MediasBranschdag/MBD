@@ -54,6 +54,10 @@ const Companypage = () => {
         })
     }, []);
 
+    const scrollToSection = (id: string) => {
+        document.querySelector(`#${id}`)?.scrollIntoView({ behavior: "smooth", block: "nearest" })
+    }
+
     return (
         <div className="companypage">
             <IntroScreen
@@ -197,11 +201,11 @@ const Companypage = () => {
                                     </span>
                                 })}
                             </p>
-                            <NavLink to="/contact">
+                            <div onClick={() => scrollToSection("companypage-contact")}>
                                 <Button buttonType={ButtonTypes.normalCompact}>
                                     {TranslationModel.translate(phrases.contact)}
                                 </Button>
-                            </NavLink>
+                            </div>
                         </TextSection>
                     </ContentSection>
                 </CenterBackground>
@@ -267,6 +271,7 @@ const Companypage = () => {
 
             {/* Company contact section */}
             <div id="companypage-contact">
+                <br/>
                 <ContentSection>
                     <SectionTitle>
                         {TranslationModel.translate(phrases.sales_team)}
