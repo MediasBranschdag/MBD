@@ -283,7 +283,7 @@ const Companypage = () => {
                                 imagePath={member.imagePath}
                                 email={member.email}
                                 name={member.name}
-                                roll={TranslationModel.translate(member.position)}/>
+                                role={TranslationModel.translate(member.position)}/>
                         })}
                     </div>
                     <br />

@@ -46,7 +46,7 @@ const Contactpage: FC = () => {
                             email={member.email}
                             linkedinLink={member.linkedInURL}
                             name={member.name}
-                            roll={TranslationModel.translate(member.position)}/>
+                            role={TranslationModel.translate(member.position)}/>
                     })}
                 </div>
             </ContentSection>

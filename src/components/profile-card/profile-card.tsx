@@ -8,7 +8,7 @@ import LinkedinIcon from '../../assets/icons/other/linkedin.png';
 interface ProfileCardProps {
     imagePath: string,
     name: string,
-    roll: React.ReactNode,
+    role: React.ReactNode,
     email?: string,
     linkedinLink?: string
 }
@@ -24,7 +24,7 @@ const ProfileCard: FC<ProfileCardProps> = (props) => {
                                 {props.name}
                             </div>
                             <div className="profile-card-roll">
-                                {props.roll}
+                                {props.role}
                             </div>
                             <div className="profile-info-link-container">
                                 {

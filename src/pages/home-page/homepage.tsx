@@ -105,11 +105,11 @@ const Homepage: FC = () => {
                     }
                     content={
                         <ProfileCard
-                            imagePath="assets/team/projectleaders.jpg"
+                            imagePath="assets/team/placeholder.png"
                             name={`${projectLeaders.map((leader, i) => {
                                 return leader.name;
                             }).join(', ')}`}
-                            roll={TranslationModel.translate({se: 'Projektledare', en: 'Project Leaders'})} />
+                            role={TranslationModel.translate({se: 'Projektledare', en: 'Project Leaders'})} />
                     }
                 />
             </ContentSection>
