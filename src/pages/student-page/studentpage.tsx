@@ -4,7 +4,7 @@ import './studentpage.css';
 import { MBDDateContext } from '../../contexts/mbd-date-provider';
 import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';
-import Footer from '../../components/footer/fotter';
+import Footer from '../../components/footer/footer';
 import IntroScreen from '../../components/intro-screen/intro-screen';
 import IntroScreenButtons from '../../components/intro-screen/intro-screen-buttons/intro-screen-buttons';
 import ContentSection, { ContentSectionSize } from '../../components/layout/content-section/content-section';

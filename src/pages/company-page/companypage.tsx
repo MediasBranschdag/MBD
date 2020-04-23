@@ -4,7 +4,7 @@ import './companypage.css';
 import { MBDDateContext } from '../../contexts/mbd-date-provider';
 import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';
-import Footer from '../../components/footer/fotter';
+import Footer from '../../components/footer/footer';
 import IntroScreen from '../../components/intro-screen/intro-screen';
 import IntroScreenButtons from '../../components/intro-screen/intro-screen-buttons/intro-screen-buttons';
 import ContentSection from '../../components/layout/content-section/content-section';
@@ -30,6 +30,7 @@ import { ContentPadding } from '../../components/content-padding';
 import { getAllTeamMemebers, getSalesTeamMemebers, TeamMember } from '../../model/teamModel';
 import SectionTitle from '../../components/section-title/section-title';
 import ProfileCard from '../../components/profile-card/profile-card';
+import { NavLink } from 'react-router-dom';
 
 
 const Companypage = () => {
@@ -102,7 +103,7 @@ const Companypage = () => {
                                         Vi medietekniker är speciellt bra på att kommunicera mellan teknik- och
                                         business-avdelningen. Medietekniker har en bred bas and oändligt med möjligheter
                                         inom teknik-sektorn. Alla de här studenterna, kommer att vara på vår branschdag
-                                        den <b>{mbdDate.getStartDate()}e {mbdDate.getStartMonth()} {mbdDate.getStartYear()}</b>
+                                        den <b>{mbdDate.getStartDate()}e {mbdDate.getStartMonth()} {mbdDate.getStartYear()} {' '}</b>
                                         där vi vill att ni deltar. Att synas på Medias Branschdag
                                         är en otroligt bra möjlighet för er att marknadsföra ert företag och för oss
                                         studenter är branschdagen ett uppskattat tillfälle kunna nätverka med morgondagens
@@ -120,7 +121,7 @@ const Companypage = () => {
                                         communicating between different departments such as the tech and business. Media
                                         Technology students have a diverse foundation and endless of possibilities within
                                         the tech sector. These students will be present at our job fair 
-                                        the <b>{mbdDate.getStartDate()}th {mbdDate.getStartMonth()} {mbdDate.getStartYear()} </b>
+                                        the <b>{mbdDate.getStartDate()}th {mbdDate.getStartMonth()} {mbdDate.getStartYear()} {' '}</b>
                                         and we want you to join them. To be seen at Medias Branschdag is a terrific opportunity
                                         to promote your company to them. For us students, it is a much appreciated occasion to
                                         network with future employers. Medias Branschdag is simply the best way for you to
@@ -184,9 +185,11 @@ const Companypage = () => {
                                     </span>
                                 })}
                             </p>
-                            <Button buttonType={ButtonTypes.normalCompact}>
-                                {TranslationModel.translate(phrases.contact)}
-                            </Button>
+                            <NavLink to="/contacts">
+                                <Button buttonType={ButtonTypes.normalCompact}>
+                                    {TranslationModel.translate(phrases.contact)}
+                                </Button>
+                            </NavLink>
                         </TextSection>
                     </ContentSection>
                 </CenterBackground>
@@ -275,9 +278,11 @@ const Companypage = () => {
                     <TextSection align={TextSectionAlignment.center}>
                         {TranslationModel.translate(phrases.search_other)}
                         <br /><br />
-                        <Button buttonType={ButtonTypes.normalCompact}>
-                            {TranslationModel.translate(phrases.click_here)}
-                        </Button>
+                        <NavLink to="/contact">
+                            <Button buttonType={ButtonTypes.normalCompact}>
+                                {TranslationModel.translate(phrases.click_here)}
+                            </Button>
+                        </NavLink>
                     </TextSection>
                 </ContentSection>
             </div>

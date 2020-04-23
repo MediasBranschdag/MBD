@@ -25,7 +25,7 @@ import { Button, ButtonTypes } from '../../components/button/button';
 import { InstagramModel, InstagramPost } from '../../model/instagramModel';
 import InstagramCard from '../../components/instagram-post/instagram-card';
 import SectionTitle from '../../components/section-title/section-title';
-import Footer from '../../components/footer/fotter';
+import Footer from '../../components/footer/footer';
 
 const Homepage: FC = () => {
 
