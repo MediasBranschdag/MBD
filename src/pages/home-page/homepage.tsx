@@ -174,12 +174,12 @@ const Homepage: FC = () => {
                     {TranslationModel.translate(phrases.follow_social_media)}
                 </SectionTitle>
                 <div className="homepage-social-buttons">
-                    <a href="https://www.facebook.com/mediasbranschdag/">
+                    <a href="https://www.facebook.com/mediasbranschdag/" target="_blank">
                         <Button buttonType={ButtonTypes.bigIcon}>
                             <img src={FacebookIcon} alt=""/>
                         </Button>
                     </a>
-                    <a href="https://www.instagram.com/mediasbranschdag/">
+                    <a href="https://www.instagram.com/mediasbranschdag/" target="_blank">
                         <Button buttonType={ButtonTypes.bigIcon}>
                             <img src={InstagramIcon} alt=""/>
                         </Button>
