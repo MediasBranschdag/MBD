@@ -13,13 +13,14 @@ export class TeamMember {
     ){}
 
     public static memberFromJSON(json: any): TeamMember {
+        const img = json.image !== '' ? json.image : 'placeholder.png'
         return new TeamMember(
             json.name,
             {
-                se: json.position_se,
-                en: json.position_en
+                se: json.desc_se,
+                en: json.desc_en
             },
-            '/assets/team/' + json.image,
+            '/assets/team/' + img,
             json.email,
             json.linkedin
         );

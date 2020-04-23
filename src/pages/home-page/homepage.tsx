@@ -149,14 +149,14 @@ const Homepage: FC = () => {
                     Medias branschdag {TranslationModel.translate(phrases.on_instagram)?.toString().toLowerCase()}
                 </SectionTitle>
                 <div className="homepage-instagram-section">
-                    {instagramPosts.slice(0, 6).map(post => {
+                    {instagramPosts ? instagramPosts.slice(0, 6).map(post => {
                         return <InstagramCard
                             key={post.id}
                             imageUrl={post.imageUrl}
                             linkToPost={post.linkToPost}
                             likes={post.numberOfLikes}
                         />
-                    })}
+                    }) : <></>}
                 </div>
             </ContentSection>
 

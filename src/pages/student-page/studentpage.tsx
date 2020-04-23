@@ -85,7 +85,49 @@ const Studentpage = () => {
         </div>
     }
 
+    const exhibitors = (<>
+        <div className="studentpage-active-company">
+            <div 
+                ref={companyDescriptionRef} 
+                style={{
+                    height: `${descriptionHeight}px`
+                }}
+                className="studentpage-company-description">
+                <TextSection>
+                    {getActiveCompanyContent()}
+                </TextSection>
+            </div>
+            <div className="studentpage-active-company-actions">
+                <Button onClick={toggleDescription}>
+                    {
+                        descriptionOpen
+                        ? TranslationModel.translate(phrases.show_less)
+                        : TranslationModel.translate(phrases.read_more)
+                    }
+                </Button>
+                <a href={`http://${activeCompany?.url}`}>
+                    <Button 
+                        className={"studentpage-active-company-website-button"}>
+                        {TranslationModel.translate(phrases.go_to_companies)}
+                    </Button>
+                </a>
+            </div>
+        </div>
 
+        <div className="studentpage-companies-container">
+            <MBDCompanyContext.Consumer>
+                {companies => {
+                    return companies.isExhibitor.map(company => {
+                        return <CompanyCard
+                            key={company.id}
+                            onClick={() => {changeActiveCompany(company)}}
+                            isActive={company === activeCompany} 
+                            company={company}/>
+                    });
+                }}
+            </MBDCompanyContext.Consumer>
+        </div>
+    </>)
 
     return (
         <div className="studentpage">
@@ -119,49 +161,11 @@ const Studentpage = () => {
                     <SectionTitle>
                         {TranslationModel.translate(phrases.exhibitors)}
                     </SectionTitle>
-
-                    <div className="studentpage-active-company">
-                        <div 
-                            ref={companyDescriptionRef} 
-                            style={{
-                                height: `${descriptionHeight}px`
-                            }}
-                            className="studentpage-company-description">
-                            <TextSection>
-                                {getActiveCompanyContent()}
-                            </TextSection>
-                        </div>
-                        <div className="studentpage-active-company-actions">
-                            <Button onClick={toggleDescription}>
-                                {
-                                    descriptionOpen
-                                    ? TranslationModel.translate(phrases.show_less)
-                                    : TranslationModel.translate(phrases.read_more)
-                                }
-                            </Button>
-                            <a href={`http://${activeCompany?.url}`}>
-                                <Button 
-                                    className={"studentpage-active-company-website-button"}>
-                                    {TranslationModel.translate(phrases.go_to_companies)}
-                                </Button>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div className="studentpage-companies-container">
-                        <MBDCompanyContext.Consumer>
-                            {companies => {
-                                return companies.isExhibitor.map(company => {
-                                    return <CompanyCard
-                                        key={company.id}
-                                        onClick={() => {changeActiveCompany(company)}}
-                                        isActive={company === activeCompany} 
-                                        company={company}/>
-                                });
-                            }}
-                        </MBDCompanyContext.Consumer>
-                    </div>
-
+                    <MBDCompanyContext.Consumer>
+                        {companies => {
+                            return companies.all.length > 0 ? exhibitors : <TextSection align={TextSectionAlignment.center}>{TranslationModel.translate(phrases.in_preparation)}</TextSection>
+                        }}
+                    </MBDCompanyContext.Consumer>
                 </ContentSection>
             </div>
 
