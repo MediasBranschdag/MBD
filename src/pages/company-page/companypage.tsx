@@ -31,15 +31,27 @@ import { getAllTeamMemebers, getSalesTeamMemebers, TeamMember } from '../../mode
 import SectionTitle from '../../components/section-title/section-title';
 import ProfileCard from '../../components/profile-card/profile-card';
 import { NavLink } from 'react-router-dom';
+import CompanyModel from '../../model/companyModel';
+import { CompanyInvolment } from '../../contexts/mbd-company-provider';
+import CompanyLogoList from '../../components/company-logo-list/company-logo-list';
 
 
 const Companypage = () => {
 
     const [salesMembers, setSalesMembers] = useState<TeamMember[]>([]);
+    const [lastYearCompanies, setLastYearCompanies] = useState<CompanyInvolment>();
 
     useEffect(() => {
         window.scrollTo(0, 0);
         getSalesTeamMemebers().then(setSalesMembers);
+        CompanyModel.getCompanies('last-year-involvement').then(companies => {
+            setLastYearCompanies({
+              all: companies,
+              isExhibitor: companies.filter(company => company.isExhibitor),
+              isSponsor: companies.filter(company => company.isSponsor),
+              isMainSponsor: companies.filter(company => company.isMainSponsor),
+            });
+        })
     }, []);
 
     return (
@@ -285,6 +297,13 @@ const Companypage = () => {
                         </NavLink>
                     </TextSection>
                 </ContentSection>
+
+                {lastYearCompanies ? 
+                    <ContentSection>
+                        <SectionTitle>{TranslationModel.translate(phrases.last_year_participants)}</SectionTitle>
+                        <CompanyLogoList companies={lastYearCompanies.all}/>
+                    </ContentSection>  : <></>
+                }
             </div>
             <Footer />
         </div>
