@@ -30,7 +30,7 @@ jobs:
     - name: FTP-Deploy-Action
       uses: SamKirkland/FTP-Deploy-Action@3.0.0
       with:
-        ftp-server: ftp://ftp.mediasbranschdag.com
+        ftp-server: ftp://ftp.mediasbranschdag.com/
         ftp-username: 166397_bransch
         ftp-password: ${{ secrets.FTP_PASSWORD }}
         local-dir: build
