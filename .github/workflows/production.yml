@@ -8,7 +8,7 @@ jobs:
     name: FTP-Deploy-Action
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@production
       with:
         fetch-depth: 2
 
@@ -21,6 +21,8 @@ jobs:
       run: |
         npm install
         npm run build --if-present
+      env:
+        CI: false
         
     - name: List output files
       run: ls
