@@ -13,13 +13,14 @@ export class TeamMember {
     ){}
 
     public static memberFromJSON(json: any): TeamMember {
+        const img = json.image !== '' ? json.image : 'placeholder.png'
         return new TeamMember(
             json.name,
             {
-                se: json.position_se,
-                en: json.position_en
+                se: json.desc_se,
+                en: json.desc_en
             },
-            '/assets/team/' + json.image,
+            '/assets/team/' + img,
             json.email,
             json.linkedin
         );
@@ -47,6 +48,13 @@ export async function getAllTeamMemebers(): Promise<TeamMember[]> {
 export async function getSalesTeamMemebers(): Promise<TeamMember[]> {
     const response = await fetch(
         BACKEND_PATH + 'getTeam.php?action=company-responsible'
+    );
+    return parseMembersJson(response);
+}
+
+export async function getProjectLeaders(): Promise<TeamMember[]> {
+    const response = await fetch(
+        BACKEND_PATH + 'getTeam.php?action=project-leaders'
     );
     return parseMembersJson(response);
 }

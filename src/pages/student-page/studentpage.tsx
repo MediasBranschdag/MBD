@@ -4,7 +4,7 @@ import './studentpage.css';
 import { MBDDateContext } from '../../contexts/mbd-date-provider';
 import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';
-import Footer from '../../components/footer/fotter';
+import Footer from '../../components/footer/footer';
 import IntroScreen from '../../components/intro-screen/intro-screen';
 import IntroScreenButtons from '../../components/intro-screen/intro-screen-buttons/intro-screen-buttons';
 import ContentSection, { ContentSectionSize } from '../../components/layout/content-section/content-section';
@@ -85,7 +85,49 @@ const Studentpage = () => {
         </div>
     }
 
+    const exhibitors = (<>
+        <div className="studentpage-active-company">
+            <div 
+                ref={companyDescriptionRef} 
+                style={{
+                    height: `${descriptionHeight}px`
+                }}
+                className="studentpage-company-description">
+                <TextSection>
+                    {getActiveCompanyContent()}
+                </TextSection>
+            </div>
+            <div className="studentpage-active-company-actions">
+                <Button onClick={toggleDescription}>
+                    {
+                        descriptionOpen
+                        ? TranslationModel.translate(phrases.show_less)
+                        : TranslationModel.translate(phrases.read_more)
+                    }
+                </Button>
+                <a href={`http://${activeCompany?.url}`}>
+                    <Button 
+                        className={"studentpage-active-company-website-button"}>
+                        {TranslationModel.translate(phrases.go_to_companies)}
+                    </Button>
+                </a>
+            </div>
+        </div>
 
+        <div className="studentpage-companies-container">
+            <MBDCompanyContext.Consumer>
+                {companies => {
+                    return companies.isExhibitor.map(company => {
+                        return <CompanyCard
+                            key={company.id}
+                            onClick={() => {changeActiveCompany(company)}}
+                            isActive={company === activeCompany} 
+                            company={company}/>
+                    });
+                }}
+            </MBDCompanyContext.Consumer>
+        </div>
+    </>)
 
     return (
         <div className="studentpage">
@@ -119,49 +161,11 @@ const Studentpage = () => {
                     <SectionTitle>
                         {TranslationModel.translate(phrases.exhibitors)}
                     </SectionTitle>
-
-                    <div className="studentpage-active-company">
-                        <div 
-                            ref={companyDescriptionRef} 
-                            style={{
-                                height: `${descriptionHeight}px`
-                            }}
-                            className="studentpage-company-description">
-                            <TextSection>
-                                {getActiveCompanyContent()}
-                            </TextSection>
-                        </div>
-                        <div className="studentpage-active-company-actions">
-                            <Button onClick={toggleDescription}>
-                                {
-                                    descriptionOpen
-                                    ? TranslationModel.translate(phrases.show_less)
-                                    : TranslationModel.translate(phrases.read_more)
-                                }
-                            </Button>
-                            <a href={`http://${activeCompany?.url}`}>
-                                <Button 
-                                    className={"studentpage-active-company-website-button"}>
-                                    {TranslationModel.translate(phrases.go_to_companies)}
-                                </Button>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div className="studentpage-companies-container">
-                        <MBDCompanyContext.Consumer>
-                            {companies => {
-                                return companies.isExhibitor.map(company => {
-                                    return <CompanyCard
-                                        key={company.id}
-                                        onClick={() => {changeActiveCompany(company)}}
-                                        isActive={company === activeCompany} 
-                                        company={company}/>
-                                });
-                            }}
-                        </MBDCompanyContext.Consumer>
-                    </div>
-
+                    <MBDCompanyContext.Consumer>
+                        {companies => {
+                            return companies.all.length > 0 ? exhibitors : <TextSection align={TextSectionAlignment.center}>{TranslationModel.translate(phrases.in_preparation)}</TextSection>
+                        }}
+                    </MBDCompanyContext.Consumer>
                 </ContentSection>
             </div>
 
@@ -207,9 +211,11 @@ const Studentpage = () => {
                                 })
                             }
                             <br /><br />
-                            <Button buttonType={ButtonTypes.normalCompact}>
-                                {TranslationModel.translate(phrases.read_more)}
-                            </Button>
+                            <a href="https://www.facebook.com/mediasbranschdag/" target="_blank">
+                                <Button buttonType={ButtonTypes.normalCompact}>
+                                    {TranslationModel.translate(phrases.read_more)}
+                                </Button>
+                            </a>
                         </TextSection>
                     </ContentSection>
                 </CenterBackground>
