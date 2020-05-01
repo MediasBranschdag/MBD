@@ -1,7 +1,7 @@
 <?php
     include_once "devConfig.php";
 
-    $mailContent = json_decode($_GET["mailContent"], TRUE);
+    $mailContent = $_POST;
 
     $to = "branschdag@medieteknik.com";
 
