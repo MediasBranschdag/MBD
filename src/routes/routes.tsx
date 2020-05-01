@@ -25,7 +25,7 @@ const Routes = {
     studentPage: new Route('/student', phrases.for_students, Studentpage),
     //mapPage: new Route('/map', phrases.map, MapPage),
     contactPage: new Route('/contact', phrases.contact, Contactpage),
-    eventPage: new Route('/event', phrases.events, Companypage),
+    //eventPage: new Route('/event', phrases.events, Companypage),
 };
 
 
