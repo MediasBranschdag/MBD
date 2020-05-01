@@ -4,7 +4,7 @@ import './companypage.css';
 import { MBDDateContext } from '../../contexts/mbd-date-provider';
 import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';
-import Footer from '../../components/footer/fotter';
+import Footer from '../../components/footer/footer';
 import IntroScreen from '../../components/intro-screen/intro-screen';
 import IntroScreenButtons from '../../components/intro-screen/intro-screen-buttons/intro-screen-buttons';
 import ContentSection from '../../components/layout/content-section/content-section';
@@ -30,16 +30,33 @@ import { ContentPadding } from '../../components/content-padding';
 import { getAllTeamMemebers, getSalesTeamMemebers, TeamMember } from '../../model/teamModel';
 import SectionTitle from '../../components/section-title/section-title';
 import ProfileCard from '../../components/profile-card/profile-card';
+import { NavLink } from 'react-router-dom';
+import CompanyModel from '../../model/companyModel';
+import { CompanyInvolment } from '../../contexts/mbd-company-provider';
+import CompanyLogoList from '../../components/company-logo-list/company-logo-list';
 
 
 const Companypage = () => {
 
     const [salesMembers, setSalesMembers] = useState<TeamMember[]>([]);
+    const [lastYearCompanies, setLastYearCompanies] = useState<CompanyInvolment>();
 
     useEffect(() => {
         window.scrollTo(0, 0);
         getSalesTeamMemebers().then(setSalesMembers);
+        CompanyModel.getCompanies('last-year-involvement').then(companies => {
+            setLastYearCompanies({
+              all: companies,
+              isExhibitor: companies.filter(company => company.isExhibitor),
+              isSponsor: companies.filter(company => company.isSponsor),
+              isMainSponsor: companies.filter(company => company.isMainSponsor),
+            });
+        })
     }, []);
+
+    const scrollToSection = (id: string) => {
+        document.querySelector(`#${id}`)?.scrollIntoView({ behavior: "smooth", block: "nearest" })
+    }
 
     return (
         <div className="companypage">
@@ -102,7 +119,7 @@ const Companypage = () => {
                                         Vi medietekniker är speciellt bra på att kommunicera mellan teknik- och
                                         business-avdelningen. Medietekniker har en bred bas and oändligt med möjligheter
                                         inom teknik-sektorn. Alla de här studenterna, kommer att vara på vår branschdag
-                                        den <b>{mbdDate.getStartDate()}e {mbdDate.getStartMonth()} {mbdDate.getStartYear()}</b>
+                                        den <b>{mbdDate.getStartDate()}e {mbdDate.getStartMonth()} {mbdDate.getStartYear()} {' '}</b>
                                         där vi vill att ni deltar. Att synas på Medias Branschdag
                                         är en otroligt bra möjlighet för er att marknadsföra ert företag och för oss
                                         studenter är branschdagen ett uppskattat tillfälle kunna nätverka med morgondagens
@@ -120,7 +137,7 @@ const Companypage = () => {
                                         communicating between different departments such as the tech and business. Media
                                         Technology students have a diverse foundation and endless of possibilities within
                                         the tech sector. These students will be present at our job fair 
-                                        the <b>{mbdDate.getStartDate()}th {mbdDate.getStartMonth()} {mbdDate.getStartYear()} </b>
+                                        the <b>{mbdDate.getStartDate()}th {mbdDate.getStartMonth()} {mbdDate.getStartYear()} {' '}</b>
                                         and we want you to join them. To be seen at Medias Branschdag is a terrific opportunity
                                         to promote your company to them. For us students, it is a much appreciated occasion to
                                         network with future employers. Medias Branschdag is simply the best way for you to
@@ -184,9 +201,11 @@ const Companypage = () => {
                                     </span>
                                 })}
                             </p>
-                            <Button buttonType={ButtonTypes.normalCompact}>
-                                {TranslationModel.translate(phrases.contact)}
-                            </Button>
+                            <div onClick={() => scrollToSection("companypage-contact")}>
+                                <Button buttonType={ButtonTypes.normalCompact}>
+                                    {TranslationModel.translate(phrases.contact)}
+                                </Button>
+                            </div>
                         </TextSection>
                     </ContentSection>
                 </CenterBackground>
@@ -252,6 +271,7 @@ const Companypage = () => {
 
             {/* Company contact section */}
             <div id="companypage-contact">
+                <br/>
                 <ContentSection>
                     <SectionTitle>
                         {TranslationModel.translate(phrases.sales_team)}
@@ -268,18 +288,27 @@ const Companypage = () => {
                                 imagePath={member.imagePath}
                                 email={member.email}
                                 name={member.name}
-                                roll={TranslationModel.translate(member.position)}/>
+                                role={TranslationModel.translate(member.position)}/>
                         })}
                     </div>
                     <br />
                     <TextSection align={TextSectionAlignment.center}>
                         {TranslationModel.translate(phrases.search_other)}
                         <br /><br />
-                        <Button buttonType={ButtonTypes.normalCompact}>
-                            {TranslationModel.translate(phrases.click_here)}
-                        </Button>
+                        <NavLink to="/contact">
+                            <Button buttonType={ButtonTypes.normalCompact}>
+                                {TranslationModel.translate(phrases.click_here)}
+                            </Button>
+                        </NavLink>
                     </TextSection>
                 </ContentSection>
+
+                {lastYearCompanies ? 
+                    <ContentSection>
+                        <SectionTitle>{TranslationModel.translate(phrases.last_year_participants)}</SectionTitle>
+                        <CompanyLogoList companies={lastYearCompanies.all}/>
+                    </ContentSection>  : <></>
+                }
             </div>
             <Footer />
         </div>

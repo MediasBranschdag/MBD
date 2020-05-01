@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import CompanyModel, { Company } from '../model/companyModel';
+import CompanyModel, { Company, companyAction } from '../model/companyModel';
 
 const defaultValue: CompanyInvolment = {
   all: [],
@@ -21,7 +21,7 @@ const MBDCompanyProvider: FC = (props) => {
   const [companies, setCompanies] = useState<CompanyInvolment>(defaultValue);
 
   useEffect(() => {
-    CompanyModel.getCurrentYearInvolvement().then(companies => {
+    CompanyModel.getCompanies('current-year-involvement').then(companies => {
         setCompanies({
           all: companies,
           isExhibitor: companies.filter(company => company.isExhibitor),

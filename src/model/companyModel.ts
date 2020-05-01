@@ -29,9 +29,11 @@ export class Company {
     }
 }
 
+export type companyAction = 'current-year-involvement' | 'last-year-involvement' | 'current-year-exhibitor'
+
 export default class CompanyModel {
-    static getCurrentYearInvolvement(): Promise<Array<Company>> {
-        return fetch(BACKEND_PATH + 'companyMC.php?action=current-year-involvement')
+    static getCompanies(action: companyAction): Promise<Array<Company>> {
+        return fetch(BACKEND_PATH + `companyMC.php?action=${action}`)
         .then(r => r.json())
         .then(parsedResponse => {
             if (parsedResponse === false) {

@@ -3,7 +3,7 @@ import './contact-page.css';
 
 import IntroScreen from '../../components/intro-screen/intro-screen';
 
-import Footer from '../../components/footer/fotter';
+import Footer from '../../components/footer/footer';
 
 import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';
@@ -38,7 +38,7 @@ const Contactpage: FC = () => {
 
             {/* List of every memeber in PG */}
             <ContentSection>
-                <div className="contactpage-pg-members">
+                <div className="contactpage-pg-members" >
                     {pgMembers.map(member => {
                         return <ProfileCard
                             key={member.name}
@@ -46,7 +46,7 @@ const Contactpage: FC = () => {
                             email={member.email}
                             linkedinLink={member.linkedInURL}
                             name={member.name}
-                            roll={TranslationModel.translate(member.position)}/>
+                            role={TranslationModel.translate(member.position)}/>
                     })}
                 </div>
             </ContentSection>

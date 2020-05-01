@@ -25,11 +25,14 @@ import { Button, ButtonTypes } from '../../components/button/button';
 import { InstagramModel, InstagramPost } from '../../model/instagramModel';
 import InstagramCard from '../../components/instagram-post/instagram-card';
 import SectionTitle from '../../components/section-title/section-title';
-import Footer from '../../components/footer/fotter';
+import Footer from '../../components/footer/footer';
+import { getProjectLeaders, TeamMember } from '../../model/teamModel';
+import { NavLink } from 'react-router-dom';
 
 const Homepage: FC = () => {
 
     const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
+    const [projectLeaders, setProjectLeaders] = useState<TeamMember[]>([]);
     
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -38,6 +41,7 @@ const Homepage: FC = () => {
         InstagramModel.getInstagramImages().then(posts => {
             setInstagramPosts(posts);
         });
+        getProjectLeaders().then(setProjectLeaders);
     }, []);
 
     return (
@@ -77,7 +81,7 @@ const Homepage: FC = () => {
                                                 företagen får ett smakprov av vad framtida medieteknologer har att
                                                 bidra med.
                                                 <br /><br />
-                                                Vi ses på branschdagen i februari!
+                                                Vi ses på branschdagen i {mbdDate.getStartMonth()}!
                                             </span>,
 
                                         "en":
@@ -92,7 +96,7 @@ const Homepage: FC = () => {
                                                 knowledge of their future, but also serves to show the companies what
                                                 future media engineers have to offer.
                                                 <br /><br />
-                                                We can’t wait to meet you at the fair in February!
+                                                We can’t wait to meet you at the fair in {mbdDate.getStartMonth()}!
                                             </span>
                                     })
                                 }
@@ -101,9 +105,11 @@ const Homepage: FC = () => {
                     }
                     content={
                         <ProfileCard
-                            imagePath="assets/team/projectleaders.jpg"
-                            name={`Rasmus Rudling & \nElla Klara Westerlund`}
-                            roll="Projektledare" />
+                            imagePath="assets/team/placeholder.png"
+                            name={`${projectLeaders.map((leader, i) => {
+                                return leader.name;
+                            }).join(', ')}`}
+                            role={TranslationModel.translate({se: 'Projektledare', en: 'Project Leaders'})} />
                     }
                 />
             </ContentSection>
@@ -136,9 +142,11 @@ const Homepage: FC = () => {
                         </MBDDateContext.Consumer>
                         <br />
                         <br />
-                        <Button buttonType={ButtonTypes.normalCompact}>
-                            {TranslationModel.translate(phrases.read_more)}
-                        </Button>
+                        <NavLink to='/student'>
+                            <Button buttonType={ButtonTypes.normalCompact}>
+                                {TranslationModel.translate(phrases.read_more)}
+                            </Button>
+                        </NavLink>
                     </TextSection>
                 </ContentSection>
             </CenterBackground>
@@ -149,14 +157,14 @@ const Homepage: FC = () => {
                     Medias branschdag {TranslationModel.translate(phrases.on_instagram)?.toString().toLowerCase()}
                 </SectionTitle>
                 <div className="homepage-instagram-section">
-                    {instagramPosts.slice(0, 6).map(post => {
+                    {instagramPosts ? instagramPosts.slice(0, 6).map(post => {
                         return <InstagramCard
                             key={post.id}
                             imageUrl={post.imageUrl}
                             linkToPost={post.linkToPost}
                             likes={post.numberOfLikes}
                         />
-                    })}
+                    }) : <></>}
                 </div>
             </ContentSection>
 
@@ -166,12 +174,12 @@ const Homepage: FC = () => {
                     {TranslationModel.translate(phrases.follow_social_media)}
                 </SectionTitle>
                 <div className="homepage-social-buttons">
-                    <a href="https://www.facebook.com/mediasbranschdag/">
+                    <a href="https://www.facebook.com/mediasbranschdag/" target="_blank">
                         <Button buttonType={ButtonTypes.bigIcon}>
                             <img src={FacebookIcon} alt=""/>
                         </Button>
                     </a>
-                    <a href="https://www.instagram.com/mediasbranschdag/">
+                    <a href="https://www.instagram.com/mediasbranschdag/" target="_blank">
                         <Button buttonType={ButtonTypes.bigIcon}>
                             <img src={InstagramIcon} alt=""/>
                         </Button>
