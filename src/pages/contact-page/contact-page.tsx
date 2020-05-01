@@ -16,6 +16,8 @@ import { InputInfo } from '../../components/input-info/input-info';
 import { Button, ButtonTypes } from '../../components/button/button';
 import ContactForm from '../company-page/contact-form/contact-form';
 
+import Background from '../../assets/backgrounds/branches_buds.jpg';
+
 const Contactpage: FC = () => {
 
     const [pgMembers, setPgMembers] = useState<TeamMember[]>([]);
@@ -32,7 +34,7 @@ const Contactpage: FC = () => {
             <IntroScreen 
                 title={TranslationModel.translate(phrases.the_project_group)}>
                 <div
-                    style={{backgroundImage: `url("/assets/team/PG20.jpg")`}}
+                    style={{backgroundImage: `url(${Background})`}}
                     className="contactpage-background"></div>
             </IntroScreen>
 
