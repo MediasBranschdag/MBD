@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: MBD-mysql:3306
--- Generation Time: Apr 23, 2020 at 06:31 AM
+-- Generation Time: Apr 23, 2020 at 07:06 PM
 -- Server version: 5.7.29
 -- PHP Version: 7.4.1
 
@@ -306,7 +306,8 @@ CREATE TABLE `exhibit_dates` (
 
 INSERT INTO `exhibit_dates` (`year`, `date`) VALUES
 (2019, '2019-02-28 10:00:00'),
-(2020, '2020-02-04 10:00:00');
+(2020, '2020-02-04 10:00:00'),
+(2021, '2021-02-25 10:00:00');
 
 -- --------------------------------------------------------
 
@@ -326,7 +327,45 @@ CREATE TABLE `persons` (
 --
 
 INSERT INTO `persons` (`id`, `name`, `email`, `linkedin`) VALUES
-(1, 'Ella Klara Westerlund', 'ellaklara@medieteknik.com', 'https://www.linkedin.com/in/ellaklara');
+(1, 'Nicole Nordlund', 'nicole@medieteknik.com', 'https://www.linkedin.com/in/nicole-nordlund-655b8116b/'),
+(2, 'John Brink', 'john@medieteknik.com', 'https://www.linkedin.com/in/john-brink-6607a3127/'),
+(3, 'Amanda Carp', '', ''),
+(4, 'Ebba Rovig', '', ''),
+(5, 'Emily Nilsson', '', ''),
+(6, 'Malin Åkesson', '', ''),
+(7, 'Mood Sherzad', '', ''),
+(8, 'Ella Klara Westerlund', 'ellaklara@medieteknik.com', 'https://www.linkedin.com/in/ellaklara'),
+(9, 'Lousie Hellberg', '', ''),
+(10, 'Emma Hagrot', '', ''),
+(11, 'Peter Borojevic', '', ''),
+(12, 'Oliver Kamruzzaman', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `positions`
+--
+
+CREATE TABLE `positions` (
+  `id` int(11) NOT NULL,
+  `desc_se` varchar(255) NOT NULL,
+  `desc_en` varchar(255) NOT NULL,
+  `priority` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `positions`
+--
+
+INSERT INTO `positions` (`id`, `desc_se`, `desc_en`, `priority`) VALUES
+(1, 'Projektledare', 'Project Leader', 1),
+(2, 'Företagssamordnare', 'Sales Team Coordinator', 2),
+(3, 'Företagsansvarig', 'Sales Associate', 3),
+(4, 'PR-ansvarig', 'Public Relations', 4),
+(5, 'Art Director', 'Art Director', 4),
+(6, 'Sittningsansvarig', 'Dinner Party Organizer', 4),
+(7, 'Logistik', 'Logistics', 4),
+(8, 'Webbutvecklare', 'Web Developer', 4);
 
 -- --------------------------------------------------------
 
@@ -466,10 +505,10 @@ INSERT INTO `team20` (`id`, `name`, `position_se`, `position_en`, `email`, `link
 --
 
 CREATE TABLE `team_involvement` (
+  `id` int(11) NOT NULL,
   `personId` int(11) NOT NULL,
   `year` int(11) NOT NULL COMMENT 'Should reference a exhibit_date',
-  `position_se` varchar(255) NOT NULL,
-  `position_en` varchar(255) NOT NULL,
+  `positionId` int(11) NOT NULL,
   `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -477,8 +516,19 @@ CREATE TABLE `team_involvement` (
 -- Dumping data for table `team_involvement`
 --
 
-INSERT INTO `team_involvement` (`personId`, `year`, `position_se`, `position_en`, `image`) VALUES
-(1, 2021, 'Webbutvecklare', 'Web Developer', 'ella_klara.jpg');
+INSERT INTO `team_involvement` (`id`, `personId`, `year`, `positionId`, `image`) VALUES
+(1, 1, 2021, 1, 'nicole_nordlund.jpg'),
+(2, 2, 2021, 1, 'john_brink.jpg'),
+(3, 3, 2021, 4, ''),
+(4, 4, 2021, 7, ''),
+(5, 5, 2021, 7, ''),
+(6, 6, 2021, 6, ''),
+(7, 7, 2021, 8, ''),
+(8, 8, 2021, 8, 'ella_klara.jpg'),
+(9, 9, 2021, 5, ''),
+(10, 10, 2021, 2, ''),
+(11, 11, 2021, 3, ''),
+(12, 12, 2021, 3, '');
 
 --
 -- Indexes for dumped tables
@@ -521,6 +571,12 @@ ALTER TABLE `persons`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `positions`
+--
+ALTER TABLE `positions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `team17`
 --
 ALTER TABLE `team17`
@@ -539,6 +595,12 @@ ALTER TABLE `team20`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `team_involvement`
+--
+ALTER TABLE `team_involvement`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -552,7 +614,13 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `persons`
 --
 ALTER TABLE `persons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `positions`
+--
+ALTER TABLE `positions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `team19`
@@ -565,6 +633,12 @@ ALTER TABLE `team19`
 --
 ALTER TABLE `team20`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `team_involvement`
+--
+ALTER TABLE `team_involvement`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
