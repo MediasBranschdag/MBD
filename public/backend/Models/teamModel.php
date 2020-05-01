@@ -33,7 +33,7 @@
                     array(
                         "%select" => TeamModel::SELECT_ATTRIBUTES,
                         "currentYear" => $currentYear
-                    ),
+                    )
                 )
             );
         }
