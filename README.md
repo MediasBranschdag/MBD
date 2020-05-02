@@ -43,7 +43,7 @@ After MBD have happened, you want to archive the current state of the website. T
   ```json
     "homepage": "https://mediasbranschdag.com/archive/ADD_CURRENT_YEAR_HERE",
   ``` 
-* **Step 6**:  
+* **Step 7**:  
   In App.tsx, in the router component, add a new prop like the following and replace ADD_CURRENT_YEAR_HERE with the current year:  
   ```typescript
     <Router basename="/archive/ADD_CURRENT_YEAR_HERE/">
