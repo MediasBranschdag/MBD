@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Värd: 10.209.1.117
--- Skapad: 01 maj 2020 kl 17:52
+-- Skapad: 02 maj 2020 kl 13:10
 -- Serverversion: 5.5.42
 -- PHP-version: 5.3.10-1ubuntu3.11
 
@@ -333,16 +333,16 @@ CREATE TABLE IF NOT EXISTS `persons` (
 INSERT INTO `persons` (`id`, `name`, `email`, `linkedin`) VALUES
 (1, 'Nicole Nordlund', 'nicole@medieteknik.com', 'https://www.linkedin.com/in/nicole-nordlund-655b8116b/'),
 (2, 'John Brink', 'john@medieteknik.com', 'https://www.linkedin.com/in/john-brink-6607a3127/'),
-(3, 'Amanda Carp', '', ''),
-(4, 'Ebba Rovig', '', ''),
-(5, 'Emily Nilsson', '', ''),
-(6, 'Malin Åkesson', '', ''),
-(7, 'Mahmoud Sherzad', '', ''),
+(3, 'Amanda Carp', 'amanda@medieteknik.com', 'https://www.linkedin.com/in/amanda-carp-6a529b172/'),
+(4, 'Ebba Rovig', 'ebba@medieteknik.com', 'https://www.linkedin.com/in/ebba-rovig-16b975a1/'),
+(5, 'Emily Nilsson', 'emily@medieteknik.com', ''),
+(6, 'Malin Åkesson', 'malin@medieteknik.com', ''),
+(7, 'Mahmoud Sherzad', 'mahmoud@medieteknik.com', 'https://www.linkedin.com/in/mahmoud-sherzad/'),
 (8, 'Ella Klara Westerlund', 'ellaklara@medieteknik.com', 'https://www.linkedin.com/in/ellaklara'),
-(9, 'Lousie Hellberg', '', ''),
-(10, 'Emma Hagrot', '', ''),
-(11, 'Peter Borojevic', '', ''),
-(12, 'Oliver Kamruzzaman', '', '');
+(9, 'Louise Hellberg', 'louise@medieteknik.com', 'https://www.linkedin.com/in/louise-hellberg/'),
+(10, 'Emma Hagrot', 'emma@medieteknik.com', 'https://www.linkedin.com/in/emmahagrot/'),
+(11, 'Peter Borojevic', 'peter@medieteknik.com', 'https://www.linkedin.com/in/peterborojevic/'),
+(12, 'Oliver Kamruzzaman', 'oliver@medieteknik.com', 'https://www.linkedin.com/in/oliver-kamruzzaman-0380aa99/');
 
 -- --------------------------------------------------------
 

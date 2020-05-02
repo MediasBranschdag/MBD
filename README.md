@@ -24,10 +24,35 @@ You need to have have the following installed in order to run the website locall
 * **REMEMBER** to export the changes made and replace them with the *(./docker/sql/db_copy.sql)* file and also import the changes to the real database before deployment.
 
 ### Deploy site
-TODO
+#### Using GitHub Actions
+* **Step 1**:  
+  Do an extra check that the code works on the `master` branch 
+* **Step 2**:  
+  Create a new Pull Request that merge master **INTO** production
+* **Step 3**:  
+  Merge the newly created PR
+* **Step 4**:  
+  If the database have changed, delete all tables in the production database and import the local database.
+* **Done!**
 
-## Services and external APIs
-### Google Cloud Platform
-We have an active project located here: [Google Cloud Platform - Medias branschdag](https://console.cloud.google.com/home/dashboard?project=medias-branschdag&folder=&organizationId=&supportedpurview=project). If you do not have access, contact the owner of the project in Google Cloud Platform: adajon@kth.se
+To edit the workflow, see the `production.yml` file.
 
-This services is currently used for getting access to Google Maps API
+#### Doing it manually
+* **Step 1**:  
+  Do an extra check that the code works on the `master` branch
+* **Step 2**:  
+  Run `npm run build`; This creates a optimized build of the website that can be started without react. The code generated is located in the `build` folder.
+* **Step 3**:  
+  Use an FTP client, e.g [FileZilla](https://filezilla-project.org/) and login to the production server.
+* **Step 4**:  
+  Replace **ALMOST** all files in the server with the files in the `build` folder. The following files should **NOT** be replaced or removed:
+  * All files in the `archive` folder
+  * `public/backend/config.php`
+  * `public/backend/devConfig.php`
+* **Step 5**:  
+  If the database have changed, delete all tables in the production database and import the local database.
+* **Done!**
+
+The reason behind why the backend folder is put in the public folder is that the content of the public folder is put inside the build folder when built.
+
+For more information how to deploy a react website, see: https://create-react-app.dev/docs/deployment/
