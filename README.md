@@ -39,17 +39,24 @@ After MBD have happened, you want to archive the current state of the website. T
 * **Step 5**:  
   Export the local database with the renamed tables and import the sql file to the production database.
 * **Step 6**:
-  In the `package.json` file, add the following line and replace `ADD_CURRENT_YEAR_HERE` with the current year:  
-  `"homepage": "https://mediasbranschdag.com/archive/ADD_CURRENT_YEAR_HERE",`
-* **Step 7**:  
-  Run `npm run build`, this will create all the files for the archived website in the `build` folder.
+  In the `package.json` file, add the following line and replace `ADD_CURRENT_YEAR_HERE` with the current year: 
+  ```json
+    "homepage": "https://mediasbranschdag.com/archive/ADD_CURRENT_YEAR_HERE",
+  ``` 
+* **Step 6**:  
+  In App.tsx, in the router component, add a new prop like the following and replace ADD_CURRENT_YEAR_HERE with the current year:  
+  ```typescript
+    <Router basename="/archive/ADD_CURRENT_YEAR_HERE/">
+  ```
 * **Step 8**:  
+  Run `npm run build`, this will create all the files for the archived website in the `build` folder.
+* **Step 9**:  
   Copy all the files from the build folder to another folder outside the project. The new folder should have the current year as its name. e.g *2020*.
-* **Step 9**:
+* **Step 10**:
   In the new folder, edit the `backend/config.php` file and use the production code instead of the local development code.
-* **Step 10**:  
-  Login to the server code with FTP (Use FileZilla or other) and upload the folder to the archive folder.
 * **Step 11**:  
-  Check that the archived website work by accessing it in: `https://mediasbranschdag.com/archive/ADD_CURRENT_YEAR_HERE`
+  Login to the server code with FTP (Use FileZilla or other) and upload the folder to the archive folder.
 * **Step 12**:  
+  Check that the archived website work by accessing it in: `https://mediasbranschdag.com/archive/ADD_CURRENT_YEAR_HERE`
+* **Step 13**:  
   If everything works, you are done!
