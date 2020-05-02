@@ -26,8 +26,30 @@ You need to have have the following installed in order to run the website locall
 ### Deploy site
 TODO
 
-## Services and external APIs
-### Google Cloud Platform
-We have an active project located here: [Google Cloud Platform - Medias branschdag](https://console.cloud.google.com/home/dashboard?project=medias-branschdag&folder=&organizationId=&supportedpurview=project). If you do not have access, contact the owner of the project in Google Cloud Platform: adajon@kth.se
-
-This services is currently used for getting access to Google Maps API
+## Archive website
+After MBD have happened, you want to archive the current state of the website. To do this, do the following. **DO NOT COMMIT ANY OF THE CHANGES HERE TO THE REPOSITORY**
+* **Step 1**:  
+  Start local development and login to phpMyAdmin (localhost:30002).
+* **Step 2**:  
+  To all your existing tables, rename it to _CurrentYear_TableName , e.g `_2020_companies`.
+* **Step 3**:  
+  Change all your SQL queries to select from the renamed tables.
+* **Step 4**:  
+  Check that the website works after all the changes are made.
+* **Step 5**:  
+  Export the local database with the renamed tables and import the sql file to the production database.
+* **Step 6**:
+  In the `package.json` file, add the following line and replace `ADD_CURRENT_YEAR_HERE` with the current year:  
+  `"homepage": "https://mediasbranschdag.com/archive/ADD_CURRENT_YEAR_HERE",`
+* **Step 7**:  
+  Run `npm run build`, this will create all the files for the archived website in the `build` folder.
+* **Step 8**:  
+  Copy all the files from the build folder to another folder outside the project. The new folder should have the current year as its name. e.g *2020*.
+* **Step 9**:
+  In the new folder, edit the `backend/config.php` file and use the production code instead of the local development code.
+* **Step 10**:  
+  Login to the server code with FTP (Use FileZilla or other) and upload the folder to the archive folder.
+* **Step 11**:  
+  Check that the archived website work by accessing it in: `https://mediasbranschdag.com/archive/ADD_CURRENT_YEAR_HERE`
+* **Step 12**:  
+  If everything works, you are done!
