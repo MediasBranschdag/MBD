@@ -7,7 +7,7 @@ import phrases from '../../data/translations.json';
 import Footer from '../../components/footer/footer';
 import IntroScreen from '../../components/intro-screen/intro-screen';
 import IntroScreenButtons from '../../components/intro-screen/intro-screen-buttons/intro-screen-buttons';
-import ContentSection, { ContentSectionBackground } from '../../components/layout/content-section/content-section';
+import ContentSection from '../../components/layout/content-section/content-section';
 import TextSection, { TextSectionAlignment } from '../../components/text-section/text-section';
 import CenterBackground from '../../components/center-background/center-background';
 import OfferCard from '../../components/offer-card/offer-card';
@@ -25,16 +25,13 @@ import QuestionIcon from '../../assets/icons/other/question_mark_black.svg';
 import IntroScreenBackground from '../../assets/backgrounds/red_flower_dark_blur.jpg';
 import PackageFlowerBackground from '../../assets/backgrounds/blue_flower_dark_blur.jpg';
 import MapBackground from '../../assets/backgrounds/map_nymble.jpg';
-import Card from '../../components/card/card';
-import { ContentPadding } from '../../components/content-padding';
-import { getAllTeamMemebers, getSalesTeamMemebers, TeamMember } from '../../model/teamModel';
+import { getSalesTeamMemebers, TeamMember } from '../../model/teamModel';
 import SectionTitle from '../../components/section-title/section-title';
 import ProfileCard from '../../components/profile-card/profile-card';
 import { NavLink } from 'react-router-dom';
 import CompanyModel from '../../model/companyModel';
 import { CompanyInvolment } from '../../contexts/mbd-company-provider';
 import CompanyLogoList from '../../components/company-logo-list/company-logo-list';
-import ContactForm from './contact-form/contact-form';
 import SignUpForm from './sign-up-form/sign-up-form';
 
 

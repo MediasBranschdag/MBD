@@ -7,13 +7,10 @@ import Footer from '../../components/footer/footer';
 
 import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';
-import { url } from 'inspector';
 import ContentSection, { ContentSectionBackground } from '../../components/layout/content-section/content-section';
 import { TeamMember, getAllTeamMemebers } from '../../model/teamModel';
 import ProfileCard from '../../components/profile-card/profile-card';
 import TextSection from '../../components/text-section/text-section';
-import { InputInfo } from '../../components/input-info/input-info';
-import { Button, ButtonTypes } from '../../components/button/button';
 import ContactForm from '../company-page/contact-form/contact-form';
 
 import Background from '../../assets/backgrounds/branches_buds.jpg';
