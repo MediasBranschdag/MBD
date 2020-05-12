@@ -6,6 +6,11 @@
     color: var(--theme-text-error);
 }
 
+.sign-up-message {
+    font-weight: bold;
+    font-size: 16pt;
+}
+
 .sign-up-opportunities {
     display: grid;
     grid-template-columns: 1fr 1fr;

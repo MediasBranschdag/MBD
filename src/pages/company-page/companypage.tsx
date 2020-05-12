@@ -21,6 +21,7 @@ import SoundIcon from '../../assets/icons/other/sound_black.svg';
 import CupIcon from '../../assets/icons/other/cup_black.svg';
 import ProfileIcon from '../../assets/icons/other/profileIcon_black.svg';
 import QuestionIcon from '../../assets/icons/other/question_mark_black.svg';
+import MBDLogoBlack from '../../assets/mbd-logo/mbd-logo-black.svg';
 
 import IntroScreenBackground from '../../assets/backgrounds/red_flower_dark_blur.jpg';
 import PackageFlowerBackground from '../../assets/backgrounds/blue_flower_dark_blur.jpg';
@@ -90,7 +91,7 @@ const Companypage = () => {
                             title: TranslationModel.translate(
                                 phrases.the_fair
                             ),
-                            iconPath: BoothIcon,
+                            iconPath: MBDLogoBlack,
                             scrollTargetID: "companypage-fair",
                         },
                     ]}

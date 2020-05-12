@@ -12,6 +12,9 @@ import { InputInfoHeader } from '../../../components/input-info/input-info-heade
 
 const SignUpForm: FC = () => {
 
+    const [formRef, setFormRef]: any = useState(null);
+    const [disableSend, setDisableSend] = useState(false);
+
     const [companyName, setCompanyName] = useState('');
     const [companyId, setCompanyId] = useState('');
     const [contactPerson, setContactPerson] = useState('');
@@ -108,8 +111,8 @@ const SignUpForm: FC = () => {
             if(input.obligatory && input.inputState === '') {
                 setError(true)
                 setErrorMessage(TranslationModel.translate({
-                    se: 'Du måste ange ' + input.placeholder + '.',
-                    en: input.placeholder + 'must be supplied.'
+                    se: 'Du måste ange ' + (input.placeholder as string).toLowerCase() + '.',
+                    en: input.placeholder + ' must be supplied.'
                 }))
                 return
             }
@@ -150,14 +153,20 @@ const SignUpForm: FC = () => {
         }).then(
             () => {
                 setDoneMessage(TranslationModel.translate({
-                se: 'Er intresseanmälan är skickad.',
+                se: 'Intresseanmälan är skickad.',
                 en: 'Your application has been sent.'}))  
+                formRef.reset()
+                setHoldEvents(null)
+                setOppSelect(initialOppState)
+                setDisableSend(true)
             }
         ).catch(
-            () => setDoneMessage(TranslationModel.translate({
+            () => {
+                setErrorMessage(TranslationModel.translate({
                 se: 'Något gick fel, testa gärna igen.',
-                en: 'Something went wrong, please try again.'
-            }))
+                en: 'Something went wrong, please try again.'}))
+                setError(true)
+            }
         ).finally(
             () => setLoading(false)
         );
@@ -165,7 +174,7 @@ const SignUpForm: FC = () => {
 
     return (
         <div>
-            <form className='sign-up-form' onSubmit={() => sendEmail()}>
+            <form className='sign-up-form' onSubmit={() => sendEmail()} ref={(el) => setFormRef(el)}>
                 {textInputs.map(input =>
                     <Fragment key={input.name}>
                         <InputInfo
@@ -206,18 +215,20 @@ const SignUpForm: FC = () => {
                 <br />
             </form>
             {
-                error ? <p className='sign-up-error-message'>{errorMessage}</p> : ''
+                error ? <p className='sign-up-error-message'>{errorMessage}</p> : <></>
             }
             {
-                doneMessage ? <p>{doneMessage}</p> : ''
+                doneMessage ? <p className='sign-up-message'>{doneMessage}</p> : <></>
             }
-            <Button onClick={() => sendEmail()} buttonType={ButtonTypes.normalCompact}>
+            { disableSend ? <></> :
+                <Button onClick={() => sendEmail()} buttonType={ButtonTypes.normalCompact}>
                 {
                     loading
                     ? <LoadingText/>
                     : TranslationModel.translate(phrases.send)
                 }
-            </Button>
+                </Button>
+            }
         </div>
     )
 }
