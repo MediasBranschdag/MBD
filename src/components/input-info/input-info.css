@@ -3,6 +3,7 @@
     height: 100%;
     width: 100%;
     display: flex;
+    border-bottom: 1px solid var(--theme-light-color-dark);
 }
 
 .input-info-textarea,
@@ -19,6 +20,8 @@
     outline: none;
     border: none;
     border-left: 5px solid transparent;
+
+    border-radius: 5px;
 }
 
 .input-info-textarea:focus,
@@ -27,8 +30,9 @@
     outline: none;
 }
 
-input-info-textarea {
+.input-info-textarea {
     height: 100%;
+    resize: none;
 }
 
 .input-info-placeholder-info {

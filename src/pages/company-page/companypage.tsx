@@ -7,7 +7,7 @@ import phrases from '../../data/translations.json';
 import Footer from '../../components/footer/footer';
 import IntroScreen from '../../components/intro-screen/intro-screen';
 import IntroScreenButtons from '../../components/intro-screen/intro-screen-buttons/intro-screen-buttons';
-import ContentSection from '../../components/layout/content-section/content-section';
+import ContentSection, { ContentSectionBackground } from '../../components/layout/content-section/content-section';
 import TextSection, { TextSectionAlignment } from '../../components/text-section/text-section';
 import CenterBackground from '../../components/center-background/center-background';
 import OfferCard from '../../components/offer-card/offer-card';
@@ -34,6 +34,8 @@ import { NavLink } from 'react-router-dom';
 import CompanyModel from '../../model/companyModel';
 import { CompanyInvolment } from '../../contexts/mbd-company-provider';
 import CompanyLogoList from '../../components/company-logo-list/company-logo-list';
+import ContactForm from './contact-form/contact-form';
+import SignUpForm from './sign-up-form/sign-up-form';
 
 
 const Companypage = () => {
@@ -75,10 +77,17 @@ const Companypage = () => {
                         },
                         {
                             title: TranslationModel.translate(
-                                phrases.participate
+                                phrases.exhibitor_package
+                            ),
+                            iconPath: BoothIcon,
+                            scrollTargetID: "companypage-package",
+                        },
+                        {
+                            title: TranslationModel.translate(
+                                phrases.interest_form
                             ),
                             iconPath: TicketIcon,
-                            scrollTargetID: "companypage-package",
+                            scrollTargetID: "companypage-sign-up",
                         },
                         {
                             title: TranslationModel.translate(
@@ -86,13 +95,6 @@ const Companypage = () => {
                             ),
                             iconPath: BoothIcon,
                             scrollTargetID: "companypage-fair",
-                        },
-                        {
-                            title: TranslationModel.translate(
-                                phrases.contact
-                            ),
-                            iconPath: ProfileIcon,
-                            scrollTargetID: "companypage-contact",
                         },
                     ]}
                 />
@@ -161,7 +163,7 @@ const Companypage = () => {
                                 {TranslationModel.translate(phrases.exhibitor_package)}
                             </h1>
                             <h2>
-                                20 000 sek
+                                20 000 SEK
                             </h2>
                         </TextSection>
                         <div className="companypage-offer">
@@ -194,10 +196,10 @@ const Companypage = () => {
                             <p>
                                 {TranslationModel.translate({
                                     se: <span>
-                                        Kontakta oss gärna för anmälan, frågor eller information om våra andra paket!
+                                        Kontakta oss gärna för frågor eller information om våra andra paket!
                                     </span>,
                                     en: <span>
-                                        Contact us to apply, ask a question or get information about our other packages!
+                                        Contact us for questions or to get information about our other packages!
                                     </span>
                                 })}
                             </p>
@@ -209,6 +211,18 @@ const Companypage = () => {
                         </TextSection>
                     </ContentSection>
                 </CenterBackground>
+            </div>
+
+            {/* Sign up section */}
+            <div id="companypage-sign-up">
+            <ContentSection>
+                <TextSection>
+                    <h1>
+                        {TranslationModel.translate(phrases.interest_form)}
+                    </h1>
+                    <SignUpForm/>
+                </TextSection>
+            </ContentSection>
             </div>
 
             {/* Fair section */}
