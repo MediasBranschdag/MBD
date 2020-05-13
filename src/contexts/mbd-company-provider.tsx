@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import CompanyModel, { Company, companyAction } from '../model/companyModel';
+import CompanyModel, { Company } from '../model/companyModel';
 
 const defaultValue: CompanyInvolment = {
   all: [],

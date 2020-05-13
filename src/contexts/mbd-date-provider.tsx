@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import MBDDate, {getNextExhibitDate} from '../model/MBDDate';
+import MBDDate, { getNextExhibitDate } from '../model/MBDDate';
 
 export const MBDDateContext = React.createContext(new MBDDate());
 
