@@ -131,16 +131,16 @@ const SignUpForm: FC = () => {
         let message = '';
         //Text input
         for (const input of textInputs) {
-            message += `<b>${input.placeholder}</b>:\n${input.inputState}\n\n`
+            message += `${input.placeholder}:\n${input.inputState}\n\n`
         }
         //Hold events
-        message += `<b>${TranslationModel.translate(phrases.sign_up.hold_events)}</b>:\n${TranslationModel.translate(holdEvents ? phrases.sign_up.yes : phrases.sign_up.no)}\n\n`
+        message += `${TranslationModel.translate(phrases.sign_up.hold_events)}:\n${TranslationModel.translate(holdEvents ? phrases.sign_up.yes : phrases.sign_up.no)}\n\n`
         //Opportunities
         let opps: string[] = [];
         for (const opp in _.pickBy(oppSelect)) {
             opps = [...opps, opp]
         };
-        message += `<b>${TranslationModel.translate(phrases.sign_up.opportunities_header)}</b>:\n${opps.join(', ')}\n\n`;
+        message += `${TranslationModel.translate(phrases.sign_up.opportunities_header)}:\n${opps.join(', ')}\n\n`;
         //Subject
         formData.append('subject', `${TranslationModel.translate(phrases.interest_form) as string} - ${companyName}`);
         formData.append('message', message);
