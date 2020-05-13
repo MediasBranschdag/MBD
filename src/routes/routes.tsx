@@ -5,7 +5,7 @@ import phrases from '../data/translations.json';
 import { Phrase } from '../model/translationModel';
 import Contactpage from '../pages/contact-page/contact-page';
 import Studentpage from '../pages/student-page/studentpage';
-import MapPage from '../pages/map-page/map-page';
+//import MapPage from '../pages/map-page/map-page';
 
 class Route {
     path: string;

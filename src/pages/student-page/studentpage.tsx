@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext, useRef } from 'react';
 import './studentpage.css';
 
-import { MBDDateContext } from '../../contexts/mbd-date-provider';
 import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';
 import Footer from '../../components/footer/footer';
@@ -10,17 +9,13 @@ import IntroScreenButtons from '../../components/intro-screen/intro-screen-butto
 import ContentSection, { ContentSectionSize } from '../../components/layout/content-section/content-section';
 import TextSection, { TextSectionAlignment } from '../../components/text-section/text-section';
 import CenterBackground from '../../components/center-background/center-background';
-import OfferCard from '../../components/offer-card/offer-card';
 import { Button, ButtonTypes } from '../../components/button/button';
-import TextWithContent from '../../components/text-with-content/text-with-content';
 
 import TicketIcon from '../../assets/icons/other/tickets_black.svg';
 import BoothIcon from '../../assets/icons/other/booth_black.svg';
 
 import IntroScreenBackground from '../../assets/backgrounds/kth_stone_ground.jpg';
 import DinnerBackground from '../../assets/backgrounds/dinner_background.png';
-import Card from '../../components/card/card';
-import { ContentPadding } from '../../components/content-padding';
 import SectionTitle from '../../components/section-title/section-title';
 import { Company } from '../../model/companyModel';
 import { MBDCompanyContext } from '../../contexts/mbd-company-provider';
@@ -105,7 +100,7 @@ const Studentpage = () => {
                         : TranslationModel.translate(phrases.read_more)
                     }
                 </Button>
-                <a href={`http://${activeCompany?.url}`}>
+                <a href={`http://${activeCompany?.url}`} target="_blank" rel="noopener noreferrer">
                     <Button 
                         className={"studentpage-active-company-website-button"}>
                         {TranslationModel.translate(phrases.go_to_companies)}
@@ -149,7 +144,7 @@ const Studentpage = () => {
                                 phrases.exhibitors
                             ),
                             iconPath: BoothIcon,
-                            scrollTargetID: "studentpage-companies",
+                            scrollTargetID: "studentpage-exhibitors",
                         },
                     ]}
                 />
@@ -211,7 +206,7 @@ const Studentpage = () => {
                                 })
                             }
                             <br /><br />
-                            <a href="https://www.facebook.com/mediasbranschdag/" target="_blank">
+                            <a href="https://www.facebook.com/mediasbranschdag/" target="_blank" rel="noopener noreferrer">
                                 <Button buttonType={ButtonTypes.normalCompact}>
                                     {TranslationModel.translate(phrases.read_more)}
                                 </Button>

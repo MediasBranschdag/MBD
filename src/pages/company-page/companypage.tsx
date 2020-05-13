@@ -21,19 +21,19 @@ import SoundIcon from '../../assets/icons/other/sound_black.svg';
 import CupIcon from '../../assets/icons/other/cup_black.svg';
 import ProfileIcon from '../../assets/icons/other/profileIcon_black.svg';
 import QuestionIcon from '../../assets/icons/other/question_mark_black.svg';
+import MBDLogoBlack from '../../assets/mbd-logo/mbd-logo-black.svg';
 
 import IntroScreenBackground from '../../assets/backgrounds/red_flower_dark_blur.jpg';
 import PackageFlowerBackground from '../../assets/backgrounds/blue_flower_dark_blur.jpg';
 import MapBackground from '../../assets/backgrounds/map_nymble.jpg';
-import Card from '../../components/card/card';
-import { ContentPadding } from '../../components/content-padding';
-import { getAllTeamMemebers, getSalesTeamMemebers, TeamMember } from '../../model/teamModel';
+import { getSalesTeamMemebers, TeamMember } from '../../model/teamModel';
 import SectionTitle from '../../components/section-title/section-title';
 import ProfileCard from '../../components/profile-card/profile-card';
 import { NavLink } from 'react-router-dom';
 import CompanyModel from '../../model/companyModel';
 import { CompanyInvolment } from '../../contexts/mbd-company-provider';
 import CompanyLogoList from '../../components/company-logo-list/company-logo-list';
+import SignUpForm from './sign-up-form/sign-up-form';
 
 
 const Companypage = () => {
@@ -75,24 +75,24 @@ const Companypage = () => {
                         },
                         {
                             title: TranslationModel.translate(
-                                phrases.participate
+                                phrases.exhibitor_package
+                            ),
+                            iconPath: BoothIcon,
+                            scrollTargetID: "companypage-package",
+                        },
+                        {
+                            title: TranslationModel.translate(
+                                phrases.interest_form
                             ),
                             iconPath: TicketIcon,
-                            scrollTargetID: "companypage-package",
+                            scrollTargetID: "companypage-sign-up",
                         },
                         {
                             title: TranslationModel.translate(
                                 phrases.the_fair
                             ),
-                            iconPath: BoothIcon,
+                            iconPath: MBDLogoBlack,
                             scrollTargetID: "companypage-fair",
-                        },
-                        {
-                            title: TranslationModel.translate(
-                                phrases.contact
-                            ),
-                            iconPath: ProfileIcon,
-                            scrollTargetID: "companypage-contact",
                         },
                     ]}
                 />
@@ -161,7 +161,7 @@ const Companypage = () => {
                                 {TranslationModel.translate(phrases.exhibitor_package)}
                             </h1>
                             <h2>
-                                20 000 sek
+                                20 000 SEK
                             </h2>
                         </TextSection>
                         <div className="companypage-offer">
@@ -194,10 +194,10 @@ const Companypage = () => {
                             <p>
                                 {TranslationModel.translate({
                                     se: <span>
-                                        Kontakta oss gärna för anmälan, frågor eller information om våra andra paket!
+                                        Kontakta oss gärna för frågor eller information om våra andra paket!
                                     </span>,
                                     en: <span>
-                                        Contact us to apply, ask a question or get information about our other packages!
+                                        Contact us for questions or to get information about our other packages!
                                     </span>
                                 })}
                             </p>
@@ -209,6 +209,18 @@ const Companypage = () => {
                         </TextSection>
                     </ContentSection>
                 </CenterBackground>
+            </div>
+
+            {/* Sign up section */}
+            <div id="companypage-sign-up">
+            <ContentSection>
+                <TextSection>
+                    <h1>
+                        {TranslationModel.translate(phrases.interest_form)}
+                    </h1>
+                    <SignUpForm/>
+                </TextSection>
+            </ContentSection>
             </div>
 
             {/* Fair section */}
