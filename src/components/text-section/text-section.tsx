@@ -7,9 +7,9 @@ export enum TextSectionAlignment {
     right = 'text-section-right',
 }
 
-const TextSection: FC<{align?: TextSectionAlignment}> = (props) => {
+const TextSection: FC<{align?: TextSectionAlignment, color?: string}> = (props) => {
     return (
-        <div className={'text-section ' + props.align}>
+        <div className={'text-section ' + props.align} style={{color: props.color}}>
             {props.children}
         </div>
     );

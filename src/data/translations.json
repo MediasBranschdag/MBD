@@ -436,5 +436,15 @@
                 "en": "Events (e.g. AW)"
             } 
         }
+    },
+    "dinner_page": {
+        "registration": {
+            "se": "Anmälan",
+            "en": "Registration"           
+        },
+        "about" : {
+            "se": "Om sittningen",
+            "en": "The dinner party"               
+        }
     }
 }

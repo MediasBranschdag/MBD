@@ -5,6 +5,7 @@ import phrases from '../data/translations.json';
 import { Phrase } from '../model/translationModel';
 import Contactpage from '../pages/contact-page/contact-page';
 import Studentpage from '../pages/student-page/studentpage';
+import Dinnerpage from '../pages/dinner-page/dinnerpage';
 //import MapPage from '../pages/map-page/map-page';
 
 class Route {
@@ -26,6 +27,7 @@ const Routes = {
     //mapPage: new Route('/map', phrases.map, MapPage),
     contactPage: new Route('/contact', phrases.contact, Contactpage),
     //eventPage: new Route('/event', phrases.events, Companypage),
+    dinnerPartyPage: new Route('/dinner', phrases.dinner_party, Dinnerpage)
 };
 
 
