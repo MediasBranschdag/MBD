@@ -1,28 +1,12 @@
-.course-cont {
-    display: grid;
-    padding: 1em;
-}
-
-.course-cont .course {
-    padding: 0 2em 0 2em;
-}
-
-.course-name {
-    height: 5em;
-}
-
-.course-attributes {
-    font-size: 0.9em;
-    font-style: italic;
-    padding-top: 1em;
+.company-rep {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
 }
 
 @media screen and (max-width: 700px) {
-    .course-cont {
-       grid-template-columns: 1fr !important; 
-    }
-
-    .course-cont .course {
-        padding: 0.5em 0 0.5em 0;
+    .company-rep {
+        display: flex;
+        flex-direction: column;
     }
 }

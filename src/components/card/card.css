@@ -8,6 +8,12 @@
 .card--light {
     box-shadow: 0 0px 8px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.1);
 }
+.card--unselected {
+    box-shadow: none;
+}
+.card--unselected:hover {
+    box-shadow: none;
+}
 .card--clickable {
     cursor: pointer;
     transition: box-shadow 0.25s, transform 0.25s;

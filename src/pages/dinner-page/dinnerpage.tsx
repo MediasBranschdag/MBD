@@ -116,9 +116,12 @@ const Dinnerpage = () => {
             </div>
             <div id='dinnerpage-registration'>
                 <CenterBackground backgroundURL={DinnerPgBackground}>
-                <ContentSection>
-                    <GuestForm/>
-                </ContentSection>
+                    <ContentSection>     
+                        <SectionTitle>
+                            {TranslationModel.translate(phrases.dinner_page.registration)}
+                        </SectionTitle>
+                        <GuestForm/>
+                    </ContentSection>
                 </CenterBackground>
             </div>
             <Footer />

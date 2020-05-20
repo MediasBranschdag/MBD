@@ -1,0 +1,32 @@
+.course-cont {
+    display: grid;
+    padding: 1em;
+}
+
+.course {
+    padding: 0 2em 0 2em;
+}
+
+.course .card {
+    border: 1px solid var(--theme-light-color-dark);
+}
+
+.course-name {
+    min-height: 5em;
+}
+
+.course-attributes {
+    font-size: 0.9em;
+    font-style: italic;
+    padding-top: 1em;
+}
+
+@media screen and (max-width: 700px) {
+    .course-cont {
+       grid-template-columns: 1fr !important; 
+    }
+
+    .course-cont .course {
+        padding: 0.5em 0 0.5em 0;
+    }
+}

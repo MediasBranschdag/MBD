@@ -6,6 +6,8 @@ body {
   background-color: var(--theme-light-color-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-right: 0 !important;
+  overflow: auto !important;
 }
 
 a {
