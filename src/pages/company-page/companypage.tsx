@@ -117,7 +117,7 @@ const Companypage = () => {
                                         Interaktionsdesigners, grafiker och till och med spelutvecklare.
                                         Hos oss hittar ni blivande projektledare inom IT och studenter som älskar management.
                                         Vi medietekniker är speciellt bra på att kommunicera mellan teknik- och
-                                        business-avdelningen. Medietekniker har en bred bas and oändligt med möjligheter
+                                        business-avdelningen. Medietekniker har en bred bas och oändligt med möjligheter
                                         inom teknik-sektorn. Alla de här studenterna, kommer att vara på vår branschdag
                                         den <b>{mbdDate.getStartDate()}e {mbdDate.getStartMonth()} {mbdDate.getStartYear()} {' '}</b>
                                         där vi vill att ni deltar. Att synas på Medias Branschdag

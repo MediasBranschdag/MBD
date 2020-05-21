@@ -125,6 +125,10 @@
         "se": "Mer information kommer snart...",
         "en": "More information coming soon..."
     },
+    "intro_movie_credit": {
+        "se": "Introfilm gjord av Kommunikationsnämnden.",
+        "en": "Intro movie made by Kommunikationsnämnden."
+    },
     "for_companies": {
         "se": "För företag",
         "en": "For companies"
