@@ -3,7 +3,6 @@ import './homepage.css';
 
 import IntroScreen from '../../components/intro-screen/intro-screen';
 
-import IntroScreenBackground from '../../assets/backgrounds/leaf_dark_blur.jpg';
 import StudentInfoBackground from '../../assets/backgrounds/purple_chives_blur.jpg';
 import AnimatedMBDLogo from '../../components/animated-mbd-logo/animated-mbd-logo';
 import BookIcon from '../../assets/icons/other/book.png';
@@ -48,7 +47,7 @@ const Homepage: FC = () => {
         <div className="homepage">
 
             {/* Logo and countdown */}
-            <IntroScreen backgroundImage={IntroScreenBackground}>
+            <IntroScreen backgroundVideo={require( '../../assets/backgrounds/header_video_s.mp4')}>
                 <div className="homepage-intro-content">
                     <AnimatedMBDLogo />
                     <MBDDateContext.Consumer>
@@ -58,7 +57,7 @@ const Homepage: FC = () => {
             </IntroScreen>
 
             {/* Introduction page */}
-            <ContentSection>
+            <ContentSection background={ContentSectionBackground.light}>
                 <TextWithContent
                     text={
                         <TextSection>
