@@ -3,6 +3,7 @@ import './homepage.css';
 
 import IntroScreen from '../../components/intro-screen/intro-screen';
 
+import IntroScreenBackground from '../../assets/backgrounds/leaf_dark_blur.jpg';
 import StudentInfoBackground from '../../assets/backgrounds/purple_chives_blur.jpg';
 import AnimatedMBDLogo from '../../components/animated-mbd-logo/animated-mbd-logo';
 import BookIcon from '../../assets/icons/other/book.png';
@@ -27,9 +28,10 @@ import SectionTitle from '../../components/section-title/section-title';
 import Footer from '../../components/footer/footer';
 import { getProjectLeaders, TeamMember } from '../../model/teamModel';
 import { NavLink } from 'react-router-dom';
+import { isMobileSafari } from 'react-device-detect';
 
 const Homepage: FC = () => {
-
+    
     const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
     const [projectLeaders, setProjectLeaders] = useState<TeamMember[]>([]);
     
@@ -47,7 +49,7 @@ const Homepage: FC = () => {
         <div className="homepage">
 
             {/* Logo and countdown */}
-            <IntroScreen backgroundVideo={require( '../../assets/backgrounds/header_video_s.mp4')}>
+            <IntroScreen backgroundImage={isMobileSafari ? IntroScreenBackground : undefined} backgroundVideo={isMobileSafari ? undefined : require( '../../assets/backgrounds/header_video_s.mp4')}>
                 <div className="homepage-intro-content">
                     <AnimatedMBDLogo />
                     <MBDDateContext.Consumer>
