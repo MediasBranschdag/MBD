@@ -28,12 +28,9 @@ import SectionTitle from '../../components/section-title/section-title';
 import Footer from '../../components/footer/footer';
 import { getProjectLeaders, TeamMember } from '../../model/teamModel';
 import { NavLink } from 'react-router-dom';
-import useWindowDimensions from '../../hooks/useWindowDimensions';
+import { isMobileSafari } from 'react-device-detect';
 
 const Homepage: FC = () => {
-    
-    const windowDimensions = useWindowDimensions();
-    const [onMobile, setOnMobile] = useState(false);
     
     const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
     const [projectLeaders, setProjectLeaders] = useState<TeamMember[]>([]);
@@ -47,16 +44,12 @@ const Homepage: FC = () => {
         });
         getProjectLeaders().then(setProjectLeaders);
     }, []);
- 
-    useEffect(() => {
-        setOnMobile(windowDimensions.width < 750);
-    }, [windowDimensions.width]);
 
     return (
         <div className="homepage">
 
             {/* Logo and countdown */}
-            <IntroScreen backgroundImage={onMobile ? IntroScreenBackground : undefined} backgroundVideo={onMobile ? undefined : require( '../../assets/backgrounds/header_video_s.mp4')}>
+            <IntroScreen backgroundImage={isMobileSafari ? IntroScreenBackground : undefined} backgroundVideo={isMobileSafari ? undefined : require( '../../assets/backgrounds/header_video_s.mp4')}>
                 <div className="homepage-intro-content">
                     <AnimatedMBDLogo />
                     <MBDDateContext.Consumer>
@@ -194,7 +187,7 @@ const Homepage: FC = () => {
                     </a>
                 </div>
             </ContentSection>
-            <Footer onMobile/>
+            <Footer/>
         </div>
     );
 }

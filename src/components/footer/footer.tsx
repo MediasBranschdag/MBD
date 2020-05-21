@@ -7,8 +7,10 @@ import SectionTitle from '../section-title/section-title';
 import TextSection, { TextSectionAlignment } from '../text-section/text-section';
 import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';
+import { isMobile, isMobileSafari } from 'react-device-detect';
 
-const Footer: FC<{onMobile?: boolean}> = (props) => {
+const Footer: FC<{}> = (props) => {
+    
     const preparing = (
         <ContentSection>
             <SectionTitle>
@@ -54,13 +56,13 @@ const Footer: FC<{onMobile?: boolean}> = (props) => {
                     {companies.all.length > 0 ? companyInfo : preparing}
                     <ContentSection background={ContentSectionBackground.dark} size={ContentSectionSize.large}>
                         <div className='footer-bottom-background'></div>
-                        <TextSection align={props.onMobile ? TextSectionAlignment.center : TextSectionAlignment.left}>
+                        <TextSection align={isMobile ? TextSectionAlignment.center : TextSectionAlignment.left}>
                             Sektionen för Medieteknik, KTH
                             <br />
                             <a href='https://medieteknik.com'>
                                 www.medieteknik.com
                             </a>
-                            {props.onMobile ? <></> :
+                            {isMobileSafari ? <></> :
                                 <>
                                     <br/><br/>
                                     <i>{TranslationModel.translate(phrases.intro_movie_credit)}</i>
