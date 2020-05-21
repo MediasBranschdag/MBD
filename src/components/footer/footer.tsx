@@ -8,7 +8,7 @@ import TextSection, { TextSectionAlignment } from '../text-section/text-section'
 import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';
 
-const Footer: FC = (props) => {
+const Footer: FC<{onMobile?: boolean}> = (props) => {
     const preparing = (
         <ContentSection>
             <SectionTitle>
@@ -54,14 +54,18 @@ const Footer: FC = (props) => {
                     {companies.all.length > 0 ? companyInfo : preparing}
                     <ContentSection background={ContentSectionBackground.dark} size={ContentSectionSize.large}>
                         <div className='footer-bottom-background'></div>
-                        <TextSection align={TextSectionAlignment.left}>
+                        <TextSection align={props.onMobile ? TextSectionAlignment.center : TextSectionAlignment.left}>
                             Sektionen för Medieteknik, KTH
                             <br />
                             <a href='https://medieteknik.com'>
                                 www.medieteknik.com
                             </a>
-                            <br/><br/>
-                            <i>{TranslationModel.translate(phrases.intro_movie_credit)}</i>
+                            {props.onMobile ? <></> :
+                                <>
+                                    <br/><br/>
+                                    <i>{TranslationModel.translate(phrases.intro_movie_credit)}</i>
+                                </>
+                            }
                         </TextSection>
                     </ContentSection>
                 </div>

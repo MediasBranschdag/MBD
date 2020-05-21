@@ -3,6 +3,7 @@ import './homepage.css';
 
 import IntroScreen from '../../components/intro-screen/intro-screen';
 
+import IntroScreenBackground from '../../assets/backgrounds/leaf_dark_blur.jpg';
 import StudentInfoBackground from '../../assets/backgrounds/purple_chives_blur.jpg';
 import AnimatedMBDLogo from '../../components/animated-mbd-logo/animated-mbd-logo';
 import BookIcon from '../../assets/icons/other/book.png';
@@ -27,9 +28,13 @@ import SectionTitle from '../../components/section-title/section-title';
 import Footer from '../../components/footer/footer';
 import { getProjectLeaders, TeamMember } from '../../model/teamModel';
 import { NavLink } from 'react-router-dom';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 const Homepage: FC = () => {
-
+    
+    const windowDimensions = useWindowDimensions();
+    const [onMobile, setOnMobile] = useState(false);
+    
     const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
     const [projectLeaders, setProjectLeaders] = useState<TeamMember[]>([]);
     
@@ -42,12 +47,16 @@ const Homepage: FC = () => {
         });
         getProjectLeaders().then(setProjectLeaders);
     }, []);
+ 
+    useEffect(() => {
+        setOnMobile(windowDimensions.width < 750);
+    }, [windowDimensions.width]);
 
     return (
         <div className="homepage">
 
             {/* Logo and countdown */}
-            <IntroScreen backgroundVideo={require( '../../assets/backgrounds/header_video_s.mp4')}>
+            <IntroScreen backgroundImage={onMobile ? IntroScreenBackground : undefined} backgroundVideo={onMobile ? undefined : require( '../../assets/backgrounds/header_video_s.mp4')}>
                 <div className="homepage-intro-content">
                     <AnimatedMBDLogo />
                     <MBDDateContext.Consumer>
@@ -185,7 +194,7 @@ const Homepage: FC = () => {
                     </a>
                 </div>
             </ContentSection>
-            <Footer/>
+            <Footer onMobile/>
         </div>
     );
 }
