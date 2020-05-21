@@ -3,6 +3,7 @@ import './content-section.css';
 
 export enum ContentSectionSize {
     small = 'content-section-small',
+    large = 'content-section-large',
     normal = '',
 }
 

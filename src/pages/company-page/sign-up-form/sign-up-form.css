@@ -1,7 +1,3 @@
-.sign-up-form {
-    text-align: initial;
-}
-
 .sign-up-error-message {
     color: var(--theme-text-error);
 }

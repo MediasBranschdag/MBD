@@ -1,17 +1,19 @@
 .intro-screen {
     position: relative;
     min-height: calc(100vh - var(--shared-navbar-height));
+    min-height: -webkit-fill-available;
 
     display: flex;
     justify-content: stretch;
     flex-direction: column;
     align-items: stretch;
-    
 
     text-align: center;
     background-position: bottom;
     background-size: cover;
     background-attachment: fixed;
+    
+    overflow: hidden;
 }
 
 .intro-screen-content {
@@ -24,4 +26,19 @@
     margin: auto;
     margin-bottom: 35px;
     margin-top: 35px;
+}
+
+.intro-screen-video {
+    display: flex;
+    width: 100vw;
+    position: absolute;
+    z-index: -1;
+    background-color: var(--theme-dark-color-normal);
+}
+
+.intro-screen-video video {
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    opacity: 0.5;
 }
