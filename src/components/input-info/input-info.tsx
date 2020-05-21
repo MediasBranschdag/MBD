@@ -11,6 +11,7 @@ interface InputInfoProps {
     placeHolderHeader?: boolean,
     obligatory?: boolean,
     noCard?: boolean,
+    defaultValue?: string
 }
 export const InputInfo: FC<InputInfoProps> = (props) => {
 
@@ -28,7 +29,8 @@ export const InputInfo: FC<InputInfoProps> = (props) => {
             onInput={(event) => props.onInput(event.currentTarget.value)}
             className="input-info-input"
             placeholder={props.placeholder?.toString()}
-            type={props.inputType}/>
+            type={props.inputType}
+            defaultValue={props.defaultValue}/>
             break;
     }
 

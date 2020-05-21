@@ -5,6 +5,7 @@
 
 .course {
     padding: 0 2em 0 2em;
+    font-size: 0.8em;
 }
 
 .course .card {
@@ -12,7 +13,7 @@
 }
 
 .course-name {
-    min-height: 5em;
+    min-height: 3em;
 }
 
 .course-attributes {

@@ -471,6 +471,14 @@
                 "se": "Välj ett företag...",
                 "en": "Choose a company..."  
             },
+            "other": {
+                "se": "Annat",
+                "en": "Other"                 
+            },
+            "helper": {
+                "se": "En företagsvärd/logistiker/fotograf för MBD",
+                "en": "A company host/logistician/photographer for MBD"                 
+            },
             "plus_one": {
                 "se": "Någons +1",
                 "en": "Someone's +1"  

@@ -38,7 +38,7 @@ const Studentpage = () => {
     }, []);
     
     useEffect(() => {
-        _setActiveCompany(companiesContext.isMainSponsor[0]);
+        _setActiveCompany(companiesContext.isMainSponsor[0] ?? companiesContext.all[0]);
     }, [companiesContext.isMainSponsor]);
 
     const changeActiveCompany = (company: Company) => {
