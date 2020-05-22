@@ -7,7 +7,7 @@ import SectionTitle from '../section-title/section-title';
 import TextSection, { TextSectionAlignment } from '../text-section/text-section';
 import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';
-import { isMobile, isMobileSafari } from 'react-device-detect';
+import { isMobile, isMobileSafari, isSafari } from 'react-device-detect';
 
 const Footer: FC<{}> = (props) => {
     
@@ -62,7 +62,7 @@ const Footer: FC<{}> = (props) => {
                             <a href='https://medieteknik.com'>
                                 www.medieteknik.com
                             </a>
-                            {isMobileSafari ? <></> :
+                            {isMobile && isSafari ? <></> :
                                 <>
                                     <br/><br/>
                                     <i>{TranslationModel.translate(phrases.intro_movie_credit)}</i>
