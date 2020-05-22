@@ -7,7 +7,7 @@ import SectionTitle from '../section-title/section-title';
 import TextSection, { TextSectionAlignment } from '../text-section/text-section';
 import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';
-import { isMobile, isMobileSafari, isSafari } from 'react-device-detect';
+import { isMobile, isSafari } from 'react-device-detect';
 
 const Footer: FC<{}> = (props) => {
     
