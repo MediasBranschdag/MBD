@@ -125,6 +125,10 @@
         "se": "Mer information kommer snart...",
         "en": "More information coming soon..."
     },
+    "intro_movie_credit": {
+        "se": "Introfilm gjord av Kommunikationsnämnden.",
+        "en": "Intro movie made by Kommunikationsnämnden."
+    },
     "for_companies": {
         "se": "För företag",
         "en": "For companies"
@@ -342,7 +346,7 @@
         "en": "No more to show"
     },
     "no_result_description": {
-        "se": "Tyvärr hittade vi inget företag med din sökning.",
+        "se": "Tyvärr hittade vi inget företag som matchar din sökning.",
         "en": "We did not find any companies that matched your query."
     },
     "your_location": {
@@ -352,5 +356,89 @@
     "tickets": {
         "se": "Biljetter",
         "en": "Tickets"
+    },
+    "interest_form": {
+        "se": "Intresseanmälan",
+        "en": "Sign up"
+    },
+    "sign_up": {
+        "company_name": {
+            "se": "Företagsnamn",
+            "en": "Company name"  
+        },        
+        "organization_number": {
+            "se": "Organisationsnummer",
+            "en": "Vat/company identity number"  
+        },         
+        "contact_person": {
+            "se": "Kontaktperson",
+            "en": "Contact person"  
+        },        
+        "phone": {
+            "se": "Telefonnummer",
+            "en": "Phone number"  
+        },        
+        "contact_email": {
+            "se": "E-post",
+            "en": "Contact email"  
+        },
+        "invoice_address": {
+            "se": "Faktureringsaddress",
+            "en": "Invoice address"   
+        },
+        "invoice_email": {
+            "se": "E-post för fakturering",
+            "en": "Invoice email"            
+        },
+        "comment": {
+            "se": "Kommentar",
+            "en": "Comment"         
+        },
+        "yes": {
+            "se": "Ja",
+            "en": "Yes"       
+        },
+        "no": {
+            "se": "Nej",
+            "en": "No"          
+        },
+        "hold_events": {
+            "se": "Är ni intresserade av att hålla andra aktiviteter eller event i samband med Medias Branschdag? (t.ex. lunchföreläsning eller pub)",
+            "en": "Are you intrested in hosting other events in connection to Medias Branschdag? (e.g. lunch lecture or pub)"
+        },
+        "opportunities_header": {
+            "se": "Vi erbjuder studenter möjlighet till:",
+            "en": "We offer students opportunities for:"
+        },
+        "opportunities": {
+            "full_time": {
+                "se": "Heltidsjobb",
+                "en": "Full-time jobs"
+            },
+            "part_time": {
+                "se": "Deltidsjobb",
+                "en": "Part-time jobs"
+            },
+            "summer_jobs": {
+                "se": "Sommarjobb",
+                "en": "Summer jobs"
+            },
+            "master_thesis": {
+                "se": "Ex-jobb",
+                "en": "Master thesis project"
+            },
+            "internships": {
+                "se": "Internships",
+                "en": "Internships"
+            },
+            "trainee_program": {
+                "se": "Traineeprogram",
+                "en": "Trainee program"
+            },
+            "events": {
+                "se": "Event (t.ex. AW)",
+                "en": "Events (e.g. AW)"
+            } 
+        }
     }
 }

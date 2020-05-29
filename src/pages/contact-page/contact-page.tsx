@@ -7,16 +7,15 @@ import Footer from '../../components/footer/footer';
 
 import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';
-import { url } from 'inspector';
 import ContentSection, { ContentSectionBackground } from '../../components/layout/content-section/content-section';
 import { TeamMember, getAllTeamMemebers } from '../../model/teamModel';
 import ProfileCard from '../../components/profile-card/profile-card';
 import TextSection from '../../components/text-section/text-section';
-import { InputInfo } from '../../components/input-info/input-info';
-import { Button, ButtonTypes } from '../../components/button/button';
 import ContactForm from '../company-page/contact-form/contact-form';
 
 import Background from '../../assets/backgrounds/branches_buds.jpg';
+import IntroScreenTitle from '../../components/intro-screen/intro-screen-title/intro-screen-title';
+import CenterBackground from '../../components/center-background/center-background';
 
 const Contactpage: FC = () => {
 
@@ -30,14 +29,18 @@ const Contactpage: FC = () => {
     return (
         <div className="contactpage">
 
-            {/* Image on PG */}
+            {/* Image on PG, TODO add when we have a picture of the whole group
             <IntroScreen 
                 title={TranslationModel.translate(phrases.the_project_group)}>
                 <div
                     style={{backgroundImage: `url(${Background})`}}
                     className="contactpage-background"></div>
-            </IntroScreen>
+            </IntroScreen>*/}
 
+            <CenterBackground background={Background}>
+                <IntroScreenTitle>{TranslationModel.translate(phrases.the_project_group)}</IntroScreenTitle>
+            </CenterBackground>
+            
             {/* List of every memeber in PG */}
             <ContentSection>
                 <div className="contactpage-pg-members" >

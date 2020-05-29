@@ -1,37 +1,58 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import './input-info.css';
 import Card from '../card/card';
+import { InputInfoHeader } from './input-info-header/input-info-header';
 
 interface InputInfoProps {
-    inputType: 'text' | 'textarea' | 'password',
+    inputType: 'text' | 'textarea'
     name: string,
-    placeholder: React.ReactNode;
-    onInput: (arg0: string) => void
+    placeholder: ReactNode;
+    onInput: (arg0: string) => void,
+    placeHolderHeader?: boolean,
+    obligatory?: boolean,
+    noCard?: boolean,
 }
 export const InputInfo: FC<InputInfoProps> = (props) => {
-    return (
-        <Card>
-            <div className="input-info-container">
-                {
-                    props.inputType === 'textarea' 
-                    ?
-                        <textarea
-                            onInput={(event) => props.onInput(event.currentTarget.value)}
-                            name=""
-                            placeholder={props.placeholder?.toString()}
-                            className="input-info-textarea"></textarea>
-                    :
-                        <input
-                            onInput={(event) => props.onInput(event.currentTarget.value)}
-                            className="input-info-input"
-                            placeholder={props.placeholder?.toString()}
-                            type={props.inputType}/>
-                }
+
+    let input;
+    switch(props.inputType){
+        case 'textarea':
+            input = <textarea
+            onInput={(event) => props.onInput(event.currentTarget.value)}
+            name=""
+            placeholder={props.placeholder?.toString()}
+            className="input-info-textarea"></textarea>
+            break;
+        default:
+            input = <input
+            onInput={(event) => props.onInput(event.currentTarget.value)}
+            className="input-info-input"
+            placeholder={props.placeholder?.toString()}
+            type={props.inputType}/>
+            break;
+    }
+
+    const cont = (
+        <div className="input-info-container">
+            {
+                input
+            }
+            { 
+                props.placeHolderHeader ? <></> : 
                 <div className="input-info-placeholder-info">
                     {props.placeholder}
-                </div>
-            </div>
-        </Card>
-    );
+                </div> 
+            }
+        </div>
+    )
+
+    return (<>
+        { props.placeHolderHeader ? 
+            <InputInfoHeader obligatory={props.obligatory}>
+                {props.placeholder}
+            </InputInfoHeader>
+        : <></> }
+        {props.noCard ? cont : <Card>{cont}</Card>}           
+    </>);
 }
 

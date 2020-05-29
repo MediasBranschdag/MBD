@@ -1,0 +1,19 @@
+.sign-up-error-message {
+    color: var(--theme-text-error);
+}
+
+.sign-up-message {
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+.sign-up-opportunities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width: 600px) {
+    .sign-up-opportunities {
+        grid-template-columns: 1fr;
+    }
+}

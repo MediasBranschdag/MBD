@@ -3,7 +3,7 @@ import './homepage.css';
 
 import IntroScreen from '../../components/intro-screen/intro-screen';
 
-import IntroScreenBackground from '../../assets/backgrounds/leaf_dark_blur.jpg';
+import IntroScreenBackground from '../../assets/backgrounds/nymble_beach_flag.jpg';
 import StudentInfoBackground from '../../assets/backgrounds/purple_chives_blur.jpg';
 import AnimatedMBDLogo from '../../components/animated-mbd-logo/animated-mbd-logo';
 import BookIcon from '../../assets/icons/other/book.png';
@@ -28,9 +28,10 @@ import SectionTitle from '../../components/section-title/section-title';
 import Footer from '../../components/footer/footer';
 import { getProjectLeaders, TeamMember } from '../../model/teamModel';
 import { NavLink } from 'react-router-dom';
+import { isMobile, isSafari } from 'react-device-detect';
 
 const Homepage: FC = () => {
-
+    
     const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
     const [projectLeaders, setProjectLeaders] = useState<TeamMember[]>([]);
     
@@ -48,7 +49,7 @@ const Homepage: FC = () => {
         <div className="homepage">
 
             {/* Logo and countdown */}
-            <IntroScreen backgroundImage={IntroScreenBackground}>
+            <IntroScreen backgroundImage={isMobile && isSafari ? IntroScreenBackground : undefined} backgroundVideo={isMobile && isSafari ? undefined : require( '../../assets/backgrounds/header_video_s.mp4')}>
                 <div className="homepage-intro-content">
                     <AnimatedMBDLogo />
                     <MBDDateContext.Consumer>
@@ -58,7 +59,7 @@ const Homepage: FC = () => {
             </IntroScreen>
 
             {/* Introduction page */}
-            <ContentSection>
+            <ContentSection background={ContentSectionBackground.light}>
                 <TextWithContent
                     text={
                         <TextSection>
@@ -115,7 +116,7 @@ const Homepage: FC = () => {
             </ContentSection>
 
             {/* "Are you a student" section */}
-            <CenterBackground backgroundURL={StudentInfoBackground}>
+            <CenterBackground background={StudentInfoBackground}>
                 <ContentSection size={ContentSectionSize.small}>
                     <TextSection align={TextSectionAlignment.center}>
 
@@ -174,12 +175,12 @@ const Homepage: FC = () => {
                     {TranslationModel.translate(phrases.follow_social_media)}
                 </SectionTitle>
                 <div className="homepage-social-buttons">
-                    <a href="https://www.facebook.com/mediasbranschdag/" target="_blank">
+                    <a href="https://www.facebook.com/mediasbranschdag/" target="_blank" rel="noopener noreferrer">
                         <Button buttonType={ButtonTypes.bigIcon}>
                             <img src={FacebookIcon} alt=""/>
                         </Button>
                     </a>
-                    <a href="https://www.instagram.com/mediasbranschdag/" target="_blank">
+                    <a href="https://www.instagram.com/mediasbranschdag/" target="_blank" rel="noopener noreferrer">
                         <Button buttonType={ButtonTypes.bigIcon}>
                             <img src={InstagramIcon} alt=""/>
                         </Button>
