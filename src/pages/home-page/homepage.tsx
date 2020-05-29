@@ -116,7 +116,7 @@ const Homepage: FC = () => {
             </ContentSection>
 
             {/* "Are you a student" section */}
-            <CenterBackground backgroundURL={StudentInfoBackground}>
+            <CenterBackground background={StudentInfoBackground}>
                 <ContentSection size={ContentSectionSize.small}>
                     <TextSection align={TextSectionAlignment.center}>
 

@@ -7,7 +7,7 @@ import phrases from '../../data/translations.json';
 import Footer from '../../components/footer/footer';
 import IntroScreen from '../../components/intro-screen/intro-screen';
 import IntroScreenButtons from '../../components/intro-screen/intro-screen-buttons/intro-screen-buttons';
-import ContentSection from '../../components/layout/content-section/content-section';
+import ContentSection, { ContentSectionSize } from '../../components/layout/content-section/content-section';
 import TextSection, { TextSectionAlignment } from '../../components/text-section/text-section';
 import CenterBackground from '../../components/center-background/center-background';
 import OfferCard from '../../components/offer-card/offer-card';
@@ -55,11 +55,11 @@ const Companypage = () => {
     }, []);
 
     const scrollToSection = (id: string) => {
-        document.querySelector(`#${id}`)?.scrollIntoView({ behavior: "smooth", block: "nearest" })
+        document.querySelector(`#${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
     }
 
     return (
-        <div className="companypage">
+        <div className='companypage'>
             <IntroScreen
                 backgroundImage={IntroScreenBackground}
                 title={TranslationModel.translate(phrases.for_companies)}
@@ -71,35 +71,35 @@ const Companypage = () => {
                                 phrases.about_us
                             ),
                             iconPath: QuestionIcon,
-                            scrollTargetID: "companypage-who-are-we",
+                            scrollTargetID: 'companypage-who-are-we',
                         },
                         {
                             title: TranslationModel.translate(
                                 phrases.exhibitor_package
                             ),
                             iconPath: BoothIcon,
-                            scrollTargetID: "companypage-package",
+                            scrollTargetID: 'companypage-package',
                         },
                         {
                             title: TranslationModel.translate(
                                 phrases.interest_form
                             ),
                             iconPath: TicketIcon,
-                            scrollTargetID: "companypage-sign-up",
+                            scrollTargetID: 'companypage-sign-up',
                         },
                         {
                             title: TranslationModel.translate(
                                 phrases.the_fair
                             ),
                             iconPath: MBDLogoBlack,
-                            scrollTargetID: "companypage-fair",
+                            scrollTargetID: 'companypage-fair',
                         },
                     ]}
                 />
             </IntroScreen>
 
             {/* Info section */}
-            <div id="companypage-who-are-we">
+            <div id='companypage-who-are-we'>
                 <ContentSection>
                     <TextSection>
                         <h1>
@@ -153,8 +153,8 @@ const Companypage = () => {
             </div>
 
             {/* Package section */}
-            <div id="companypage-package">
-                <CenterBackground backgroundURL={PackageFlowerBackground}>
+            <div id='companypage-package'>
+                <CenterBackground background={PackageFlowerBackground}>
                     <ContentSection>
                         <TextSection align={TextSectionAlignment.center}>
                             <h1>
@@ -164,30 +164,30 @@ const Companypage = () => {
                                 20 000 SEK
                             </h2>
                         </TextSection>
-                        <div className="companypage-offer">
+                        <div className='companypage-offer'>
                             <OfferCard
                                 img={BoothIcon}
-                                altImage="Lounge icon"
+                                altImage='Lounge icon'
                                 text={TranslationModel.translate(phrases.package_showcase_area)} />
                             <OfferCard
                                 img={ProfileIcon}
-                                altImage="Profile icon"
+                                altImage='Profile icon'
                                 text={TranslationModel.translate(phrases.package_host)} />
                             <OfferCard
                                 img={FoodIcon}
-                                altImage="Food icon"
+                                altImage='Food icon'
                                 text={TranslationModel.translate(phrases.package_fika)} />
                             <OfferCard
                                 img={SoundIcon}
-                                altImage="Sound icon"
+                                altImage='Sound icon'
                                 text={TranslationModel.translate(phrases.package_promotion)} />
                             <OfferCard
                                 img={CupIcon}
-                                altImage="Cup icon"
+                                altImage='Cup icon'
                                 text={TranslationModel.translate(phrases.package_lounge)} />
                             <OfferCard
                                 img={TicketIcon}
-                                altImage="Ticket icon"
+                                altImage='Ticket icon'
                                 text={TranslationModel.translate(phrases.package_tickets)} />
                         </div>
                         <TextSection align={TextSectionAlignment.center}>
@@ -201,7 +201,7 @@ const Companypage = () => {
                                     </span>
                                 })}
                             </p>
-                            <div onClick={() => scrollToSection("companypage-contact")}>
+                            <div onClick={() => scrollToSection('companypage-contact')}>
                                 <Button buttonType={ButtonTypes.normalCompact}>
                                     {TranslationModel.translate(phrases.contact)}
                                 </Button>
@@ -212,7 +212,7 @@ const Companypage = () => {
             </div>
 
             {/* Sign up section */}
-            <div id="companypage-sign-up">
+            <div id='companypage-sign-up'>
             <ContentSection>
                 <TextSection>
                     <h1>
@@ -224,12 +224,12 @@ const Companypage = () => {
             </div>
 
             {/* Fair section */}
-            <div id="companypage-fair" className="companypage-fair">
+            <div id='companypage-fair' className='companypage-fair'>
                 <div
-                    className="companypage-map-background"
+                    className='companypage-map-background'
                     style={{backgroundImage: `url(${MapBackground})`}}></div>
                 <div
-                    className="companypage-map-background-fade"></div>
+                    className='companypage-map-background-fade'></div>
                 <ContentSection>
                     <TextWithContent
                         text={
@@ -275,16 +275,16 @@ const Companypage = () => {
                         content={
                             // This is used to make the icon on the map background 
                             // visibale on small screens
-                            <div className="companypage-see-map-box"></div>
+                            <div className='companypage-see-map-box'></div>
                         }
                     />
                 </ContentSection>
             </div>
 
             {/* Company contact section */}
-            <div id="companypage-contact">
+            <div id='companypage-contact'>
                 <br/>
-                <ContentSection>
+                <ContentSection size={ContentSectionSize.large}>
                     <SectionTitle>
                         {TranslationModel.translate(phrases.sales_team)}
                     </SectionTitle>
@@ -293,11 +293,12 @@ const Companypage = () => {
                             gridTemplateColumns: 
                                 `repeat(${salesMembers.length > 4 ? 3 : salesMembers.length}, 1fr)`
                         }}
-                        className="companypage-sales-members">
+                        className='companypage-sales-members'>
                         {salesMembers.map(member => {
                             return <ProfileCard
                                 key={member.name}
                                 imagePath={member.imagePath}
+                                linkedinLink={member.linkedInURL}
                                 email={member.email}
                                 name={member.name}
                                 role={TranslationModel.translate(member.position)}/>
@@ -307,7 +308,7 @@ const Companypage = () => {
                     <TextSection align={TextSectionAlignment.center}>
                         {TranslationModel.translate(phrases.search_other)}
                         <br /><br />
-                        <NavLink to="/contact">
+                        <NavLink to='/contact'>
                             <Button buttonType={ButtonTypes.normalCompact}>
                                 {TranslationModel.translate(phrases.click_here)}
                             </Button>
