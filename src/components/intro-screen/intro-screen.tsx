@@ -33,7 +33,7 @@ const IntroScreen: FC<IntroScreenProps> = (props) => {
                 props.backgroundVideo ? 
                 <div className='intro-screen-video'>   
                     <video autoPlay={true} playsInline loop muted>
-                        <source src={props.backgroundVideo} type='video/mp4'/> 
+                        <source src={`${props.backgroundVideo}#t=1`} type='video/mp4'/> 
                     </video>
                 </div> : <></>
             }

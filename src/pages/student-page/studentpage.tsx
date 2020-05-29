@@ -166,7 +166,7 @@ const Studentpage = () => {
 
             {/* Info section */}
             <div id="studentpage-dinner">
-                <CenterBackground backgroundURL={DinnerBackground}>
+                <CenterBackground background={DinnerBackground}>
                     <ContentSection size={ContentSectionSize.small}>
                         <SectionTitle>
                             {TranslationModel.translate(phrases.dinner_party)}
