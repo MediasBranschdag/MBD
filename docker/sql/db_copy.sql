@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: MBD-mysql:3306
--- Tid vid skapande: 29 maj 2020 kl 09:20
+-- Tid vid skapande: 29 maj 2020 kl 13:13
 -- Serverversion: 5.7.30
 -- PHP-version: 7.4.5
 
@@ -388,9 +388,9 @@ CREATE TABLE `team_involvement` (
 INSERT INTO `team_involvement` (`id`, `personId`, `year`, `positionId`, `image`) VALUES
 (1, 1, 2021, 1, 'nicole_nordlund.jpg'),
 (2, 2, 2021, 1, 'john_brink.jpg'),
-(3, 3, 2021, 4, ''),
+(3, 3, 2021, 4, 'amanda_carp.jpg'),
 (4, 4, 2021, 7, 'ebba_rovig.jpg'),
-(5, 5, 2021, 7, ''),
+(5, 5, 2021, 7, 'emily_nilsson.jpg'),
 (6, 6, 2021, 6, ''),
 (7, 7, 2021, 8, 'mahmoud_sherzad.jpg'),
 (8, 8, 2021, 8, 'ella_klara_westerlund.jpg'),
