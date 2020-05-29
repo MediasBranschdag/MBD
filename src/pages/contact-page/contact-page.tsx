@@ -14,6 +14,8 @@ import TextSection from '../../components/text-section/text-section';
 import ContactForm from '../company-page/contact-form/contact-form';
 
 import Background from '../../assets/backgrounds/branches_buds.jpg';
+import IntroScreenTitle from '../../components/intro-screen/intro-screen-title/intro-screen-title';
+import CenterBackground from '../../components/center-background/center-background';
 
 const Contactpage: FC = () => {
 
@@ -27,14 +29,18 @@ const Contactpage: FC = () => {
     return (
         <div className="contactpage">
 
-            {/* Image on PG */}
+            {/* Image on PG, TODO add when we have a picture of the whole group
             <IntroScreen 
                 title={TranslationModel.translate(phrases.the_project_group)}>
                 <div
                     style={{backgroundImage: `url(${Background})`}}
                     className="contactpage-background"></div>
-            </IntroScreen>
+            </IntroScreen>*/}
 
+            <CenterBackground background={Background}>
+                <IntroScreenTitle>{TranslationModel.translate(phrases.the_project_group)}</IntroScreenTitle>
+            </CenterBackground>
+            
             {/* List of every memeber in PG */}
             <ContentSection>
                 <div className="contactpage-pg-members" >
