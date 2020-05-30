@@ -66,9 +66,7 @@ const Contactpage: FC = () => {
                     
                     <ContactForm/>
                     
-                    <h4>
-                    {"branschdag@medieteknik.com"}
-                    </h4>
+                    <h4>branschdag@medieteknik.com</h4>
                 </TextSection>
             </ContentSection>
 
