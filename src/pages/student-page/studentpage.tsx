@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
 import './studentpage.css';
 
 import TranslationModel from '../../model/translationModel';
@@ -21,25 +21,41 @@ import { Company } from '../../model/companyModel';
 import { MBDCompanyContext } from '../../contexts/mbd-company-provider';
 import CompanyCard from '../../components/company-card/company-card';
 import LoadingText from '../../components/loading-text';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 
 const Studentpage = () => {
 
     const companiesContext = useContext(MBDCompanyContext);
-    const companyDescriptionRef = useRef<HTMLDivElement>(null);
     const closedDescriptionHeight = 250;
 
+    const windowDimensions = useWindowDimensions();
+
+    const [companyDescriptionRef, _setCompanyDescriptionRef] = useState<HTMLDivElement>();
     const [activeCompany, _setActiveCompany] = useState<Company | null>(null);
     const [descriptionOpen, _setDescriptionOpen] = useState<boolean>(false);
     const [descriptionHeight, _setDescriptionHeight] = useState<number>(closedDescriptionHeight);
+    const [showMore, _setShowMore] = useState(true);
+    const [onMobile, _setOnMobile] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    useEffect(() => {
+        _setOnMobile(windowDimensions.width < 700)
+    }, [windowDimensions.width])
     
     useEffect(() => {
-        _setActiveCompany(companiesContext.isMainSponsor[0]);
-    }, [companiesContext.isMainSponsor]);
+        if(!onMobile) _setActiveCompany(companiesContext.isMainSponsor[0] ?? companiesContext.isExhibitor[0]);
+    }, [onMobile, companiesContext.isMainSponsor, companiesContext.isExhibitor]);
+
+    const onCompanyRefChange = useCallback(node => {
+        _setCompanyDescriptionRef(node);
+        if (node !== null) { 
+            _setShowMore(node.scrollHeight! > (closedDescriptionHeight))
+        }
+    }, [])
 
     const changeActiveCompany = (company: Company) => {
         _setActiveCompany(company);
@@ -52,7 +68,7 @@ const Studentpage = () => {
         _setDescriptionHeight(
             shouldClose 
             ? closedDescriptionHeight 
-            : (companyDescriptionRef.current?.scrollHeight ?? 200)
+            : (companyDescriptionRef?.scrollHeight ?? 200)
         );
     }
 
@@ -68,46 +84,48 @@ const Studentpage = () => {
                     className="studentpage-active-company-logo" 
                     src={"/assets/companies/" + activeCompany.logo_path} 
                     alt=""/>
-                <div dangerouslySetInnerHTML={{
+                <div className="studentpage-company-description" dangerouslySetInnerHTML={{
                     __html: TranslationModel.translate(activeCompany.getDescription())?.toString() ?? ''
                 }}></div>
             </div>
             {
-                descriptionOpen
-                ? <></>
-                : <div className="studentpage-company-description-overflow"></div>
+                showMore && !descriptionOpen
+                ? <div className="studentpage-company-description-overflow"></div>
+                : <></>
             }
         </div>
     }
 
     const exhibitors = (<>
-        <div className="studentpage-active-company">
-            <div 
-                ref={companyDescriptionRef} 
-                style={{
-                    height: `${descriptionHeight}px`
-                }}
-                className="studentpage-company-description">
-                <TextSection>
-                    {getActiveCompanyContent()}
-                </TextSection>
+        { onMobile ? <></> :
+            <div className="studentpage-active-company">
+                <div 
+                    key={activeCompany?.id}
+                    ref={onCompanyRefChange} 
+                    style={{
+                        height: `${descriptionHeight}px`
+                    }}
+                    className="studentpage-company-description">
+                    <TextSection>
+                        {getActiveCompanyContent()}
+                    </TextSection>
+                </div>
+                <div className="studentpage-active-company-actions">
+                    { showMore ? <Button onClick={toggleDescription} className="studentpage-show-more-button">
+                        {
+                            descriptionOpen
+                            ? TranslationModel.translate(phrases.show_less)
+                            : TranslationModel.translate(phrases.read_more)
+                        }
+                    </Button> : <></> }
+                    <a href={`http://${activeCompany?.url}`} target="_blank" rel="noopener noreferrer">
+                        <Button>
+                            {TranslationModel.translate(phrases.go_to_companies)}
+                        </Button>
+                    </a>
+                </div>
             </div>
-            <div className="studentpage-active-company-actions">
-                <Button onClick={toggleDescription}>
-                    {
-                        descriptionOpen
-                        ? TranslationModel.translate(phrases.show_less)
-                        : TranslationModel.translate(phrases.read_more)
-                    }
-                </Button>
-                <a href={`http://${activeCompany?.url}`} target="_blank" rel="noopener noreferrer">
-                    <Button 
-                        className={"studentpage-active-company-website-button"}>
-                        {TranslationModel.translate(phrases.go_to_companies)}
-                    </Button>
-                </a>
-            </div>
-        </div>
+        }
 
         <div className="studentpage-companies-container">
             <MBDCompanyContext.Consumer>
@@ -117,7 +135,8 @@ const Studentpage = () => {
                             key={company.id}
                             onClick={() => {changeActiveCompany(company)}}
                             isActive={company === activeCompany} 
-                            company={company}/>
+                            company={company}
+                            showDesc={company === activeCompany}/>
                     });
                 }}
             </MBDCompanyContext.Consumer>

@@ -27,7 +27,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 75px;
+    height: 50px;
     background: linear-gradient(
         var(--theme-light-color-normal-transparent),
         var(--theme-light-color-normal)
@@ -35,8 +35,8 @@
     position: absolute;
 }
 
-.studentpage-active-company-website-button {
-    margin-left: 10px;
+.studentpage-show-more-button {
+    margin-right: 10px;
 }
 
 .studentpage-active-company-actions {
@@ -46,7 +46,7 @@
 
 @media screen and (max-width: 700px) {
     .studentpage-companies-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
 
     .studentpage-active-company-actions {
