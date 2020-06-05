@@ -15,6 +15,8 @@ export class Company {
         public isSponsor: boolean,
         public isExhibitor: boolean,
         public isMainSponsor: boolean,
+
+        public employments: Array<{ priority: number, name: any, id: any }>
     ) {}
 
     public getDescription(): {se: string, en: string} {
@@ -51,7 +53,8 @@ export default class CompanyModel {
                     company.mapPositionY,
                     company.isSponsor === '1',
                     company.isExhibitor === '1',
-                    company.isMainSponsor === '1'
+                    company.isMainSponsor === '1',
+                    JSON.parse(company.companyArray) ?? []
                 );
             })
         });

@@ -8,13 +8,29 @@
     margin-bottom: 25px;
 }
 
-.studentpage-active-company-logo {
+.studentpage-active-company-right {
+    display: flex;
     float: right;
-    max-width: 150px;
-    max-height: 75px;
-    margin: 25px;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    flex-direction: column;
+    padding-left: 10px;
+    width: 250px;
+}
+
+.studentpage-active-company-logo {
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: inherit;
+    height: 75px;
+}
+
+.studentpage-active-company-employments, .studentpage-employments {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 5px;
+}
+
+.studentpage-employments {
+    padding-bottom: 10px;
 }
 
 .studentpage-company-description {
@@ -27,7 +43,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 50px;
+    height: 40px;
     background: linear-gradient(
         var(--theme-light-color-normal-transparent),
         var(--theme-light-color-normal)
@@ -43,6 +59,7 @@
     margin-top: 15px;
     display: flex;
 }
+
 
 @media screen and (max-width: 700px) {
     .studentpage-companies-container {

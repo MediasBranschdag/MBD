@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useCallback } from 'react';
+import React, { useEffect, useState, useContext, useCallback, Fragment } from 'react';
 import './studentpage.css';
 
 import TranslationModel from '../../model/translationModel';
@@ -22,12 +22,13 @@ import { MBDCompanyContext } from '../../contexts/mbd-company-provider';
 import CompanyCard from '../../components/company-card/company-card';
 import LoadingText from '../../components/loading-text';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
+import Chip from '../../components/chip/chip';
 
 
 const Studentpage = () => {
 
     const companiesContext = useContext(MBDCompanyContext);
-    const closedDescriptionHeight = 250;
+    const closedDescriptionHeight = 300;
 
     const windowDimensions = useWindowDimensions();
 
@@ -37,6 +38,7 @@ const Studentpage = () => {
     const [descriptionHeight, _setDescriptionHeight] = useState<number>(closedDescriptionHeight);
     const [showMore, _setShowMore] = useState(true);
     const [onMobile, _setOnMobile] = useState(false);
+    const [employments, _setEmployments]: any = useState({});
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -50,6 +52,10 @@ const Studentpage = () => {
         if(!onMobile) _setActiveCompany(companiesContext.isMainSponsor[0] ?? companiesContext.isExhibitor[0]);
     }, [onMobile, companiesContext.isMainSponsor, companiesContext.isExhibitor]);
 
+    const getActiveEmployments = () => {
+        return Object.keys(employments).filter((id) => employments[id])
+    }
+
     const onCompanyRefChange = useCallback(node => {
         _setCompanyDescriptionRef(node);
         if (node !== null) { 
@@ -58,7 +64,7 @@ const Studentpage = () => {
     }, [])
 
     const changeActiveCompany = (company: Company) => {
-        _setActiveCompany(company);
+        _setActiveCompany(activeCompany === company && onMobile ? null : company);
         toggleDescription(true);
     }
 
@@ -77,20 +83,26 @@ const Studentpage = () => {
             return <LoadingText/>;
         }
         
-        return <div>
+        return <div className='student-page'>
             <h2>{activeCompany.name}</h2>
             <div>
-                <img 
-                    className="studentpage-active-company-logo" 
-                    src={"/assets/companies/" + activeCompany.logo_path} 
-                    alt=""/>
-                <div className="studentpage-company-description" dangerouslySetInnerHTML={{
+                <div className='studentpage-active-company-right'>
+                    <div 
+                        className='studentpage-active-company-logo' 
+                        style={{backgroundImage: `url('/assets/companies/${activeCompany.logo_path}')`}} 
+                        />
+                        <div className='studentpage-active-company-employments'>
+                            { activeCompany.employments.map(employment => <Chip key={'chip_'+employment.id} selected>{TranslationModel.translate(employment.name)}</Chip>) }
+                        </div>
+                </div>
+                
+                <div className='studentpage-company-description' dangerouslySetInnerHTML={{
                     __html: TranslationModel.translate(activeCompany.getDescription())?.toString() ?? ''
                 }}></div>
             </div>
             {
                 showMore && !descriptionOpen
-                ? <div className="studentpage-company-description-overflow"></div>
+                ? <div className='studentpage-company-description-overflow'></div>
                 : <></>
             }
         </div>
@@ -98,27 +110,27 @@ const Studentpage = () => {
 
     const exhibitors = (<>
         { onMobile ? <></> :
-            <div className="studentpage-active-company">
+            <div className='studentpage-active-company'>
                 <div 
                     key={activeCompany?.id}
                     ref={onCompanyRefChange} 
                     style={{
                         height: `${descriptionHeight}px`
                     }}
-                    className="studentpage-company-description">
+                    className='studentpage-company-description'>
                     <TextSection>
                         {getActiveCompanyContent()}
                     </TextSection>
                 </div>
-                <div className="studentpage-active-company-actions">
-                    { showMore ? <Button onClick={toggleDescription} className="studentpage-show-more-button">
+                <div className='studentpage-active-company-actions'>
+                    { showMore ? <Button onClick={toggleDescription} className='studentpage-show-more-button'>
                         {
                             descriptionOpen
                             ? TranslationModel.translate(phrases.show_less)
                             : TranslationModel.translate(phrases.read_more)
                         }
                     </Button> : <></> }
-                    <a href={`http://${activeCompany?.url}`} target="_blank" rel="noopener noreferrer">
+                    <a href={`http://${activeCompany?.url}`} target='_blank' rel='noopener noreferrer'>
                         <Button>
                             {TranslationModel.translate(phrases.go_to_companies)}
                         </Button>
@@ -126,17 +138,41 @@ const Studentpage = () => {
                 </div>
             </div>
         }
+        
+        <MBDCompanyContext.Consumer>
+            {companies => {
+                return <div className='studentpage-employments'>
+                    { companies.isExhibitor.map(job => job.employments).flat()
+                        .filter((elem, index, self) => self.findIndex(
+                            (t) => {return (t.id === elem.id)}) === index)
+                        .sort(function(a,b) {return a.priority - b.priority})
+                        .map(employment => 
+                            <Chip 
+                                key={'chip_select_'+employment.id}
+                                selected={employments['chip_select_'+employment.id]}
+                                onClick={() => _setEmployments({...employments, ['chip_select_'+employment.id]: !employments['chip_select_'+employment.id]})}
+                                clickable >
+                                {TranslationModel.translate(employment.name)}
+                            </Chip>
+                        ) 
+                    }
+                </div>
+            }}
+        </MBDCompanyContext.Consumer>
 
-        <div className="studentpage-companies-container">
+        <div className='studentpage-companies-container'>
             <MBDCompanyContext.Consumer>
                 {companies => {
                     return companies.isExhibitor.map(company => {
-                        return <CompanyCard
-                            key={company.id}
-                            onClick={() => {changeActiveCompany(company)}}
-                            isActive={company === activeCompany} 
-                            company={company}
-                            showDesc={company === activeCompany}/>
+                        return <Fragment key={company.id}> 
+                            { getActiveEmployments().length === 0 || company.employments.map(el => 'chip_select_'+el.id).some(r=> getActiveEmployments().includes(r)) ?
+                            <CompanyCard
+                                key={company.id}
+                                onClick={() => {changeActiveCompany(company)}}
+                                isActive={company === activeCompany} 
+                                company={company}
+                                showDesc={company === activeCompany}/> : <></> }
+                        </Fragment>
                     });
                 }}
             </MBDCompanyContext.Consumer>
@@ -144,7 +180,7 @@ const Studentpage = () => {
     </>)
 
     return (
-        <div className="studentpage">
+        <div className='studentpage'>
             <IntroScreen
                 backgroundImage={IntroScreenBackground}
                 title={TranslationModel.translate(phrases.for_students)}
@@ -156,21 +192,21 @@ const Studentpage = () => {
                                 phrases.dinner_party
                             ),
                             iconPath: TicketIcon,
-                            scrollTargetID: "studentpage-dinner",
+                            scrollTargetID: 'studentpage-dinner',
                         },
                         {
                             title: TranslationModel.translate(
                                 phrases.exhibitors
                             ),
                             iconPath: BoothIcon,
-                            scrollTargetID: "studentpage-exhibitors",
+                            scrollTargetID: 'studentpage-exhibitors',
                         },
                     ]}
                 />
             </IntroScreen>
 
             {/* Info section */}
-            <div id="studentpage-exhibitors">
+            <div id='studentpage-exhibitors'>
                 <ContentSection>
                     <SectionTitle>
                         {TranslationModel.translate(phrases.exhibitors)}
@@ -184,7 +220,7 @@ const Studentpage = () => {
             </div>
 
             {/* Info section */}
-            <div id="studentpage-dinner">
+            <div id='studentpage-dinner'>
                 <CenterBackground background={DinnerBackground}>
                     <ContentSection size={ContentSectionSize.small}>
                         <SectionTitle>
@@ -193,7 +229,7 @@ const Studentpage = () => {
                         <TextSection align={TextSectionAlignment.center}>
                             {
                                 TranslationModel.translate({
-                                    "se":
+                                    'se':
                                         <span>
                                             Medias Branschdag kommer att avslutas med en sittning där företag och studenter 
                                             får chansen att utveckla samtal om framtiden mer på djupet. Detta är en utmärkt 
@@ -208,7 +244,7 @@ const Studentpage = () => {
                                             Sittningen börjar 18:00 i Restaurang Q. Mer detaljerad information kommer upp 
                                             allt eftersom på vår Facebook-sida.
                                         </span>,
-                                    "en":
+                                    'en':
                                         <span>
                                             At the end of Medias Branschdag, a dinner party is held where companies and 
                                             students have the chance to connect on a deeper level. This is a great 
@@ -225,7 +261,7 @@ const Studentpage = () => {
                                 })
                             }
                             <br /><br />
-                            <a href="https://www.facebook.com/mediasbranschdag/" target="_blank" rel="noopener noreferrer">
+                            <a href='https://www.facebook.com/mediasbranschdag/' target='_blank' rel='noopener noreferrer'>
                                 <Button buttonType={ButtonTypes.normalCompact}>
                                     {TranslationModel.translate(phrases.read_more)}
                                 </Button>

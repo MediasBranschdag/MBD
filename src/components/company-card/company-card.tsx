@@ -9,6 +9,7 @@ import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';
 import { Button } from '../button/button';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
+import Chip from '../chip/chip';
 
 interface CompanyCardProps {
     company: Company, 
@@ -39,19 +40,23 @@ const CompanyCard: FC<CompanyCardProps> = (props) => {
             onMouseLeave={() => props.onMouseLeave ? props.onMouseLeave() : () => {}} 
             onClick={props.onClick}
             className='no-tap-highlight'>
-            <Card className={props.isActive && !onMobile ? 'company-card-active' : ''} isClickable={true} light={true}>
+            <Card className={`company-card-container ${props.isActive && !onMobile ? 'active' : ''}`} isClickable={true} light={true}>
                 <div className={`company-card ${props.isActive ? 'active' : ''}`} >
                     <img 
-                        src={"/assets/companies/" + props.company.logo_path}
+                        src={'/assets/companies/' + props.company.logo_path}
                         alt={props.company.name}/>
                 </div>
                 { props.showDesc && onMobile ? 
                     <ContentPadding>
                         <TextSection>
+                            <h2>{props.company.name}</h2>
+                            <div className='company-card-employments'>
+                                { props.company.employments.map(employment => <Chip key={employment.id} selected>{TranslationModel.translate(employment.name)}</Chip>) }
+                            </div>
                             {TranslationModel.translate(props.company.getDescription())}
                         </TextSection>
                         <br/>
-                        <a href={`http://${props.company?.url}`} target="_blank" rel="noopener noreferrer">
+                        <a href={`http://${props.company?.url}`} target='_blank' rel='noopener noreferrer'>
                             <Button>
                                 {TranslationModel.translate(phrases.go_to_companies)}
                             </Button>
