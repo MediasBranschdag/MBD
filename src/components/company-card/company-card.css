@@ -4,6 +4,7 @@
 
 .company-card-container h2 {
     margin: 0;
+    word-break: break-all;
 }
 
 .company-card {
@@ -22,6 +23,10 @@
     padding: 15px;
 }
 
+.company-card.disabled {
+    opacity: 0.2;
+}
+
 .company-card img {
     max-height: 100%;
     max-width: 60%;
@@ -32,4 +37,8 @@
     display: flex;
     flex-wrap: wrap;
     padding: 5px 0 5px;
+}
+
+.company-card-website {
+    flex: 1;
 }

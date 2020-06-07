@@ -16,6 +16,7 @@ import BoothIcon from '../../assets/icons/other/booth_black.svg';
 
 import IntroScreenBackground from '../../assets/backgrounds/kth_stone_ground.jpg';
 import DinnerBackground from '../../assets/backgrounds/dinner_background.png';
+import Close from '../../assets/icons/other/close_outline.svg';
 import SectionTitle from '../../components/section-title/section-title';
 import { Company } from '../../model/companyModel';
 import { MBDCompanyContext } from '../../contexts/mbd-company-provider';
@@ -64,7 +65,8 @@ const Studentpage = () => {
     }, [])
 
     const changeActiveCompany = (company: Company) => {
-        _setActiveCompany(activeCompany === company && onMobile ? null : company);
+        _setActiveCompany(activeCompany === company && onMobile ? null : company)
+        if(!onMobile) window.scrollTo({behavior: 'smooth', top: document.getElementById('active-company')?.offsetTop! - 90})
         toggleDescription(true);
     }
 
@@ -76,6 +78,14 @@ const Studentpage = () => {
             ? closedDescriptionHeight 
             : (companyDescriptionRef?.scrollHeight ?? 200)
         );
+    }
+
+    const sortByName = (a: Company, b: Company) => {
+        return (a.name === b.name) ? 0 : (a.name < b.name) ? -1 : 1
+    }
+
+    const sortByMatchingEmployments = (a: Company, b: Company) => {
+        return (b.matchesEmployments ? 1 : 0) - (a.matchesEmployments ? 1 : 0)
     }
 
     const getActiveCompanyContent = () => {
@@ -110,7 +120,7 @@ const Studentpage = () => {
 
     const exhibitors = (<>
         { onMobile ? <></> :
-            <div className='studentpage-active-company'>
+            <div className='studentpage-active-company' id='active-company'>
                 <div 
                     key={activeCompany?.id}
                     ref={onCompanyRefChange} 
@@ -156,6 +166,12 @@ const Studentpage = () => {
                             </Chip>
                         ) 
                     }
+                    {
+                        companies.isExhibitor.map(job => job.employments).flat().length > 0 ? 
+                            <div className='employments-clear no-tap-highlight' onClick={() => _setEmployments({})}>
+                                <img src={Close} alt='clear'/>
+                            </div> : <></>
+                    }
                 </div>
             }}
         </MBDCompanyContext.Consumer>
@@ -163,15 +179,17 @@ const Studentpage = () => {
         <div className='studentpage-companies-container'>
             <MBDCompanyContext.Consumer>
                 {companies => {
-                    return companies.isExhibitor.map(company => {
+                    companies.isExhibitor.map(company => company.matchesEmployments = company.employments.map(el => 'chip_select_'+el.id).some(r=> getActiveEmployments().includes(r)))
+                    return companies.isExhibitor.sort(sortByName).sort(sortByMatchingEmployments).map(company => {
                         return <Fragment key={company.id}> 
-                            { getActiveEmployments().length === 0 || company.employments.map(el => 'chip_select_'+el.id).some(r=> getActiveEmployments().includes(r)) ?
                             <CompanyCard
                                 key={company.id}
                                 onClick={() => {changeActiveCompany(company)}}
                                 isActive={company === activeCompany} 
                                 company={company}
-                                showDesc={company === activeCompany}/> : <></> }
+                                showDesc={company === activeCompany}
+                                disabled={getActiveEmployments().length > 0 && !company.matchesEmployments}
+                                />
                         </Fragment>
                     });
                 }}

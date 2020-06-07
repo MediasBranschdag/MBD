@@ -33,6 +33,17 @@
     padding-bottom: 10px;
 }
 
+.employments-clear {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+}
+
+.employments-clear img {
+    height: 18px;
+    cursor: pointer;
+}
+
 .studentpage-company-description {
     position: relative;
     overflow: hidden;

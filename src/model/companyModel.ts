@@ -1,4 +1,11 @@
 import BACKEND_PATH from "../backend-environment";
+import { Phrase } from "./translationModel";
+
+interface Employment {
+    id: number,
+    name: Phrase,
+    priority: number,
+}
 
 export class Company {
     constructor(
@@ -16,7 +23,9 @@ export class Company {
         public isExhibitor: boolean,
         public isMainSponsor: boolean,
 
-        public employments: Array<{ priority: number, name: any, id: any }>
+        public employments: Array<Employment>,
+
+        public matchesEmployments: boolean = true,
     ) {}
 
     public getDescription(): {se: string, en: string} {
@@ -42,6 +51,8 @@ export default class CompanyModel {
                 return [];
             }
             return parsedResponse.map((company: any) => {
+                let employments = JSON.parse(company.employmentsArray) ?? []
+                employments = employments.sort(function(a: Employment, b: Employment) {return a.priority - b.priority})
                 return new Company(
                     company.id,
                     company.name,
@@ -54,7 +65,7 @@ export default class CompanyModel {
                     company.isSponsor === '1',
                     company.isExhibitor === '1',
                     company.isMainSponsor === '1',
-                    JSON.parse(company.companyArray) ?? []
+                    employments
                 );
             })
         });

@@ -96,7 +96,7 @@ class CompanyModel extends DatabaseModel {
         cmp.mapPositionY,
         cmp.mapPositionX,
         cmp.customOrder AS mapOrder,
-        CONCAT(\'[\', array.companyArray, \']\') AS companyArray
+        CONCAT(\'[\', array.employmentsArray, \']\') AS employmentsArray
         FROM 
           companies AS c INNER JOIN 
           company_involvement ci ON ci.companyID = c.ID LEFT JOIN 
@@ -105,7 +105,7 @@ class CompanyModel extends DatabaseModel {
             SELECT
                 ce.year,
                 ce.companyId,
-                GROUP_CONCAT(DISTINCT CONCAT(\'{ "id": \', e.ID, \', "priority": \', e.priority, \', "name": { "se":"\', e.desc_se, \'", "en": "\', e.desc_en, \'"}}\')) AS companyArray 
+                GROUP_CONCAT(DISTINCT CONCAT(\'{ "id": \', e.ID, \', "priority": \', e.priority, \', "name": { "se":"\', e.desc_se, \'", "en": "\', e.desc_en, \'"}}\')) AS employmentsArray 
             FROM 
                 company_employments ce INNER JOIN
                 employments e ON ce.employmentID = e.Id

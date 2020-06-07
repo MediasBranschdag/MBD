@@ -18,6 +18,7 @@ interface CompanyCardProps {
     onMouseLeave?: () => void,
     isActive: boolean,
     showDesc?: boolean,
+    disabled?: boolean,
 }
 
 const CompanyCard: FC<CompanyCardProps> = (props) => {
@@ -38,10 +39,9 @@ const CompanyCard: FC<CompanyCardProps> = (props) => {
             id={props.company.id}
             onMouseEnter={() => props.onMouseEnter ? props.onMouseEnter() : () => {}} 
             onMouseLeave={() => props.onMouseLeave ? props.onMouseLeave() : () => {}} 
-            onClick={props.onClick}
             className='no-tap-highlight'>
             <Card className={`company-card-container ${props.isActive && !onMobile ? 'active' : ''}`} isClickable={true} light={true}>
-                <div className={`company-card ${props.isActive ? 'active' : ''}`} >
+                <div className={`company-card ${props.isActive ? 'active' : ''} ${props.disabled  ? 'disabled' : ''}`} onClick={props.onClick}>
                     <img 
                         src={'/assets/companies/' + props.company.logo_path}
                         alt={props.company.name}/>
@@ -58,7 +58,9 @@ const CompanyCard: FC<CompanyCardProps> = (props) => {
                         <br/>
                         <a href={`http://${props.company?.url}`} target='_blank' rel='noopener noreferrer'>
                             <Button>
-                                {TranslationModel.translate(phrases.go_to_companies)}
+                                <div className='company-card-website'>
+                                    {TranslationModel.translate(phrases.go_to_companies)}
+                                </div>
                             </Button>
                         </a>
                     </ContentPadding> : <></>
