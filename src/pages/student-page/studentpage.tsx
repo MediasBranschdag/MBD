@@ -152,25 +152,27 @@ const Studentpage = () => {
         <MBDCompanyContext.Consumer>
             {companies => {
                 return <div className='studentpage-employments'>
-                    { companies.isExhibitor.map(job => job.employments).flat()
-                        .filter((elem, index, self) => self.findIndex(
-                            (t) => {return (t.id === elem.id)}) === index)
-                        .sort(function(a,b) {return a.priority - b.priority})
-                        .map(employment => 
-                            <Chip 
-                                key={'chip_select_'+employment.id}
-                                selected={employments['chip_select_'+employment.id]}
-                                onClick={() => _setEmployments({...employments, ['chip_select_'+employment.id]: !employments['chip_select_'+employment.id]})}
-                                clickable >
-                                {TranslationModel.translate(employment.name)}
-                            </Chip>
-                        ) 
-                    }
                     {
-                        companies.isExhibitor.map(job => job.employments).flat().length > 0 ? 
-                            <div className='employments-clear no-tap-highlight' onClick={() => _setEmployments({})}>
-                                <img src={Close} alt='clear'/>
-                            </div> : <></>
+                        companies.isExhibitor.map(job => job.employments).flat().length > 0 ? <>
+                            <div className='filter'>{TranslationModel.translate(phrases.filter)}</div>
+                            { companies.isExhibitor.map(job => job.employments).flat()
+                                .filter((elem, index, self) => self.findIndex(
+                                    (t) => {return (t.id === elem.id)}) === index)
+                                .sort(function(a,b) {return a.priority - b.priority})
+                                .map(employment => 
+                                    <Chip 
+                                        key={'chip_select_'+employment.id}
+                                        selected={employments['chip_select_'+employment.id]}
+                                        onClick={() => _setEmployments({...employments, ['chip_select_'+employment.id]: !employments['chip_select_'+employment.id]})}
+                                        clickable >
+                                        {TranslationModel.translate(employment.name)}
+                                    </Chip>
+                                ) 
+                            }
+                                <div className='employments-clear no-tap-highlight' onClick={() => _setEmployments({})}>
+                                    <img src={Close} alt='clear'/>
+                                </div> 
+                            </> : <></>
                     }
                 </div>
             }}
