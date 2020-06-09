@@ -86,17 +86,33 @@ class CompanyModel extends DatabaseModel {
      * sql query
      */
     private function getExhibitorSQLString() {
-        return 'SELECT 
-                companies.*,
-                ci.isSponsor, ci.isExhibitor, ci.isMainSponsor,
-                ci.seekingDescription_en, ci.seekingDescription_se,
-                cmp.mapPositionY, cmp.mapPositionX, cmp.customOrder AS mapOrder
-            FROM companies
-            LEFT JOIN company_involvement AS ci 
-                ON ci.companyID = companies.ID
-            LEFT JOIN company_map_position AS cmp
-                ON cmp.companyID = ci.companyID AND
-                cmp.year = ci.year ';
+        return 'SELECT
+        c.*,
+        ci.isSponsor,
+        ci.isExhibitor,
+        ci.isMainSponsor,
+        ci.seekingDescription_en,
+        ci.seekingDescription_se,
+        cmp.mapPositionY,
+        cmp.mapPositionX,
+        cmp.customOrder AS mapOrder,
+        CONCAT(\'[\', array.employmentsArray, \']\') AS employmentsArray
+        FROM 
+          companies AS c INNER JOIN 
+          company_involvement ci ON ci.companyID = c.ID LEFT JOIN 
+          company_map_position AS cmp ON cmp.companyID = ci.companyID AND cmp.year = ci.year LEFT JOIN
+            (
+            SELECT
+                ce.year,
+                ce.companyId,
+                GROUP_CONCAT(DISTINCT CONCAT(\'{ "id": \', e.ID, \', "priority": \', e.priority, \', "name": { "se":"\', e.desc_se, \'", "en": "\', e.desc_en, \'"}}\')) AS employmentsArray 
+            FROM 
+                company_employments ce INNER JOIN
+                employments e ON ce.employmentID = e.Id
+            GROUP BY
+                ce.year,
+                ce.companyId
+            ) array ON ci.year = array.year AND ci.companyId = array.companyId ';
     }
 }
 

@@ -440,5 +440,9 @@
                 "en": "Events (e.g. AW)"
             } 
         }
+    },
+    "filter": {
+        "se": "Filtrera på",
+        "en": "Filter by"
     }
 }
