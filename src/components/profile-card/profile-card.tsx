@@ -17,31 +17,31 @@ const ProfileCard: FC<ProfileCardProps> = (props) => {
     return (
         <Card>
             <div className='profile-card'>
-                <div style={{backgroundImage: `url('${props.imagePath}')`}} className="profile-card-image">
-                    <div className="profile-card-info-container">
-                        <div className="profile-card-info">
-                            <div className="profile-card-name">
+                <div style={{backgroundImage: `url('${props.imagePath}')`}} className='profile-card-image'>
+                    <div className='profile-card-info-container'>
+                        <div className='profile-card-info'>
+                            <div className='profile-card-name'>
                                 {props.name}
                             </div>
-                            <div className="profile-card-roll">
+                            <div className='profile-card-role'>
                                 {props.role}
                             </div>
-                            <div className="profile-info-link-container">
+                            <div className='profile-info-link-container'>
                                 {
                                     props.email
                                     ? <a 
-                                    className="profile-info-link mail-link" 
+                                    className='profile-info-link mail-link' 
                                     href={`mailto:${props.email}`}>
-                                        <img src={MailIcon} alt=""/>
+                                        <img src={MailIcon} alt=''/>
                                     </a>
                                     : <></>
                                 }
                                 {
                                     props.linkedinLink
                                     ? <a 
-                                        className="profile-info-link linkedin-link" 
+                                        className='profile-info-link linkedin-link' 
                                         href={`${props.linkedinLink}`}>
-                                        <img src={LinkedinIcon} alt=""/>
+                                        <img src={LinkedinIcon} alt=''/>
                                     </a>
                                     : <></>
                                 }

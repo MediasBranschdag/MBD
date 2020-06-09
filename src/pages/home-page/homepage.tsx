@@ -9,6 +9,7 @@ import AnimatedMBDLogo from '../../components/animated-mbd-logo/animated-mbd-log
 import BookIcon from '../../assets/icons/other/book.png';
 import FacebookIcon from '../../assets/icons/other/facebook.svg';
 import InstagramIcon from '../../assets/icons/other/instagram.svg';
+import LinkedinIcon from '../../assets/icons/other/linkedin.svg';
 
 import Countdown from '../../components/countdown/countdown';
 import { MBDDateContext } from '../../contexts/mbd-date-provider';
@@ -185,6 +186,14 @@ const Homepage: FC = () => {
                             <img src={InstagramIcon} alt=""/>
                         </Button>
                     </a>
+
+                    <a href="https://www.linkedin.com/company/medias-branschdag/" target="_blank" rel="noopener noreferrer">
+                        <Button buttonType={ButtonTypes.bigIcon}>
+                            <img src={LinkedinIcon} alt=""/>
+                        </Button>
+                    </a>
+
+
                 </div>
             </ContentSection>
             <Footer/>

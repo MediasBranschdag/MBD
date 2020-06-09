@@ -8,13 +8,47 @@
     margin-bottom: 25px;
 }
 
-.studentpage-active-company-logo {
+.studentpage-active-company-right {
+    display: flex;
     float: right;
-    max-width: 150px;
-    max-height: 75px;
-    margin: 25px;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    flex-direction: column;
+    padding-left: 10px;
+    width: 250px;
+}
+
+.studentpage-active-company-logo {
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: inherit;
+    height: 75px;
+}
+
+.studentpage-active-company-employments, .studentpage-employments {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 5px;
+}
+
+.studentpage-employments {
+    padding-bottom: 10px;
+}
+
+.studentpage-employments .filter {
+    font-weight: bold;
+    padding: 4px 5px;
+    font-size: 14px;
+    margin: 5px 0 5px 0;
+}
+
+.employments-clear {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+}
+
+.employments-clear img {
+    height: 18px;
+    cursor: pointer;
 }
 
 .studentpage-company-description {
@@ -27,7 +61,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 75px;
+    height: 40px;
     background: linear-gradient(
         var(--theme-light-color-normal-transparent),
         var(--theme-light-color-normal)
@@ -35,8 +69,8 @@
     position: absolute;
 }
 
-.studentpage-active-company-website-button {
-    margin-left: 10px;
+.studentpage-show-more-button {
+    margin-right: 10px;
 }
 
 .studentpage-active-company-actions {
@@ -46,14 +80,19 @@
 
 @media screen and (max-width: 700px) {
     .studentpage-companies-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
 
     .studentpage-active-company-actions {
         flex-direction: column;
     }
+
     .studentpage-active-company-website-button {
         margin: 0;
         margin-top: 15px;
+    }
+
+    .studentpage-employments .filter { 
+        width: 100%
     }
 }

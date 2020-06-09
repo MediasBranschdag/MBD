@@ -58,11 +58,15 @@ const Contactpage: FC = () => {
 
             {/* Contact form*/}
             <ContentSection background={ContentSectionBackground.dark}>
+              
                 <TextSection>
                     <h1>
                         {TranslationModel.translate(phrases.contact_us)}!
                     </h1>
+                    
                     <ContactForm/>
+                    
+                    <h4>branschdag@medieteknik.com</h4>
                 </TextSection>
             </ContentSection>
 
