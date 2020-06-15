@@ -24,7 +24,7 @@ import QuestionIcon from '../../assets/icons/other/question_mark_black.svg';
 import MBDLogoBlack from '../../assets/mbd-logo/mbd-logo-black.svg';
 
 import IntroScreenBackground from '../../assets/backgrounds/red_flower_dark_blur.jpg';
-import PackageFlowerBackground from '../../assets/backgrounds/blue_flower_dark_blur.jpg';
+import UxMobileBackground from '../../assets/backgrounds/ux_mobile_table.png';
 import MapBackground from '../../assets/backgrounds/map_nymble.jpg';
 import { getSalesTeamMemebers, TeamMember } from '../../model/teamModel';
 import SectionTitle from '../../components/section-title/section-title';
@@ -154,7 +154,7 @@ const Companypage = () => {
 
             {/* Package section */}
             <div id='companypage-package'>
-                <CenterBackground background={PackageFlowerBackground}>
+                <CenterBackground background={UxMobileBackground}>
                     <ContentSection>
                         <TextSection align={TextSectionAlignment.center}>
                             <h1>

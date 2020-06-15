@@ -8,6 +8,17 @@
     margin: auto;
 }
 
+.read-more-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.read-more {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 .homepage-instagram-section {
     display: grid;
     grid-template-columns: repeat(3, auto);
@@ -24,9 +35,18 @@
 }
 
 @media screen and (max-width: 700px) {
+
     .homepage-instagram-section {
         grid-template-columns: repeat(2, auto);
         column-gap: 15px;
         row-gap: 15px;
+    }
+    
+    .read-more-section {
+        flex-direction: column;
+    }
+
+    .read-more:nth-of-type(1) {
+        padding-bottom: 50px;
     }
 }

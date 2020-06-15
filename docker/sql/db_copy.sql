@@ -399,7 +399,7 @@ INSERT INTO `team_involvement` (`id`, `personId`, `year`, `positionId`, `image`)
 (3, 3, 2021, 4, 'amanda_carp.jpg'),
 (4, 4, 2021, 7, 'ebba_rovig.jpg'),
 (5, 5, 2021, 7, 'emily_nilsson.jpg'),
-(6, 6, 2021, 6, ''),
+(6, 6, 2021, 6, 'malin_åkesson.jpg'),
 (7, 7, 2021, 8, 'mahmoud_sherzad.jpg'),
 (8, 8, 2021, 8, 'ella_klara_westerlund.jpg'),
 (9, 9, 2021, 5, 'louise_hellberg.jpg'),
