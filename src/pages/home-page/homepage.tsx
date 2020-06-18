@@ -74,8 +74,8 @@ const Homepage: FC = () => {
                                         "se":
                                             <span>
                                                 Arbetar du med medieteknik och är i behov av kompetent personal med en <b>civilingenjörsutbildning</b>? Studerar du medieteknik och letar efter en framtida arbetsplats, extrajobb eller examensjobb? 
-                                                Vet du ens vad medieteknik är överhuvudtaget? Oavsett vilken av dessa frågor du funderar över - Medias Branschdag är svaret! <br/><br/>
-                                                Den <b>{mbdDate.getStartDate()}e {mbdDate.getStartMonth()} {mbdDate.getStartYear()}</b> kommer kårhuset Nymble på <b>KTH</b> öppna dörrarna för <b>Medias Branschdag</b> -  Meditekniksektionens årliga <b>arbetsmarkadsmässa</b>.  <br/><br/>
+                                                Vet du vad medieteknik är överhuvudtaget? Oavsett vilken av dessa frågor du funderar över - Medias Branschdag är svaret! <br/><br/>
+                                                Den <b>{mbdDate.getStartDate()}e {mbdDate.getStartMonth()} {mbdDate.getStartYear()}</b> kommer kårhuset Nymble på <b>KTH</b> öppna dörrarna för <b>Medias Branschdag</b> -  Meditekniksektionens årliga <b>arbetsmarknadsmässa</b>.  <br/><br/>
                                                 {/*Programmering, webbutveckling, entreprenörskap, kommunikation, design &amp; signalbehandling är bara några av kompetenserna som genomsyrar mässan. Läs mer om medieteknik på fliken “Vad är medieteknik?“.*/}
                                                 Mässan ger inte bara <b>företag</b> chansen att direkt kunna påverka studenters intresse för er verksamhet, utan även möjligheten att anställa kompetenta studenter som matchar era behov - allt från deltidsjobb till examensarbete. 
                                                 <b> Studenter</b> har på samma sätt chansen att binda värdefulla kontakter inför framtiden, se utbudet av arbetsmöjligheter och få ett smakprov på vad framtiden har att ge. 
