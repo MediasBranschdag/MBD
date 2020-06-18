@@ -82,8 +82,12 @@
         "en": "CURRENTLY ONGOING"
     },
     "hello": {
-        "se": "Hej",
+        "se": "Hejsan",
         "en": "Hello"
+    },
+    "are_you_company": {
+        "se": "Är du en företagsrepresentant?",
+        "en": "Are you a company representative?"
     },
     "are_you_student": {
         "se": "Är du en student?",
