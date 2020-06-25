@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './companypage.css';
+import './company-page.css';
 
 import { MBDDateContext } from '../../contexts/mbd-date-provider';
 import TranslationModel from '../../model/translationModel';

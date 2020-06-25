@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, useCallback, Fragment } from 'react';
-import './studentpage.css';
+import './student-page.css';
 
 import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';

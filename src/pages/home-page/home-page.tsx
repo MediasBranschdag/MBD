@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import './homepage.css';
+import './home-page.css';
 
 import IntroScreen from '../../components/intro-screen/intro-screen';
 
@@ -48,11 +48,11 @@ const Homepage: FC = () => {
     }, []);
 
     return (
-        <div className="homepage">
+        <div className='homepage'>
 
             {/* Logo and countdown */}
             <IntroScreen backgroundImage={isMobile && isSafari ? IntroScreenBackground : undefined} backgroundVideo={isMobile && isSafari ? undefined : require( '../../assets/backgrounds/header_video_s.mp4')}>
-                <div className="homepage-intro-content">
+                <div className='homepage-intro-content'>
                     <AnimatedMBDLogo />
                     <MBDDateContext.Consumer>
                         {mbdDate => <Countdown mbdDate={mbdDate} />}
@@ -71,7 +71,7 @@ const Homepage: FC = () => {
                             <MBDDateContext.Consumer>
                                 {mbdDate =>
                                     TranslationModel.translate({
-                                        "se":
+                                        'se':
                                             <span>
                                                 Arbetar du med medieteknik och är i behov av kompetent personal med en <b>civilingenjörsutbildning</b>? Studerar du medieteknik och letar efter en framtida arbetsplats, extrajobb eller examensjobb? 
                                                 Vet du vad medieteknik är överhuvudtaget? Oavsett vilken av dessa frågor du funderar över - Medias Branschdag är svaret! <br/><br/>
@@ -84,7 +84,7 @@ const Homepage: FC = () => {
                                                 Vi ses på branschdagen i {mbdDate.getStartMonth()}!
                                             </span>,
 
-                                        "en":
+                                        'en':
                                             <span>
                                                 Do you work in the Media Technology field and are in need of skilled employees? Are you studying Media Technology and searching for a job or a place to write a thesis?
                                                 Are you new to Media Technology?<br/> No matter who you are - Medias Branschdag is here for you!<br/><br/>
@@ -103,7 +103,7 @@ const Homepage: FC = () => {
                     }
                     content={
                         <ProfileCard
-                            imagePath="assets/team/project_leaders.jpg"
+                            imagePath='assets/team/project_leaders.jpg'
                             name={`${projectLeaders.map((leader, i) => {
                                 return leader.name;
                             }).join(', ')}`}
@@ -126,12 +126,12 @@ const Homepage: FC = () => {
                                 <MBDDateContext.Consumer>
                                     {mbdDate =>
                                         TranslationModel.translate({
-                                            "se":
+                                            'se':
                                                 <span>
                                                     Vill ni nå ut till hundratals civilingenjörsstudenter på KTH?<br/>
                                                     Läs mer om hur ni kan delta i Medias Branschdag {mbdDate.getStartYear()}.
                                                 </span>,
-                                            "en":
+                                            'en':
                                                 <span>
                                                     Read more about how you can participate in Medias Branschdag {mbdDate.getStartYear()}.
                                                     Your future employees are waiting for you!
@@ -157,12 +157,12 @@ const Homepage: FC = () => {
                                 <MBDDateContext.Consumer>
                                     {mbdDate =>
                                         TranslationModel.translate({
-                                            "se":
+                                            'se':
                                                 <span>
                                                     Läs mer om vilka företag som ställer ut på Medias Branschdag {mbdDate.getStartYear()}. Kanske
                                                     hittar du din framtida arbetsgivare redan nu.
                                                 </span>,
-                                            "en":
+                                            'en':
                                                 <span>
                                                     Read more about what companies are participating in Medias Branschdag {mbdDate.getStartYear()}.
                                                     Maybe you’ll find your future employer there.
@@ -188,7 +188,7 @@ const Homepage: FC = () => {
                 <SectionTitle>
                     Medias branschdag {TranslationModel.translate(phrases.on_instagram)?.toString().toLowerCase()}
                 </SectionTitle>
-                <div className="homepage-instagram-section">
+                <div className='homepage-instagram-section'>
                     {instagramPosts ? instagramPosts.slice(0, 6).map(post => {
                         return <InstagramCard
                             key={post.id}
@@ -205,21 +205,21 @@ const Homepage: FC = () => {
                 <SectionTitle>
                     {TranslationModel.translate(phrases.follow_social_media)}
                 </SectionTitle>
-                <div className="homepage-social-buttons">
-                    <a href="https://www.facebook.com/mediasbranschdag/" target="_blank" rel="noopener noreferrer">
+                <div className='homepage-social-buttons'>
+                    <a href='https://www.facebook.com/mediasbranschdag/' target='_blank' rel='noopener noreferrer'>
                         <Button buttonType={ButtonTypes.bigIcon}>
-                            <img src={FacebookIcon} alt=""/>
+                            <img src={FacebookIcon} alt=''/>
                         </Button>
                     </a>
-                    <a href="https://www.instagram.com/mediasbranschdag/" target="_blank" rel="noopener noreferrer">
+                    <a href='https://www.instagram.com/mediasbranschdag/' target='_blank' rel='noopener noreferrer'>
                         <Button buttonType={ButtonTypes.bigIcon}>
-                            <img src={InstagramIcon} alt=""/>
+                            <img src={InstagramIcon} alt=''/>
                         </Button>
                     </a>
 
-                    <a href="https://www.linkedin.com/company/medias-branschdag/" target="_blank" rel="noopener noreferrer">
+                    <a href='https://www.linkedin.com/company/medias-branschdag/' target='_blank' rel='noopener noreferrer'>
                         <Button buttonType={ButtonTypes.bigIcon}>
-                            <img src={LinkedinIcon} alt=""/>
+                            <img src={LinkedinIcon} alt=''/>
                         </Button>
                     </a>
 
