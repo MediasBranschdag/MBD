@@ -411,7 +411,7 @@ INSERT INTO `positions` (`id`, `desc_se`, `desc_en`, `priority`) VALUES
 (4, 'PR-ansvarig', 'Public Relations', 4),
 (5, 'Art Director', 'Art Director', 4),
 (6, 'Sittningsansvarig', 'Dinner Party Organizer', 4),
-(7, 'Logistik', 'Logistics', 4),
+(7, 'Logistikansvarig', 'Logistics', 4),
 (8, 'Webbutvecklare', 'Web Developer', 4);
 
 -- --------------------------------------------------------
