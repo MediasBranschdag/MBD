@@ -1,14 +1,10 @@
-import React, { useState, ChangeEvent, useRef } from 'react';
+import React, { useState, ChangeEvent, useEffect } from 'react';
 import './guest-form.css';
 
 import TranslationModel from '../../../model/translationModel';
 import phrases from '../../../data/translations.json';
-import Card from '../../../components/card/card';
-import ContentSection, { ContentSectionBackground } from '../../../components/layout/content-section/content-section';
-import TextSection from '../../../components/text-section/text-section';
 import { InputInfo } from '../../../components/input-info/input-info';
 import { FormControl, Radio, FormControlLabel, RadioGroup, MenuItem, Select, Checkbox } from '@material-ui/core';
-import { ContentPadding } from '../../../components/content-padding';
 import { InputInfoHeader } from '../../../components/input-info/input-info-header/input-info-header';
 import { MBDCompanyContext } from '../../../contexts/mbd-company-provider';
 import CourseSelect from './course-select/course-select';
@@ -17,15 +13,7 @@ import TicketIcon from '../../../assets/icons/other/tickets_black.svg';
 import { Button, ButtonTypes } from '../../../components/button/button';
 
 const GuestForm = () => {
-
-    const guestFormRef = useRef<HTMLDivElement>(null);
-    const previewRef = useRef<HTMLDivElement>(null);
-    const [guestFormHeight, _setGuestFormHeight] = useState<number>(0);
-    const [previewHeight, _setPreviewHeight] = useState<number>(0);
-
-    const [step, setStep] = useState(1);
-
-    const [edit, setEdit] = useState(false);
+    const [ticketPrice, _setTicketPrice] = useState(0);
 
     const [name, setName] = useState('');
     const [personId, setPersonId] = useState('');
@@ -37,47 +25,159 @@ const GuestForm = () => {
     const [mainCourse, setMainCourse] = useState('');
     const [dessert, setDessert] = useState('');
     const [drinks, setDrinks] = useState('');
+    const [allergies, setAllergies] = useState('');
     const [terms, setTerms] = useState(false);
     const [info, setInfo] = useState(false);
+
+    const [error, setError] = useState(false);
+
+    const nonAlcoholicDrink = {
+        se: 'Läsk (alkoholfri)',
+        en: 'Soda (non-alcoholic)',
+    }
+
+    const ticketBasePrice = 180
+    const alcoholPrice = 20
+    const helperRebate = 20
 
     const courses = {
         starters: [
             {
-                name: 'Toast på surdegsbröd med färskost creme, prosciutto och rostad kronärtskocka.',
-                attributes: 'Nötfri'
+                name: {
+                    se: 'Toast på surdegsbröd med färskost creme, prosciutto och rostad kronärtskocka',
+                    en: 'Toast på surdegsbröd med färskost creme, prosciutto och rostad kronärtskocka',
+                },
+                attributes: {
+                    se: 'Nötfri',
+                    en: 'Nut-free',
+                }
             },
             {
-                name: 'Rostade rödbetor med solrosfrön, ruccola och örtdressing.',
-                attributes: 'Nötfri, Vegan'
+                name: {
+                    se: 'Rostade rödbetor med solrosfrön, ruccola och örtdressing',
+                    en: 'Rostade rödbetor med solrosfrön, ruccola och örtdressing',
+                },
+                attributes: {
+                    se: 'Nötfri, vegansk',
+                    en: 'Nut-free, vegan',
+                }
             }
         ],
         mainCourses: [
             {
-                name: 'Grillad kycklingfilé med citron- och parmesansås, rostade rotsaker samt örtsallad.',
-                attributes: 'Nötfri'
+                name: {
+                    se: 'Grillad kycklingfilé med citron- och parmesansås, rostade rotsaker samt örtsallad',
+                    en: 'Grillad kycklingfilé med citron- och parmesansås, rostade rotsaker samt örtsallad',
+                },
+                attributes: {
+                    se: 'Nötfri',
+                    en: 'Nut-free',
+                }
             },
             {
-                name: 'Sojafärsbiff med potatisgratäng, rostade grönsaker och örtsky.',
-                attributes: 'Nötfri, Vegan'
+                name: {
+                    se: 'Sojafärsbiff med potatisgratäng, rostade grönsaker och örtsky',
+                    en: 'Sojafärsbiff med potatisgratäng, rostade grönsaker och örtsky',
+                },
+                attributes: {
+                    se: 'Nötfri, vegansk',
+                    en: 'Nut-free, vegan',
+                }
             }
         ],
         desserts: [
             {
-                name: 'Blåbär- och citronmoussetårta',
-                attributes: 'Glutenfri'
+                name: {
+                    se: 'Blåbär- och citronmoussetårta',
+                    en: 'Blåbär- och citronmoussetårta',
+                },
+                attributes: {
+                    se: 'Glutenfri',
+                    en: 'Gluten-free',
+                }
             },
             {
-                name: 'Raw chocolate cake.',
-                attributes: 'Vegan'
+                name: {
+                    se: 'Raw chocolate cake',
+                    en: 'Raw chocolate cake',
+                },
+                attributes: {
+                    se: 'Vegansk',
+                    en: 'Vegan',
+                }
             }
         ],
         drinks : [
-            'Läsk',
-            'Öl',
-            'Vitt vin',
-            'Rött vin',
-            'Cider',
+            nonAlcoholicDrink,
+            {
+                se: 'Öl',
+                en: 'Beer',
+            },
+            {
+                se: 'Vitt vin',
+                en: 'White wine',
+            },
+            {
+                se: 'Rött vin',
+                en: 'Red wine',
+            },
+            {
+                se: 'Cider',
+                en: 'Cider',
+            }
         ]
+    }
+
+    const checkFormFieldError = () => {
+
+        var obligatoryFields = [
+            name,
+            personId,
+            email,
+            type,
+            starter,
+            mainCourse,
+            dessert,
+            drinks,
+            info
+        ]
+        obligatoryFields = type !== 'companyRep' ? [...obligatoryFields, terms] : obligatoryFields
+        obligatoryFields = type === 'companyRep' ? [...obligatoryFields, company] : obligatoryFields
+
+        for (const field of obligatoryFields) {
+            if (!field) {
+                return true
+            } 
+            else if (typeof field === 'string') {
+                if(field.trim().length === 0 || field === '') {
+                    return true
+                }
+            }
+        }
+
+        return false
+    
+    }
+
+    const sendGuestForm = () => {
+        setError(checkFormFieldError())
+        if(!checkFormFieldError()) {
+            console.log({
+                name,
+                personId,
+                email,
+                type,
+                company,
+                starter,
+                mainCourse,
+                dessert,
+                drinks,
+                allergies,
+                terms,
+                info,
+                ticketPrice
+            })
+        }
     }
 
     const handleTypeChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -90,17 +190,29 @@ const GuestForm = () => {
         setDrinks(typeof event.target.value === 'string' ? event.target.value : '');
     };
 
-    const renderStep = (current: number) => {
-        if(current === 1) {
-            return renderStepOne()
-        } else if (current == 2) {
-            return renderStepTwo()
-        } else {
-            return renderStepThree()
+    useEffect(() => {
+        if(type && drinks) {
+            let price = ticketBasePrice + (drinks === nonAlcoholicDrink.se ? 0 : alcoholPrice)
+            switch(type) {
+                case 'student':
+                    _setTicketPrice(price)
+                  break;
+                case 'companyRep':
+                    _setTicketPrice(0)
+                    break;            
+                case 'helper':
+                  _setTicketPrice(price - helperRebate)
+                    break;
+                case 'plusOne':
+                    _setTicketPrice(price)
+                    break;
+                default:
+                    _setTicketPrice(0)
+              }
         }
-    };
+    }, [type, drinks])
 
-    const renderStepOne = () => (<div>
+    const renderGeneralOptions = () => (<div>
         <InputInfo 
             placeHolderHeader noCard 
             inputType='text' 
@@ -130,7 +242,7 @@ const GuestForm = () => {
         <br/>   
         <FormControl component='fieldset'>
             <InputInfoHeader obligatory>{TranslationModel.translate(phrases.dinner_page.guest_form.person_type)}</InputInfoHeader>
-            <RadioGroup aria-label='gender' name='gender1' value={type} onChange={handleTypeChange}>
+            <RadioGroup aria-label='type' value={type} onChange={handleTypeChange}>
                 <FormControlLabel value='student' control={<Radio/>} label={TranslationModel.translate(phrases.dinner_page.guest_form.student)} />
                 
                 <div className='company-rep'>
@@ -142,8 +254,8 @@ const GuestForm = () => {
                         {companies => {
                             return (
                                 <Select
-                                style={{ margin: '0', maxWidth: 300}} 
-                                labelId='label' displayEmpty id='company-select' placeholder='Select a company' value={company} onChange={handleCompanyChange}>
+                                    style={{ margin: '0', maxWidth: 300}} 
+                                    labelId='label' displayEmpty id='company-select' placeholder='Select a company' value={company} onChange={handleCompanyChange}>
                                     <MenuItem value=''>
                                         <em>{TranslationModel.translate(phrases.dinner_page.guest_form.choose_company)}</em>
                                     </MenuItem>
@@ -164,115 +276,110 @@ const GuestForm = () => {
         </FormControl>
     </div>);
 
-    const renderStepTwo = () => (<><CourseSelect
-        obligatory
-        header={TranslationModel.translate(phrases.dinner_page.guest_form.starter)}
-        courses={courses.starters}
-        courseSelect={starter}
-        setCourse={setStarter}
-        />
-        <CourseSelect
-        obligatory
-        header={TranslationModel.translate(phrases.dinner_page.guest_form.main_course)}
-        courses={courses.mainCourses}
-        courseSelect={mainCourse}
-        setCourse={setMainCourse}
-        />
-        <CourseSelect
-        obligatory
-        header={TranslationModel.translate(phrases.dinner_page.guest_form.dessert)}
-        courses={courses.desserts}
-        courseSelect={dessert}
-        setCourse={setDessert}
-        />
-        <br/>  
+    const renderDinnerOptions = () => (<>        
         <InputInfoHeader obligatory>{TranslationModel.translate(phrases.dinner_page.guest_form.drink)}</InputInfoHeader>  
         <div style={{display: 'flex'}}>
-        <Select 
-            id='company-select'
-            style={{ margin: 0, flex: 1}} 
-            labelId='label' 
-            displayEmpty  
-            value={drinks} 
-            onChange={handleDrinksChange}>
-            <MenuItem value=''>
-                <em>{TranslationModel.translate(phrases.dinner_page.guest_form.choose_drink)}</em>
-            </MenuItem>
-            {courses.drinks.map(drink => <MenuItem value={drink}>{drink}</MenuItem>)}
-        </Select>
+            <Select 
+                style={{ margin: 0, flex: 1}} 
+                labelId='label' 
+                displayEmpty  
+                value={drinks} 
+                onChange={handleDrinksChange}>
+                <MenuItem value=''>
+                    <em>{TranslationModel.translate(phrases.dinner_page.guest_form.choose_drink)}</em>
+                </MenuItem>
+                {courses.drinks.map(drink => <MenuItem value={drink.se}>{TranslationModel.translate(drink)}</MenuItem>)}
+            </Select>
         </div>
-        
+        <br/>
+        <CourseSelect
+            obligatory
+            header={TranslationModel.translate(phrases.dinner_page.guest_form.starter)}
+            courses={courses.starters}
+            courseSelect={starter}
+            setCourse={setStarter}
+        />
+        <CourseSelect
+            obligatory
+            header={TranslationModel.translate(phrases.dinner_page.guest_form.main_course)}
+            courses={courses.mainCourses}
+            courseSelect={mainCourse}
+            setCourse={setMainCourse}
+        />
+        <CourseSelect
+            obligatory
+            header={TranslationModel.translate(phrases.dinner_page.guest_form.dessert)}
+            courses={courses.desserts}
+            courseSelect={dessert}
+            setCourse={setDessert}
+        />
         <br/>
         <InputInfo 
             placeHolderHeader noCard 
             inputType='text' 
             name='allergies' 
-            onInput={()=>{}} 
-            placeholder={TranslationModel.translate(phrases.dinner_page.guest_form.allergies)} /></>);
+            onInput={setAllergies} 
+            placeholder={TranslationModel.translate(phrases.dinner_page.guest_form.allergies)} 
+            defaultValue={allergies}/>
+    </>);
 
-    const renderStepThree = () => (<><InputInfoHeader obligatory>{TranslationModel.translate(phrases.dinner_page.guest_form.agreements)}</InputInfoHeader>  
-    <FormControlLabel
-        control={
-            <Checkbox
-                checked={terms}
-                onChange={() => setTerms(!terms)}
-                color='primary'/>
-        }
-        label={TranslationModel.translate(phrases.dinner_page.guest_form.terms)}/>
-    <FormControlLabel
-        control={
-            <Checkbox
-                checked={info}
-                onChange={() => setInfo(!info)}
-                color='primary'/>
-        }
-        label={TranslationModel.translate(phrases.dinner_page.guest_form.info)}/>
-    <br/>
-    <br/>
-    <Button 
-        buttonType={ButtonTypes.normalCompact} 
-        onClick={() => {
-            setEdit(false)
-            _setGuestFormHeight(200)
-        }}>
-        {TranslationModel.translate(phrases.send)}
-    </Button></>);
+    const renderConfirmationOptions = () => (<>
+        <InputInfoHeader obligatory>{TranslationModel.translate(phrases.dinner_page.guest_form.agreements)}</InputInfoHeader>  
+        <FormControlLabel
+            control={
+                <Checkbox
+                    checked={info}
+                    onChange={() => setInfo(!info)}
+                    color='primary'/>
+            }
+            label={TranslationModel.translate(phrases.dinner_page.guest_form.info)}/>
 
-    const renderForm = () => (<TextSection>
-        {renderStepOne()}
-        <br/> 
-        <br/> 
-        
         <br/>
-        
-    </TextSection>);
+        { 
+            ticketPrice > 0 ? <>
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            checked={terms}
+                            onChange={() => setTerms(!terms)}
+                            color='primary'/>
+                    }
+                    label={TranslationModel.translate(phrases.dinner_page.guest_form.terms)}/>
+                <div className='ticket-price'>
+                    <img src={TicketIcon}/>
+                    <p>
+                        <b>{TranslationModel.translate({se: 'Biljettpris', en: 'Ticket price'})}:</b> {ticketPrice} {TranslationModel.translate({se: 'kr', en: 'SEK'})}
+                    </p>
+                </div>
+            </>
+            : <></>
+        }
+        <br/>
+        <br/></>);
+
+    const renderErrorMessage = () => (<>
+        <div className='guest-form-error slide'>
+            {TranslationModel.translate(phrases.dinner_page.guest_form.obligatory)}
+        </div>
+        <br/>
+    </>);
       
     return (
-        <Card>
-            <ContentSection background={ContentSectionBackground.light} >
-                <div className='guest-form' style={{height: '650px', maxHeight: '600px', overflow: 'auto'}}>
-                    {renderStep(step)}
+            <>
+                <div className='guest-form'>
+                    {renderGeneralOptions()}
+                    <br/>
+                    {renderDinnerOptions()}
+                    <br/>
+                    {renderConfirmationOptions()}
+                    {error && renderErrorMessage()}
+                    <Button 
+                        onClick={sendGuestForm}
+                        buttonType={ButtonTypes.normalCompact} >
+                        {TranslationModel.translate(phrases.send)}
+                    </Button>
                 </div>
-                
-                <div  style={{ padding: '2em', flex: 1, alignContent: 'flex-end'}}>
-                        <span  style={{float: 'left'}}>
-                            <Button 
-                            buttonType={ButtonTypes.normalCompact} 
-                            onClick={() => setStep(step-1)}>
-                                Prev
-                            </Button>
-                        </span>
-                        <span  style={{float: 'right'}}>
-                            <Button 
-                            buttonType={ButtonTypes.normalCompact} 
-                            onClick={() => {
-                                setStep(step+1)}}>
-                                Nästa
-                            </Button>
-                        </span>
-                    </div>
-            </ContentSection>
-    </Card>);
+    </>);
 }
 
 export default GuestForm;

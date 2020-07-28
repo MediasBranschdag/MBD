@@ -28,7 +28,8 @@
                         ti.year = currentYear
                     ORDER BY
                         pos.priority,
-                        pos.desc_se
+                        pos.desc_se,
+                        per.name
                         ASC',
                     array(
                         "%select" => TeamModel::SELECT_ATTRIBUTES,
@@ -54,7 +55,9 @@
                     ti.year = ' . $currentYear . ' AND
                     pos.id IN (2, 3)
                 ORDER BY
-                    pos.priority ASC'
+                    pos.priority, 
+                    per.name
+                    ASC'
             );
         }
 
@@ -71,7 +74,9 @@
                     ti.year = ' . $currentYear . ' AND
                     pos.id IN (1)
                 ORDER BY
-                    pos.priority ASC'
+                    pos.priority,
+                    per.name
+                    DESC'
             );
         }
     }

@@ -1,25 +1,23 @@
 .course-cont {
-    display: grid;
     padding: 1em;
 }
 
 .course {
-    padding: 0 2em 0 2em;
-    font-size: 0.8em;
+    font-size: 0.9em;
+    padding-bottom: .2em;
+    cursor: pointer;
+    border-left: 1px solid transparent;
 }
 
-.course .card {
-    border: 1px solid var(--theme-light-color-dark);
-}
-
-.course-name {
-    min-height: 3em;
+.course.selected {
+    border-left: 1px solid var(--theme-primary-color-normal);
+    background-color: #fff;
+    font-weight: bold;
 }
 
 .course-attributes {
     font-size: 0.9em;
     font-style: italic;
-    padding-top: 1em;
 }
 
 @media screen and (max-width: 700px) {
@@ -28,6 +26,6 @@
     }
 
     .course-cont .course {
-        padding: 0.5em 0 0.5em 0;
+        padding: 0.2em 0 0.2em 0;
     }
 }

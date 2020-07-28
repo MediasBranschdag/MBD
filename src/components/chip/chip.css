@@ -1,0 +1,15 @@
+.chip {
+    border-radius: 15px;
+    border: 1px solid var(--theme-primary-color-normal);
+    padding: 4px 10px;
+    font-size: 14px;
+    margin: 5px 5px 5px 0;
+}
+
+.chip.selected {
+    background-color: var(--theme-primary-color-normal);
+}
+
+.chip.clickable {
+    cursor: pointer;   
+}

@@ -12,6 +12,10 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.0));
 }
 
+.intro-screen-title.no-gradient {
+    background-image: none;
+}
+
 
 @media screen and (max-width: 700px) {
     .intro-screen-title {

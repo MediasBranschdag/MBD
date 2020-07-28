@@ -1,10 +1,10 @@
 import React from 'react';
-import Homepage from '../pages/home-page/homepage';
-import Companypage from '../pages/company-page/companypage';
+import Homepage from '../pages/home-page/home-page';
+import Companypage from '../pages/company-page/company-page';
 import phrases from '../data/translations.json';
 import { Phrase } from '../model/translationModel';
 import Contactpage from '../pages/contact-page/contact-page';
-import Studentpage from '../pages/student-page/studentpage';
+import Studentpage from '../pages/student-page/student-page';
 import Dinnerpage from '../pages/dinner-page/dinnerpage';
 //import MapPage from '../pages/map-page/map-page';
 

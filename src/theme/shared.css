@@ -8,4 +8,9 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.no-tap-highlight {
+    -webkit-tap-highlight-color: transparent;
 }

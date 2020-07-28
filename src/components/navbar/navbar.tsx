@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './navbar.css';
 
 import Routes from '../../routes/routes';
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 import mbdLogo from '../../assets/mbd-logo/mbd-logo-yellow.svg';
 import kthLogo from '../../assets/KTH_logo.png';
@@ -18,17 +18,19 @@ const Navbar = () => {
     const [mobileMenuOpen, toogleMobileMenuOpen] = useState(false);
 
     return (
-        <div className="navbar">
-            <div className="navbar-leading navbar-padding">
-                <img className="navbar-mbd-logo" src={mbdLogo} alt="MBD Logo"/>
+        <div className='navbar'>
+            <div className='navbar-leading navbar-padding'>
+                <NavLink className='no-select' exact to='/'>
+                    <img className='navbar-mbd-logo' src={mbdLogo} alt='MBD Logo'/>
+                </NavLink>
             </div>
             <div className={`navbar-content navbar-padding ${mobileMenuOpen ? 'active' : ''}`}>
                 {
                     Object.values(Routes).map((route) => {
                         return <NavLink 
                             exact
-                            className="navbar-link"
-                            activeClassName="navbar-link active"
+                            className='navbar-link'
+                            activeClassName='navbar-link active'
                             onClick={() => toogleMobileMenuOpen(!mobileMenuOpen)}
                             to={route.path} 
                             key={route.path}>
@@ -37,19 +39,19 @@ const Navbar = () => {
                     })
                 }
             </div>
-            <div className="navbar-trailing navbar-padding">
-                <div className="navbar-trailing-item">
+            <div className='navbar-trailing navbar-padding'>
+                <div className='navbar-trailing-item'>
                     <LanguageSelect/>
                 </div>
 
-                <div className="navbar-trailing-item">
+                <div className='navbar-trailing-item'>
                     <Line lineType={LineType.vertical}/>
                 </div>
 
-                <img className="side-logo navbar-trailing-item " src={medieteknikLogo} alt=""/>
-                <img className="side-logo navbar-trailing-item " src={kthLogo} alt=""/>
+                <img className='side-logo navbar-trailing-item ' src={medieteknikLogo} alt=''/>
+                <img className='side-logo navbar-trailing-item ' src={kthLogo} alt=''/>
 
-                <div className="navbar-mobile-menu-button navbar-trailing-item ">
+                <div className='navbar-mobile-menu-button navbar-trailing-item '>
                     <HamburgerButton 
                         onClick={() => {toogleMobileMenuOpen(!mobileMenuOpen)}} 
                         isActive={mobileMenuOpen}/>

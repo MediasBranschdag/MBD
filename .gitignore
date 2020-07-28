@@ -3,6 +3,9 @@
 #vscode
 .vscode
 
+# archive
+public/archive
+
 # dependencies
 /node_modules
 /.pnp

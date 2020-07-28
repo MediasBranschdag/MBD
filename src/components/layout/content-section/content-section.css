@@ -11,6 +11,10 @@
     max-width: 600px;
 }
 
+.content-section-large {
+    max-width: 1500px;
+}
+
 .content-section-background-light {
     color: var(--theme-text-dark);
     background-color: var(--theme-light-color-normal);

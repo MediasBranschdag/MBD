@@ -82,8 +82,12 @@
         "en": "CURRENTLY ONGOING"
     },
     "hello": {
-        "se": "Hej",
+        "se": "Hejsan",
         "en": "Hello"
+    },
+    "are_you_company": {
+        "se": "Är du en företagsrepresentant?",
+        "en": "Are you a company representative?"
     },
     "are_you_student": {
         "se": "Är du en student?",
@@ -124,6 +128,10 @@
     "in_preparation": {
         "se": "Mer information kommer snart...",
         "en": "More information coming soon..."
+    },
+    "intro_movie_credit": {
+        "se": "Introfilm gjord av Kommunikationsnämnden.",
+        "en": "Intro movie made by Kommunikationsnämnden."
     },
     "for_companies": {
         "se": "För företag",
@@ -440,7 +448,7 @@
     "dinner_page": {
         "registration": {
             "se": "Anmälan",
-            "en": "Registration"           
+            "en": "Ticket Registration"           
         },
         "about" : {
             "se": "Om sittningen",
@@ -512,13 +520,21 @@
                 "en": "Agreements"
             },
             "terms": {
-                "se": "Jag är medveten om att det här är en bindande anmälan och att jag måste betala för min biljett via Swish (betalas på plats)",
+                "se": "Jag är medveten om att det här är en bindande anmälan och att jag måste betala för min biljett via Swish (betalas på plats).",
                 "en": "I am aware that this is a binding application and that I have to pay for my ticket with Swish (when entering the gasque)."
             },
             "info": {
-                "se": "Jag godkänner att MBD sparar min information.",
-                "en": "I accept that MBD are saving my info."
+                "se": "Jag godkänner att MBD sparar min information fram tills en vecka efter sittningen.",
+                "en": "I accept that MBD will save my information until a week after the dinner party."
+            },
+            "obligatory": {
+                "se": "Kontrollera att du har fyllt i alla obligatoriska fält.",
+                "en": "Make sure you have filled in all obligatory fields.."
             }
         }
+    },
+    "filter": {
+        "se": "Filtrera på",
+        "en": "Filter by"
     }
 }

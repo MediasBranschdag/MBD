@@ -1,16 +1,36 @@
 .guest-form {
-    overflow: hidden;
-    transition: height 2s;
 }
 
-.guest-form .input-info-container {
-    height: auto;
-}
 
 .company-rep {
     display: flex;
     flex-direction: row;
     flex-grow: 1;
+}
+
+.ticket-price {
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+    padding: 0.5em 0 0 0;
+}
+
+.ticket-price img {
+    height: 50px;
+    padding: 5px;
+}
+
+.guest-form-error {
+    color: var(--theme-text-error);
+}
+
+.guest-form-error.slide {
+    animation: slide 1s;
+    -webkit-animation: slide 1s;
+}
+
+.MuiTypography-body1 {
+    font-family: 'Montserrat', 'Open Sans', sans-serif !important;
 }
 
 @media screen and (max-width: 700px) {
@@ -19,3 +39,24 @@
         flex-direction: column;
     }
 }
+
+.dinner-party-meny {
+    background-color: var(--theme-dark-color-normal);
+}
+
+@keyframes slide {
+    from {
+      transform: translateX(5px);
+    }
+    to {
+      transform: translateX(0px);
+    }
+  }
+  @-webkit-keyframes slide {
+    from {
+      transform: translateX(5px);
+    }
+    to {
+      transform: translateX(0px);
+    }
+  }

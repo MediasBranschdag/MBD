@@ -2,13 +2,15 @@ import React, { FC } from 'react';
 import './footer.css';
 import CompanyLogoList from '../company-logo-list/company-logo-list';
 import { MBDCompanyContext } from '../../contexts/mbd-company-provider';
-import ContentSection, { ContentSectionBackground } from '../layout/content-section/content-section';
+import ContentSection, { ContentSectionBackground, ContentSectionSize } from '../layout/content-section/content-section';
 import SectionTitle from '../section-title/section-title';
 import TextSection, { TextSectionAlignment } from '../text-section/text-section';
 import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';
+import { isMobile, isSafari } from 'react-device-detect';
 
-const Footer: FC = (props) => {
+const Footer: FC<{}> = (props) => {
+    
     const preparing = (
         <ContentSection>
             <SectionTitle>
@@ -22,8 +24,6 @@ const Footer: FC = (props) => {
             <div className="footer-main-sponsor">
                 <MBDCompanyContext.Consumer>
                     {companies => {
-                        
-                        console.log(companies)
                         return companies.isMainSponsor.map(company => {
                             return <div key={company.id} className='footer-main-sponsor-item'>
                                 <img src={"/assets/companies/" + company.logo_path} alt=""/>
@@ -47,23 +47,30 @@ const Footer: FC = (props) => {
                 {companies => <CompanyLogoList companies={companies.isSponsor}/>}
             </MBDCompanyContext.Consumer>
         </ContentSection>
-
-        <ContentSection background={ContentSectionBackground.dark}>
-            <div className='footer-bottom-background'></div>
-            <TextSection align={TextSectionAlignment.center}>
-                Sektionen för Medieteknik, KTH
-                <br />
-                <a href='https://medieteknik.com'>
-                    www.medieteknik.com
-                </a>
-            </TextSection>
-        </ContentSection>
     </>);
 
     return (
         <MBDCompanyContext.Consumer>
             {companies => {
-                return <div className='footer'>{companies.all.length > 0 ? companyInfo : preparing}</div>
+                return <div className='footer'>
+                    {companies.all.length > 0 ? companyInfo : preparing}
+                    <ContentSection background={ContentSectionBackground.dark} size={ContentSectionSize.large}>
+                        <div className='footer-bottom-background'></div>
+                        <TextSection align={isMobile ? TextSectionAlignment.center : TextSectionAlignment.left}>
+                            Sektionen för Medieteknik, KTH
+                            <br />
+                            <a href='https://medieteknik.com'>
+                                www.medieteknik.com
+                            </a>
+                            {isMobile && isSafari ? <></> :
+                                <>
+                                    <br/><br/>
+                                    <i>{TranslationModel.translate(phrases.intro_movie_credit)}</i>
+                                </>
+                            }
+                        </TextSection>
+                    </ContentSection>
+                </div>
             }}
         </MBDCompanyContext.Consumer>
     );
