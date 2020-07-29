@@ -114,7 +114,7 @@ class DatabaseModel {
      */
     public function dbExecutePrepared($sql, $data = null) {
         $stmt = self::$staticDB->prepare($sql);
-        $stmt->execute($data);
+        return $stmt->execute($data);
     }
 
 

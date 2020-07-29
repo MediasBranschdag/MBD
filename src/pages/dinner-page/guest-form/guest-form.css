@@ -1,7 +1,6 @@
 .guest-form {
 }
 
-
 .company-rep {
     display: flex;
     flex-direction: row;
@@ -60,3 +59,6 @@
       transform: translateX(0px);
     }
   }
+
+.signed-up {
+}

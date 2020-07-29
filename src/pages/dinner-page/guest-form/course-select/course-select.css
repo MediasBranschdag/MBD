@@ -9,6 +9,10 @@
     border-left: 1px solid transparent;
 }
 
+.course:hover {
+    background-color: #fff;
+}
+
 .course.selected {
     border-left: 1px solid var(--theme-primary-color-normal);
     background-color: #fff;

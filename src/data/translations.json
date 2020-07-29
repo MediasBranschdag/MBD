@@ -454,6 +454,10 @@
             "se": "Om sittningen",
             "en": "The dinner party"               
         },
+        "afterparty" : {
+            "se": "Efterköret",
+            "en": "The afterparty"               
+        },
         "guest_form": {
             "full_name": {
                 "se": "För- och efternamn",
@@ -530,6 +534,30 @@
             "obligatory": {
                 "se": "Kontrollera att du har fyllt i alla obligatoriska fält.",
                 "en": "Make sure you have filled in all obligatory fields.."
+            },
+            "error": {
+                "se": "Något gick fel. Vänligen testa igen senare.",
+                "en": "Something went wrong. Please try again later."
+            },
+            "signed_up": {
+                "se": "Du har anmält dig till sittningen, vi ses där!",
+                "en": "You've signed up for the dinner party. We'll see you there!"
+            },
+            "closed": {
+                "se": "Anmälan till sittningen för Medias Branschdag",
+                "en": "Registration for the dinner party for Medias Branschdag"
+            },
+            "closed_continued": {
+                "se": "är stängd.",
+                "en": "is closed."
+            },
+            "open_from": {
+                "se": "Anmälan kommer vara öppen från",
+                "en": "Registration will be open from"
+            },
+            "open_until": {
+                "se": "till och med",
+                "en": "and will last until"
             }
         }
     },

@@ -61,6 +61,17 @@
     user-select: none;
 }
 
+.btn--inline {
+    display: inline;
+}
+
+.btn--inline img {
+    max-width: 25px;
+    max-height: 25px;
+    padding-right: 10px;
+    user-select: none;
+}
+
 .btn-image {
     height: 100%;
     width: 15px;

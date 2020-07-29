@@ -4,6 +4,7 @@ import './button.css';
 export enum ButtonTypes {
     normal = '',
     normalCompact = 'btn--compact',
+    inline = 'btn--inline',
     icon = 'btn--icon',
     bigIcon = 'btn--icon btn--icon--big'
 }
