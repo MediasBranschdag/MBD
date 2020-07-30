@@ -1,6 +1,3 @@
-.guest-form {
-}
-
 .company-rep {
     display: flex;
     flex-direction: row;
@@ -11,7 +8,7 @@
     display: flex;
     align-items: center;
     font-size: 1.1em;
-    padding: 0.5em 0 0 0;
+    padding: 1em 0 0 0;
 }
 
 .ticket-price img {
@@ -28,6 +25,12 @@
     -webkit-animation: slide 1s;
 }
 
+.guest-form-button {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
 .MuiTypography-body1 {
     font-family: 'Montserrat', 'Open Sans', sans-serif !important;
 }
@@ -37,28 +40,29 @@
         display: flex;
         flex-direction: column;
     }
-}
 
-.dinner-party-meny {
-    background-color: var(--theme-dark-color-normal);
+    .ticket-price {
+        justify-content: center;
+    }
+
 }
 
 @keyframes slide {
     from {
-      transform: translateX(5px);
+        transform: translateX(5px);
     }
     to {
-      transform: translateX(0px);
+        transform: translateX(0px);
     }
-  }
-  @-webkit-keyframes slide {
+}
+@-webkit-keyframes slide {
     from {
-      transform: translateX(5px);
+        transform: translateX(5px);
     }
     to {
-      transform: translateX(0px);
+        transform: translateX(0px);
     }
-  }
+}
 
 .signed-up {
 }

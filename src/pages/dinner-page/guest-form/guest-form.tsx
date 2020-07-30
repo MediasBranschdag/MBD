@@ -24,139 +24,91 @@ import TextSection, {
     TextSectionAlignment,
 } from '../../../components/text-section/text-section'
 import { MBDDateContext } from '../../../contexts/mbd-date-provider'
+import {
+    getDinnerParty,
+    getCourses,
+    CourseType,
+    Course,
+} from '../../../model/dinnerPartyModel'
 
 const GuestForm = () => {
-    const formEndDate = new Date('2020-07-31')
-    const formStartDate = new Date(formEndDate.getTime())
-    formStartDate.setDate(formStartDate.getDate() - 30)
+    const [formStartDate, setFormStartDate] = useState<Date>(
+        new Date('2020-01-01')
+    )
+    const [formEndDate, setFormEndDate] = useState<Date>(new Date('2020-01-01'))
 
     const [ticketPrice, _setTicketPrice] = useState(0)
+    const [ticketBasePrice, setTicketBasePrice] = useState(0)
+    const [alcoholPrice, setAlcoholPrice] = useState(0)
+    const [helperRebate, setHelperRebate] = useState(0)
 
-    const [name, setName] = useState('EK Test')
-    const [personId, setPersonId] = useState('kahdka')
-    const [email, setEmail] = useState('asdasd')
+    const [courses, setCourses] = useState<{
+        starters: Course[]
+        mainCourses: Course[]
+        desserts: Course[]
+        drinks: Course[]
+    }>({ starters: [], mainCourses: [], desserts: [], drinks: [] })
+    const [nonAlcoholicDrinkIds, setNonAlcoholicDrinkIds] = useState<string[]>(
+        []
+    )
 
-    const [type, setType] = useState('student')
+    const [name, setName] = useState('')
+    const [personId, setPersonId] = useState('')
+    const [email, setEmail] = useState('')
+
+    const [type, setType] = useState('')
     const [company, setCompany] = useState('')
-    const [starter, setStarter] = useState('Test')
-    const [mainCourse, setMainCourse] = useState('Test')
-    const [dessert, setDessert] = useState('Test')
-    const [drinks, setDrinks] = useState('Test')
-    const [allergies, setAllergies] = useState('aaaa')
-    const [terms, setTerms] = useState(true)
-    const [info, setInfo] = useState(true)
+    const [starter, setStarter] = useState('')
+    const [mainCourse, setMainCourse] = useState('')
+    const [dessert, setDessert] = useState('')
+    const [drinks, setDrinks] = useState('')
+    const [allergies, setAllergies] = useState('')
+    const [terms, setTerms] = useState(false)
+    const [info, setInfo] = useState(false)
 
     const [sent, setSent] = useState(false)
     const [error, setError] = useState(false)
-    const [errorMessage, setErrorMessage] = useState(phrases.dinner_page.guest_form.obligatory)
+    const [errorMessage, setErrorMessage] = useState(
+        phrases.dinner_page.guest_form.obligatory
+    )
 
-    const nonAlcoholicDrink = {
-        se: 'Läsk (alkoholfri)',
-        en: 'Soda (non-alcoholic)',
-    }
-
-    const ticketBasePrice = 180
-    const alcoholPrice = 20
-    const helperRebate = 20
-
-    const courses = {
-        starters: [
-            {
-                name: {
-                    se:
-                        'Toast på surdegsbröd med färskost creme, prosciutto och rostad kronärtskocka',
-                    en:
-                        'Toast på surdegsbröd med färskost creme, prosciutto och rostad kronärtskocka',
-                },
-                attributes: {
-                    se: 'Nötfri',
-                    en: 'Nut-free',
-                },
-            },
-            {
-                name: {
-                    se:
-                        'Rostade rödbetor med solrosfrön, ruccola och örtdressing',
-                    en:
-                        'Rostade rödbetor med solrosfrön, ruccola och örtdressing',
-                },
-                attributes: {
-                    se: 'Nötfri, vegansk',
-                    en: 'Nut-free, vegan',
-                },
-            },
-        ],
-        mainCourses: [
-            {
-                name: {
-                    se:
-                        'Grillad kycklingfilé med citron- och parmesansås, rostade rotsaker samt örtsallad',
-                    en:
-                        'Grillad kycklingfilé med citron- och parmesansås, rostade rotsaker samt örtsallad',
-                },
-                attributes: {
-                    se: 'Nötfri',
-                    en: 'Nut-free',
-                },
-            },
-            {
-                name: {
-                    se:
-                        'Sojafärsbiff med potatisgratäng, rostade grönsaker och örtsky',
-                    en:
-                        'Sojafärsbiff med potatisgratäng, rostade grönsaker och örtsky',
-                },
-                attributes: {
-                    se: 'Nötfri, vegansk',
-                    en: 'Nut-free, vegan',
-                },
-            },
-        ],
-        desserts: [
-            {
-                name: {
-                    se: 'Blåbär- och citronmoussetårta',
-                    en: 'Blåbär- och citronmoussetårta',
-                },
-                attributes: {
-                    se: 'Glutenfri',
-                    en: 'Gluten-free',
-                },
-            },
-            {
-                name: {
-                    se: 'Raw chocolate cake',
-                    en: 'Raw chocolate cake',
-                },
-                attributes: {
-                    se: 'Vegansk',
-                    en: 'Vegan',
-                },
-            },
-        ],
-        drinks: [
-            nonAlcoholicDrink,
-            {
-                se: 'Öl',
-                en: 'Beer',
-            },
-            {
-                se: 'Vitt vin',
-                en: 'White wine',
-            },
-            {
-                se: 'Rött vin',
-                en: 'Red wine',
-            },
-            {
-                se: 'Cider',
-                en: 'Cider',
-            },
-        ],
-    }
+    useEffect(() => {
+        getCourses().then((c) => {
+            setCourses({
+                starters: c.filter(
+                    (course) => course.type === CourseType.Starter
+                ),
+                mainCourses: c.filter(
+                    (course) => course.type === CourseType.MainCourse
+                ),
+                desserts: c.filter(
+                    (course) => course.type === CourseType.Dessert
+                ),
+                drinks: [
+                    ...c.filter(
+                        (course) => course.type === CourseType.NonAlcoholicDrink
+                    ),
+                    ...c.filter((course) => course.type === CourseType.Drink),
+                ],
+            })
+            setNonAlcoholicDrinkIds(
+                c
+                    .filter(
+                        (course) => course.type === CourseType.NonAlcoholicDrink
+                    )
+                    .map((course) => course.id.toString())
+            )
+        })
+        getDinnerParty().then((dinnerParty) => {
+            setFormStartDate(dinnerParty.registrationStart)
+            setFormEndDate(dinnerParty.registrationEnd)
+            setTicketBasePrice(dinnerParty.ticketBasePrice)
+            setAlcoholPrice(dinnerParty.alcoholPrice)
+            setHelperRebate(dinnerParty.helperRebate)
+        })
+    }, [])
 
     const checkFormFieldError = () => {
-        
         setErrorMessage(phrases.dinner_page.guest_form.obligatory)
 
         var obligatoryFields = [
@@ -208,22 +160,24 @@ const GuestForm = () => {
             formData.append('allergies', allergies)
             formData.append('ticketPrice', ticketPrice.toString())
 
-            fetch(BACKEND_PATH + `guestForm.php?action=${'add-guest'}`, {
+            fetch(BACKEND_PATH + `getDinnerParty.php?action=${'add-guest'}`, {
                 method: 'POST',
                 body: formData,
-            }).then(() => {
-                setSent(true)
-                if (document) {
-                    document
-                        .getElementById('dinnerpage-registration-anchor')!
-                        .scrollIntoView({
-                            behavior: 'smooth',
-                        })
-                }
-            }).catch(() => {
-                setError(true)
-                setErrorMessage(phrases.dinner_page.guest_form.error)
             })
+                .then(() => {
+                    setSent(true)
+                    if (document) {
+                        document
+                            .getElementById('dinnerpage-registration-anchor')!
+                            .scrollIntoView({
+                                behavior: 'smooth',
+                            })
+                    }
+                })
+                .catch(() => {
+                    setError(true)
+                    setErrorMessage(phrases.dinner_page.guest_form.error)
+                })
         }
     }
 
@@ -249,7 +203,7 @@ const GuestForm = () => {
         if (type && drinks) {
             let price =
                 ticketBasePrice +
-                (drinks === nonAlcoholicDrink.se ? 0 : alcoholPrice)
+                (nonAlcoholicDrinkIds.includes(drinks) ? 0 : alcoholPrice)
             switch (type) {
                 case 'student':
                     _setTicketPrice(price)
@@ -434,8 +388,8 @@ const GuestForm = () => {
                         </em>
                     </MenuItem>
                     {courses.drinks.map((drink) => (
-                        <MenuItem value={drink.se}>
-                            {TranslationModel.translate(drink)}
+                        <MenuItem value={drink.id}>
+                            {TranslationModel.translate(drink.desc)}
                         </MenuItem>
                     ))}
                 </Select>
@@ -547,9 +501,7 @@ const GuestForm = () => {
     const renderErrorMessage = (message: Phrase) => (
         <>
             <div className='guest-form-error slide'>
-                {TranslationModel.translate(
-                    message
-                )}
+                {TranslationModel.translate(message)}
             </div>
             <br />
         </>
@@ -565,6 +517,11 @@ const GuestForm = () => {
                                 {TranslationModel.translate(
                                     phrases.dinner_page.guest_form.signed_up
                                 )}
+                                <br />
+                                {TranslationModel.translate(
+                                    phrases.dinner_page.guest_form
+                                        .signed_up_email
+                                )}
                             </TextSection>
                         </div>
                     ) : (
@@ -575,44 +532,48 @@ const GuestForm = () => {
                             <br />
                             {renderConfirmationOptions()}
                             {error && renderErrorMessage(errorMessage)}
-                            <Button
-                                onClick={sendGuestForm}
-                                buttonType={ButtonTypes.normalCompact}
-                            >
-                                {TranslationModel.translate(phrases.send)}
-                            </Button>
+                            <div className='guest-form-button'>
+                                <Button
+                                    onClick={sendGuestForm}
+                                    buttonType={ButtonTypes.normalCompact}
+                                >
+                                    {TranslationModel.translate(phrases.send)}
+                                </Button>
+                            </div>
                         </>
                     )
                 ) : (
-                    <TextSection align={TextSectionAlignment.center}>
-                        {new Date() > formEndDate ? (
-                            <MBDDateContext.Consumer>
-                                {(mbdDate) => (
-                                    <>
-                                        {`${TranslationModel.translate(
-                                            phrases.dinner_page.guest_form
-                                                .closed
-                                        )} ${mbdDate.getStartYear()} ${TranslationModel.translate(
-                                            phrases.dinner_page.guest_form
-                                                .closed_continued
-                                        )}`}
-                                    </>
-                                )}
-                            </MBDDateContext.Consumer>
-                        ) : (
-                            <>
-                                {TranslationModel.translate(
-                                    phrases.dinner_page.guest_form.open_from
-                                )}{' '}
-                                {formStartDate.toLocaleDateString()}{' '}
-                                {TranslationModel.translate(
-                                    phrases.dinner_page.guest_form.open_until
-                                )}{' '}
-                                {formEndDate.toLocaleDateString()}.
-                            </>
-                        )}
-                    </TextSection>
+                    <></>
                 )}
+                <TextSection align={TextSectionAlignment.center}>
+                    {new Date() > formEndDate ? (
+                        <MBDDateContext.Consumer>
+                            {(mbdDate) => (
+                                <>
+                                    {`${TranslationModel.translate(
+                                        phrases.dinner_page.guest_form.closed
+                                    )} ${mbdDate.getStartYear()} ${TranslationModel.translate(
+                                        phrases.dinner_page.guest_form
+                                            .closed_continued
+                                    )}`}
+                                </>
+                            )}
+                        </MBDDateContext.Consumer>
+                    ) : (
+                        <>
+                            {TranslationModel.translate(
+                                phrases.dinner_page.guest_form.open_from
+                            )}{' '}
+                            {formStartDate.toLocaleDateString()}{' '}
+                            {TranslationModel.translate(
+                                phrases.dinner_page.guest_form.open_until
+                            )}{' '}
+                            <span className='nowrap'>
+                                {formEndDate.toLocaleDateString()}.
+                            </span>
+                        </>
+                    )}
+                </TextSection>
             </div>
         </>
     )

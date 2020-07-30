@@ -8,7 +8,7 @@ import Footer from '../../components/footer/footer';
 import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';
 import ContentSection, { ContentSectionBackground } from '../../components/layout/content-section/content-section';
-import { TeamMember, getAllTeamMemebers } from '../../model/teamModel';
+import { TeamMember, getAllTeamMembers } from '../../model/teamModel';
 import ProfileCard from '../../components/profile-card/profile-card';
 import TextSection from '../../components/text-section/text-section';
 import ContactForm from '../company-page/contact-form/contact-form';
@@ -23,7 +23,7 @@ const Contactpage: FC = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        getAllTeamMemebers().then(setPgMembers);
+        getAllTeamMembers().then(setPgMembers);
     }, []);
 
     return (
