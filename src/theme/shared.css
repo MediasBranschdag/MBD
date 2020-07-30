@@ -14,3 +14,7 @@
 .no-tap-highlight {
     -webkit-tap-highlight-color: transparent;
 }
+
+.nowrap {
+    white-space: nowrap;
+}

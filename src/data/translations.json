@@ -223,7 +223,7 @@
     },
     "dinner_party": {
         "se": "Sittningen",
-        "en": "Dinner party"
+        "en": "Dinner Party"
     },
     "more_info_soon": {
         "se": "Mer information kommer snart",
@@ -451,12 +451,16 @@
             "en": "Ticket Registration"           
         },
         "about" : {
-            "se": "Om sittningen",
-            "en": "The dinner party"               
+            "se": "Om Sittningen",
+            "en": "The Dinner Party"               
         },
         "afterparty" : {
             "se": "Efterköret",
-            "en": "The afterparty"               
+            "en": "The Afterparty"               
+        },
+        "facebook_event": {
+            "se": "Gå till Facebook-evenemanget",
+            "en": "View the Facebook event"    
         },
         "guest_form": {
             "full_name": {
@@ -543,6 +547,10 @@
                 "se": "Du har anmält dig till sittningen, vi ses där!",
                 "en": "You've signed up for the dinner party. We'll see you there!"
             },
+            "signed_up_email": {
+                "se": "Om du har fått en plats på sittningen kommer du få ett bekräftelsemail efter anmälan har stängt.",
+                "en": "You will receive an email confirmation if you have gotten a spot after the registration is closed."
+            },
             "closed": {
                 "se": "Anmälan till sittningen för Medias Branschdag",
                 "en": "Registration for the dinner party for Medias Branschdag"
@@ -552,8 +560,8 @@
                 "en": "is closed."
             },
             "open_from": {
-                "se": "Anmälan kommer vara öppen från",
-                "en": "Registration will be open from"
+                "se": "Anmälan är öppen från",
+                "en": "Registration is open from"
             },
             "open_until": {
                 "se": "till och med",
@@ -564,5 +572,9 @@
     "filter": {
         "se": "Filtrera på",
         "en": "Filter by"
+    },
+    "dinner_admin": {
+        "se": "Sittningsadmin",
+        "en": "Dinner Party Admin"
     }
 }

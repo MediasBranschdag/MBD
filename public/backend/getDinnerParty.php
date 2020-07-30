@@ -1,12 +1,33 @@
 <?php
 
     include_once('database.php');
+    include_once('Models/exhibitDateModel.php');
 
     class DinnerPartyModel extends DatabaseModel {
         const SELECT_ATTRIBUTES = "*";
 
         public function __construct() {
             $this->establishDatabaseConnection();
+            $this->exhibitDateModel = new ExhibitDateModel();
+        }
+
+        public function getDinnerParty() {
+            $currentYear = $this->exhibitDateModel->getCurrentYear();
+            header('Access-Control-Allow-Origin: *');
+            
+            return $this->dbSelectSimple(
+                'SELECT * FROM dinner_parties WHERE year = ' . $currentYear 
+            );
+        }
+
+        public function getCourses() {
+            $currentYear = $this->exhibitDateModel->getCurrentYear();
+            header('Access-Control-Allow-Origin: *');
+            header('Content-Type: application/json');
+            
+            return $this->dbSelectAllSimple(
+                'SELECT * FROM dinner_party_courses WHERE year = ' . $currentYear
+            );
         }
 
         /**
@@ -18,7 +39,7 @@
             $personId = $_POST['personId'];
             $email = $_POST['email'];
             $type = $_POST['type'];
-            $companyId = $_POST['companyId'];
+            $company = $_POST['company'];
             $starter = $_POST['starter'];
             $mainCourse = $_POST['mainCourse'];
             $dessert = $_POST['dessert'];
@@ -30,9 +51,9 @@
             header('Content-Type: application/json');
 
             return $this->dbExecutePrepared(
-                "INSERT INTO dinner_party_guests (name, personId, email, type, companyId, starter, mainCourse, dessert, drinks, allergies, ticketPrice)  
+                "INSERT INTO dinner_party_guests (name, personId, email, type, companyId, starterId, mainCourseId, dessertId, drinksId, allergies, ticketPrice)  
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                [$name, $personId, $email, $type, $companyId, $starter, $mainCourse, $dessert, $drinks, $allergies, $ticketPrice]
+                [$name, $personId, $email, $type, $company, $starter, $mainCourse, $dessert, $drinks, $allergies, $ticketPrice]
             );
         }
     }
@@ -47,6 +68,13 @@
             switch ($_GET['action']) {
                 case 'add-guest':
                     $data = $eventModel->addGuest();
+                    break;
+                case 'get-courses':
+                    $data = $eventModel->getCourses();
+                    break;
+                default:
+                    $data = $eventModel->getDinnerParty();
+                    break;
                 break;
             }
 

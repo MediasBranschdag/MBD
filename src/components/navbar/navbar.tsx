@@ -26,7 +26,7 @@ const Navbar = () => {
             </div>
             <div className={`navbar-content navbar-padding ${mobileMenuOpen ? 'active' : ''}`}>
                 {
-                    Object.values(Routes).map((route) => {
+                    Object.values(Routes).filter(route => route.inMenu).map((route) => {
                         return <NavLink 
                             exact
                             className='navbar-link'
