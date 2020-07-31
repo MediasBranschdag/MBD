@@ -3,23 +3,23 @@
         "january": {
             "en": "January",
             "se": "januari"
-        }, 
+        },
         "february": {
             "en": "February",
             "se": "februari"
-        }, 
+        },
         "march": {
             "en": "March",
             "se": "mars"
-        }, 
+        },
         "april": {
             "en": "April",
             "se": "april"
-        }, 
+        },
         "may": {
             "en": "May",
             "se": "maj"
-        }, 
+        },
         "june": {
             "en": "June",
             "se": "juni"
@@ -27,23 +27,23 @@
         "july": {
             "en": "July",
             "se": "juli"
-        }, 
+        },
         "august": {
             "en": "August",
             "se": "augusti"
-        }, 
+        },
         "september": {
             "en": "September",
             "se": "september"
-        }, 
+        },
         "october": {
             "en": "October",
             "se": "oktober"
-        }, 
+        },
         "november": {
             "en": "November",
             "se": "november"
-        }, 
+        },
         "december": {
             "en": "December",
             "se": "december"
@@ -368,43 +368,43 @@
     "sign_up": {
         "company_name": {
             "se": "Företagsnamn",
-            "en": "Company name"  
-        },        
+            "en": "Company name"
+        },
         "organization_number": {
             "se": "Organisationsnummer",
-            "en": "Vat/company identity number"  
-        },         
+            "en": "Vat/company identity number"
+        },
         "contact_person": {
             "se": "Kontaktperson",
-            "en": "Contact person"  
-        },        
+            "en": "Contact person"
+        },
         "phone": {
             "se": "Telefonnummer",
-            "en": "Phone number"  
-        },        
+            "en": "Phone number"
+        },
         "contact_email": {
             "se": "E-post",
-            "en": "Contact email"  
+            "en": "Contact email"
         },
         "invoice_address": {
             "se": "Faktureringsaddress",
-            "en": "Invoice address"   
+            "en": "Invoice address"
         },
         "invoice_email": {
             "se": "E-post för fakturering",
-            "en": "Invoice email"            
+            "en": "Invoice email"
         },
         "comment": {
             "se": "Kommentar",
-            "en": "Comment"         
+            "en": "Comment"
         },
         "yes": {
             "se": "Ja",
-            "en": "Yes"       
+            "en": "Yes"
         },
         "no": {
             "se": "Nej",
-            "en": "No"          
+            "en": "No"
         },
         "hold_events": {
             "se": "Är ni intresserade av att hålla andra aktiviteter eller event i samband med Medias Branschdag? (t.ex. lunchföreläsning eller pub)",
@@ -442,86 +442,86 @@
             "events": {
                 "se": "Event (t.ex. AW)",
                 "en": "Events (e.g. AW)"
-            } 
+            }
         }
     },
     "dinner_page": {
         "registration": {
             "se": "Anmälan",
-            "en": "Ticket Registration"           
+            "en": "Ticket Registration"
         },
-        "about" : {
-            "se": "Om Sittningen",
-            "en": "The Dinner Party"               
+        "about": {
+            "se": "Om sittningen",
+            "en": "The dinner party"
         },
-        "afterparty" : {
+        "afterparty": {
             "se": "Efterköret",
-            "en": "The Afterparty"               
+            "en": "The Afterparty"
         },
         "facebook_event": {
             "se": "Gå till Facebook-evenemanget",
-            "en": "View the Facebook event"    
+            "en": "View the Facebook event"
         },
         "guest_form": {
             "full_name": {
                 "se": "För- och efternamn",
-                "en": "Full name"  
+                "en": "Full name"
             },
             "person_id": {
                 "se": "Personnummer",
-                "en": "Personal identity number"  
+                "en": "Personal identity number"
             },
             "person_type": {
                 "se": "Jag är...",
-                "en": "I am..."  
+                "en": "I am..."
             },
             "student": {
                 "se": "En student",
-                "en": "A student"  
+                "en": "A student"
             },
             "company_rep": {
                 "se": "En förtagsrepresentant från...",
-                "en": "A company representative from..."  
+                "en": "A company representative from..."
             },
             "choose_company": {
                 "se": "Välj ett företag...",
-                "en": "Choose a company..."  
+                "en": "Choose a company..."
             },
             "other": {
                 "se": "Annat",
-                "en": "Other"                 
+                "en": "Other"
             },
             "helper": {
                 "se": "En företagsvärd/logistiker/fotograf för MBD",
-                "en": "A company host/logistician/photographer for MBD"                 
+                "en": "A company host/logistician/photographer for MBD"
             },
             "plus_one": {
                 "se": "Någons +1",
-                "en": "Someone's +1"  
+                "en": "Someone's +1"
             },
             "starter": {
                 "se": "Förrätt",
-                "en": "Starter"  
+                "en": "Starter"
             },
             "main_course": {
                 "se": "Huvudrätt",
-                "en": "Main course"  
+                "en": "Main course"
             },
             "dessert": {
                 "se": "Efterrätt",
-                "en": "Dessert"  
+                "en": "Dessert"
             },
             "drink": {
                 "se": "Dryck",
-                "en": "Drink"  
+                "en": "Drink"
             },
             "choose_drink": {
                 "se": "Välj dryck...",
-                "en": "Choose your drink..."  
+                "en": "Choose your drink..."
             },
             "allergies": {
                 "se": "Eventuella allergier",
-                "en": "Allergies"  
+                "en": "Allergies"
             },
             "agreements": {
                 "se": "Godkännanden",
@@ -575,6 +575,50 @@
     },
     "dinner_admin": {
         "se": "Sittningsadmin",
-        "en": "Dinner Party Admin"
+        "en": "Dinner Party Admin",
+        "guests": {
+            "se": "Gäster",
+            "en": "Guests"
+        },
+        "starters": {
+            "se": "Förrätter",
+            "en": "Starters"
+        },
+        "main_courses": {
+            "se": "Huvudrätter",
+            "en": "Main courses"
+        },
+        "desserts": {
+            "se": "Efterrätter",
+            "en": "Desserts"
+        },
+        "drinks": {
+            "se": "Drycker",
+            "en": "Drinks"
+        },
+        "allergies": {
+            "se": "Allergier",
+            "en": "Allergies"
+        },
+        "students": {
+            "se": "Studenter",
+            "en": "Students"
+        },
+        "company_reps": {
+            "se": "Företagsrepresentanter",
+            "en": "Company representatives"
+        },
+        "helpers": {
+            "se": "Hjälpare",
+            "en": "Helpers"
+        },
+        "plus_ones": {
+            "se": "Plus-ettor",
+            "en": "Plus ones"
+        },
+        "total": {
+            "se": "Totalt",
+            "en": "Total"
+        }
     }
 }
