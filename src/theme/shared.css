@@ -18,3 +18,11 @@
 .nowrap {
     white-space: nowrap;
 }
+
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}

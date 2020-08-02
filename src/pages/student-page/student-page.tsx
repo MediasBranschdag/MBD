@@ -4,18 +4,10 @@ import './student-page.css';
 import TranslationModel from '../../model/translationModel';
 import phrases from '../../data/translations.json';
 import Footer from '../../components/footer/footer';
-import IntroScreen from '../../components/intro-screen/intro-screen';
-import IntroScreenButtons from '../../components/intro-screen/intro-screen-buttons/intro-screen-buttons';
-import ContentSection, { ContentSectionSize } from '../../components/layout/content-section/content-section';
+import ContentSection from '../../components/layout/content-section/content-section';
 import TextSection, { TextSectionAlignment } from '../../components/text-section/text-section';
-import CenterBackground from '../../components/center-background/center-background';
-import { Button, ButtonTypes } from '../../components/button/button';
+import { Button } from '../../components/button/button';
 
-import TicketIcon from '../../assets/icons/other/tickets_black.svg';
-import BoothIcon from '../../assets/icons/other/booth_black.svg';
-
-import IntroScreenBackground from '../../assets/backgrounds/kth_stone_ground.jpg';
-import DinnerBackground from '../../assets/backgrounds/dinner_background.png';
 import Close from '../../assets/icons/other/close_outline.svg';
 import SectionTitle from '../../components/section-title/section-title';
 import { Company } from '../../model/companyModel';

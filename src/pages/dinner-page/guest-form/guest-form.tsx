@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useEffect } from 'react'
+import React, { useState, ChangeEvent, useEffect, FC } from 'react'
 import './guest-form.css'
 
 import TranslationModel, { Phrase } from '../../../model/translationModel'
@@ -16,7 +16,6 @@ import {
 import { InputInfoHeader } from '../../../components/input-info/input-info-header/input-info-header'
 import { MBDCompanyContext } from '../../../contexts/mbd-company-provider'
 import CourseSelect from './course-select/course-select'
-
 import TicketIcon from '../../../assets/icons/other/tickets_black.svg'
 import { Button, ButtonTypes } from '../../../components/button/button'
 import BACKEND_PATH from '../../../backend-environment'
@@ -25,22 +24,16 @@ import TextSection, {
 } from '../../../components/text-section/text-section'
 import { MBDDateContext } from '../../../contexts/mbd-date-provider'
 import {
-    getDinnerParty,
     getCourses,
     CourseType,
     Course,
+    DinnerParty,
 } from '../../../model/dinnerPartyModel'
+import Loader from '../../../components/loader/loader'
 
-const GuestForm = () => {
-    const [formStartDate, setFormStartDate] = useState<Date>(
-        new Date('2020-01-01')
-    )
-    const [formEndDate, setFormEndDate] = useState<Date>(new Date('2020-01-01'))
-
+const GuestForm: FC<DinnerParty> = (props) => {
+    const [isLoading, setIsLoading] = useState(false)
     const [ticketPrice, _setTicketPrice] = useState(0)
-    const [ticketBasePrice, setTicketBasePrice] = useState(0)
-    const [alcoholPrice, setAlcoholPrice] = useState(0)
-    const [helperRebate, setHelperRebate] = useState(0)
 
     const [courses, setCourses] = useState<{
         starters: Course[]
@@ -73,6 +66,7 @@ const GuestForm = () => {
     )
 
     useEffect(() => {
+        setIsLoading(true)
         getCourses().then((c) => {
             setCourses({
                 starters: c.filter(
@@ -98,13 +92,7 @@ const GuestForm = () => {
                     )
                     .map((course) => course.id.toString())
             )
-        })
-        getDinnerParty().then((dinnerParty) => {
-            setFormStartDate(dinnerParty.registrationStart)
-            setFormEndDate(dinnerParty.registrationEnd)
-            setTicketBasePrice(dinnerParty.ticketBasePrice)
-            setAlcoholPrice(dinnerParty.alcoholPrice)
-            setHelperRebate(dinnerParty.helperRebate)
+            setIsLoading(false)
         })
     }, [])
 
@@ -202,8 +190,8 @@ const GuestForm = () => {
     useEffect(() => {
         if (type && drinks) {
             let price =
-                ticketBasePrice +
-                (nonAlcoholicDrinkIds.includes(drinks) ? 0 : alcoholPrice)
+                props.ticketBasePrice +
+                (nonAlcoholicDrinkIds.includes(drinks) ? 0 : props.alcoholPrice)
             switch (type) {
                 case 'student':
                     _setTicketPrice(price)
@@ -212,7 +200,7 @@ const GuestForm = () => {
                     _setTicketPrice(0)
                     break
                 case 'helper':
-                    _setTicketPrice(price - helperRebate)
+                    _setTicketPrice(price - props.helperDiscount)
                     break
                 case 'plusOne':
                     _setTicketPrice(price)
@@ -221,7 +209,14 @@ const GuestForm = () => {
                     _setTicketPrice(0)
             }
         }
-    }, [type, drinks])
+    }, [
+        type,
+        drinks,
+        props.ticketBasePrice,
+        props.alcoholPrice,
+        props.helperDiscount,
+        nonAlcoholicDrinkIds,
+    ])
 
     const renderGeneralOptions = () => (
         <div>
@@ -317,6 +312,7 @@ const GuestForm = () => {
                                             {companies.isExhibitor.map(
                                                 (company) => (
                                                     <MenuItem
+                                                        key={company.id}
                                                         value={company.id}
                                                     >
                                                         {company.name}
@@ -372,7 +368,7 @@ const GuestForm = () => {
                     phrases.dinner_page.guest_form.drink
                 )}
             </InputInfoHeader>
-            <div style={{ display: 'flex' }}>
+            <div className='flex'>
                 <Select
                     style={{ margin: 0, flex: 1 }}
                     labelId='label'
@@ -388,7 +384,7 @@ const GuestForm = () => {
                         </em>
                     </MenuItem>
                     {courses.drinks.map((drink) => (
-                        <MenuItem value={drink.id}>
+                        <MenuItem value={drink.id} key={drink.id}>
                             {TranslationModel.translate(drink.desc)}
                         </MenuItem>
                     ))}
@@ -473,7 +469,7 @@ const GuestForm = () => {
                         )}
                     />
                     <div className='ticket-price'>
-                        <img src={TicketIcon} />
+                        <img src={TicketIcon} alt='' />
                         <p>
                             <b>
                                 {TranslationModel.translate({
@@ -507,10 +503,15 @@ const GuestForm = () => {
         </>
     )
 
-    return (
+    return isLoading ? (
+        <div className='flex justify-center'>
+            <Loader />
+        </div>
+    ) : (
         <>
             <div className='guest-form'>
-                {formStartDate <= new Date() && new Date() <= formEndDate ? (
+                {props.registrationStart <= new Date() &&
+                new Date() <= props.registrationEnd ? (
                     sent ? (
                         <div className='signed-up'>
                             <TextSection align={TextSectionAlignment.center}>
@@ -546,7 +547,7 @@ const GuestForm = () => {
                     <></>
                 )}
                 <TextSection align={TextSectionAlignment.center}>
-                    {new Date() > formEndDate ? (
+                    {new Date() > props.registrationEnd ? (
                         <MBDDateContext.Consumer>
                             {(mbdDate) => (
                                 <>
@@ -564,12 +565,12 @@ const GuestForm = () => {
                             {TranslationModel.translate(
                                 phrases.dinner_page.guest_form.open_from
                             )}{' '}
-                            {formStartDate.toLocaleDateString()}{' '}
+                            {props.registrationStart.toLocaleDateString()}{' '}
                             {TranslationModel.translate(
                                 phrases.dinner_page.guest_form.open_until
                             )}{' '}
                             <span className='nowrap'>
-                                {formEndDate.toLocaleDateString()}.
+                                {props.registrationEnd.toLocaleDateString()}.
                             </span>
                         </>
                     )}
