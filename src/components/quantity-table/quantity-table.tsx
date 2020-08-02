@@ -15,7 +15,7 @@ interface QuantityTableProps {
 
 const QuantityTable: FC<QuantityTableProps> = (props) => {
     return (
-        <>
+        <div className='quantity-table'>
             <h2>{TranslationModel.translate(props.header)}</h2>
             <div className='quantity-stats'>
                 {props.items.map((item, i) => (
@@ -50,7 +50,7 @@ const QuantityTable: FC<QuantityTableProps> = (props) => {
             ) : (
                 <></>
             )}
-        </>
+        </div>
     )
 }
 

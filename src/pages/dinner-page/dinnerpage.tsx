@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import './dinnerpage.css'
 
 import TranslationModel from '../../model/translationModel'
@@ -22,10 +22,15 @@ import DinnerPgBackground from '../../assets/backgrounds/dinner_pg_background.pn
 import AfterpartyBackground from '../../assets/backgrounds/afterparty.jpg'
 import SectionTitle from '../../components/section-title/section-title'
 import GuestForm from './guest-form/guest-form'
+import { DinnerParty, getDinnerParty } from '../../model/dinnerPartyModel'
+import Loader from '../../components/loader/loader'
 
 const Dinnerpage = () => {
+    const [dinnerParty, setDinnerParty] = useState<DinnerParty | null>()
+
     useEffect(() => {
         window.scrollTo(0, 0)
+        getDinnerParty().then(setDinnerParty)
     }, [])
 
     return (
@@ -61,7 +66,7 @@ const Dinnerpage = () => {
                 />
             </IntroScreen>
             <div id='dinnerpage-about'>
-                <ContentSection style={{padding: '50px 50px 0 50px'}}>
+                <ContentSection style={{ padding: '50px 50px 0 50px' }}>
                     <SectionTitle>
                         {TranslationModel.translate(phrases.dinner_page.about)}
                     </SectionTitle>
@@ -86,9 +91,9 @@ const Dinnerpage = () => {
                                     vi hoppas att ni är lika upprymda som vi är!
                                     <br />
                                     <br />
-                                    Sittningen börjar 18:00 på Syster O Bror på KTH Campus. 
-                                    Mer detaljerad information kommer upp allt
-                                    eftersom på Facebook.
+                                    Sittningen börjar 18:00 på Syster O Bror på
+                                    KTH Campus. Mer detaljerad information
+                                    kommer upp allt eftersom på Facebook.
                                 </span>
                             ),
                             en: (
@@ -111,39 +116,55 @@ const Dinnerpage = () => {
                                     <br />
                                     <br />
                                     The dinner party will start at 18:00 at
-                                    Syster O Bror on KTH Campus. More details can be found at
-                                    the Facebook event leading up to the event.
+                                    Syster O Bror on KTH Campus. More details
+                                    can be found at the Facebook event leading
+                                    up to the event.
                                 </span>
                             ),
                         })}
-                        <div className='link-button-container'>
-                            <a
-                                href='https://www.facebook.com/mediasbranschdag/events'
-                                target='_blank'
-                                rel='noopener noreferrer'
-                            >
-                                <Button
-                                    buttonType={ButtonTypes.inlineIcon}
-                                    iconSrc={FaceBookIcon}
-                                >
-                                    {TranslationModel.translate(
-                                        phrases.dinner_page.facebook_event
-                                    )}
-                                </Button>
-                            </a>
-                        </div>
+                        {dinnerParty ? (
+                            dinnerParty.dinnerEventLink ? (
+                                <div className='link-button-container'>
+                                    <a
+                                        href='https://www.facebook.com/mediasbranschdag/events'
+                                        target='_blank'
+                                        rel='noopener noreferrer'
+                                    >
+                                        <Button
+                                            buttonType={ButtonTypes.inlineIcon}
+                                            iconSrc={FaceBookIcon}
+                                        >
+                                            {TranslationModel.translate(
+                                                phrases.dinner_page
+                                                    .facebook_event
+                                            )}
+                                        </Button>
+                                    </a>
+                                </div>
+                            ) : (
+                                <></>
+                            )
+                        ) : (
+                            <></>
+                        )}
                     </TextSection>
                 </ContentSection>
             </div>
             <div id='dinnerpage-registration-anchor' />
             <div id='dinnerpage-registration'>
-                <ContentSection style={{paddingTop: '25px'}}>
+                <ContentSection style={{ paddingTop: '25px' }}>
                     <SectionTitle>
                         {TranslationModel.translate(
                             phrases.dinner_page.registration
                         )}
                     </SectionTitle>
-                    <GuestForm />
+                    {dinnerParty ? (
+                        <GuestForm {...dinnerParty} />
+                    ) : (
+                        <div className='flex justify-center'>
+                            <Loader />
+                        </div>
+                    )}
                 </ContentSection>
             </div>
             <div id='dinnerpage-afterparty'>
@@ -158,54 +179,89 @@ const Dinnerpage = () => {
                             {TranslationModel.translate({
                                 se: (
                                     <span>
-                                        Efter sittningen hålls ett efterkör i META där alla är välkomna. 
-                                        Oavsett om du är med på sittningen eller inte så är det ett perfekt tillfälle att avsluta kvällen med oss!
-                                        Medias Klubbmästeri bjuder som vanligt in till en skön pub som i samband med branschdagen blir lite extra festlig.
+                                        Efter sittningen hålls ett efterkör i
+                                        META där alla är välkomna. Oavsett om du
+                                        är med på sittningen eller inte så är
+                                        det ett perfekt tillfälle att avsluta
+                                        kvällen med oss! Medias Klubbmästeri
+                                        bjuder som vanligt in till en skön pub
+                                        som i samband med branschdagen blir lite
+                                        extra festlig.
                                         <br />
                                         <br />
-                                        Kom och testa en drinkspecial, kolla in dekorationerna, eller njut av livemusik (håll utkik på Facebook för mer info...). Givetvis är det gratis inträde.
+                                        Kom och testa en drinkspecial, kolla in
+                                        dekorationerna, eller njut av livemusik
+                                        (håll utkik på Facebook för mer
+                                        info...). Givetvis är det gratis
+                                        inträde.
                                         <br />
                                         <br />
-                                        Puben börjar som vanligt 17:15 i META då vi bjuder in till fördrink.
-                                        Baren är fortsatt öppen under sittningen och efteråt kommer gästerna tillbaka för ett ordentligt efterkör.
-                                        Mer detaljerad information kommer upp
-                                        allt eftersom på vår Facebook-sida.
+                                        Puben börjar som vanligt 17:15 i META då
+                                        vi bjuder in till fördrink. Baren är
+                                        fortsatt öppen under sittningen och
+                                        efteråt kommer gästerna tillbaka för ett
+                                        ordentligt efterkör. Mer detaljerad
+                                        information kommer upp allt eftersom på
+                                        vår Facebook-sida.
                                     </span>
                                 ),
                                 en: (
                                     <span>
-                                        The afterparty is held in META and everyone is welcome.
-                                        No matter if you're going to the dinner party or not you have the chance to end your night partying with us!
-                                        Medias Klubbmästeri (MKM) is as usual in charge of arranging this pub that is made a little bit more special by Medias Branschdag.
+                                        The afterparty is held in META and
+                                        everyone is welcome. No matter if you're
+                                        going to the dinner party or not you
+                                        have the chance to end your night
+                                        partying with us! Medias Klubbmästeri
+                                        (MKM) is as usual in charge of arranging
+                                        this pub that is made a little bit more
+                                        special by Medias Branschdag.
                                         <br />
                                         <br />
-                                        Come to try our drink specials, check out the decorations, or enjoy live music (keep on the lookout for more info on our Facebook...). Entrance is free of charge.
+                                        Come to try our drink specials, check
+                                        out the decorations, or enjoy live music
+                                        (keep on the lookout for more info on
+                                        our Facebook...). Entrance is free of
+                                        charge.
                                         <br />
                                         <br />
-                                        The pub will begin as usual 17:15 in META were dinner party guests can enjoy aperitifs. 
-                                        The bar will be open during the dinner party and afterwards the guests will reconvene for the real afterparty.
-                                        More details can be found
-                                        at our Facebook-page closer to the
-                                        event.
+                                        The pub will begin as usual 17:15 in
+                                        META were dinner party guests can enjoy
+                                        aperitifs. The bar will be open during
+                                        the dinner party and afterwards the
+                                        guests will reconvene for the real
+                                        afterparty. More details can be found at
+                                        our Facebook-page closer to the event.
                                     </span>
                                 ),
                             })}
-                            <div className='link-button-container'>
-                                <a
-                                    href='https://www.facebook.com/mediasbranschdag/events'
-                                    target='_blank'
-                                    rel='noopener noreferrer'
-                                >
-                                    <Button
-                                        buttonType={ButtonTypes.inlineIcon}
-                                        iconSrc={FaceBookIcon}
-                                    >
-                                        {TranslationModel.translate(
-                                            phrases.dinner_page.facebook_event
-                                        )}
-                                    </Button>
-                                </a>
-                            </div>
+
+                            {dinnerParty ? (
+                                dinnerParty.afterpartyEventLink ? (
+                                    <div className='link-button-container'>
+                                        <a
+                                            href='https://www.facebook.com/mediasbranschdag/events'
+                                            target='_blank'
+                                            rel='noopener noreferrer'
+                                        >
+                                            <Button
+                                                buttonType={
+                                                    ButtonTypes.inlineIcon
+                                                }
+                                                iconSrc={FaceBookIcon}
+                                            >
+                                                {TranslationModel.translate(
+                                                    phrases.dinner_page
+                                                        .facebook_event
+                                                )}
+                                            </Button>
+                                        </a>
+                                    </div>
+                                ) : (
+                                    <></>
+                                )
+                            ) : (
+                                <></>
+                            )}
                         </TextSection>
                     </ContentSection>
                 </CenterBackground>

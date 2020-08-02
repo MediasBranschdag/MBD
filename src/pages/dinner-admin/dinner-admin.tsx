@@ -26,55 +26,64 @@ import {
     getCourseStats,
     getGuestStats,
     guestPhrases,
-    GuestType,
     getAllergies,
-    getCompanyStats
+    getCompanyStats,
+    GuestStat,
+    CompanyStat,
+    CourseQuanitity,
 } from '../../model/dinnerPartyModel'
-import { Divider } from '@material-ui/core'
 import CourseStats from '../../components/course-stats/course-stats'
 import QuantityTable from '../../components/quantity-table/quantity-table'
+import Loader from '../../components/loader/loader'
 
 const DinnerAdmin: FC<{}> = (props) => {
+    const [isLoading, setIsLoading] = useState(false)
     const [loggedIn, setLoggedIn] = useState(false)
     const [unAuthorized, setUnAuthorized] = useState(false)
-    const [pgMemberEmails, setPgMemberEmails] = useState<string[]>([
-        'branschdag@medieteknik.com',
-    ])
-    const [guestStats, setGuestStats]: any = useState([])
-    const [companyStats, setCompanyStats]: any = useState([])
-    const [courseStats, setCourseStats]: any = useState()
+    const [pgMemberEmails, setPgMemberEmails] = useState<string[]>([])
+    const [guestStats, setGuestStats] = useState<GuestStat[]>([])
+    const [companyStats, setCompanyStats] = useState<CompanyStat[]>([])
+    const [courseStats, setCourseStats] = useState<null | {
+        starters: CourseQuanitity[]
+        mainCourses: CourseQuanitity[]
+        desserts: CourseQuanitity[]
+        drinks: CourseQuanitity[]
+    }>()
     const [allergies, setAllergies] = useState<string[]>([])
 
     const [accessToken, setAccessToken] = useState('')
 
     useEffect(() => {
-        getAllTeamMembers().then((members) =>
-            setPgMemberEmails([
-                ...members.map((member) => member.email),
-                ...pgMemberEmails,
-            ])
-        )
-        getGuestStats().then((stats) => setGuestStats(stats))
-        getCourseStats().then((courses) =>
-            setCourseStats({
-                starters: courses.filter(
-                    (course) => course.type === CourseType.Starter
-                ),
-                mainCourses: courses.filter(
-                    (course) => course.type === CourseType.MainCourse
-                ),
-                desserts: courses.filter(
-                    (course) => course.type === CourseType.Dessert
-                ),
-                drinks: courses.filter(
-                    (course) =>
-                        course.type === CourseType.Drink ||
-                        course.type === CourseType.NonAlcoholicDrink
-                ),
-            })
-        )
-        getAllergies().then(setAllergies)
-        getCompanyStats().then(setCompanyStats)
+        setIsLoading(true)
+        Promise.all([
+            getAllTeamMembers().then((members) =>
+                setPgMemberEmails([
+                    ...members.map((member) => member.email),
+                    ...['branschdag@medieteknik.com'],
+                ])
+            ),
+            getGuestStats().then(setGuestStats),
+            getCourseStats().then((courses) =>
+                setCourseStats({
+                    starters: courses.filter(
+                        (course) => course.type === CourseType.Starter
+                    ),
+                    mainCourses: courses.filter(
+                        (course) => course.type === CourseType.MainCourse
+                    ),
+                    desserts: courses.filter(
+                        (course) => course.type === CourseType.Dessert
+                    ),
+                    drinks: courses.filter(
+                        (course) =>
+                            course.type === CourseType.Drink ||
+                            course.type === CourseType.NonAlcoholicDrink
+                    ),
+                })
+            ),
+            getAllergies().then(setAllergies),
+            getCompanyStats().then(setCompanyStats),
+        ]).then(() => setIsLoading(false))
     }, [])
 
     const updateDinnerPartySheet = async () => {
@@ -103,7 +112,6 @@ const DinnerAdmin: FC<{}> = (props) => {
         } else {
             setUnAuthorized(true)
         }
-        console.log(response)
     }
 
     const renderLogInScreen = () => {
@@ -151,12 +159,7 @@ const DinnerAdmin: FC<{}> = (props) => {
                         {TranslationModel.translate(phrases.dinner_admin)}
                     </IntroScreenTitle>
                     <ContentSection size={ContentSectionSize.small}>
-                        <div
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                            }}
-                        >
+                        <div className='dinner-admin-center'>
                             <Button
                                 buttonType={ButtonTypes.icon}
                                 onClick={updateDinnerPartySheet}
@@ -167,60 +170,75 @@ const DinnerAdmin: FC<{}> = (props) => {
                     </ContentSection>
                 </CenterBackground>
                 <ContentSection background={ContentSectionBackground.light}>
-                    <QuantityTable
-                        showTotal
-                        header={phrases.dinner_admin.guests}
-                        items={guestStats.map(
-                            (stat: { type: GuestType; quantity: number }) => {
-                                return {
-                                    desc: guestPhrases[stat.type],
-                                    quantity: stat.quantity,
-                                }
-                            }
-                        )}
-                    />
-                    <QuantityTable
-                        header={phrases.dinner_admin.company_reps}
-                        items={companyStats.map(
-                            (stat: { name: string; quantity: number }) => {
-                                return {
-                                    desc: { se: stat.name, en: stat.name },
-                                    quantity: stat.quantity,
-                                }
-                            }
-                        )}
-                    />
-                    <CourseStats
-                        header={phrases.dinner_admin.starters}
-                        courses={courseStats ? courseStats.starters : []}
-                    />
-                    <CourseStats
-                        header={phrases.dinner_admin.main_courses}
-                        courses={courseStats ? courseStats.mainCourses : []}
-                    />
-                    <CourseStats
-                        header={phrases.dinner_admin.desserts}
-                        courses={courseStats ? courseStats.desserts : []}
-                    />
-                    <CourseStats
-                        header={phrases.dinner_admin.drinks}
-                        courses={courseStats ? courseStats.drinks : []}
-                    />
-                    {allergies.length > 0 ? (
-                        <>
-                            <h2>
-                                {TranslationModel.translate(
-                                    phrases.dinner_admin.allergies
-                                )}
-                            </h2>
-                            {allergies.map((allergy) => (
-                                <div style={{ padding: '0.25em 0' }}>
-                                    {allergy}
-                                </div>
-                            ))}
-                        </>
+                    {isLoading ? (
+                        <div className='dinner-admin-center'>
+                            <Loader />
+                        </div>
                     ) : (
-                        <></>
+                        <>
+                            <QuantityTable
+                                showTotal
+                                header={phrases.dinner_admin.guests}
+                                items={guestStats.map((stat) => {
+                                    return {
+                                        desc: guestPhrases[stat.type],
+                                        quantity: stat.quantity,
+                                    }
+                                })}
+                            />
+                            <QuantityTable
+                                header={phrases.dinner_admin.company_reps}
+                                items={companyStats.map((stat) => {
+                                    return {
+                                        desc: {
+                                            se: stat.name,
+                                            en: stat.name,
+                                        },
+                                        quantity: stat.quantity,
+                                    }
+                                })}
+                            />
+                            <CourseStats
+                                header={phrases.dinner_admin.starters}
+                                courses={
+                                    courseStats ? courseStats.starters : []
+                                }
+                            />
+                            <CourseStats
+                                header={phrases.dinner_admin.main_courses}
+                                courses={
+                                    courseStats ? courseStats.mainCourses : []
+                                }
+                            />
+                            <CourseStats
+                                header={phrases.dinner_admin.desserts}
+                                courses={
+                                    courseStats ? courseStats.desserts : []
+                                }
+                            />
+                            <CourseStats
+                                header={phrases.dinner_admin.drinks}
+                                courses={courseStats ? courseStats.drinks : []}
+                            />
+                            {allergies.length > 0 ? (
+                                <>
+                                    <h2>
+                                        {TranslationModel.translate(
+                                            phrases.dinner_admin.allergies
+                                        )}
+                                    </h2>
+                                    <div className='allergies'>
+                                        {allergies.map((allergy, i) => (
+                                            <div key={'allergy_' + i}>
+                                                {allergy}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </>
+                            ) : (
+                                <></>
+                            )}
+                        </>
                     )}
                 </ContentSection>
             </>

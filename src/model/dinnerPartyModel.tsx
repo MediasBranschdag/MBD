@@ -9,10 +9,11 @@ export interface DinnerParty {
     registrationEnd: Date
     ticketBasePrice: number
     alcoholPrice: number
-    helperRebate: number
+    helperDiscount: number
     googleSheetsId: string
+    dinnerEventLink: string
+    afterpartyEventLink: string
 }
-
 
 export enum GuestType {
     Student = 'student',
@@ -46,9 +47,8 @@ export interface Course {
 export type CourseQuanitity = Course & { quantity: number }
 
 export interface Guest {
-    id: number
+    date: Date
     name: string
-    personId: string
     email: string
     type: GuestType
     company: string
@@ -58,6 +58,16 @@ export interface Guest {
     drinks: Phrase
     allergies: string
     ticketPrice: number
+}
+
+export interface GuestStat {
+    type: GuestType
+    quantity: number
+}
+
+export interface CompanyStat {
+    name: string
+    quantity: number
 }
 
 function parseDinnerParty(dinnerParty: DinnerParty): DinnerParty {
@@ -72,8 +82,8 @@ function parseDinnerParty(dinnerParty: DinnerParty): DinnerParty {
             alcoholPrice: parseInt(
                 (dinnerParty.alcoholPrice as unknown) as string
             ),
-            helperRebate: parseInt(
-                (dinnerParty.helperRebate as unknown) as string
+            helperDiscount: parseInt(
+                (dinnerParty.helperDiscount as unknown) as string
             ),
         },
     }
@@ -94,28 +104,31 @@ function parseCourse(courseJson: any): Course {
     }
 }
 
-function parseGuest(guestJson: any): Course {
+function parseGuest(guestJson: any): Guest {
     return {
-        ...guestJson,
-        /*
-        ...{
-            starter: {
-                se: guestJson.starter_se,
-                en: guestJson.starter_en,
-            },
-            mainCourse: {
-                se: guestJson.mainCourse_se,
-                en: guestJson.mainCourse_en,
-            },
-            dessert: {
-                se: guestJson.dessert_se,
-                en: guestJson.dessert_en,
-            },
-            drinks: {
-                se: guestJson.drinks_se,
-                en: guestJson.drinks_en,
-            },
-        },*/
+        date: guestJson.date,
+        name: guestJson.name,
+        email: guestJson.email,
+        type: guestJson.type,
+        company: guestJson.company,
+        starter: {
+            se: guestJson.starter_se,
+            en: guestJson.starter_en,
+        },
+        mainCourse: {
+            se: guestJson.mainCourse_se,
+            en: guestJson.mainCourse_en,
+        },
+        dessert: {
+            se: guestJson.dessert_se,
+            en: guestJson.dessert_en,
+        },
+        drinks: {
+            se: guestJson.drinks_se,
+            en: guestJson.drinks_en,
+        },
+        allergies: guestJson.allergies,
+        ticketPrice: guestJson.ticketPrice,
     }
 }
 
@@ -140,7 +153,7 @@ export async function getGuests(): Promise<Guest[]> {
     return data
 }
 
-export async function getGuestStats(): Promise<any[]> {
+export async function getGuestStats(): Promise<GuestStat[]> {
     const response = await axios.get(
         BACKEND_PATH + 'getDinnerParty.php?action=get-guest-stats'
     )
@@ -157,7 +170,7 @@ export async function getCourseStats(): Promise<CourseQuanitity[]> {
     return data
 }
 
-export async function getCompanyStats(): Promise<{ name: string, quantity: number}> {
+export async function getCompanyStats(): Promise<CompanyStat[]> {
     const response = await axios.get(
         BACKEND_PATH + 'getDinnerParty.php?action=get-company-stats'
     )
@@ -168,16 +181,34 @@ export async function getAllergies(): Promise<string[]> {
     const response = await axios.get(
         BACKEND_PATH + 'getDinnerParty.php?action=get-allergies'
     )
-    const data = response.data.map((data: { allergies: string}) => data.allergies)
+    const data = response.data.map(
+        (data: { allergies: string }) => data.allergies
+    )
     return data
 }
 
 export async function updateGoogleSheet(accessToken: string): Promise<boolean> {
     const dinnerParty = await getDinnerParty()
     const guests = await getGuests()
-    const guestValues = guests.map((guest) => Object.values(guest))
+    const guestValues = [
+        ...[Object.keys(guests[0])],
+        ...guests
+            .map((guest) => {
+                return {
+                    ...guest,
+                    ...{
+                        type: guestPhrases[guest.type].se,
+                        starter: guest.starter.se,
+                        mainCourse: guest.mainCourse.se,
+                        dessert: guest.dessert.se,
+                        drinks: guest.drinks.se,
+                    },
+                }
+            })
+            .map((guest) => Object.values(guest)),
+    ]
     axios.put(
-        `https://sheets.googleapis.com/v4/spreadsheets/${dinnerParty.googleSheetsId}/values/A2/?key=AIzaSyATibyeiHShJwmqQWhVKc6fRg_98cfcKtc&valueInputOption=RAW`,
+        `https://sheets.googleapis.com/v4/spreadsheets/${dinnerParty.googleSheetsId}/values/A1/?key=AIzaSyATibyeiHShJwmqQWhVKc6fRg_98cfcKtc&valueInputOption=RAW`,
         {
             values: guestValues,
         },

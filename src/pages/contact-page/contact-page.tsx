@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import './contact-page.css';
 
-import IntroScreen from '../../components/intro-screen/intro-screen';
+//import IntroScreen from '../../components/intro-screen/intro-screen';
 
 import Footer from '../../components/footer/footer';
 

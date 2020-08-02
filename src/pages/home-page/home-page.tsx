@@ -6,7 +6,6 @@ import IntroScreen from '../../components/intro-screen/intro-screen';
 import IntroScreenBackground from '../../assets/backgrounds/nymble_beach_flag.jpg';
 import ReadMoreBackground from '../../assets/backgrounds/laptop.png';
 import AnimatedMBDLogo from '../../components/animated-mbd-logo/animated-mbd-logo';
-import BookIcon from '../../assets/icons/other/book.png';
 import CompanyIcon from '../../assets/icons/other/company.svg';
 import FacebookIcon from '../../assets/icons/other/facebook.svg';
 import InstagramIcon from '../../assets/icons/other/instagram.svg';

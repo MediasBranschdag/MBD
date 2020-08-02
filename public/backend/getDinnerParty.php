@@ -159,12 +159,11 @@
             
             return $this->dbSelectAllSimple(
                 'SELECT 
-                    guests.id,
+                    guests.date,
                     guests.name,
-                    guests.personId,
                     guests.email,
                     guests.type,
-                    companies.name,
+                    companies.name as company,
                     starter.desc_se AS starter_se,
                     starter.desc_en AS starter_en,
                     mainCourse.desc_se AS mainCourse_se,
@@ -180,7 +179,8 @@
                 JOIN dinner_party_courses starter ON guests.starterId = starter.id
                 JOIN dinner_party_courses mainCourse ON guests.mainCourseId = mainCourse.id
                 JOIN dinner_party_courses dessert ON guests.dessertId = dessert.id
-                JOIN dinner_party_courses drinks ON guests.drinksId = drinks.id'
+                JOIN dinner_party_courses drinks ON guests.drinksId = drinks.id
+                ORDER BY guests.date'
             );
         }
 
