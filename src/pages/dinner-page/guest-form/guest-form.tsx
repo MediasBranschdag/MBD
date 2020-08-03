@@ -30,11 +30,10 @@ import {
     DinnerParty,
 } from '../../../model/dinnerPartyModel'
 import Loader from '../../../components/loader/loader'
+import Confetti from '../../../components/confetti/confetti'
 
 const GuestForm: FC<DinnerParty> = (props) => {
     const [isLoading, setIsLoading] = useState(false)
-    const [ticketPrice, _setTicketPrice] = useState(0)
-
     const [courses, setCourses] = useState<{
         starters: Course[]
         mainCourses: Course[]
@@ -45,10 +44,11 @@ const GuestForm: FC<DinnerParty> = (props) => {
         []
     )
 
+    const [ticketPrice, setTicketPrice] = useState(0)
+
     const [name, setName] = useState('')
     const [personId, setPersonId] = useState('')
     const [email, setEmail] = useState('')
-
     const [type, setType] = useState('')
     const [company, setCompany] = useState('')
     const [starter, setStarter] = useState('')
@@ -64,6 +64,8 @@ const GuestForm: FC<DinnerParty> = (props) => {
     const [errorMessage, setErrorMessage] = useState(
         phrases.dinner_page.guest_form.obligatory
     )
+
+    props.registrationEnd.setHours(23, 59, 59, 999)
 
     useEffect(() => {
         setIsLoading(true)
@@ -136,6 +138,7 @@ const GuestForm: FC<DinnerParty> = (props) => {
         setError(checkFormFieldError())
         if (!checkFormFieldError()) {
             let formData = new FormData()
+            formData.append('date', new Date().toLocaleString())
             formData.append('name', name)
             formData.append('personId', personId)
             formData.append('email', email)
@@ -156,9 +159,11 @@ const GuestForm: FC<DinnerParty> = (props) => {
                     setSent(true)
                     if (document) {
                         document
-                            .getElementById('dinnerpage-registration-anchor')!
+                            .getElementById('dinnerpage-registration')!
                             .scrollIntoView({
-                                behavior: 'smooth',
+                                behavior: 'auto',
+                                block: 'center',
+                                inline: 'center',
                             })
                     }
                 })
@@ -194,19 +199,19 @@ const GuestForm: FC<DinnerParty> = (props) => {
                 (nonAlcoholicDrinkIds.includes(drinks) ? 0 : props.alcoholPrice)
             switch (type) {
                 case 'student':
-                    _setTicketPrice(price)
+                    setTicketPrice(price)
                     break
                 case 'companyRep':
-                    _setTicketPrice(0)
+                    setTicketPrice(0)
                     break
                 case 'helper':
-                    _setTicketPrice(price - props.helperDiscount)
+                    setTicketPrice(price - props.helperDiscount)
                     break
                 case 'plusOne':
-                    _setTicketPrice(price)
+                    setTicketPrice(price)
                     break
                 default:
-                    _setTicketPrice(0)
+                    setTicketPrice(0)
             }
         }
     }, [
@@ -221,7 +226,7 @@ const GuestForm: FC<DinnerParty> = (props) => {
     const renderGeneralOptions = () => (
         <div>
             <InputInfo
-                placeHolderHeader
+                placeholderHeader
                 noCard
                 inputType='text'
                 name='fullName'
@@ -234,7 +239,7 @@ const GuestForm: FC<DinnerParty> = (props) => {
             />
             <br />
             <InputInfo
-                placeHolderHeader
+                placeholderHeader
                 noCard
                 obligatory
                 inputType='text'
@@ -247,7 +252,7 @@ const GuestForm: FC<DinnerParty> = (props) => {
             />
             <br />
             <InputInfo
-                placeHolderHeader
+                placeholderHeader
                 noCard
                 obligatory
                 inputType='text'
@@ -319,14 +324,7 @@ const GuestForm: FC<DinnerParty> = (props) => {
                                                     </MenuItem>
                                                 )
                                             )}
-                                            <MenuItem
-                                                value={
-                                                    TranslationModel.translate(
-                                                        phrases.dinner_page
-                                                            .guest_form.other
-                                                    ) as string
-                                                }
-                                            >
+                                            <MenuItem value='other'>
                                                 <em>
                                                     {TranslationModel.translate(
                                                         phrases.dinner_page
@@ -420,7 +418,7 @@ const GuestForm: FC<DinnerParty> = (props) => {
             />
             <br />
             <InputInfo
-                placeHolderHeader
+                placeholderHeader
                 noCard
                 inputType='text'
                 name='allergies'
@@ -515,14 +513,18 @@ const GuestForm: FC<DinnerParty> = (props) => {
                     sent ? (
                         <div className='signed-up'>
                             <TextSection align={TextSectionAlignment.center}>
-                                {TranslationModel.translate(
-                                    phrases.dinner_page.guest_form.signed_up
-                                )}
-                                <br />
-                                {TranslationModel.translate(
-                                    phrases.dinner_page.guest_form
-                                        .signed_up_email
-                                )}
+                                <Confetti>
+                                    <h3>
+                                        {TranslationModel.translate(
+                                            phrases.dinner_page.guest_form
+                                                .signed_up
+                                        )}
+                                    </h3>
+                                    {TranslationModel.translate(
+                                        phrases.dinner_page.guest_form
+                                            .signed_up_email
+                                    )}
+                                </Confetti>
                             </TextSection>
                         </div>
                     ) : (
@@ -547,7 +549,11 @@ const GuestForm: FC<DinnerParty> = (props) => {
                     <></>
                 )}
                 <TextSection align={TextSectionAlignment.center}>
-                    {new Date() > props.registrationEnd ? (
+                    {new Date() > props.registrationEnd ||
+                    !(
+                        props.registrationEnd instanceof Date &&
+                        !isNaN(props.registrationEnd.getTime())
+                    ) ? (
                         <MBDDateContext.Consumer>
                             {(mbdDate) => (
                                 <>

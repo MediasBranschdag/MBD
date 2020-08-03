@@ -74,7 +74,7 @@ const Dinnerpage = () => {
                         {TranslationModel.translate({
                             se: (
                                 <span>
-                                    Medias Branschdag kommer att avslutas med en
+                                    Medias Branschdag avslutas på kvällen med en
                                     sittning där företag och studenter får
                                     chansen att utveckla samtal om framtiden mer
                                     på djupet. Detta är en utmärkt möjlighet för
@@ -150,7 +150,6 @@ const Dinnerpage = () => {
                     </TextSection>
                 </ContentSection>
             </div>
-            <div id='dinnerpage-registration-anchor' />
             <div id='dinnerpage-registration'>
                 <ContentSection style={{ paddingTop: '25px' }}>
                     <SectionTitle>

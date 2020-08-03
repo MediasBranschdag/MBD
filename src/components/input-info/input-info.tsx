@@ -4,14 +4,15 @@ import Card from '../card/card';
 import { InputInfoHeader } from './input-info-header/input-info-header';
 
 interface InputInfoProps {
-    inputType: 'text' | 'textarea'
+    inputType: 'text' | 'textarea' | 'number' | 'date'
     name: string,
     placeholder: ReactNode;
     onInput: (arg0: string) => void,
-    placeHolderHeader?: boolean,
+    placeholderHeader?: boolean,
     obligatory?: boolean,
     noCard?: boolean,
-    defaultValue?: string
+    defaultValue?: string| number,
+    value?: string| number
 }
 export const InputInfo: FC<InputInfoProps> = (props) => {
 
@@ -22,7 +23,8 @@ export const InputInfo: FC<InputInfoProps> = (props) => {
             onInput={(event) => props.onInput(event.currentTarget.value)}
             name=""
             placeholder={props.placeholder?.toString()}
-            className="input-info-textarea"></textarea>
+            className="input-info-textarea"
+            value={props.value}></textarea>
             break;
         default:
             input = <input
@@ -30,7 +32,8 @@ export const InputInfo: FC<InputInfoProps> = (props) => {
             className="input-info-input"
             placeholder={props.placeholder?.toString()}
             type={props.inputType}
-            defaultValue={props.defaultValue}/>
+            defaultValue={props.defaultValue}
+            value={props.value}/>
             break;
     }
 
@@ -40,7 +43,7 @@ export const InputInfo: FC<InputInfoProps> = (props) => {
                 input
             }
             { 
-                props.placeHolderHeader ? <></> : 
+                props.placeholderHeader ? <></> : 
                 <div className="input-info-placeholder-info">
                     {props.placeholder}
                 </div> 
@@ -49,7 +52,7 @@ export const InputInfo: FC<InputInfoProps> = (props) => {
     )
 
     return (<>
-        { props.placeHolderHeader ? 
+        { props.placeholderHeader ? 
             <InputInfoHeader obligatory={props.obligatory}>
                 {props.placeholder}
             </InputInfoHeader>

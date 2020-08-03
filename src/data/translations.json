@@ -576,6 +576,14 @@
     "dinner_admin": {
         "se": "Sittningsadmin",
         "en": "Dinner Party Admin",
+        "statistics": {
+            "se": "Statistik",
+            "en": "Statistics"
+        },
+        "administer": {
+            "se": "Administrera",
+            "en": "Administer"
+        },
         "guests": {
             "se": "Gäster",
             "en": "Guests"
@@ -619,6 +627,46 @@
         "total": {
             "se": "Totalt",
             "en": "Total"
+        },
+        "no_items": {
+            "se": "Ingen data att visa",
+            "en": "No items to show"
+        },
+        "registration_start": {
+            "se": "Startdatum för anmälan",
+            "en": "Registration start"
+        },
+        "registration_end": {
+            "se": "Slutdatum för anmälan",
+            "en": "Registration end"
+        },
+        "ticket_base_price": {
+            "se": "Biljettgrundpris",
+            "en": "Ticket base price"
+        },
+        "alcohol_price": {
+            "se": "Alkoholpris",
+            "en": "Alcohol price"
+        },
+        "helper_discount": {
+            "se": "Hjälp-rabatt",
+            "en": "Helper discount"
+        },
+        "google_sheets_id": {
+            "se": "Google Sheets-id",
+            "en": "Google Sheets id"
+        },
+        "dinner_fb_link": {
+            "se": "Facebook-evenemang-länk för sittningen",
+            "en": "Facebook event link for the dinner party"
+        },
+        "afterparty_fb_link": {
+            "se": "Facebook-evenemang-länk för efterköret",
+            "en": "Facebook event link for the afterparty"
+        },
+        "save": {
+            "se": "Spara",
+            "en": "Save"
         }
     }
 }

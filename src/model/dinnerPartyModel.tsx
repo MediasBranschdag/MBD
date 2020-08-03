@@ -2,6 +2,7 @@ import BACKEND_PATH from '../backend-environment'
 import axios from 'axios'
 import { Phrase } from './translationModel'
 import phrases from '../data/translations.json'
+import credentials from '../credentials.json'
 
 export interface DinnerParty {
     year: number
@@ -145,11 +146,15 @@ export async function getCourses(): Promise<Course[]> {
     return data
 }
 
-export async function getGuests(): Promise<Guest[]> {
+export async function getGuests(accessToken: string): Promise<Guest[]> {
     const response = await axios.get(
-        BACKEND_PATH + 'getDinnerParty.php?action=get-guests'
+        BACKEND_PATH +
+            'getDinnerParty.php?action=get-guests&token=' +
+            accessToken
     )
-    const data = response.data.map((guest: any) => parseGuest(guest))
+    const data = response.data
+        ? response.data.map((guest: any) => parseGuest(guest))
+        : []
     return data
 }
 
@@ -157,16 +162,21 @@ export async function getGuestStats(): Promise<GuestStat[]> {
     const response = await axios.get(
         BACKEND_PATH + 'getDinnerParty.php?action=get-guest-stats'
     )
-    return response.data
+    return response.data ? response.data : []
 }
 
 export async function getCourseStats(): Promise<CourseQuanitity[]> {
     const response = await axios.get(
         BACKEND_PATH + 'getDinnerParty.php?action=get-course-stats'
     )
-    const data = response.data.map((course: any) => {
-        return { ...parseCourse(course), ...{ quantity: course.quantity } }
-    })
+    const data = response.data
+        ? response.data.map((course: any) => {
+              return {
+                  ...parseCourse(course),
+                  ...{ quantity: course.quantity },
+              }
+          })
+        : []
     return data
 }
 
@@ -174,49 +184,92 @@ export async function getCompanyStats(): Promise<CompanyStat[]> {
     const response = await axios.get(
         BACKEND_PATH + 'getDinnerParty.php?action=get-company-stats'
     )
-    return response.data
+    return response.data ? response.data : []
 }
 
 export async function getAllergies(): Promise<string[]> {
     const response = await axios.get(
         BACKEND_PATH + 'getDinnerParty.php?action=get-allergies'
     )
-    const data = response.data.map(
-        (data: { allergies: string }) => data.allergies
-    )
+    const data = response.data
+        ? response.data.map((data: { allergies: string }) => data.allergies)
+        : []
     return data
 }
 
-export async function updateGoogleSheet(accessToken: string): Promise<boolean> {
+export async function updateDinnerParty(
+    dinnerParty: DinnerParty,
+    accessToken: string
+): Promise<boolean> {
+    let formData = new FormData()
+    Object.entries(dinnerParty).forEach((item) => {
+        formData.append(
+            item[0],
+            item[1] instanceof Date ? item[1].toLocaleDateString() : item[1]
+        )
+    })
+    axios
+        .post(
+            BACKEND_PATH +
+                'getDinnerParty.php?action=update-dinner-party&token=' +
+                accessToken,
+            formData
+        )
+        .catch((err) => {
+            return false
+        })
+    return true
+}
+
+export async function updateGoogleSheet(accessToken: string): Promise<string> {
     const dinnerParty = await getDinnerParty()
-    const guests = await getGuests()
-    const guestValues = [
-        ...[Object.keys(guests[0])],
-        ...guests
-            .map((guest) => {
-                return {
-                    ...guest,
-                    ...{
-                        type: guestPhrases[guest.type].se,
-                        starter: guest.starter.se,
-                        mainCourse: guest.mainCourse.se,
-                        dessert: guest.dessert.se,
-                        drinks: guest.drinks.se,
+    const guests = await getGuests(accessToken)
+
+    const googleSheetsEndpoint = `https://sheets.googleapis.com/v4/spreadsheets/${dinnerParty.googleSheetsId}/values`
+    const keyParameter = `?key=${credentials.google.apiKey}`
+
+    const guestValues =
+        guests.length > 0
+            ? [
+                  ...[Object.keys(guests[0])],
+                  ...guests
+                      .map((guest) => {
+                          return {
+                              ...guest,
+                              ...{
+                                  type: guestPhrases[guest.type].se,
+                                  starter: guest.starter.se,
+                                  mainCourse: guest.mainCourse.se,
+                                  dessert: guest.dessert.se,
+                                  drinks: guest.drinks.se,
+                              },
+                          }
+                      })
+                      .map((guest) => Object.values(guest)),
+              ]
+            : guests
+    axios
+        .post(
+            `${googleSheetsEndpoint}/A:Z:clear/${keyParameter}`,
+            {},
+            {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            }
+        )
+        .then(() => {
+            axios.put(
+                `${googleSheetsEndpoint}/A1/${keyParameter}&valueInputOption=RAW`,
+                {
+                    values: guestValues,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
                     },
                 }
-            })
-            .map((guest) => Object.values(guest)),
-    ]
-    axios.put(
-        `https://sheets.googleapis.com/v4/spreadsheets/${dinnerParty.googleSheetsId}/values/A1/?key=AIzaSyATibyeiHShJwmqQWhVKc6fRg_98cfcKtc&valueInputOption=RAW`,
-        {
-            values: guestValues,
-        },
-        {
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
-        }
-    )
-    return true
+            )
+        })
+    return `https://docs.google.com/spreadsheets/d/${dinnerParty.googleSheetsId}/`
 }

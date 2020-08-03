@@ -10,6 +10,17 @@
     justify-content: center;
 }
 
+.dinner-admin-prices {
+    display: flex;
+    justify-content: space-between;
+}
+
 .allergies div {
     padding: 0.25em 0;
+}
+
+@media screen and (max-width: 800px) {
+    .dinner-admin-prices {
+        flex-direction: column;
+    }
 }

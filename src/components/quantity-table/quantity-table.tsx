@@ -18,12 +18,20 @@ const QuantityTable: FC<QuantityTableProps> = (props) => {
         <div className='quantity-table'>
             <h2>{TranslationModel.translate(props.header)}</h2>
             <div className='quantity-stats'>
-                {props.items.map((item, i) => (
-                    <div key={i} className='quantity-stat'>
-                        <span>{TranslationModel.translate(item.desc)}</span>
-                        <span>{item.quantity}</span>
-                    </div>
-                ))}
+                {props.items.length > 0 ? (
+                    props.items.map((item, i) => (
+                        <div key={i} className='quantity-stat'>
+                            <span>{TranslationModel.translate(item.desc)}</span>
+                            <span>{item.quantity}</span>
+                        </div>
+                    ))
+                ) : (
+                    <span>
+                        {TranslationModel.translate(
+                            phrases.dinner_admin.no_items
+                        )}
+                    </span>
+                )}
             </div>
             {props.showTotal ? (
                 <>
