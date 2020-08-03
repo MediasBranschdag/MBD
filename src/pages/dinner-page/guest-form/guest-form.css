@@ -44,7 +44,6 @@
     .ticket-price {
         justify-content: center;
     }
-
 }
 
 @keyframes slide {
@@ -62,7 +61,4 @@
     to {
         transform: translateX(0px);
     }
-}
-
-.signed-up {
 }

@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Värd: MBD-mysql:3306
--- Tid vid skapande: 04 jun 2020 kl 13:47
--- Serverversion: 5.7.30
--- PHP-version: 7.4.5
+-- Host: MBD-mysql:3306
+-- Generation Time: Jul 19, 2020 at 06:44 PM
+-- Server version: 5.7.30
+-- PHP Version: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,27 +18,26 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Databas: `166397-mediasbranschdag`
+-- Database: `166397-mediasbranschdag`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `companies`
+-- Table structure for table `companies`
 --
 
-CREATE TABLE IF NOT EXISTS `companies` (
+CREATE TABLE `companies` (
   `id` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description_se` text,
   `description_en` text NOT NULL,
   `logo` varchar(255) NOT NULL,
-  `website` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  `website` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumpning av Data i tabell `companies`
+-- Dumping data for table `companies`
 --
 
 INSERT INTO `companies` (`id`, `name`, `description_se`, `description_en`, `logo`, `website`) VALUES
@@ -87,6 +86,7 @@ INSERT INTO `companies` (`id`, `name`, `description_se`, `description_en`, `logo
 ('nightli', 'Nightli', 'Framtidens lojalitetsnätverk för nattlivet! Gäster samlar och spenderar fest-poäng på olika nattklubbar med en rolig webbplattform så kroganställda kan skapa större kundlojalitet och får ett bättre beslutsunderlag.', 'Time has finally come to digitize all stages of “going out” through gamification. With the help of a playful user experience nightli will be the first mobile app to bring nightlife as we know it today, to a community platform that raises guest loyalty for nightclub owners. Beneficiaries of our solution will not only be the clubs, but also the visitors thanks to our solution. Therefore, with the help of human computer interaction design and smart algorithms, our goal is to grow world\'s nightlife in a fair and humorous way through technology. Nightlife is not a guestlist. It is a community!', 'nightli.jpg', 'kth.se/innovation/forinkubator/bolag/batch-10/nightli-1.932841'),
 ('nordicmorninggroup', 'Nordic Morning', NULL, 'We are 220 passionate people driving change for the largest enterprises and brands in the Nordics by building and running their Digital Growth Engines. Our ways of working helps companies become customer-centric by combining our capabilities within business transformation, service design, technology, data driven marketing and content.', 'nordicmorninggroup.svg', 'www.nordicmorning.se'),
 ('ooyala', 'Ooyala', '', 'Ooyala is a global technology company delivering online video solutions and services. We are on a mission to revolutionize digital TV - end-to-end and at a global scale. That requires taking on some very interesting technical challenges, spread across Media Logistics, Video Publishing, Video Advertising and large scala Data Analytics.  Ooyala Stockholm The Stockholm office is Ooyala\'s third biggest office (after Silicon Valley and London) and is home turf to everything ad-tech.  More than 2/3 of the 80+ strong Stockholm crew work in R&D making Stockholm is one of Ooyala\'s core engineering hubs. The complexity and scale involved in running a global ad-serving platform makes Stockholm an innovation center not only for advertizing technology but also for Ooyala\'s infrastructure management, data pipelines and core analytics.', 'ooyala.png', 'www.ooyala.com'),
+('other', 'Ospecificerad', NULL, '', '', ''),
 ('plackers', 'Plackers', NULL, '', 'plackers.svg', 'plackers.se'),
 ('prime', 'Prime Weber Shandwick ', '', 'Prime and United Minds is an agency of 150 employees with its headquarters in Stockholm, focused on all aspects of integrated marketing, public affairs, crisis management, corporate communications and business intelligence. The agency consists of two different entities: Prime, focusing on public relations and United Minds, providing comprehensive business intelligence services. We provide fully-integrated consulting services to global companies, professional services firms, industry associations, government agencies and other large organizations.  Vi söker studenter inom alla områden, alla olika bakgrunder är välkomna.', 'prime.png', 'primegroup.com'),
 ('protendering', 'ProTendering', 'ProTendering är ett verktyg som stöttar kravställarna i upphandlingar för optimering av kostnader i relation till önskad kravbild.', '', 'protendering.png', 'emp.jobylon.com/jobs/53152/'),
@@ -120,35 +120,33 @@ INSERT INTO `companies` (`id`, `name`, `description_se`, `description_en`, `logo
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `company_employments`
+-- Table structure for table `company_employments`
 --
 
-CREATE TABLE IF NOT EXISTS `company_employments` (
+CREATE TABLE `company_employments` (
   `companyId` varchar(64) NOT NULL,
   `year` int(11) NOT NULL COMMENT 'Should reference a exhibit_date',
-  `employmentId` int(11) NOT NULL,
-  PRIMARY KEY (`companyId`,`year`,`employmentId`)
+  `employmentId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `company_involvement`
+-- Table structure for table `company_involvement`
 --
 
-CREATE TABLE IF NOT EXISTS `company_involvement` (
+CREATE TABLE `company_involvement` (
   `companyID` varchar(64) NOT NULL,
   `year` int(11) NOT NULL COMMENT 'Should reference a exhibit_date',
   `isSponsor` tinyint(1) NOT NULL DEFAULT '0',
   `isExhibitor` tinyint(1) NOT NULL DEFAULT '0',
   `isMainSponsor` tinyint(1) NOT NULL DEFAULT '0',
   `seekingDescription_en` text NOT NULL,
-  `seekingDescription_se` text NOT NULL,
-  PRIMARY KEY (`companyID`,`year`)
+  `seekingDescription_se` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumpning av Data i tabell `company_involvement`
+-- Dumping data for table `company_involvement`
 --
 
 INSERT INTO `company_involvement` (`companyID`, `year`, `isSponsor`, `isExhibitor`, `isMainSponsor`, `seekingDescription_en`, `seekingDescription_se`) VALUES
@@ -216,20 +214,19 @@ INSERT INTO `company_involvement` (`companyID`, `year`, `isSponsor`, `isExhibito
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `company_map_position`
+-- Table structure for table `company_map_position`
 --
 
-CREATE TABLE IF NOT EXISTS `company_map_position` (
+CREATE TABLE `company_map_position` (
   `companyID` varchar(64) NOT NULL,
   `year` mediumint(9) NOT NULL,
   `mapPositionX` float NOT NULL DEFAULT '50',
   `mapPositionY` float NOT NULL DEFAULT '50',
-  `customOrder` int(11) NOT NULL,
-  PRIMARY KEY (`companyID`,`year`)
+  `customOrder` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumpning av Data i tabell `company_map_position`
+-- Dumping data for table `company_map_position`
 --
 
 INSERT INTO `company_map_position` (`companyID`, `year`, `mapPositionX`, `mapPositionY`, `customOrder`) VALUES
@@ -268,19 +265,92 @@ INSERT INTO `company_map_position` (`companyID`, `year`, `mapPositionX`, `mapPos
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `employments`
+-- Table structure for table `dinner_parties`
 --
 
-CREATE TABLE IF NOT EXISTS `employments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `dinner_parties` (
+  `year` int(11) NOT NULL COMMENT 'Should reference a exhibit_date',
+  `registrationStart` date NOT NULL,
+  `registrationEnd` date NOT NULL,
+  `ticketBasePrice` int(11) NOT NULL,
+  `alcoholPrice` int(11) NOT NULL,
+  `helperDiscount` int(11) NOT NULL,
+  `googleSheetsId` varchar(50) NOT NULL,
+  `dinnerEventLink` varchar(255) DEFAULT NULL,
+  `afterpartyEventLink` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dinner_party_courses`
+--
+
+CREATE TABLE `dinner_party_courses` (
+  `id` int(11) NOT NULL,
+  `year` int(11) NOT NULL COMMENT 'Should reference a exhibit_date',
+  `type` varchar(20) NOT NULL,
   `desc_se` varchar(255) NOT NULL,
   `desc_en` varchar(255) NOT NULL,
-  `priority` int(2) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  `attributes_se` varchar(255) DEFAULT NULL,
+  `attributes_en` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumpning av Data i tabell `employments`
+-- Dumping data for table `dinner_party_courses`
+--
+
+INSERT INTO `dinner_party_courses` (`id`, `year`, `type`, `desc_se`, `desc_en`, `attributes_se`, `attributes_en`) VALUES
+(1, 2021, 'starter', 'Toast på surdegsbröd med färskost creme, prosciutto och rostad kronärtskocka', 'Toast on sourdough bread with cream cheese, prosciutto and roasted artichoke', 'Nötfri', 'Nut-free'),
+(2, 2021, 'starter', 'Rostade rödbetor med solrosfrön, ruccola och örtdressing', 'Roasted beets with sunflower seeds, ruccola and herb dressing', 'Nötfri, vegansk', 'Nut-free, vegan'),
+(3, 2021, 'mainCourse', 'Grillad kycklingfilé med citron- och parmesansås, rostade rotsaker samt örtsallad', 'Grilled chicken filet with lemon- and parmesan cheese sauce, roasted root vegetables and herb sallad', 'Nötfri', 'Nut-free'),
+(4, 2021, 'mainCourse', 'Sojafärsbiff med potatisgratäng, rostade grönsaker och örtsky', 'Soy steak with potato gratin, roasted vegetables and herb sauce', 'Nötfri, vegansk', 'Nut-free, vegan'),
+(5, 2021, 'dessert', 'Blåbär- och citronmoussetårta', 'Blueberry and lemon mousse cake', 'Glutenfri', 'Gluten-free'),
+(6, 2021, 'dessert', 'Raw chocolate cake', 'Raw chocolate cake', 'Vegansk', 'Vegan'),
+(7, 2021, 'nonAlcoholicDrink', 'Läsk (alkoholfri)', 'Soda (alcohol-free)', NULL, NULL),
+(8, 2021, 'drink', 'Öl', 'Beer', NULL, NULL),
+(9, 2021, 'drink', 'Vitt vin', 'White wine', NULL, NULL),
+(10, 2021, 'drink', 'Rött vin', 'Red wine', NULL, NULL),
+(11, 2021, 'drink', 'Cider', 'Cider', NULL, NULL),
+(12, 2021, 'nonAlcoholicDrink', 'Alkoholfri Öl', 'Alcohol-free Beer', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dinner_party_guests`
+--
+
+CREATE TABLE `dinner_party_guests` (
+  `id` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `name` varchar(100) NOT NULL,
+  `personId` varchar(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `companyId` varchar(255) DEFAULT NULL,
+  `starterId` varchar(255) NOT NULL,
+  `mainCourseId` varchar(255) NOT NULL,
+  `dessertId` varchar(255) NOT NULL,
+  `drinksId` varchar(255) NOT NULL,
+  `allergies` varchar(255) DEFAULT NULL,
+  `ticketPrice` decimal(10,0) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employments`
+--
+
+CREATE TABLE `employments` (
+  `id` int(11) NOT NULL,
+  `desc_se` varchar(255) NOT NULL,
+  `desc_en` varchar(255) NOT NULL,
+  `priority` int(2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `employments`
 --
 
 INSERT INTO `employments` (`id`, `desc_se`, `desc_en`, `priority`) VALUES
@@ -295,11 +365,11 @@ INSERT INTO `employments` (`id`, `desc_se`, `desc_en`, `priority`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `events`
+-- Table structure for table `events`
 --
 
-CREATE TABLE IF NOT EXISTS `events` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `events` (
+  `ID` int(11) NOT NULL,
   `type` varchar(255) DEFAULT NULL,
   `title_se` varchar(255) NOT NULL,
   `title_en` varchar(255) NOT NULL,
@@ -311,12 +381,11 @@ CREATE TABLE IF NOT EXISTS `events` (
   `fb_link` varchar(255) DEFAULT NULL,
   `tickets_link` varchar(255) DEFAULT NULL,
   `image` varchar(255) NOT NULL,
-  `show` int(11) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+  `show` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumpning av Data i tabell `events`
+-- Dumping data for table `events`
 --
 
 INSERT INTO `events` (`ID`, `type`, `title_se`, `title_en`, `description_se`, `description_en`, `date`, `time`, `location`, `fb_link`, `tickets_link`, `image`, `show`) VALUES
@@ -335,17 +404,16 @@ INSERT INTO `events` (`ID`, `type`, `title_se`, `title_en`, `description_se`, `d
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `exhibit_dates`
+-- Table structure for table `exhibit_dates`
 --
 
-CREATE TABLE IF NOT EXISTS `exhibit_dates` (
+CREATE TABLE `exhibit_dates` (
   `year` int(11) NOT NULL,
-  `date` datetime NOT NULL,
-  PRIMARY KEY (`year`)
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumpning av Data i tabell `exhibit_dates`
+-- Dumping data for table `exhibit_dates`
 --
 
 INSERT INTO `exhibit_dates` (`year`, `date`) VALUES
@@ -356,19 +424,18 @@ INSERT INTO `exhibit_dates` (`year`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `persons`
+-- Table structure for table `persons`
 --
 
-CREATE TABLE IF NOT EXISTS `persons` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `persons` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `linkedin` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+  `linkedin` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumpning av Data i tabell `persons`
+-- Dumping data for table `persons`
 --
 
 INSERT INTO `persons` (`id`, `name`, `email`, `linkedin`) VALUES
@@ -389,19 +456,18 @@ INSERT INTO `persons` (`id`, `name`, `email`, `linkedin`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `positions`
+-- Table structure for table `positions`
 --
 
-CREATE TABLE IF NOT EXISTS `positions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `positions` (
+  `id` int(11) NOT NULL,
   `desc_se` varchar(255) NOT NULL,
   `desc_en` varchar(255) NOT NULL,
-  `priority` int(2) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `priority` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumpning av Data i tabell `positions`
+-- Dumping data for table `positions`
 --
 
 INSERT INTO `positions` (`id`, `desc_se`, `desc_en`, `priority`) VALUES
@@ -417,20 +483,19 @@ INSERT INTO `positions` (`id`, `desc_se`, `desc_en`, `priority`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `team_involvement`
+-- Table structure for table `team_involvement`
 --
 
-CREATE TABLE IF NOT EXISTS `team_involvement` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `team_involvement` (
+  `id` int(11) NOT NULL,
   `personId` int(11) NOT NULL,
   `year` int(11) NOT NULL COMMENT 'Should reference a exhibit_date',
   `positionId` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumpning av Data i tabell `team_involvement`
+-- Dumping data for table `team_involvement`
 --
 
 INSERT INTO `team_involvement` (`id`, `personId`, `year`, `positionId`, `image`) VALUES
@@ -451,20 +516,19 @@ INSERT INTO `team_involvement` (`id`, `personId`, `year`, `positionId`, `image`)
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2016_companies`
+-- Table structure for table `_2016_companies`
 --
 
-CREATE TABLE IF NOT EXISTS `_2016_companies` (
+CREATE TABLE `_2016_companies` (
   `id` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `logo` varchar(255) NOT NULL,
-  `website` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  `website` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumpning av Data i tabell `_2016_companies`
+-- Dumping data for table `_2016_companies`
 --
 
 INSERT INTO `_2016_companies` (`id`, `name`, `description`, `logo`, `website`) VALUES
@@ -492,10 +556,10 @@ INSERT INTO `_2016_companies` (`id`, `name`, `description`, `logo`, `website`) V
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2016_schedule`
+-- Table structure for table `_2016_schedule`
 --
 
-CREATE TABLE IF NOT EXISTS `_2016_schedule` (
+CREATE TABLE `_2016_schedule` (
   `type` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
@@ -507,7 +571,7 @@ CREATE TABLE IF NOT EXISTS `_2016_schedule` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumpning av Data i tabell `_2016_schedule`
+-- Dumping data for table `_2016_schedule`
 --
 
 INSERT INTO `_2016_schedule` (`type`, `title`, `description`, `day`, `duration`, `location`, `locationlink`, `signuplink`) VALUES
@@ -575,18 +639,17 @@ INSERT INTO `_2016_schedule` (`type`, `title`, `description`, `day`, `duration`,
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2016_sponsors`
+-- Table structure for table `_2016_sponsors`
 --
 
-CREATE TABLE IF NOT EXISTS `_2016_sponsors` (
+CREATE TABLE `_2016_sponsors` (
   `id` varchar(255) NOT NULL,
   `logo` varchar(255) NOT NULL,
-  `website` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  `website` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumpning av Data i tabell `_2016_sponsors`
+-- Dumping data for table `_2016_sponsors`
 --
 
 INSERT INTO `_2016_sponsors` (`id`, `logo`, `website`) VALUES
@@ -601,10 +664,10 @@ INSERT INTO `_2016_sponsors` (`id`, `logo`, `website`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2016_team`
+-- Table structure for table `_2016_team`
 --
 
-CREATE TABLE IF NOT EXISTS `_2016_team` (
+CREATE TABLE `_2016_team` (
   `name` varchar(255) NOT NULL,
   `position` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -613,7 +676,7 @@ CREATE TABLE IF NOT EXISTS `_2016_team` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumpning av Data i tabell `_2016_team`
+-- Dumping data for table `_2016_team`
 --
 
 INSERT INTO `_2016_team` (`name`, `position`, `email`, `linkedin`, `image`) VALUES
@@ -705,20 +768,19 @@ INSERT INTO `_2016_team` (`name`, `position`, `email`, `linkedin`, `image`) VALU
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2017_companies17`
+-- Table structure for table `_2017_companies17`
 --
 
-CREATE TABLE IF NOT EXISTS `_2017_companies17` (
+CREATE TABLE `_2017_companies17` (
   `id` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text,
   `logo` varchar(255) DEFAULT NULL,
-  `website` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `website` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumpning av Data i tabell `_2017_companies17`
+-- Dumping data for table `_2017_companies17`
 --
 
 INSERT INTO `_2017_companies17` (`id`, `name`, `description`, `logo`, `website`) VALUES
@@ -739,10 +801,10 @@ INSERT INTO `_2017_companies17` (`id`, `name`, `description`, `logo`, `website`)
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2017_schedule17`
+-- Table structure for table `_2017_schedule17`
 --
 
-CREATE TABLE IF NOT EXISTS `_2017_schedule17` (
+CREATE TABLE `_2017_schedule17` (
   `type` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text,
@@ -754,7 +816,7 @@ CREATE TABLE IF NOT EXISTS `_2017_schedule17` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumpning av Data i tabell `_2017_schedule17`
+-- Dumping data for table `_2017_schedule17`
 --
 
 INSERT INTO `_2017_schedule17` (`type`, `title`, `description`, `day`, `duration`, `location`, `locationlink`, `signuplink`) VALUES
@@ -774,18 +836,17 @@ INSERT INTO `_2017_schedule17` (`type`, `title`, `description`, `day`, `duration
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2017_sponsors17`
+-- Table structure for table `_2017_sponsors17`
 --
 
-CREATE TABLE IF NOT EXISTS `_2017_sponsors17` (
+CREATE TABLE `_2017_sponsors17` (
   `id` varchar(255) NOT NULL,
   `logo` varchar(255) DEFAULT NULL,
-  `website` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `website` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumpning av Data i tabell `_2017_sponsors17`
+-- Dumping data for table `_2017_sponsors17`
 --
 
 INSERT INTO `_2017_sponsors17` (`id`, `logo`, `website`) VALUES
@@ -802,21 +863,20 @@ INSERT INTO `_2017_sponsors17` (`id`, `logo`, `website`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2017_team17`
+-- Table structure for table `_2017_team17`
 --
 
-CREATE TABLE IF NOT EXISTS `_2017_team17` (
+CREATE TABLE `_2017_team17` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `position` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `linkedin` varchar(255) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumpning av Data i tabell `_2017_team17`
+-- Dumping data for table `_2017_team17`
 --
 
 INSERT INTO `_2017_team17` (`id`, `name`, `position`, `email`, `linkedin`, `image`) VALUES
@@ -835,34 +895,32 @@ INSERT INTO `_2017_team17` (`id`, `name`, `position`, `email`, `linkedin`, `imag
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2019_annons19`
+-- Table structure for table `_2019_annons19`
 --
 
-CREATE TABLE IF NOT EXISTS `_2019_annons19` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `_2019_annons19` (
+  `id` int(11) NOT NULL,
   `image` text NOT NULL,
   `title` text NOT NULL,
-  `description` longtext NOT NULL,
-  PRIMARY KEY (`id`)
+  `description` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2019_companies19`
+-- Table structure for table `_2019_companies19`
 --
 
-CREATE TABLE IF NOT EXISTS `_2019_companies19` (
+CREATE TABLE `_2019_companies19` (
   `id` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `logo` varchar(255) NOT NULL,
-  `website` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  `website` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumpning av Data i tabell `_2019_companies19`
+-- Dumping data for table `_2019_companies19`
 --
 
 INSERT INTO `_2019_companies19` (`id`, `name`, `description`, `logo`, `website`) VALUES
@@ -890,10 +948,10 @@ INSERT INTO `_2019_companies19` (`id`, `name`, `description`, `logo`, `website`)
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2019_events19`
+-- Table structure for table `_2019_events19`
 --
 
-CREATE TABLE IF NOT EXISTS `_2019_events19` (
+CREATE TABLE `_2019_events19` (
   `type` varchar(255) DEFAULT NULL,
   `title` varchar(255) NOT NULL,
   `description` mediumtext,
@@ -906,7 +964,7 @@ CREATE TABLE IF NOT EXISTS `_2019_events19` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumpning av Data i tabell `_2019_events19`
+-- Dumping data for table `_2019_events19`
 --
 
 INSERT INTO `_2019_events19` (`type`, `title`, `description`, `date`, `time`, `location`, `fb_link`, `image`, `show`) VALUES
@@ -956,18 +1014,17 @@ INSERT INTO `_2019_events19` (`type`, `title`, `description`, `date`, `time`, `l
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2019_sponsors19`
+-- Table structure for table `_2019_sponsors19`
 --
 
-CREATE TABLE IF NOT EXISTS `_2019_sponsors19` (
+CREATE TABLE `_2019_sponsors19` (
   `id` varchar(255) NOT NULL,
   `logo` varchar(255) DEFAULT NULL,
-  `website` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `website` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumpning av Data i tabell `_2019_sponsors19`
+-- Dumping data for table `_2019_sponsors19`
 --
 
 INSERT INTO `_2019_sponsors19` (`id`, `logo`, `website`) VALUES
@@ -983,21 +1040,20 @@ INSERT INTO `_2019_sponsors19` (`id`, `logo`, `website`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2019_team19`
+-- Table structure for table `_2019_team19`
 --
 
-CREATE TABLE IF NOT EXISTS `_2019_team19` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `_2019_team19` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `position` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `linkedin` varchar(255) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  `image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumpning av Data i tabell `_2019_team19`
+-- Dumping data for table `_2019_team19`
 --
 
 INSERT INTO `_2019_team19` (`id`, `name`, `position`, `email`, `linkedin`, `image`) VALUES
@@ -1015,21 +1071,20 @@ INSERT INTO `_2019_team19` (`id`, `name`, `position`, `email`, `linkedin`, `imag
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2020_companies`
+-- Table structure for table `_2020_companies`
 --
 
-CREATE TABLE IF NOT EXISTS `_2020_companies` (
+CREATE TABLE `_2020_companies` (
   `id` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description_se` text,
   `description_en` text NOT NULL,
   `logo` varchar(255) NOT NULL,
-  `website` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  `website` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumpning av Data i tabell `_2020_companies`
+-- Dumping data for table `_2020_companies`
 --
 
 INSERT INTO `_2020_companies` (`id`, `name`, `description_se`, `description_en`, `logo`, `website`) VALUES
@@ -1111,22 +1166,21 @@ INSERT INTO `_2020_companies` (`id`, `name`, `description_se`, `description_en`,
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2020_company_involvement`
+-- Table structure for table `_2020_company_involvement`
 --
 
-CREATE TABLE IF NOT EXISTS `_2020_company_involvement` (
+CREATE TABLE `_2020_company_involvement` (
   `companyID` varchar(64) NOT NULL,
   `year` int(11) NOT NULL COMMENT 'Should reference a exhibit_date',
   `isSponsor` tinyint(1) NOT NULL DEFAULT '0',
   `isExhibitor` tinyint(1) NOT NULL DEFAULT '0',
   `isMainSponsor` tinyint(1) NOT NULL DEFAULT '0',
   `seekingDescription_en` text NOT NULL,
-  `seekingDescription_se` text NOT NULL,
-  PRIMARY KEY (`companyID`,`year`)
+  `seekingDescription_se` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumpning av Data i tabell `_2020_company_involvement`
+-- Dumping data for table `_2020_company_involvement`
 --
 
 INSERT INTO `_2020_company_involvement` (`companyID`, `year`, `isSponsor`, `isExhibitor`, `isMainSponsor`, `seekingDescription_en`, `seekingDescription_se`) VALUES
@@ -1194,20 +1248,19 @@ INSERT INTO `_2020_company_involvement` (`companyID`, `year`, `isSponsor`, `isEx
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2020_company_map_position`
+-- Table structure for table `_2020_company_map_position`
 --
 
-CREATE TABLE IF NOT EXISTS `_2020_company_map_position` (
+CREATE TABLE `_2020_company_map_position` (
   `companyID` varchar(64) NOT NULL,
   `year` mediumint(9) NOT NULL,
   `mapPositionX` float NOT NULL DEFAULT '50',
   `mapPositionY` float NOT NULL DEFAULT '50',
-  `customOrder` int(11) NOT NULL,
-  PRIMARY KEY (`companyID`,`year`)
+  `customOrder` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumpning av Data i tabell `_2020_company_map_position`
+-- Dumping data for table `_2020_company_map_position`
 --
 
 INSERT INTO `_2020_company_map_position` (`companyID`, `year`, `mapPositionX`, `mapPositionY`, `customOrder`) VALUES
@@ -1246,11 +1299,11 @@ INSERT INTO `_2020_company_map_position` (`companyID`, `year`, `mapPositionX`, `
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2020_events`
+-- Table structure for table `_2020_events`
 --
 
-CREATE TABLE IF NOT EXISTS `_2020_events` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `_2020_events` (
+  `ID` int(11) NOT NULL,
   `type` varchar(255) DEFAULT NULL,
   `title_se` varchar(255) NOT NULL,
   `title_en` varchar(255) NOT NULL,
@@ -1262,12 +1315,11 @@ CREATE TABLE IF NOT EXISTS `_2020_events` (
   `fb_link` varchar(255) DEFAULT NULL,
   `tickets_link` varchar(255) DEFAULT NULL,
   `image` varchar(255) NOT NULL,
-  `show` int(11) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+  `show` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumpning av Data i tabell `_2020_events`
+-- Dumping data for table `_2020_events`
 --
 
 INSERT INTO `_2020_events` (`ID`, `type`, `title_se`, `title_en`, `description_se`, `description_en`, `date`, `time`, `location`, `fb_link`, `tickets_link`, `image`, `show`) VALUES
@@ -1286,17 +1338,16 @@ INSERT INTO `_2020_events` (`ID`, `type`, `title_se`, `title_en`, `description_s
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2020_exhibit_dates`
+-- Table structure for table `_2020_exhibit_dates`
 --
 
-CREATE TABLE IF NOT EXISTS `_2020_exhibit_dates` (
+CREATE TABLE `_2020_exhibit_dates` (
   `year` int(11) NOT NULL,
-  `date` datetime NOT NULL,
-  PRIMARY KEY (`year`)
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumpning av Data i tabell `_2020_exhibit_dates`
+-- Dumping data for table `_2020_exhibit_dates`
 --
 
 INSERT INTO `_2020_exhibit_dates` (`year`, `date`) VALUES
@@ -1306,22 +1357,21 @@ INSERT INTO `_2020_exhibit_dates` (`year`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur `_2020_team20`
+-- Table structure for table `_2020_team20`
 --
 
-CREATE TABLE IF NOT EXISTS `_2020_team20` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `_2020_team20` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `position_se` varchar(255) DEFAULT NULL,
   `position_en` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `linkedin` varchar(255) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+  `image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumpning av Data i tabell `_2020_team20`
+-- Dumping data for table `_2020_team20`
 --
 
 INSERT INTO `_2020_team20` (`id`, `name`, `position_se`, `position_en`, `email`, `linkedin`, `image`) VALUES
@@ -1337,6 +1387,248 @@ INSERT INTO `_2020_team20` (`id`, `name`, `position_se`, `position_en`, `email`,
 (18, 'Nicole Nordlund', 'Sittningsansvarig', 'Dinner Party Organizer', 'nicole@medieteknik.com', 'https://www.linkedin.com/in/nicole-nordlund-655b8116b/', 'nicole_nordlund.jpg'),
 (19, 'Mimmi Andreasson', 'Logistik', 'Logistics', 'mimmi@medieteknik.com', 'https://www.linkedin.com/in/mimmi-andreasson-672b9b170/', 'mimmi_andreasson.jpg'),
 (20, 'Lisa  Balzar', 'Logistik', 'Logistics', 'lisa@medieteknik.com', 'https://www.linkedin.com/in/lisa-balzar-8b8044151/', 'lisa_balzar.jpg');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `companies`
+--
+ALTER TABLE `companies`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `company_employments`
+--
+ALTER TABLE `company_employments`
+  ADD PRIMARY KEY (`companyId`,`year`,`employmentId`);
+
+--
+-- Indexes for table `company_involvement`
+--
+ALTER TABLE `company_involvement`
+  ADD PRIMARY KEY (`companyID`,`year`);
+
+--
+-- Indexes for table `company_map_position`
+--
+ALTER TABLE `company_map_position`
+  ADD PRIMARY KEY (`companyID`,`year`);
+
+--
+-- Indexes for table `dinner_parties`
+--
+ALTER TABLE `dinner_parties`
+  ADD PRIMARY KEY (`year`);
+
+--
+-- Indexes for table `dinner_party_courses`
+--
+ALTER TABLE `dinner_party_courses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `dinner_party_guests`
+--
+ALTER TABLE `dinner_party_guests`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `employments`
+--
+ALTER TABLE `employments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `exhibit_dates`
+--
+ALTER TABLE `exhibit_dates`
+  ADD PRIMARY KEY (`year`);
+
+--
+-- Indexes for table `persons`
+--
+ALTER TABLE `persons`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `positions`
+--
+ALTER TABLE `positions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `team_involvement`
+--
+ALTER TABLE `team_involvement`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `_2016_companies`
+--
+ALTER TABLE `_2016_companies`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `_2016_sponsors`
+--
+ALTER TABLE `_2016_sponsors`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `_2017_companies17`
+--
+ALTER TABLE `_2017_companies17`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `_2017_sponsors17`
+--
+ALTER TABLE `_2017_sponsors17`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `_2017_team17`
+--
+ALTER TABLE `_2017_team17`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `_2019_annons19`
+--
+ALTER TABLE `_2019_annons19`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `_2019_companies19`
+--
+ALTER TABLE `_2019_companies19`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `_2019_sponsors19`
+--
+ALTER TABLE `_2019_sponsors19`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `_2019_team19`
+--
+ALTER TABLE `_2019_team19`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `_2020_companies`
+--
+ALTER TABLE `_2020_companies`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `_2020_company_involvement`
+--
+ALTER TABLE `_2020_company_involvement`
+  ADD PRIMARY KEY (`companyID`,`year`);
+
+--
+-- Indexes for table `_2020_company_map_position`
+--
+ALTER TABLE `_2020_company_map_position`
+  ADD PRIMARY KEY (`companyID`,`year`);
+
+--
+-- Indexes for table `_2020_events`
+--
+ALTER TABLE `_2020_events`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `_2020_exhibit_dates`
+--
+ALTER TABLE `_2020_exhibit_dates`
+  ADD PRIMARY KEY (`year`);
+
+--
+-- Indexes for table `_2020_team20`
+--
+ALTER TABLE `_2020_team20`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `dinner_party_courses`
+--
+ALTER TABLE `dinner_party_courses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `dinner_party_guests`
+--
+ALTER TABLE `dinner_party_guests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `employments`
+--
+ALTER TABLE `employments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `persons`
+--
+ALTER TABLE `persons`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `positions`
+--
+ALTER TABLE `positions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `team_involvement`
+--
+ALTER TABLE `team_involvement`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `_2019_annons19`
+--
+ALTER TABLE `_2019_annons19`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `_2019_team19`
+--
+ALTER TABLE `_2019_team19`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `_2020_events`
+--
+ALTER TABLE `_2020_events`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `_2020_team20`
+--
+ALTER TABLE `_2020_team20`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -2,6 +2,7 @@
 
     include_once('database.php');
     include_once('Models/exhibitDateModel.php');
+    require_once('./Models/teamModel.php');
 
     class DinnerPartyModel extends DatabaseModel {
         const SELECT_ATTRIBUTES = "*";
@@ -9,6 +10,35 @@
         public function __construct() {
             $this->establishDatabaseConnection();
             $this->exhibitDateModel = new ExhibitDateModel();
+        }
+
+        public function checkAccessToken() {
+            $token = $_GET['token'];
+
+            $teamModel = new TeamModel();
+            $team = $teamModel->getAllTeamMembers();
+
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => "https://oauth2.googleapis.com/tokeninfo?access_token=" . $token,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "GET",
+                CURLOPT_HTTPHEADER => array(
+                  "cache-control: no-cache"
+                ),
+              ));
+              
+              $response = json_decode(curl_exec($curl));
+              $err = curl_error($curl);
+              
+              curl_close($curl);
+              $email = $response->email;
+              $results = array_filter($team, function($item) use ($email) {
+                  return ($item->email === $email);
+              });
+              return count($results) > 0 || $email === "branschdag@medieteknik.com";
         }
 
         public function getDinnerParty() {
@@ -157,38 +187,81 @@
             header('Access-Control-Allow-Origin: *');
             header('Content-Type: application/json');
             
-            return $this->dbSelectAllSimple(
-                'SELECT 
-                    guests.date,
-                    guests.name,
-                    guests.email,
-                    guests.type,
-                    companies.name as company,
-                    starter.desc_se AS starter_se,
-                    starter.desc_en AS starter_en,
-                    mainCourse.desc_se AS mainCourse_se,
-                    mainCourse.desc_en AS mainCourse_en,
-                    dessert.desc_se AS dessert_se,
-                    dessert.desc_en AS dessert_en,
-                    drinks.desc_se AS drinks_se,
-                    drinks.desc_en AS drinks_en,
-                    guests.allergies,
-                    guests.ticketPrice
-                FROM dinner_party_guests guests
-                LEFT JOIN companies ON guests.companyId = companies.id
-                JOIN dinner_party_courses starter ON guests.starterId = starter.id
-                JOIN dinner_party_courses mainCourse ON guests.mainCourseId = mainCourse.id
-                JOIN dinner_party_courses dessert ON guests.dessertId = dessert.id
-                JOIN dinner_party_courses drinks ON guests.drinksId = drinks.id
-                ORDER BY guests.date'
-            );
+            if($this->checkAccessToken()) {
+                return $this->dbSelectAllSimple(
+                    'SELECT 
+                        guests.date,
+                        guests.name,
+                        guests.email,
+                        guests.type,
+                        companies.name as company,
+                        starter.desc_se AS starter_se,
+                        starter.desc_en AS starter_en,
+                        mainCourse.desc_se AS mainCourse_se,
+                        mainCourse.desc_en AS mainCourse_en,
+                        dessert.desc_se AS dessert_se,
+                        dessert.desc_en AS dessert_en,
+                        drinks.desc_se AS drinks_se,
+                        drinks.desc_en AS drinks_en,
+                        guests.allergies,
+                        guests.ticketPrice
+                    FROM dinner_party_guests guests
+                    LEFT JOIN companies ON guests.companyId = companies.id
+                    JOIN dinner_party_courses starter ON guests.starterId = starter.id
+                    JOIN dinner_party_courses mainCourse ON guests.mainCourseId = mainCourse.id
+                    JOIN dinner_party_courses dessert ON guests.dessertId = dessert.id
+                    JOIN dinner_party_courses drinks ON guests.drinksId = drinks.id
+                    ORDER BY guests.id'
+                );
+            } else {
+                header("HTTP/1.1 401 Unauthorized");
+                exit;
+            }
+        }
+
+        public function updateDinnerParty() {
+            if($this->checkAccessToken()) {
+                $registrationStart = $_POST['registrationStart'];
+                $registrationEnd = $_POST['registrationEnd'];
+                $ticketBasePrice = $_POST['ticketBasePrice'];
+                $alcoholPrice = $_POST['alcoholPrice'];
+                $helperDiscount = $_POST['helperDiscount'];
+                $googleSheetsId = $_POST['googleSheetsId'];
+                $dinnerEventLink = $_POST['dinnerEventLink'];
+                $afterpartyEventLink = $_POST['afterpartyEventLink'];
+
+                $year = $_POST['year'];
+
+                header('Access-Control-Allow-Origin: *');
+                header('Content-Type: application/json');
+
+                return $this->dbExecutePrepared(
+                    "UPDATE dinner_parties SET 
+                    registrationStart = ?, 
+                    registrationEnd = ?, 
+                    ticketBasePrice = ?,
+                    alcoholPrice = ?,
+                    helperDiscount = ?,
+                    googleSheetsId = ?,
+                    dinnerEventLink = ?,
+                    afterpartyEventLink = ?
+                    WHERE
+                    year = ?",
+                    [$registrationStart, $registrationEnd, $ticketBasePrice, $alcoholPrice, $helperDiscount, $googleSheetsId, $dinnerEventLink, $afterpartyEventLink, $year]
+                );
+
+            } else {
+                header("HTTP/1.1 401 Unauthorized");
+                exit;
+            }
+
         }
 
         /**
-         * Getting all the events
+         * Adding guests
          */
         public function addGuest() {
-
+            $date = $_POST['date'];
             $name = $_POST['name'];
             $personId = $_POST['personId'];
             $email = $_POST['email'];
@@ -205,9 +278,9 @@
             header('Content-Type: application/json');
 
             return $this->dbExecutePrepared(
-                "INSERT INTO dinner_party_guests (name, personId, email, type, companyId, starterId, mainCourseId, dessertId, drinksId, allergies, ticketPrice)  
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                [$name, $personId, $email, $type, $company, $starter, $mainCourse, $dessert, $drinks, $allergies, $ticketPrice]
+                "INSERT INTO dinner_party_guests (date, name, personId, email, type, companyId, starterId, mainCourseId, dessertId, drinksId, allergies, ticketPrice)  
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                [$date, $name, $personId, $email, $type, $company, $starter, $mainCourse, $dessert, $drinks, $allergies, $ticketPrice]
             );
         }
     }
@@ -220,6 +293,9 @@
 
             //Check request
             switch ($_GET['action']) {
+                case 'update-dinner-party':
+                    $data = $eventModel->updateDinnerParty();
+                    break;
                 case 'add-guest':
                     $data = $eventModel->addGuest();
                     break;

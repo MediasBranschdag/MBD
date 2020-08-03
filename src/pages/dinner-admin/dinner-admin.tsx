@@ -14,7 +14,9 @@ import ContentSection, {
 } from '../../components/layout/content-section/content-section'
 import { Button, ButtonTypes } from '../../components/button/button'
 import { getAllTeamMembers } from '../../model/teamModel'
-import TextSection from '../../components/text-section/text-section'
+import TextSection, {
+    TextSectionAlignment,
+} from '../../components/text-section/text-section'
 import { ContentPadding } from '../../components/content-padding'
 import Footer from '../../components/footer/footer'
 import CenterBackground from '../../components/center-background/center-background'
@@ -31,15 +33,22 @@ import {
     GuestStat,
     CompanyStat,
     CourseQuanitity,
+    DinnerParty,
+    getDinnerParty,
+    updateDinnerParty,
 } from '../../model/dinnerPartyModel'
 import CourseStats from '../../components/course-stats/course-stats'
 import QuantityTable from '../../components/quantity-table/quantity-table'
 import Loader from '../../components/loader/loader'
+import { InputInfo } from '../../components/input-info/input-info'
+import SectionTitle from '../../components/section-title/section-title'
 
 const DinnerAdmin: FC<{}> = (props) => {
     const [isLoading, setIsLoading] = useState(false)
     const [loggedIn, setLoggedIn] = useState(false)
     const [unAuthorized, setUnAuthorized] = useState(false)
+
+    const [dinnerParty, setDinnerParty] = useState<DinnerParty | null>()
     const [pgMemberEmails, setPgMemberEmails] = useState<string[]>([])
     const [guestStats, setGuestStats] = useState<GuestStat[]>([])
     const [companyStats, setCompanyStats] = useState<CompanyStat[]>([])
@@ -56,6 +65,7 @@ const DinnerAdmin: FC<{}> = (props) => {
     useEffect(() => {
         setIsLoading(true)
         Promise.all([
+            getDinnerParty().then(setDinnerParty),
             getAllTeamMembers().then((members) =>
                 setPgMemberEmails([
                     ...members.map((member) => member.email),
@@ -87,10 +97,7 @@ const DinnerAdmin: FC<{}> = (props) => {
     }, [])
 
     const updateDinnerPartySheet = async () => {
-        updateGoogleSheet(accessToken)
-        window.open(
-            'https://docs.google.com/spreadsheets/d/1cQxX8NimneS9OFqp-YlpAk6xHymqqrSEk215xyYt324/'
-        )
+        window.open(await updateGoogleSheet(accessToken))
     }
 
     function isGoogleLoginResponse(
@@ -112,6 +119,7 @@ const DinnerAdmin: FC<{}> = (props) => {
         } else {
             setUnAuthorized(true)
         }
+        console.log(response)
     }
 
     const renderLogInScreen = () => {
@@ -127,7 +135,7 @@ const DinnerAdmin: FC<{}> = (props) => {
                             clientId='1024658551909-qcnpdr83ismar6qg9nm5ok6irlohgks3.apps.googleusercontent.com'
                             buttonText='Login'
                             onSuccess={(res) => checkLogIn(res)}
-                            onFailure={(r) => console.log(r)}
+                            onFailure={() => setUnAuthorized(true)}
                             cookiePolicy={'single_host_origin'}
                             hostedDomain='medieteknik.com'
                             render={(renderProps) => (
@@ -176,6 +184,11 @@ const DinnerAdmin: FC<{}> = (props) => {
                         </div>
                     ) : (
                         <>
+                            <SectionTitle>
+                                {TranslationModel.translate(
+                                    phrases.dinner_admin.statistics
+                                )}
+                            </SectionTitle>
                             <QuantityTable
                                 showTotal
                                 header={phrases.dinner_admin.guests}
@@ -238,6 +251,127 @@ const DinnerAdmin: FC<{}> = (props) => {
                             ) : (
                                 <></>
                             )}
+                            <SectionTitle>
+                                {TranslationModel.translate(
+                                    phrases.dinner_admin.administer
+                                )}
+                            </SectionTitle>
+                            <InputInfo
+                                placeholderHeader
+                                noCard
+                                inputType='date'
+                                name='personId'
+                                onInput={(value) => setDinnerParty(dinnerParty ? {...dinnerParty, ...{registrationStart: new Date(value)}} : null)}
+                                placeholder={TranslationModel.translate(
+                                    phrases.dinner_admin.registration_start
+                                )}
+                                defaultValue={
+                                    dinnerParty?.registrationStart
+                                        ? dinnerParty?.registrationStart.toLocaleDateString()
+                                        : undefined
+                                }
+                            />
+                            <br />
+                            <InputInfo
+                                placeholderHeader
+                                noCard
+                                inputType='date'
+                                name='personId'
+                                onInput={(value) => setDinnerParty(dinnerParty ? {...dinnerParty, ...{registrationEnd: new Date(value)}} : null)}
+                                placeholder={TranslationModel.translate(
+                                    phrases.dinner_admin.registration_end
+                                )}
+                                defaultValue={
+                                    dinnerParty?.registrationEnd
+                                        ? dinnerParty?.registrationEnd.toLocaleDateString()
+                                        : undefined
+                                }
+                            />
+                            <br />
+                            <InputInfo
+                                placeholderHeader
+                                noCard
+                                inputType='number'
+                                name='personId'
+                                onInput={(value) => setDinnerParty(dinnerParty ? {...dinnerParty, ...{ticketBasePrice: parseInt(value)}} : null)}
+                                placeholder={TranslationModel.translate(
+                                    phrases.dinner_admin.ticket_base_price
+                                )}
+                                defaultValue={isNaN(dinnerParty?.ticketBasePrice!) ? 0 : dinnerParty?.ticketBasePrice}
+                            />
+                            <br />
+                            <InputInfo
+                                placeholderHeader
+                                noCard
+                                inputType='number'
+                                name='personId'
+                                onInput={(value) => setDinnerParty(dinnerParty ? {...dinnerParty, ...{alcoholPrice: parseInt(value)}} : null)}
+                                placeholder={TranslationModel.translate(
+                                    phrases.dinner_admin.alcohol_price
+                                )}
+                                defaultValue={isNaN(dinnerParty?.alcoholPrice!) ? 0 : dinnerParty?.alcoholPrice}
+                            />
+                            <br />
+                            <InputInfo
+                                placeholderHeader
+                                noCard
+                                inputType='number'
+                                name='personId'
+                                onInput={(value) => setDinnerParty(dinnerParty ? {...dinnerParty, ...{helperDiscount: parseInt(value)}} : null)}
+                                placeholder={TranslationModel.translate(
+                                    phrases.dinner_admin.helper_discount
+                                )}
+                                defaultValue={isNaN(dinnerParty?.helperDiscount!) ? 0 : dinnerParty?.helperDiscount}
+                            />
+                            <br />
+                            <InputInfo
+                                placeholderHeader
+                                noCard
+                                inputType='text'
+                                name='personId'
+                                onInput={(value) => setDinnerParty(dinnerParty ? {...dinnerParty, ...{googleSheetsId: value}} : null)}
+                                placeholder={TranslationModel.translate(
+                                    phrases.dinner_admin.google_sheets_id
+                                )}
+                                defaultValue={dinnerParty?.googleSheetsId!}
+                            />
+                            <br />
+                            <InputInfo
+                                placeholderHeader
+                                noCard
+                                inputType='text'
+                                name='personId'
+                                onInput={(value) => setDinnerParty(dinnerParty ? {...dinnerParty, ...{dinnerEventLink: value}} : null)}
+                                placeholder={TranslationModel.translate(
+                                    phrases.dinner_admin.dinner_fb_link
+                                )}
+                                defaultValue={dinnerParty?.dinnerEventLink!}
+                            />
+                            <br />
+                            <InputInfo
+                                placeholderHeader
+                                noCard
+                                inputType='text'
+                                name='personId'
+                                onInput={(value) => setDinnerParty(dinnerParty ? {...dinnerParty, ...{afterpartyEventLink: value}} : null)}
+                                placeholder={TranslationModel.translate(
+                                    phrases.dinner_admin.afterparty_fb_link
+                                )}
+                                defaultValue={dinnerParty?.afterpartyEventLink!}
+                            />
+                            <br />
+                            <ContentPadding>
+                                    {
+                                        //TODO Button response
+                                    }
+                                <div className='flex justify-center'>
+                                    <Button onClick={() => { if(dinnerParty) updateDinnerParty(dinnerParty, accessToken) }}>
+                                        {TranslationModel.translate(
+                                            phrases.dinner_admin.save
+                                        )}
+                                    </Button>
+                                </div>
+                            </ContentPadding>
                         </>
                     )}
                 </ContentSection>
