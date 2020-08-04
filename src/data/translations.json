@@ -314,7 +314,7 @@
         "en": "Name"
     },
     "email": {
-        "se": "Epost",
+        "se": "E-post",
         "en": "E-mail"
     },
     "subject": {
@@ -543,6 +543,10 @@
                 "se": "Något gick fel. Vänligen testa igen senare.",
                 "en": "Something went wrong. Please try again later."
             },
+            "what_type": {
+                "se": "vilken typ av gäst du är",
+                "en": "what type of guest you are"
+            },
             "signed_up": {
                 "se": "Du har anmält dig till sittningen, vi ses där!",
                 "en": "You've signed up for the dinner party. We'll see you there!"
@@ -667,6 +671,10 @@
         "save": {
             "se": "Spara",
             "en": "Save"
+        },
+        "saved": {
+            "se": "Sparat.",
+            "en": "Saved."
         }
     }
 }

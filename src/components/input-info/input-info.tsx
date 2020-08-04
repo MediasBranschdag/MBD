@@ -11,8 +11,11 @@ interface InputInfoProps {
     placeholderHeader?: boolean,
     obligatory?: boolean,
     noCard?: boolean,
-    defaultValue?: string| number,
-    value?: string| number
+    defaultValue?: string | number,
+    value?: string | number,
+    max?: string,
+    min?: string,
+    onKeyDown?: (e: KeyboardEvent) => void
 }
 export const InputInfo: FC<InputInfoProps> = (props) => {
 
@@ -33,7 +36,10 @@ export const InputInfo: FC<InputInfoProps> = (props) => {
             placeholder={props.placeholder?.toString()}
             type={props.inputType}
             defaultValue={props.defaultValue}
-            value={props.value}/>
+            value={props.value}
+            max={props.max}
+            min={props.min}
+            />
             break;
     }
 

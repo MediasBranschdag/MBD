@@ -24,6 +24,7 @@ import SectionTitle from '../../components/section-title/section-title'
 import GuestForm from './guest-form/guest-form'
 import { DinnerParty, getDinnerParty } from '../../model/dinnerPartyModel'
 import Loader from '../../components/loader/loader'
+import CenterContent from '../../components/center-content/center-content'
 
 const Dinnerpage = () => {
     const [dinnerParty, setDinnerParty] = useState<DinnerParty | null>()
@@ -160,9 +161,9 @@ const Dinnerpage = () => {
                     {dinnerParty ? (
                         <GuestForm {...dinnerParty} />
                     ) : (
-                        <div className='flex justify-center'>
+                        <CenterContent>
                             <Loader />
-                        </div>
+                        </CenterContent>
                     )}
                 </ContentSection>
             </div>
