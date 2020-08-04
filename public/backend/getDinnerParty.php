@@ -5,7 +5,6 @@
     require_once('./Models/teamModel.php');
 
     class DinnerPartyModel extends DatabaseModel {
-        const SELECT_ATTRIBUTES = "*";
 
         public function __construct() {
             $this->establishDatabaseConnection();
@@ -13,6 +12,7 @@
         }
 
         public function checkAccessToken() {
+            $GOOGLE_CLIENT_ID = '1024658551909-qcnpdr83ismar6qg9nm5ok6irlohgks3.apps.googleusercontent.com';
             $token = $_GET['token'];
 
             $teamModel = new TeamModel();
@@ -20,13 +20,13 @@
 
             $curl = curl_init();
             curl_setopt_array($curl, array(
-                CURLOPT_URL => "https://oauth2.googleapis.com/tokeninfo?access_token=" . $token,
+                CURLOPT_URL => 'https://oauth2.googleapis.com/tokeninfo?access_token=' . $token,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_TIMEOUT => 30,
                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => "GET",
+                CURLOPT_CUSTOMREQUEST => 'GET',
                 CURLOPT_HTTPHEADER => array(
-                  "cache-control: no-cache"
+                  'cache-control: no-cache'
                 ),
               ));
               
@@ -35,10 +35,15 @@
               
               curl_close($curl);
               $email = $response->email;
+              $aud = $response->aud;
+
+              if($aud !== $GOOGLE_CLIENT_ID) {
+                  return false;
+              }
               $results = array_filter($team, function($item) use ($email) {
                   return ($item->email === $email);
               });
-              return count($results) > 0 || $email === "branschdag@medieteknik.com";
+              return count($results) > 0 || $email === 'branschdag@medieteknik.com';
         }
 
         public function getDinnerParty() {
@@ -192,6 +197,7 @@
                     'SELECT 
                         guests.date,
                         guests.name,
+                        guests.personId,
                         guests.email,
                         guests.type,
                         companies.name as company,
@@ -214,7 +220,7 @@
                     ORDER BY guests.id'
                 );
             } else {
-                header("HTTP/1.1 401 Unauthorized");
+                header('HTTP/1.1 401 Unauthorized');
                 exit;
             }
         }
@@ -232,11 +238,8 @@
 
                 $year = $_POST['year'];
 
-                header('Access-Control-Allow-Origin: *');
-                header('Content-Type: application/json');
-
-                return $this->dbExecutePrepared(
-                    "UPDATE dinner_parties SET 
+                $response = $this->dbExecutePrepared(
+                    'UPDATE dinner_parties SET 
                     registrationStart = ?, 
                     registrationEnd = ?, 
                     ticketBasePrice = ?,
@@ -246,12 +249,20 @@
                     dinnerEventLink = ?,
                     afterpartyEventLink = ?
                     WHERE
-                    year = ?",
+                    year = ?',
                     [$registrationStart, $registrationEnd, $ticketBasePrice, $alcoholPrice, $helperDiscount, $googleSheetsId, $dinnerEventLink, $afterpartyEventLink, $year]
                 );
+                if($response) {
+                    header('Access-Control-Allow-Origin: *');
+                    header('Content-Type: application/json');
+                } else {
+                    header('HTTP/1.1 400 Bad Request');
+                    exit;
+                }
+                return $response;
 
             } else {
-                header("HTTP/1.1 401 Unauthorized");
+                header('HTTP/1.1 401 Unauthorized');
                 exit;
             }
 
@@ -273,15 +284,20 @@
             $drinks = $_POST['drinks'];
             $allergies = $_POST['allergies'];
             $ticketPrice = $_POST['ticketPrice'];
-            
-            header('Access-Control-Allow-Origin: *');
-            header('Content-Type: application/json');
 
-            return $this->dbExecutePrepared(
-                "INSERT INTO dinner_party_guests (date, name, personId, email, type, companyId, starterId, mainCourseId, dessertId, drinksId, allergies, ticketPrice)  
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            $response = $this->dbExecutePrepared(
+                'INSERT INTO dinner_party_guests (date, name, personId, email, type, companyId, starterId, mainCourseId, dessertId, drinksId, allergies, ticketPrice)  
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
                 [$date, $name, $personId, $email, $type, $company, $starter, $mainCourse, $dessert, $drinks, $allergies, $ticketPrice]
             );
+            if($response) {
+                header('Access-Control-Allow-Origin: *');
+                header('Content-Type: application/json');
+            } else {
+                header('HTTP/1.1 400 Bad Request');
+                exit;
+            }
+            return $response;
         }
     }
 

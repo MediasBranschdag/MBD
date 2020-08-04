@@ -12,7 +12,6 @@ class DatabaseModel {
      */
     public $db;
 
-
     /**
      * Connectiong to the database.
      */
@@ -27,7 +26,7 @@ class DatabaseModel {
             DB_PASSWORD
         );
         $this->db = self::$staticDB;
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
     }
     
 

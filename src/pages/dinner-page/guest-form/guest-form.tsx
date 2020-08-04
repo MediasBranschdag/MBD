@@ -18,7 +18,6 @@ import { MBDCompanyContext } from '../../../contexts/mbd-company-provider'
 import CourseSelect from './course-select/course-select'
 import TicketIcon from '../../../assets/icons/other/tickets_black.svg'
 import { Button, ButtonTypes } from '../../../components/button/button'
-import BACKEND_PATH from '../../../backend-environment'
 import TextSection, {
     TextSectionAlignment,
 } from '../../../components/text-section/text-section'
@@ -28,9 +27,12 @@ import {
     CourseType,
     Course,
     DinnerParty,
+    addGuest,
+    GuestType,
 } from '../../../model/dinnerPartyModel'
 import Loader from '../../../components/loader/loader'
 import Confetti from '../../../components/confetti/confetti'
+import CenterContent from '../../../components/center-content/center-content'
 
 const GuestForm: FC<DinnerParty> = (props) => {
     const [isLoading, setIsLoading] = useState(false)
@@ -60,11 +62,11 @@ const GuestForm: FC<DinnerParty> = (props) => {
     const [info, setInfo] = useState(false)
 
     const [sent, setSent] = useState(false)
+    const [sending, setSendning] = useState(false)
     const [error, setError] = useState(false)
     const [errorMessage, setErrorMessage] = useState(
         phrases.dinner_page.guest_form.obligatory
     )
-
     props.registrationEnd.setHours(23, 59, 59, 999)
 
     useEffect(() => {
@@ -102,30 +104,60 @@ const GuestForm: FC<DinnerParty> = (props) => {
         setErrorMessage(phrases.dinner_page.guest_form.obligatory)
 
         var obligatoryFields = [
-            name,
-            personId,
-            email,
-            type,
-            starter,
-            mainCourse,
-            dessert,
-            drinks,
-            info,
+            { field: name, desc: phrases.dinner_page.guest_form.full_name },
+            { field: personId, desc: phrases.dinner_page.guest_form.person_id },
+            { field: email, desc: phrases.email },
+            { field: type, desc: phrases.dinner_page.guest_form.what_type },
+            { field: drinks, desc: phrases.dinner_page.guest_form.drink },
+            { field: starter, desc: phrases.dinner_page.guest_form.starter },
+            {
+                field: mainCourse,
+                desc: phrases.dinner_page.guest_form.main_course,
+            },
+            { field: dessert, desc: phrases.dinner_page.guest_form.dessert },
+            { field: info, desc: phrases.dinner_page.guest_form.agreements },
         ]
         obligatoryFields =
             type !== 'companyRep'
-                ? [...obligatoryFields, terms]
+                ? [
+                      ...obligatoryFields,
+                      {
+                          field: terms,
+                          desc: phrases.dinner_page.guest_form.agreements,
+                      },
+                  ]
                 : obligatoryFields
         obligatoryFields =
             type === 'companyRep'
-                ? [...obligatoryFields, company]
+                ? [
+                      ...obligatoryFields,
+                      {
+                          field: company,
+                          desc: phrases.sign_up.company_name,
+                      },
+                  ]
                 : obligatoryFields
 
-        for (const field of obligatoryFields) {
-            if (!field) {
+        for (const obligatory of obligatoryFields) {
+            const message = {
+                se: `Du måste ange ${
+                    obligatory.desc.se.charAt(0).toLowerCase() +
+                    obligatory.desc.se.slice(1)
+                }.`,
+                en: `You need to enter ${
+                    obligatory.desc.en.charAt(0).toLowerCase() +
+                    obligatory.desc.en.slice(1)
+                }`,
+            }
+            if (!obligatory.field) {
+                setErrorMessage(message)
                 return true
-            } else if (typeof field === 'string') {
-                if (field.trim().length === 0 || field === '') {
+            } else if (typeof obligatory.field === 'string') {
+                if (
+                    obligatory.field.trim().length === 0 ||
+                    obligatory.field === ''
+                ) {
+                    setErrorMessage(message)
                     return true
                 }
             }
@@ -134,26 +166,39 @@ const GuestForm: FC<DinnerParty> = (props) => {
         return false
     }
 
-    const sendGuestForm = () => {
-        setError(checkFormFieldError())
-        if (!checkFormFieldError()) {
-            let formData = new FormData()
-            formData.append('date', new Date().toLocaleString())
-            formData.append('name', name)
-            formData.append('personId', personId)
-            formData.append('email', email)
-            formData.append('type', type)
-            formData.append('company', company)
-            formData.append('starter', starter)
-            formData.append('mainCourse', mainCourse)
-            formData.append('dessert', dessert)
-            formData.append('drinks', drinks)
-            formData.append('allergies', allergies)
-            formData.append('ticketPrice', ticketPrice.toString())
+    const _setError = (err: boolean) => {
+        const errorElementId = 'guest-form-error'
+        const animationClassName = 'slide'
+        setError(err)
+        if (err && document.getElementById(errorElementId)) {
+            document
+                .getElementById(errorElementId)!
+                .classList.add(animationClassName)
+            setTimeout(function () {
+                document
+                    .getElementById(errorElementId)!
+                    .classList.remove(animationClassName)
+            }, 1000)
+        }
+    }
 
-            fetch(BACKEND_PATH + `getDinnerParty.php?action=${'add-guest'}`, {
-                method: 'POST',
-                body: formData,
+    const sendGuestForm = () => {
+        _setError(checkFormFieldError())
+        setSendning(true)
+        if (!checkFormFieldError()) {
+            addGuest({
+                date: new Date().toLocaleString(),
+                name,
+                personId,
+                email,
+                type,
+                company: type === GuestType.CompanyRep ? company : '',
+                starter,
+                mainCourse,
+                dessert,
+                drinks,
+                allergies,
+                ticketPrice,
             })
                 .then(() => {
                     setSent(true)
@@ -168,9 +213,12 @@ const GuestForm: FC<DinnerParty> = (props) => {
                     }
                 })
                 .catch(() => {
-                    setError(true)
+                    _setError(true)
                     setErrorMessage(phrases.dinner_page.guest_form.error)
                 })
+                .finally(() => setSendning(false))
+        } else {
+            setSendning(false)
         }
     }
 
@@ -494,7 +542,7 @@ const GuestForm: FC<DinnerParty> = (props) => {
 
     const renderErrorMessage = (message: Phrase) => (
         <>
-            <div className='guest-form-error slide'>
+            <div id='guest-form-error'>
                 {TranslationModel.translate(message)}
             </div>
             <br />
@@ -502,9 +550,9 @@ const GuestForm: FC<DinnerParty> = (props) => {
     )
 
     return isLoading ? (
-        <div className='flex justify-center'>
+        <CenterContent>
             <Loader />
-        </div>
+        </CenterContent>
     ) : (
         <>
             <div className='guest-form'>
@@ -536,12 +584,18 @@ const GuestForm: FC<DinnerParty> = (props) => {
                             {renderConfirmationOptions()}
                             {error && renderErrorMessage(errorMessage)}
                             <div className='guest-form-button'>
-                                <Button
-                                    onClick={sendGuestForm}
-                                    buttonType={ButtonTypes.normalCompact}
-                                >
-                                    {TranslationModel.translate(phrases.send)}
-                                </Button>
+                                {sending ? (
+                                    <Loader />
+                                ) : (
+                                    <Button
+                                        onClick={sendGuestForm}
+                                        buttonType={ButtonTypes.normalCompact}
+                                    >
+                                        {TranslationModel.translate(
+                                            phrases.send
+                                        )}
+                                    </Button>
+                                )}
                             </div>
                         </>
                     )

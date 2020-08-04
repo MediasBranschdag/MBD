@@ -5,7 +5,7 @@ import GoogleLogin, {
 } from 'react-google-login'
 import './dinner-admin.css'
 import IntroScreen from '../../components/intro-screen/intro-screen'
-import TranslationModel from '../../model/translationModel'
+import TranslationModel, { Phrase } from '../../model/translationModel'
 import phrases from '../../data/translations.json'
 import DinnerPgBackground from '../../assets/backgrounds/dinner_pg_background.png'
 import ContentSection, {
@@ -14,9 +14,7 @@ import ContentSection, {
 } from '../../components/layout/content-section/content-section'
 import { Button, ButtonTypes } from '../../components/button/button'
 import { getAllTeamMembers } from '../../model/teamModel'
-import TextSection, {
-    TextSectionAlignment,
-} from '../../components/text-section/text-section'
+import TextSection from '../../components/text-section/text-section'
 import { ContentPadding } from '../../components/content-padding'
 import Footer from '../../components/footer/footer'
 import CenterBackground from '../../components/center-background/center-background'
@@ -27,7 +25,6 @@ import {
     CourseType,
     getCourseStats,
     getGuestStats,
-    guestPhrases,
     getAllergies,
     getCompanyStats,
     GuestStat,
@@ -36,17 +33,22 @@ import {
     DinnerParty,
     getDinnerParty,
     updateDinnerParty,
+    guestPhrasesPlural,
 } from '../../model/dinnerPartyModel'
 import CourseStats from '../../components/course-stats/course-stats'
 import QuantityTable from '../../components/quantity-table/quantity-table'
 import Loader from '../../components/loader/loader'
 import { InputInfo } from '../../components/input-info/input-info'
 import SectionTitle from '../../components/section-title/section-title'
+import CenterContent from '../../components/center-content/center-content'
 
 const DinnerAdmin: FC<{}> = (props) => {
     const [isLoading, setIsLoading] = useState(false)
+    const [isUpdating, setIsUpdating] = useState(false)
+
     const [loggedIn, setLoggedIn] = useState(false)
     const [unAuthorized, setUnAuthorized] = useState(false)
+    const [updateMsg, setUpdateMsg] = useState<Phrase | null>()
 
     const [dinnerParty, setDinnerParty] = useState<DinnerParty | null>()
     const [pgMemberEmails, setPgMemberEmails] = useState<string[]>([])
@@ -100,6 +102,21 @@ const DinnerAdmin: FC<{}> = (props) => {
         window.open(await updateGoogleSheet(accessToken))
     }
 
+    const updateDinner = () => {
+        setIsUpdating(true)
+        if (dinnerParty) {
+            updateDinnerParty(dinnerParty, accessToken)
+                .then(() => {
+                    setIsUpdating(false)
+                    setUpdateMsg(phrases.dinner_admin.saved)
+                })
+                .catch(() => {
+                    setIsUpdating(false)
+                    setUpdateMsg(phrases.dinner_page.guest_form.error)
+                })
+        }
+    }
+
     function isGoogleLoginResponse(
         response: GoogleLoginResponse | GoogleLoginResponseOffline
     ): response is GoogleLoginResponse {
@@ -119,7 +136,6 @@ const DinnerAdmin: FC<{}> = (props) => {
         } else {
             setUnAuthorized(true)
         }
-        console.log(response)
     }
 
     const renderLogInScreen = () => {
@@ -159,6 +175,248 @@ const DinnerAdmin: FC<{}> = (props) => {
         )
     }
 
+    const renderAdmin = () => {
+        return dinnerParty ? (
+            <>
+                <SectionTitle>
+                    {TranslationModel.translate(
+                        phrases.dinner_admin.administer
+                    )}
+                </SectionTitle>
+                <InputInfo
+                    placeholderHeader
+                    noCard
+                    inputType='date'
+                    name='registrationStart'
+                    max={dinnerParty?.registrationEnd.toLocaleDateString() ?? null}
+                    onKeyDown={(e) => e.preventDefault()}
+                    onInput={(value) =>
+                        setDinnerParty(
+                            dinnerParty
+                                ? {
+                                      ...dinnerParty,
+                                      ...{
+                                          registrationStart: new Date(value),
+                                      },
+                                  }
+                                : null
+                        )
+                    }
+                    placeholder={TranslationModel.translate(
+                        phrases.dinner_admin.registration_start
+                    )}
+                    defaultValue={
+                        dinnerParty?.registrationStart
+                            ? dinnerParty?.registrationStart.toLocaleDateString()
+                            : undefined
+                    }
+                />
+                <br />
+                <InputInfo
+                    placeholderHeader
+                    noCard
+                    inputType='date'
+                    name='registrationEnd'
+                    min={dinnerParty?.registrationStart.toLocaleDateString() ?? null}
+                    onKeyDown={(e) => e.preventDefault()}
+                    onInput={(value) =>
+                        setDinnerParty(
+                            dinnerParty
+                                ? {
+                                      ...dinnerParty,
+                                      ...{
+                                          registrationEnd: new Date(value),
+                                      },
+                                  }
+                                : null
+                        )
+                    }
+                    placeholder={TranslationModel.translate(
+                        phrases.dinner_admin.registration_end
+                    )}
+                    defaultValue={
+                        dinnerParty?.registrationEnd
+                            ? dinnerParty?.registrationEnd.toLocaleDateString()
+                            : undefined
+                    }
+                />
+                <br />
+                <InputInfo
+                    placeholderHeader
+                    noCard
+                    inputType='number'
+                    name='ticketBasePrice'
+                    onInput={(value) =>
+                        setDinnerParty(
+                            dinnerParty
+                                ? {
+                                      ...dinnerParty,
+                                      ...{
+                                          ticketBasePrice: parseInt(value),
+                                      },
+                                  }
+                                : null
+                        )
+                    }
+                    placeholder={TranslationModel.translate(
+                        phrases.dinner_admin.ticket_base_price
+                    )}
+                    defaultValue={
+                        isNaN(dinnerParty?.ticketBasePrice!)
+                            ? 0
+                            : dinnerParty?.ticketBasePrice
+                    }
+                />
+                <br />
+                <InputInfo
+                    placeholderHeader
+                    noCard
+                    inputType='number'
+                    name='alcoholPrice'
+                    onInput={(value) =>
+                        setDinnerParty(
+                            dinnerParty
+                                ? {
+                                      ...dinnerParty,
+                                      ...{
+                                          alcoholPrice: parseInt(value),
+                                      },
+                                  }
+                                : null
+                        )
+                    }
+                    placeholder={TranslationModel.translate(
+                        phrases.dinner_admin.alcohol_price
+                    )}
+                    defaultValue={
+                        isNaN(dinnerParty?.alcoholPrice!)
+                            ? 0
+                            : dinnerParty?.alcoholPrice
+                    }
+                />
+                <br />
+                <InputInfo
+                    placeholderHeader
+                    noCard
+                    inputType='number'
+                    name='helperDiscount'
+                    onInput={(value) =>
+                        setDinnerParty(
+                            dinnerParty
+                                ? {
+                                      ...dinnerParty,
+                                      ...{
+                                          helperDiscount: parseInt(value),
+                                      },
+                                  }
+                                : null
+                        )
+                    }
+                    placeholder={TranslationModel.translate(
+                        phrases.dinner_admin.helper_discount
+                    )}
+                    defaultValue={
+                        isNaN(dinnerParty?.helperDiscount!)
+                            ? 0
+                            : dinnerParty?.helperDiscount
+                    }
+                />
+                <br />
+                <InputInfo
+                    placeholderHeader
+                    noCard
+                    inputType='text'
+                    name='googleSheetsId'
+                    onInput={(value) =>
+                        setDinnerParty(
+                            dinnerParty
+                                ? {
+                                      ...dinnerParty,
+                                      ...{ googleSheetsId: value },
+                                  }
+                                : null
+                        )
+                    }
+                    placeholder={TranslationModel.translate(
+                        phrases.dinner_admin.google_sheets_id
+                    )}
+                    defaultValue={dinnerParty?.googleSheetsId!}
+                />
+                <br />
+                <InputInfo
+                    placeholderHeader
+                    noCard
+                    inputType='text'
+                    name='dinnerEventLink'
+                    onInput={(value) =>
+                        setDinnerParty(
+                            dinnerParty
+                                ? {
+                                      ...dinnerParty,
+                                      ...{ dinnerEventLink: value },
+                                  }
+                                : null
+                        )
+                    }
+                    placeholder={TranslationModel.translate(
+                        phrases.dinner_admin.dinner_fb_link
+                    )}
+                    defaultValue={dinnerParty?.dinnerEventLink!}
+                />
+                <br />
+                <InputInfo
+                    placeholderHeader
+                    noCard
+                    inputType='text'
+                    name='afterpartyEventLink'
+                    onInput={(value) =>
+                        setDinnerParty(
+                            dinnerParty
+                                ? {
+                                      ...dinnerParty,
+                                      ...{
+                                          afterpartyEventLink: value,
+                                      },
+                                  }
+                                : null
+                        )
+                    }
+                    placeholder={TranslationModel.translate(
+                        phrases.dinner_admin.afterparty_fb_link
+                    )}
+                    defaultValue={dinnerParty?.afterpartyEventLink!}
+                />
+                <br />
+                <ContentPadding>
+                    <CenterContent>
+                        <p>
+                            {!isUpdating && updateMsg ? (
+                                TranslationModel.translate(updateMsg)
+                            ) : (
+                                <></>
+                            )}
+                        </p>
+                    </CenterContent>
+                    <CenterContent>
+                        {isUpdating ? (
+                            <Loader />
+                        ) : (
+                            <>
+                                <Button onClick={updateDinner}>
+                                    {TranslationModel.translate(
+                                        phrases.dinner_admin.save
+                                    )}
+                                </Button>
+                            </>
+                        )}
+                    </CenterContent>
+                </ContentPadding>
+            </>
+        ) : (
+            <></>
+        )
+    }
+
     const renderDashboard = () => {
         return (
             <>
@@ -194,7 +452,10 @@ const DinnerAdmin: FC<{}> = (props) => {
                                 header={phrases.dinner_admin.guests}
                                 items={guestStats.map((stat) => {
                                     return {
-                                        desc: guestPhrases[stat.type],
+                                        desc:
+                                            guestPhrasesPlural[stat.type] ??
+                                            phrases.dinner_page.guest_form
+                                                .other,
                                         quantity: stat.quantity,
                                     }
                                 })}
@@ -251,127 +512,7 @@ const DinnerAdmin: FC<{}> = (props) => {
                             ) : (
                                 <></>
                             )}
-                            <SectionTitle>
-                                {TranslationModel.translate(
-                                    phrases.dinner_admin.administer
-                                )}
-                            </SectionTitle>
-                            <InputInfo
-                                placeholderHeader
-                                noCard
-                                inputType='date'
-                                name='personId'
-                                onInput={(value) => setDinnerParty(dinnerParty ? {...dinnerParty, ...{registrationStart: new Date(value)}} : null)}
-                                placeholder={TranslationModel.translate(
-                                    phrases.dinner_admin.registration_start
-                                )}
-                                defaultValue={
-                                    dinnerParty?.registrationStart
-                                        ? dinnerParty?.registrationStart.toLocaleDateString()
-                                        : undefined
-                                }
-                            />
-                            <br />
-                            <InputInfo
-                                placeholderHeader
-                                noCard
-                                inputType='date'
-                                name='personId'
-                                onInput={(value) => setDinnerParty(dinnerParty ? {...dinnerParty, ...{registrationEnd: new Date(value)}} : null)}
-                                placeholder={TranslationModel.translate(
-                                    phrases.dinner_admin.registration_end
-                                )}
-                                defaultValue={
-                                    dinnerParty?.registrationEnd
-                                        ? dinnerParty?.registrationEnd.toLocaleDateString()
-                                        : undefined
-                                }
-                            />
-                            <br />
-                            <InputInfo
-                                placeholderHeader
-                                noCard
-                                inputType='number'
-                                name='personId'
-                                onInput={(value) => setDinnerParty(dinnerParty ? {...dinnerParty, ...{ticketBasePrice: parseInt(value)}} : null)}
-                                placeholder={TranslationModel.translate(
-                                    phrases.dinner_admin.ticket_base_price
-                                )}
-                                defaultValue={isNaN(dinnerParty?.ticketBasePrice!) ? 0 : dinnerParty?.ticketBasePrice}
-                            />
-                            <br />
-                            <InputInfo
-                                placeholderHeader
-                                noCard
-                                inputType='number'
-                                name='personId'
-                                onInput={(value) => setDinnerParty(dinnerParty ? {...dinnerParty, ...{alcoholPrice: parseInt(value)}} : null)}
-                                placeholder={TranslationModel.translate(
-                                    phrases.dinner_admin.alcohol_price
-                                )}
-                                defaultValue={isNaN(dinnerParty?.alcoholPrice!) ? 0 : dinnerParty?.alcoholPrice}
-                            />
-                            <br />
-                            <InputInfo
-                                placeholderHeader
-                                noCard
-                                inputType='number'
-                                name='personId'
-                                onInput={(value) => setDinnerParty(dinnerParty ? {...dinnerParty, ...{helperDiscount: parseInt(value)}} : null)}
-                                placeholder={TranslationModel.translate(
-                                    phrases.dinner_admin.helper_discount
-                                )}
-                                defaultValue={isNaN(dinnerParty?.helperDiscount!) ? 0 : dinnerParty?.helperDiscount}
-                            />
-                            <br />
-                            <InputInfo
-                                placeholderHeader
-                                noCard
-                                inputType='text'
-                                name='personId'
-                                onInput={(value) => setDinnerParty(dinnerParty ? {...dinnerParty, ...{googleSheetsId: value}} : null)}
-                                placeholder={TranslationModel.translate(
-                                    phrases.dinner_admin.google_sheets_id
-                                )}
-                                defaultValue={dinnerParty?.googleSheetsId!}
-                            />
-                            <br />
-                            <InputInfo
-                                placeholderHeader
-                                noCard
-                                inputType='text'
-                                name='personId'
-                                onInput={(value) => setDinnerParty(dinnerParty ? {...dinnerParty, ...{dinnerEventLink: value}} : null)}
-                                placeholder={TranslationModel.translate(
-                                    phrases.dinner_admin.dinner_fb_link
-                                )}
-                                defaultValue={dinnerParty?.dinnerEventLink!}
-                            />
-                            <br />
-                            <InputInfo
-                                placeholderHeader
-                                noCard
-                                inputType='text'
-                                name='personId'
-                                onInput={(value) => setDinnerParty(dinnerParty ? {...dinnerParty, ...{afterpartyEventLink: value}} : null)}
-                                placeholder={TranslationModel.translate(
-                                    phrases.dinner_admin.afterparty_fb_link
-                                )}
-                                defaultValue={dinnerParty?.afterpartyEventLink!}
-                            />
-                            <br />
-                            <ContentPadding>
-                                    {
-                                        //TODO Button response
-                                    }
-                                <div className='flex justify-center'>
-                                    <Button onClick={() => { if(dinnerParty) updateDinnerParty(dinnerParty, accessToken) }}>
-                                        {TranslationModel.translate(
-                                            phrases.dinner_admin.save
-                                        )}
-                                    </Button>
-                                </div>
-                            </ContentPadding>
+                            {renderAdmin()}
                         </>
                     )}
                 </ContentSection>

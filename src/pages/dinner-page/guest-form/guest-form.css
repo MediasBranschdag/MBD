@@ -16,11 +16,11 @@
     padding: 5px;
 }
 
-.guest-form-error {
+#guest-form-error {
     color: var(--theme-text-error);
 }
 
-.guest-form-error.slide {
+#guest-form-error.slide {
     animation: slide 1s;
     -webkit-animation: slide 1s;
 }
@@ -43,6 +43,10 @@
 
     .ticket-price {
         justify-content: center;
+    }
+
+    #guest-form-error {
+        text-align: center;
     }
 }
 

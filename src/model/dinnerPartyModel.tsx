@@ -4,6 +4,8 @@ import { Phrase } from './translationModel'
 import phrases from '../data/translations.json'
 import credentials from '../credentials.json'
 
+const DINNER_PARTY_FILE = 'getDinnerParty.php'
+
 export interface DinnerParty {
     year: number
     registrationStart: Date
@@ -24,6 +26,13 @@ export enum GuestType {
 }
 
 export const guestPhrases = {
+    [GuestType.Student]: phrases.dinner_page.guest_form.student,
+    [GuestType.CompanyRep]: phrases.dinner_page.guest_form.company_rep,
+    [GuestType.Helper]: phrases.dinner_page.guest_form.helper,
+    [GuestType.PlusOne]: phrases.dinner_page.guest_form.plus_one,
+}
+
+export const guestPhrasesPlural = {
     [GuestType.Student]: phrases.dinner_admin.students,
     [GuestType.CompanyRep]: phrases.dinner_admin.company_reps,
     [GuestType.Helper]: phrases.dinner_admin.helpers,
@@ -47,9 +56,25 @@ export interface Course {
 
 export type CourseQuanitity = Course & { quantity: number }
 
+export interface GuestAddition {
+    date: string
+    name: string
+    personId: string
+    email: string
+    type: string
+    company: string
+    starter: string
+    mainCourse: string
+    dessert: string
+    drinks: string
+    allergies: string
+    ticketPrice: number
+}
+
 export interface Guest {
     date: Date
     name: string
+    personId: string
     email: string
     type: GuestType
     company: string
@@ -109,6 +134,7 @@ function parseGuest(guestJson: any): Guest {
     return {
         date: guestJson.date,
         name: guestJson.name,
+        personId: guestJson.personId,
         email: guestJson.email,
         type: guestJson.type,
         company: guestJson.company,
@@ -133,14 +159,14 @@ function parseGuest(guestJson: any): Guest {
     }
 }
 
-export async function getDinnerParty(): Promise<DinnerParty> {
-    const response = await axios.get(BACKEND_PATH + 'getDinnerParty.php')
-    return parseDinnerParty(response.data)
+export async function getDinnerParty(): Promise<DinnerParty | null> {
+    const response = await axios.get(BACKEND_PATH + DINNER_PARTY_FILE)
+    return response.data ? parseDinnerParty(response.data) : null
 }
 
 export async function getCourses(): Promise<Course[]> {
     const response = await axios.get(
-        BACKEND_PATH + 'getDinnerParty.php?action=get-courses'
+        BACKEND_PATH + DINNER_PARTY_FILE + '?action=get-courses'
     )
     const data = response.data.map((course: any) => parseCourse(course))
     return data
@@ -148,9 +174,7 @@ export async function getCourses(): Promise<Course[]> {
 
 export async function getGuests(accessToken: string): Promise<Guest[]> {
     const response = await axios.get(
-        BACKEND_PATH +
-            'getDinnerParty.php?action=get-guests&token=' +
-            accessToken
+        `${BACKEND_PATH + DINNER_PARTY_FILE}?action=get-guests&token=${accessToken}`
     )
     const data = response.data
         ? response.data.map((guest: any) => parseGuest(guest))
@@ -160,14 +184,14 @@ export async function getGuests(accessToken: string): Promise<Guest[]> {
 
 export async function getGuestStats(): Promise<GuestStat[]> {
     const response = await axios.get(
-        BACKEND_PATH + 'getDinnerParty.php?action=get-guest-stats'
+        BACKEND_PATH + DINNER_PARTY_FILE + '?action=get-guest-stats'
     )
     return response.data ? response.data : []
 }
 
 export async function getCourseStats(): Promise<CourseQuanitity[]> {
     const response = await axios.get(
-        BACKEND_PATH + 'getDinnerParty.php?action=get-course-stats'
+        BACKEND_PATH + DINNER_PARTY_FILE + '?action=get-course-stats'
     )
     const data = response.data
         ? response.data.map((course: any) => {
@@ -182,14 +206,14 @@ export async function getCourseStats(): Promise<CourseQuanitity[]> {
 
 export async function getCompanyStats(): Promise<CompanyStat[]> {
     const response = await axios.get(
-        BACKEND_PATH + 'getDinnerParty.php?action=get-company-stats'
+        BACKEND_PATH + DINNER_PARTY_FILE + '?action=get-company-stats'
     )
     return response.data ? response.data : []
 }
 
 export async function getAllergies(): Promise<string[]> {
     const response = await axios.get(
-        BACKEND_PATH + 'getDinnerParty.php?action=get-allergies'
+        BACKEND_PATH + DINNER_PARTY_FILE + '?action=get-allergies'
     )
     const data = response.data
         ? response.data.map((data: { allergies: string }) => data.allergies)
@@ -200,7 +224,7 @@ export async function getAllergies(): Promise<string[]> {
 export async function updateDinnerParty(
     dinnerParty: DinnerParty,
     accessToken: string
-): Promise<boolean> {
+): Promise<void> {
     let formData = new FormData()
     Object.entries(dinnerParty).forEach((item) => {
         formData.append(
@@ -208,21 +232,33 @@ export async function updateDinnerParty(
             item[1] instanceof Date ? item[1].toLocaleDateString() : item[1]
         )
     })
-    axios
+    await axios
         .post(
-            BACKEND_PATH +
-                'getDinnerParty.php?action=update-dinner-party&token=' +
-                accessToken,
+            `${BACKEND_PATH + DINNER_PARTY_FILE}?action=update-dinner-party&token=${accessToken}`,
             formData
         )
         .catch((err) => {
-            return false
+            throw err
         })
-    return true
+}
+
+export async function addGuest(guest: GuestAddition): Promise<void> {
+    let formData = new FormData()
+    Object.entries(guest).forEach((item) => {
+        formData.append(item[0], item[1])
+    })
+    await axios
+        .post(BACKEND_PATH + DINNER_PARTY_FILE + '?action=add-guest', formData)
+        .catch((err) => {
+            throw err
+        })
 }
 
 export async function updateGoogleSheet(accessToken: string): Promise<string> {
     const dinnerParty = await getDinnerParty()
+    if (!dinnerParty) {
+        return 'https://docs.google.com/spreadsheets/d/'
+    }
     const guests = await getGuests(accessToken)
 
     const googleSheetsEndpoint = `https://sheets.googleapis.com/v4/spreadsheets/${dinnerParty.googleSheetsId}/values`
