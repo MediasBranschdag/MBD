@@ -73,10 +73,10 @@
 }
 
 .btn--inline--icon img {
-    max-width: 1em;
-    max-height: 1em;
+    max-width: 1.5em;
+    height: 1.5em;
     user-select: none;
-    margin-right: 10px;
+    margin-right: 1em;
 }
 
 .btn--inline--icon .inline-cont {

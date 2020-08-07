@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import './intro-screen.css'
 
 import { Button, ButtonTypes } from '../../components/button/button'
@@ -6,6 +6,7 @@ import ArrowDownIcon from '../../assets/icons/arrows/down_black.svg'
 import IntroScreenTitle from './intro-screen-title/intro-screen-title'
 
 import { animateScroll as scroll } from 'react-scroll'
+import useWindowDimensions from '../../hooks/useWindowDimensions'
 
 type IntroScreenProps = {
     backgroundImage?: string
@@ -15,9 +16,25 @@ type IntroScreenProps = {
 }
 
 const IntroScreen: FC<IntroScreenProps> = (props) => {
+    const windowDimensions = useWindowDimensions()
+
+    const navbarHeight = parseInt(
+        getComputedStyle(document.documentElement)
+            .getPropertyValue('--shared-navbar-height')
+            .replace(/\D/g, '')
+    )
+    const [minHeight, setMinHeight] = useState(
+        `${windowDimensions.height - navbarHeight}px`
+    )
+
+    useEffect(() => {
+        setMinHeight(`${windowDimensions.height - navbarHeight}px`)
+    }, [windowDimensions.height, navbarHeight])
+
     return (
         <div
             style={{
+                minHeight: minHeight,
                 backgroundImage: props.backgroundImage
                     ? `url('${props.backgroundImage}')`
                     : 'none',

@@ -1,7 +1,9 @@
 .intro-screen {
     position: relative;
-    min-height: calc(100vh - var(--shared-navbar-height));
+    /*
     min-height: -webkit-fill-available;
+    min-height: calc(100vh - var(--shared-navbar-height));
+    */
 
     display: flex;
     justify-content: stretch;
@@ -20,6 +22,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    padding-top: 1em;
 }
 
 .intro-screen-scroll-button {
@@ -41,4 +44,13 @@
     width: 100vw;
     object-fit: cover;
     opacity: 0.5;
+}
+
+@media (max-width: 800px) {
+    /*
+    .intro-screen {
+        min-height: calc(100vh - var(--shared-navbar-height) - 55px);
+        
+    min-height: -webkit-fill-available;
+    }*/
 }
