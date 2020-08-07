@@ -159,14 +159,20 @@ const DinnerAdmin: FC<{}> = (props) => {
                                     onClick={renderProps.onClick}
                                     buttonType={ButtonTypes.normalCompact}
                                 >
-                                    Log in
+                                    {TranslationModel.translate(
+                                        phrases.dinner_admin.log_in
+                                    )}
                                 </Button>
                             )}
                             scope='https://www.googleapis.com/auth/spreadsheets'
                         />
                         <ContentPadding>
                             <TextSection color='#fff'>
-                                {unAuthorized ? 'Du saknar behörighet.' : ''}
+                                {unAuthorized
+                                    ? TranslationModel.translate(
+                                          phrases.dinner_admin.unauthorized
+                                      )
+                                    : ''}
                             </TextSection>
                         </ContentPadding>
                     </ContentSection>
@@ -188,8 +194,10 @@ const DinnerAdmin: FC<{}> = (props) => {
                     noCard
                     inputType='date'
                     name='registrationStart'
-                    max={dinnerParty?.registrationEnd.toLocaleDateString() ?? null}
-                    onKeyDown={(e) => e.preventDefault()}
+                    max={
+                        dinnerParty?.registrationEnd.toLocaleDateString() ??
+                        null
+                    }
                     onInput={(value) =>
                         setDinnerParty(
                             dinnerParty
@@ -217,8 +225,10 @@ const DinnerAdmin: FC<{}> = (props) => {
                     noCard
                     inputType='date'
                     name='registrationEnd'
-                    min={dinnerParty?.registrationStart.toLocaleDateString() ?? null}
-                    onKeyDown={(e) => e.preventDefault()}
+                    min={
+                        dinnerParty?.registrationStart.toLocaleDateString() ??
+                        null
+                    }
                     onInput={(value) =>
                         setDinnerParty(
                             dinnerParty

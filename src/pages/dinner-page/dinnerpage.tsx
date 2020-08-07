@@ -21,17 +21,24 @@ import FaceBookIcon from '../../assets/icons/other/facebook.svg'
 import DinnerPgBackground from '../../assets/backgrounds/dinner_pg_background.png'
 import AfterpartyBackground from '../../assets/backgrounds/afterparty.jpg'
 import SectionTitle from '../../components/section-title/section-title'
-import GuestForm from './guest-form/guest-form'
+import GuestForm, { renderClosedGuestForm } from './guest-form/guest-form'
 import { DinnerParty, getDinnerParty } from '../../model/dinnerPartyModel'
 import Loader from '../../components/loader/loader'
 import CenterContent from '../../components/center-content/center-content'
 
 const Dinnerpage = () => {
+    const [isLoading, setIsLoading] = useState(false)
     const [dinnerParty, setDinnerParty] = useState<DinnerParty | null>()
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        getDinnerParty().then(setDinnerParty)
+        setIsLoading(true)
+        getDinnerParty()
+            .then((res) => {
+                setDinnerParty(res)
+                setIsLoading(false)
+            })
+            .catch(() => setIsLoading(false))
     }, [])
 
     return (
@@ -127,7 +134,7 @@ const Dinnerpage = () => {
                             dinnerParty.dinnerEventLink ? (
                                 <div className='link-button-container'>
                                     <a
-                                        href='https://www.facebook.com/mediasbranschdag/events'
+                                        href={dinnerParty.dinnerEventLink}
                                         target='_blank'
                                         rel='noopener noreferrer'
                                     >
@@ -158,12 +165,16 @@ const Dinnerpage = () => {
                             phrases.dinner_page.registration
                         )}
                     </SectionTitle>
-                    {dinnerParty ? (
-                        <GuestForm {...dinnerParty} />
-                    ) : (
+                    {isLoading ? (
                         <CenterContent>
                             <Loader />
                         </CenterContent>
+                    ) : dinnerParty ? (
+                        <GuestForm {...dinnerParty} />
+                    ) : (
+                        <TextSection align={TextSectionAlignment.center}>
+                            {renderClosedGuestForm()}
+                        </TextSection>
                     )}
                 </ContentSection>
             </div>
@@ -239,7 +250,7 @@ const Dinnerpage = () => {
                                 dinnerParty.afterpartyEventLink ? (
                                     <div className='link-button-container'>
                                         <a
-                                            href='https://www.facebook.com/mediasbranschdag/events'
+                                            href={dinnerParty.afterpartyEventLink}
                                             target='_blank'
                                             rel='noopener noreferrer'
                                         >
