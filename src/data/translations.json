@@ -580,6 +580,14 @@
     "dinner_admin": {
         "se": "Sittningsadmin",
         "en": "Dinner Party Admin",
+        "log_in": {
+            "se": "Logga in",
+            "en": "Log in"
+        },
+        "unauthorized": {
+            "se": "Du saknar behörighet.",
+            "en": "Unauthorized."
+        },
         "statistics": {
             "se": "Statistik",
             "en": "Statistics"

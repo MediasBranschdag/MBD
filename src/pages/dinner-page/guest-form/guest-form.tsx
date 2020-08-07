@@ -34,6 +34,21 @@ import Loader from '../../../components/loader/loader'
 import Confetti from '../../../components/confetti/confetti'
 import CenterContent from '../../../components/center-content/center-content'
 
+
+export const renderClosedGuestForm = () => (
+    <MBDDateContext.Consumer>
+        {(mbdDate) => (
+            <>
+                {`${TranslationModel.translate(
+                    phrases.dinner_page.guest_form.closed
+                )} ${mbdDate.getStartYear()} ${TranslationModel.translate(
+                    phrases.dinner_page.guest_form.closed_continued
+                )}`}
+            </>
+        )}
+    </MBDDateContext.Consumer>
+)
+
 const GuestForm: FC<DinnerParty> = (props) => {
     const [isLoading, setIsLoading] = useState(false)
     const [courses, setCourses] = useState<{
@@ -603,23 +618,8 @@ const GuestForm: FC<DinnerParty> = (props) => {
                     <></>
                 )}
                 <TextSection align={TextSectionAlignment.center}>
-                    {new Date() > props.registrationEnd ||
-                    !(
-                        props.registrationEnd instanceof Date &&
-                        !isNaN(props.registrationEnd.getTime())
-                    ) ? (
-                        <MBDDateContext.Consumer>
-                            {(mbdDate) => (
-                                <>
-                                    {`${TranslationModel.translate(
-                                        phrases.dinner_page.guest_form.closed
-                                    )} ${mbdDate.getStartYear()} ${TranslationModel.translate(
-                                        phrases.dinner_page.guest_form
-                                            .closed_continued
-                                    )}`}
-                                </>
-                            )}
-                        </MBDDateContext.Consumer>
+                    {new Date() > props.registrationEnd ? (
+                        renderClosedGuestForm()
                     ) : (
                         <>
                             {TranslationModel.translate(
