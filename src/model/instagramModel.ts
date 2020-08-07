@@ -1,5 +1,3 @@
-import BACKEND_PATH from '../backend-environment'
-
 export class InstagramPost {
     id: string
     imageUrl: string

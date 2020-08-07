@@ -286,7 +286,7 @@ export async function updateGoogleSheet(accessToken: string): Promise<string> {
             : guests
     axios
         .post(
-            `${googleSheetsEndpoint}/A:Z:clear/${keyParameter}`,
+            `${googleSheetsEndpoint}/A:${guests.length > 0 ? String.fromCharCode(64 + Object.keys(guests[0]).length) : 'Z'}:clear/${keyParameter}`,
             {},
             {
                 headers: {

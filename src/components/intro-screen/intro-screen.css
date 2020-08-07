@@ -28,7 +28,7 @@
 .intro-screen-scroll-button {
     margin: auto;
     margin-bottom: 35px;
-    margin-top: 35px;
+    margin-top: 10px;
 }
 
 .intro-screen-video {
@@ -44,13 +44,4 @@
     width: 100vw;
     object-fit: cover;
     opacity: 0.5;
-}
-
-@media (max-width: 800px) {
-    /*
-    .intro-screen {
-        min-height: calc(100vh - var(--shared-navbar-height) - 55px);
-        
-    min-height: -webkit-fill-available;
-    }*/
 }
