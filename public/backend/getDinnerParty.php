@@ -227,8 +227,8 @@
 
         public function updateDinnerParty() {
             if($this->checkAccessToken()) {
-                $registrationStart = $_POST['registrationStart'];
-                $registrationEnd = $_POST['registrationEnd'];
+                $bookingStart = $_POST['bookingStart'];
+                $bookingEnd = $_POST['bookingEnd'];
                 $ticketBasePrice = $_POST['ticketBasePrice'];
                 $alcoholPrice = $_POST['alcoholPrice'];
                 $helperDiscount = $_POST['helperDiscount'];
@@ -240,8 +240,8 @@
 
                 $response = $this->dbExecutePrepared(
                     'UPDATE dinner_parties SET 
-                    registrationStart = ?, 
-                    registrationEnd = ?, 
+                    bookingStart = ?, 
+                    bookingEnd = ?, 
                     ticketBasePrice = ?,
                     alcoholPrice = ?,
                     helperDiscount = ?,
@@ -250,7 +250,7 @@
                     afterpartyEventLink = ?
                     WHERE
                     year = ?',
-                    [$registrationStart, $registrationEnd, $ticketBasePrice, $alcoholPrice, $helperDiscount, $googleSheetsId, $dinnerEventLink, $afterpartyEventLink, $year]
+                    [$bookingStart, $bookingEnd, $ticketBasePrice, $alcoholPrice, $helperDiscount, $googleSheetsId, $dinnerEventLink, $afterpartyEventLink, $year]
                 );
                 if($response) {
                     header('Access-Control-Allow-Origin: *');

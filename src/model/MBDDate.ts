@@ -1,6 +1,6 @@
 import BACKEND_PATH from "../backend-environment";
 import TranslationModel from './translationModel'
-import qhrases from '../data/translations.json'
+import phrases from '../data/translations.json'
 
 
 interface TimeLeft {
@@ -16,18 +16,18 @@ export default class MBDDate {
     isEmpty = true;
 
     monthNames = [
-        TranslationModel.translate(qhrases.months.january),
-        TranslationModel.translate(qhrases.months.february),
-        TranslationModel.translate(qhrases.months.march),
-        TranslationModel.translate(qhrases.months.april),
-        TranslationModel.translate(qhrases.months.may),
-        TranslationModel.translate(qhrases.months.june),
-        TranslationModel.translate(qhrases.months.july),
-        TranslationModel.translate(qhrases.months.august),
-        TranslationModel.translate(qhrases.months.september),
-        TranslationModel.translate(qhrases.months.october),
-        TranslationModel.translate(qhrases.months.november),
-        TranslationModel.translate(qhrases.months.december),
+        TranslationModel.translate(phrases.months.january),
+        TranslationModel.translate(phrases.months.february),
+        TranslationModel.translate(phrases.months.march),
+        TranslationModel.translate(phrases.months.april),
+        TranslationModel.translate(phrases.months.may),
+        TranslationModel.translate(phrases.months.june),
+        TranslationModel.translate(phrases.months.july),
+        TranslationModel.translate(phrases.months.august),
+        TranslationModel.translate(phrases.months.september),
+        TranslationModel.translate(phrases.months.october),
+        TranslationModel.translate(phrases.months.november),
+        TranslationModel.translate(phrases.months.december),
     ];
 
     constructor(start?: Date) {

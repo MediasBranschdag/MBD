@@ -58,10 +58,10 @@ const Dinnerpage = () => {
                         },
                         {
                             title: TranslationModel.translate(
-                                phrases.dinner_page.registration
+                                phrases.dinner_page.booking
                             ),
                             iconPath: TicketIcon,
-                            scrollTargetID: 'dinnerpage-registration',
+                            scrollTargetID: 'dinnerpage-booking',
                         },
                         {
                             title: TranslationModel.translate(
@@ -158,11 +158,11 @@ const Dinnerpage = () => {
                     </TextSection>
                 </ContentSection>
             </div>
-            <div id='dinnerpage-registration'>
+            <div id='dinnerpage-booking'>
                 <ContentSection style={{ paddingTop: '25px' }}>
                     <SectionTitle>
                         {TranslationModel.translate(
-                            phrases.dinner_page.registration
+                            phrases.dinner_page.booking
                         )}
                     </SectionTitle>
                     {isLoading ? (

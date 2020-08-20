@@ -270,8 +270,8 @@ INSERT INTO `company_map_position` (`companyID`, `year`, `mapPositionX`, `mapPos
 
 CREATE TABLE `dinner_parties` (
   `year` int(11) NOT NULL COMMENT 'Should reference a exhibit_date',
-  `registrationStart` date NOT NULL,
-  `registrationEnd` date NOT NULL,
+  `bookingStart` date NOT NULL,
+  `bookingEnd` date NOT NULL,
   `ticketBasePrice` int(11) NOT NULL,
   `alcoholPrice` int(11) NOT NULL,
   `helperDiscount` int(11) NOT NULL,

@@ -82,7 +82,7 @@ const GuestForm: FC<DinnerParty> = (props) => {
     const [errorMessage, setErrorMessage] = useState(
         phrases.dinner_page.guest_form.obligatory
     )
-    props.registrationEnd.setHours(23, 59, 59, 999)
+    props.bookingEnd.setHours(23, 59, 59, 999)
 
     useEffect(() => {
         setIsLoading(true)
@@ -159,10 +159,10 @@ const GuestForm: FC<DinnerParty> = (props) => {
                     obligatory.desc.se.charAt(0).toLowerCase() +
                     obligatory.desc.se.slice(1)
                 }.`,
-                en: `You need to enter ${
+                en: `Please enter ${
                     obligatory.desc.en.charAt(0).toLowerCase() +
                     obligatory.desc.en.slice(1)
-                }`,
+                }.`,
             }
             if (!obligatory.field) {
                 setErrorMessage(message)
@@ -219,9 +219,9 @@ const GuestForm: FC<DinnerParty> = (props) => {
                     setSent(true)
                     if (document) {
                         document
-                            .getElementById('dinnerpage-registration')!
+                            .getElementById('dinnerpage-booking')!
                             .scrollIntoView({
-                                behavior: 'auto',
+                                behavior: 'smooth',
                                 block: 'center',
                                 inline: 'center',
                             })
@@ -571,8 +571,8 @@ const GuestForm: FC<DinnerParty> = (props) => {
     ) : (
         <>
             <div className='guest-form'>
-                {props.registrationStart <= new Date() &&
-                new Date() <= props.registrationEnd ? (
+                {props.bookingStart <= new Date() &&
+                new Date() <= props.bookingEnd ? (
                     sent ? (
                         <div className='signed-up'>
                             <TextSection align={TextSectionAlignment.center}>
@@ -618,19 +618,19 @@ const GuestForm: FC<DinnerParty> = (props) => {
                     <></>
                 )}
                 <TextSection align={TextSectionAlignment.center}>
-                    {new Date() > props.registrationEnd ? (
+                    {new Date() > props.bookingEnd ? (
                         renderClosedGuestForm()
                     ) : (
                         <>
                             {TranslationModel.translate(
                                 phrases.dinner_page.guest_form.open_from
                             )}{' '}
-                            {props.registrationStart.toLocaleDateString()}{' '}
+                            {props.bookingStart.toLocaleDateString()}{' '}
                             {TranslationModel.translate(
                                 phrases.dinner_page.guest_form.open_until
                             )}{' '}
                             <span className='nowrap'>
-                                {props.registrationEnd.toLocaleDateString()}.
+                                {props.bookingEnd.toLocaleDateString()}.
                             </span>
                         </>
                     )}

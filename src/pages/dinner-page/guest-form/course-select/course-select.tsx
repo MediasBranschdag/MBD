@@ -12,8 +12,10 @@ const CourseSelect: FC<{header: string | ReactNode, courses: Course[], courseSel
                 {props.courses.map((course) =>
                     <div className={`course ${props.courseSelect === course.id.toString() ? 'selected' : ''}`} key={course.id} onClick={() => props.setCourse(course.id)}>
                             <ContentPadding>
-                                <div className='course-name'>{TranslationModel.translate(course.desc)}</div>
-                                <div className='course-attributes'>{TranslationModel.translate(course.attributes)}</div>
+                                <div className='course-details'>
+                                    <div className='course-name'>{TranslationModel.translate(course.desc)}</div>
+                                    <div className='course-attributes'>{TranslationModel.translate(course.attributes)}</div>
+                                </div>
                             </ContentPadding>
                     </div>
                 )}
