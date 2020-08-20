@@ -446,9 +446,9 @@
         }
     },
     "dinner_page": {
-        "registration": {
+        "booking": {
             "se": "Anmälan",
-            "en": "Ticket Registration"
+            "en": "Book a Ticket"
         },
         "about": {
             "se": "Om sittningen",
@@ -553,11 +553,11 @@
             },
             "signed_up_email": {
                 "se": "Om du har fått en plats på sittningen kommer du få ett bekräftelsemail efter anmälan har stängt.",
-                "en": "You will receive an email confirmation if you have gotten a spot after the registration is closed."
+                "en": "You will receive an email confirmation if you have gotten a spot after the ticket booking is closed."
             },
             "closed": {
                 "se": "Anmälan till sittningen för Medias Branschdag",
-                "en": "Registration for the dinner party for Medias Branschdag"
+                "en": "Ticket booking for the dinner party for Medias Branschdag"
             },
             "closed_continued": {
                 "se": "är stängd.",
@@ -565,7 +565,7 @@
             },
             "open_from": {
                 "se": "Anmälan är öppen från",
-                "en": "Registration is open from"
+                "en": "Ticket booking is open from"
             },
             "open_until": {
                 "se": "till och med",
@@ -592,9 +592,9 @@
             "se": "Statistik",
             "en": "Statistics"
         },
-        "administer": {
+        "manage": {
             "se": "Administrera",
-            "en": "Administer"
+            "en": "Manage"
         },
         "guests": {
             "se": "Gäster",
@@ -644,13 +644,13 @@
             "se": "Ingen data att visa",
             "en": "No items to show"
         },
-        "registration_start": {
+        "booking_start": {
             "se": "Startdatum för anmälan",
-            "en": "Registration start"
+            "en": "Ticket booking start"
         },
-        "registration_end": {
+        "booking_end": {
             "se": "Slutdatum för anmälan",
-            "en": "Registration end"
+            "en": "Ticket booking end"
         },
         "ticket_base_price": {
             "se": "Biljettgrundpris",

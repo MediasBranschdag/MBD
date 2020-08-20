@@ -186,16 +186,16 @@ const DinnerAdmin: FC<{}> = (props) => {
             <>
                 <SectionTitle>
                     {TranslationModel.translate(
-                        phrases.dinner_admin.administer
+                        phrases.dinner_admin.manage
                     )}
                 </SectionTitle>
                 <InputInfo
                     placeholderHeader
                     noCard
                     inputType='date'
-                    name='registrationStart'
+                    name='bookingStart'
                     max={
-                        dinnerParty?.registrationEnd.toLocaleDateString() ??
+                        dinnerParty?.bookingEnd.toLocaleDateString() ??
                         null
                     }
                     onInput={(value) =>
@@ -204,18 +204,18 @@ const DinnerAdmin: FC<{}> = (props) => {
                                 ? {
                                       ...dinnerParty,
                                       ...{
-                                          registrationStart: new Date(value),
+                                          bookingStart: new Date(value),
                                       },
                                   }
                                 : null
                         )
                     }
                     placeholder={TranslationModel.translate(
-                        phrases.dinner_admin.registration_start
+                        phrases.dinner_admin.booking_start
                     )}
                     defaultValue={
-                        dinnerParty?.registrationStart
-                            ? dinnerParty?.registrationStart.toLocaleDateString()
+                        dinnerParty?.bookingStart
+                            ? dinnerParty?.bookingStart.toLocaleDateString()
                             : undefined
                     }
                 />
@@ -224,9 +224,9 @@ const DinnerAdmin: FC<{}> = (props) => {
                     placeholderHeader
                     noCard
                     inputType='date'
-                    name='registrationEnd'
+                    name='bookingEnd'
                     min={
-                        dinnerParty?.registrationStart.toLocaleDateString() ??
+                        dinnerParty?.bookingStart.toLocaleDateString() ??
                         null
                     }
                     onInput={(value) =>
@@ -235,18 +235,18 @@ const DinnerAdmin: FC<{}> = (props) => {
                                 ? {
                                       ...dinnerParty,
                                       ...{
-                                          registrationEnd: new Date(value),
+                                          bookingEnd: new Date(value),
                                       },
                                   }
                                 : null
                         )
                     }
                     placeholder={TranslationModel.translate(
-                        phrases.dinner_admin.registration_end
+                        phrases.dinner_admin.booking_end
                     )}
                     defaultValue={
-                        dinnerParty?.registrationEnd
-                            ? dinnerParty?.registrationEnd.toLocaleDateString()
+                        dinnerParty?.bookingEnd
+                            ? dinnerParty?.bookingEnd.toLocaleDateString()
                             : undefined
                     }
                 />

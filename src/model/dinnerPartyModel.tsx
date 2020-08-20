@@ -8,8 +8,8 @@ const DINNER_PARTY_FILE = 'getDinnerParty.php'
 
 export interface DinnerParty {
     year: number
-    registrationStart: Date
-    registrationEnd: Date
+    bookingStart: Date
+    bookingEnd: Date
     ticketBasePrice: number
     alcoholPrice: number
     helperDiscount: number
@@ -100,8 +100,8 @@ function parseDinnerParty(dinnerParty: DinnerParty): DinnerParty {
     return {
         ...dinnerParty,
         ...{
-            registrationStart: new Date(dinnerParty.registrationStart),
-            registrationEnd: new Date(dinnerParty.registrationEnd),
+            bookingStart: new Date(dinnerParty.bookingStart),
+            bookingEnd: new Date(dinnerParty.bookingEnd),
             ticketBasePrice: parseInt(
                 (dinnerParty.ticketBasePrice as unknown) as string
             ),
