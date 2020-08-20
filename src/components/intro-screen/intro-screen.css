@@ -1,7 +1,9 @@
 .intro-screen {
     position: relative;
-    min-height: calc(100vh - var(--shared-navbar-height));
+    /*
     min-height: -webkit-fill-available;
+    min-height: calc(100vh - var(--shared-navbar-height));
+    */
 
     display: flex;
     justify-content: stretch;
@@ -20,12 +22,13 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    padding-top: 1em;
 }
 
 .intro-screen-scroll-button {
     margin: auto;
     margin-bottom: 35px;
-    margin-top: 35px;
+    margin-top: 10px;
 }
 
 .intro-screen-video {

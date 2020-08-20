@@ -180,7 +180,7 @@ const SignUpForm: FC = () => {
                         <InputInfo
                             noCard
                             obligatory={input.obligatory}
-                            placeHolderHeader
+                            placeholderHeader
                             name={input.name}
                             onInput={input.onInput}
                             inputType='text'

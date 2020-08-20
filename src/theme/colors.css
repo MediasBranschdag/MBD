@@ -1,5 +1,5 @@
 :root {
-    --theme-primary-color-normal: #ffd521;
+    --theme-primary-color-normal: #f0c900;
     --theme-primary-color-light: #ffe531;
 
     --theme-light-color-normal: #fafafa;
@@ -7,9 +7,10 @@
     --theme-light-color-dark: #c7c7c7;
     --theme-light-color-light: #ffffff;
 
-    --theme-dark-color-normal: #111;
+    --theme-dark-color-normal: #111111;
     --theme-dark-color-dark: #000000;
     --theme-dark-color-light: #484848;
+    --theme-dark-color-lightest: #ebebeb;
 
     --theme-text-bright: #ffffff;
     --theme-text-dark: #000000;

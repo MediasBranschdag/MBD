@@ -14,3 +14,15 @@
 .no-tap-highlight {
     -webkit-tap-highlight-color: transparent;
 }
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
