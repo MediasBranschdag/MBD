@@ -38,7 +38,7 @@ async function parseMembersJson(response: Response): Promise<TeamMember[]> {
     return teamMembers;
 }
 
-export async function getAllTeamMemebers(): Promise<TeamMember[]> {
+export async function getAllTeamMembers(): Promise<TeamMember[]> {
     const response = await fetch(
         BACKEND_PATH + 'getTeam.php'
     );

@@ -1,0 +1,42 @@
+.course-cont {
+    padding: 1em;
+}
+
+.course {
+    font-size: 0.9em;
+    padding-bottom: .2em;
+    cursor: pointer;
+    border-left: 2px solid transparent;
+}
+
+.course:hover, .course.selected {
+    background-color: var(--theme-dark-color-lightest);
+}
+
+.course.selected {
+    border-left: 2px solid var(--theme-primary-color-normal);
+    border-radius: 2px;
+}
+
+.course-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 2.5em;
+    line-height: 1.25;
+}
+
+.course-attributes {
+    font-size: 0.9em;
+    font-style: italic;  
+}
+
+@media screen and (max-width: 700px) {
+    .course-cont {
+       grid-template-columns: 1fr !important; 
+    }
+
+    .course-cont .course {
+        padding: 0.2em 0 0.2em 0;
+    }
+}
