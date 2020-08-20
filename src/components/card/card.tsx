@@ -4,7 +4,8 @@ import './card.css';
 interface CardProps {
     isClickable?: boolean, 
     className?: string,
-    light?: boolean
+    light?: boolean,
+    unselected?: boolean,
 }
 
 const Card: FC<CardProps> = (props) => {
@@ -14,6 +15,9 @@ const Card: FC<CardProps> = (props) => {
     }
     if (props.light) {
         className += 'card--light ';
+    }
+    if (props.unselected) {
+        className += 'card--unselected ';
     }
 
     return (

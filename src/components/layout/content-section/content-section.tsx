@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, CSSProperties } from 'react';
 import './content-section.css';
 
 export enum ContentSectionSize {
@@ -12,10 +12,10 @@ export enum ContentSectionBackground {
     dark = 'content-section-background-dark',
 }
 
-const ContentSection: FC<{size?: ContentSectionSize, background?: ContentSectionBackground}> = (props) => {
+const ContentSection: FC<{style?: CSSProperties, size?: ContentSectionSize, background?: ContentSectionBackground}> = (props) => {
     return (
-        <div className={'content-section-background ' + props.background ?? ''}>
-            <div className={'content-section ' + props.size}>
+        <div className={'content-section-background ' + props.background ?? ''} >
+            <div className={'content-section ' + props.size ?? ''} style={props.style}>
                 {props.children}
             </div>
         </div>

@@ -1,5 +1,5 @@
 .intro-screen-title {
-    padding: 35px;
+    padding: 35px 35px 0 35px;
     box-sizing: border-box;
     width: 100%;
 
@@ -12,6 +12,13 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.0));
 }
 
+.intro-screen-title.bottom-padding {
+    padding: 35px;
+}
+
+.intro-screen-title.no-gradient {
+    background-image: none;
+}
 
 @media screen and (max-width: 700px) {
     .intro-screen-title {

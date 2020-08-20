@@ -1,0 +1,68 @@
+.company-rep {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.ticket-price {
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+    padding: 1em 0 0 0;
+}
+
+.ticket-price img {
+    height: 50px;
+    padding: 5px;
+}
+
+#guest-form-error {
+    color: var(--theme-text-error);
+}
+
+#guest-form-error.slide {
+    animation: slide 1s;
+    -webkit-animation: slide 1s;
+}
+
+.guest-form-button {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.MuiTypography-body1 {
+    font-family: 'Montserrat', 'Open Sans', sans-serif !important;
+}
+
+@media screen and (max-width: 700px) {
+    .company-rep {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ticket-price {
+        justify-content: center;
+    }
+
+    #guest-form-error {
+        text-align: center;
+    }
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(5px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+@-webkit-keyframes slide {
+    from {
+        transform: translateX(5px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
