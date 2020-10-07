@@ -451,7 +451,7 @@ INSERT INTO `persons` (`id`, `name`, `email`, `linkedin`) VALUES
 (10, 'Emma Hagrot', 'emma@medieteknik.com', 'https://www.linkedin.com/in/emmahagrot/'),
 (11, 'Peter Borojevic', 'peter@medieteknik.com', 'https://www.linkedin.com/in/peterborojevic/'),
 (12, 'Oliver Kamruzzaman', 'oliver@medieteknik.com', 'https://www.linkedin.com/in/oliver-kamruzzaman-0380aa99/'),
-(13, 'Nathalie Lock', 'nathalie@medieteknik.com', '');
+(13, 'Nathalie Lock', 'nathalie@medieteknik.com', 'https://www.linkedin.com/in/nathalie-lock-55bb061b1/');
 
 -- --------------------------------------------------------
 
@@ -499,19 +499,19 @@ CREATE TABLE `team_involvement` (
 --
 
 INSERT INTO `team_involvement` (`id`, `personId`, `year`, `positionId`, `image`) VALUES
-(1, 1, 2021, 1, 'placeholder.png'),
-(2, 2, 2021, 1, 'john_brink.jpg'),
-(3, 3, 2021, 4, 'amanda_carp.jpg'),
-(4, 4, 2021, 7, 'ebba_rovig.jpg'),
-(5, 5, 2021, 7, 'placeholder.png'),
-(6, 6, 2021, 6, 'placeholder.png'),
-(7, 7, 2021, 8, 'placeholder.png'),
-(8, 8, 2021, 8, 'ella_klara_westerlund.jpg'),
-(9, 9, 2021, 5, 'louise_hellberg.jpg'),
-(10, 10, 2021, 2, 'placeholder.png'),
-(11, 11, 2021, 3, 'peter_borojevic.jpg'),
-(12, 12, 2021, 3, 'placeholder.png'),
-(13, 13, 2021, 3, 'nathalie_lock.jpg');
+(1, 1, 2021, 1, 'nicole.jpg'),
+(2, 2, 2021, 1, 'john.jpg'),
+(3, 3, 2021, 4, 'amanda.jpg'),
+(4, 4, 2021, 7, 'ebba.jpg'),
+(5, 5, 2021, 7, 'emily.jpg'),
+(6, 6, 2021, 6, 'malin.jpg'),
+(7, 7, 2021, 8, 'mahmoud.jpg'),
+(8, 8, 2021, 8, 'ella_klara.jpg'),
+(9, 9, 2021, 5, 'louise.jpg'),
+(10, 10, 2021, 2, 'emma.jpg'),
+(11, 11, 2021, 3, 'peter.jpg'),
+(12, 12, 2021, 3, 'oliver.jpg'),
+(13, 13, 2021, 3, 'nathalie.jpg');
 
 -- --------------------------------------------------------
 
