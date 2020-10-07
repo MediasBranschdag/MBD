@@ -34,6 +34,23 @@
     margin: auto;
 }
 
+.photographer-info {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 0.9em;
+    padding-top: 0.2em;
+}
+
+.photographer-info img {
+    height: 1em;
+    padding-right: 0.2em;
+}
+
+.photographer-info a {
+    border-bottom: 2px solid var(--theme-primary-color-normal);
+}
+
 @media screen and (max-width: 700px) {
 
     .homepage-instagram-section {

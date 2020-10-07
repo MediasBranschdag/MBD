@@ -18,6 +18,16 @@
     row-gap: 20px;
 }
 
+.photographer-thanks {
+    padding-top: 2em;
+    text-align: center;
+}
+
+.photographer-thanks a {
+    font-weight: bold;
+    border-bottom: 2px solid var(--theme-primary-color-normal);
+}
+
 @media screen and (max-width: 900px) {
     .contactpage-background {
         background-position: 0% 90%;
