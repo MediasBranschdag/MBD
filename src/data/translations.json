@@ -684,5 +684,13 @@
             "se": "Sparat.",
             "en": "Saved."
         }
+    },
+    "photo_thanks_start": {
+        "se": "Stort tack till",
+        "en": "Big thanks to"
+    },
+    "photo_thanks_end": {
+        "se": "för foto",
+        "en": "for taking our photos"
     }
 }
