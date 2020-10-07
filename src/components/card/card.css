@@ -1,6 +1,7 @@
 .card {
     overflow: hidden;
     border-radius: 10px;
+    -webkit-border-radius: 10px;
     background-color: #fff;
     box-shadow: 0 3px 10px rgba(0,0,0,0.3);
     height: 100%;

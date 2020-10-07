@@ -1,0 +1,303 @@
+[
+    {
+        "title": { "se": "Gui/front end-design", "en": "Gui/front end-design" },
+        "desc": {
+            "se": "Ett stort fokus inom vår inriktning är människa-datorinteraktion. En viktig aspekt av detta är hur användare interagerar med våra produkter. Därför lär sig våra studenter HTML och CSS och arbetar med frameworks som REACT. Vi har erfarenhet med att utveckla webbapplikationer/hemsidor som är både funktionella men även väldesignade.",
+            "en": "Test"
+        },
+        "courses": [
+            {
+                "title": {
+                    "se": "DH2642 Interaktionsprogrammering och dynamiska webben",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": {
+                    "se": "DM2518 Mobilutveckling med webbteknologier",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": {
+                    "se": "DH2323 Datorgrafik med interaktion",
+                    "en": ""
+                },
+                "url": ""
+            }
+        ]
+    },
+    {
+        "title": { "se": "Programmering", "en": "Programmering" },
+        "desc": {
+            "se": "I programmeringskurserna programmerar vi i språken Python och Java och får grundläggande kunskaper inom språken för att sedan även övergå till en mer avancerad nivå.",
+            "en": "Test"
+        },
+        "courses": [
+            {
+                "title": {
+                    "se": "DD1318 Programmeringsteknik och tekniska beräkningar",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": {
+                    "se": "DM1595 Programutveckling för interaktiva medier",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": {
+                    "se": "DD1380 Javaprogrammering för Pythonprogrammerare",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": { "se": "DD1385 Programutvecklingsteknik", "en": "" },
+                "url": ""
+            }
+        ]
+    },
+    {
+        "title": { "se": "Datalogi", "en": "Computer Science" },
+        "desc": {
+            "se": "Kandidaten ger en grundläggande och bred utbildning inom datalogi. Genom dessa kurser lär vi oss om teoretiska och praktiska tillämpningar av algoritmer, datastrukturer och komplexitet. Mycket av det som lärs ut i dessa kurser byggs vidare på i datalogimastern men är även användbar för de som läser andra masters.",
+            "en": "Test"
+        },
+        "courses": [
+            {
+                "title": {
+                    "se": "DD2532 Algoritmer och Komplexitet",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": { "se": "DD1320 Tillämpad datalogi", "en": "" },
+                "url": ""
+            },
+            {
+                "title": { "se": "DD1354 Modeller och simulering", "en": "" },
+                "url": ""
+            }
+        ]
+    },
+    {
+        "title": {
+            "se": "Entreprenörskap och ledarskap",
+            "en": "Computer Science"
+        },
+        "desc": {
+            "se": "Medieteknikstudenter får en bra grund i entreprenörskap och ledarskap. Detta märks i det faktum att en stor del av våra alumner blir egenföretagare eller tar chefspositioner inom företag. I dessa kurser lär sig våra studenter om hur man driver projekt i team, entreprenörskap och marknadsföring tillsammans med en gedigen grund inom ekonomi.",
+            "en": "Test"
+        },
+        "courses": [
+            {
+                "title": {
+                    "se": "ME1039 Industriell Ekonomi och Entreprenörskap inom Media och IKT",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": {
+                    "se": "LS1464 Retorik - konsten att övertyga",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": {
+                    "se": "ME2015 Projektledning: ledning och styrning av projekt",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": {
+                    "se": "ME2163 Ledarskap och organisering i olika miljöer",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": {
+                    "se": "AD1RD1 Reflekterande Designprocess",
+                    "en": ""
+                },
+                "url": ""
+            }
+        ]
+    },
+    {
+        "title": { "se": "Signalbehandling", "en": "Signal processing" },
+        "desc": {
+            "se": "Vi medietekniker har ett väldigt brett kunnande när det kommer till signalbehandling. Vi får inte bara kunskap om de djupare tekniska bitarna kring signalbehandling, utan vi får också veta hur man kan använda digital teknik i form av ljud och bild för en viss medieproduktion. De mer avancerade detaljerna kring signalbehandling lär vi oss om i andra kurser. Till en början lär vi oss grundligt om de fysikaliska egenskaperna kring ljud och ljus och hur dessa fenomen kan skapa begränsningar och villkor för teknik som vi använder. Lite senare börjar vi lära oss om olika typer av signaler och deras digitala representation och hur de kan modifieras med hjälp av olika filter. Sedan går vi in djupare i området kring fysikalisk akustik och ljudbehandling. Dessutom får vi kunskaper inom tekniska tillämpningar som bland annat hur mikrofoner och högtalare fungerar, hur man gör en digital representation av ljud och vad stereo och multikanaler är. Vi går också in på djupet kring fotometri och hur en digitalkamera och dess komponenter fungerar. Vi får en bred kunskap kring till exempel hur videosignaler upptas, lagras och distribueras med hjälp av komprimeringsalgoritmer och ger information om andra tekniska tillämpningar. Tredje året erbjuds vi medietekniker också att gå kurser som lär oss om exempel talteknologi och musikakustik. Talteknologin fokuserar mycket på muntlig interaktion mellan människor och datorer, samt kommunikationens grundpelare och analys av digitala signaler. Musikakustiken kollar på interaktionsaspekterna kring olika instrument och hur elektroakustiska instrument fungerar. ",
+            "en": "Test"
+        },
+        "courses": [
+            {
+                "title": { "se": "DM1579 Medieproduktion", "en": "" },
+                "url": ""
+            },
+            {
+                "title": {
+                    "se": "DM1135 Multimediasystem och signaler",
+                    "en": ""
+                },
+                "url": ""
+            },
+            { "title": { "se": "SK1120 Vågrörelselära", "en": "" }, "url": "" },
+            { "title": { "se": "DM1580 Videoteknik", "en": "" }, "url": "" },
+            {
+                "title": { "se": "SK1140 Fotografi för medieteknik", "en": "" },
+                "url": ""
+            },
+            { "title": { "se": "DT1175 Ljud", "en": "" }, "url": "" },
+            { "title": { "se": "DT2112 Talteknologi", "en": "" }, "url": "" },
+            { "title": { "se": "DT2212 Musikakustik", "en": "" }, "url": "" }
+        ]
+    },
+    {
+        "title": {
+            "se": "Människa-datorinteraktion",
+            "en": "Human-Computer Interaction"
+        },
+        "desc": {
+            "se": "I MDI- kurserna studerar vi informationsteknologi och gränssnitt för ett bra samspel mellan datorer och människor. För användbara lösningar beroende på mottagare, inkluderar att man tar hänsyn till kulturer, miljö och person. Vi studerar kommunikation genom media samt relationen mellan skapare och mottagare.",
+            "en": "Test"
+        },
+        "courses": [
+            {
+                "title": {
+                    "se": "DH1609 Kommunikation och information",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": {
+                    "se": "DM2573 Hållbarhet och medieteknik",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": {
+                    "se": "DM2720 Hållbar informations- och kommunikationsteknik (IKT) i praktiken",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": {
+                    "se": "DH1622 Människa-datorinteraktion, inledande kurs",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": {
+                    "se": "AK2203 Media mellan teknik och kultur",
+                    "en": ""
+                },
+                "url": ""
+            },
+            { "title": { "se": "DM2077 Mediejuridik", "en": "" }, "url": "" },
+            {
+                "title": {
+                    "se": "DM2556 Interkulturell kommunikation",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": {
+                    "se": "DM2624 Människoncenterad teknik för funktionshinder",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": { "se": "DM2578 Social Media Technologies", "en": "" },
+                "url": ""
+            }
+        ]
+    },
+    {
+        "title": {
+            "se": "Sensorer och elektroniska komponenter",
+            "en": "Human-Computer Interaction"
+        },
+        "desc": {
+            "se": "Medietekniker har även gedigen kunskap inom sensorprogrammering. Vi får lära oss om sensorer och ställdon kan programmeras i ett kommersiellt system som exempelvis arduinos. Vi får även en tydlig grund i hur sensorer och ställdon fungerar och hur de kan användas till olika syften. Dessutom lär vi oss att bygga enkla elektroniska kretsar med hjälp och får med oss kunskaper i digital logik och design av digital elektronik. De äldre årskullarna på media fram till de som började på KTH 2017, har däremot bredare kunskaper kring hur man kan bygga olika typer av kretsar som AC och DC och har lärt sig mer om hur man kan använda mikrokontroller i kretsarna. De har även en tydligare bild av hur elektroniken bakom sensorer fungerar och spetskunskaper när det kommer till att analysera olika kretsar och göra digitala konstruktioner av kretsar som ska lösa olika kombinatoriska problem.",
+            "en": "Test"
+        },
+        "courses": [
+            {
+                "title": {
+                    "se": "DM1588 Sensorprogrammering för medieteknik",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": { "se": "MF1035 Elektroteknik, Media", "en": "" },
+                "url": ""
+            }
+        ]
+    },
+    {
+        "title": { "se": "Maskininlärning", "en": "Machine learning" },
+        "desc": {
+            "se": "Studenter på medieteknik får även i ett tidigt stadium lära sig om maskininlärning och hur det används i olika sammanhang. De får också ta del av hur man arbetar när det kommer till maskininlärning och hur man använder sig av de två stora metoderna inom området, det vill säga väglett och icke-väglett lärande. För dessa metoder lär man sig mer om olika typer av algoritmer.",
+            "en": "Test"
+        },
+        "courses": [
+            {
+                "title": {
+                    "se": "DM1590 Maskininlärning för Medieteknik",
+                    "en": ""
+                },
+                "url": ""
+            }
+        ]
+    },
+    {
+        "title": { "se": "Matematik", "en": "Mathematics" },
+        "desc": {
+            "se": "Ger kunskaper inom problemlösning på både grundläggande och mer avancerad nivå. Bidrar till att man kan dra slutsatser baserat på statistik samt kan lösa svårare matematiska problem.",
+            "en": "Test"
+        },
+        "courses": [
+            {
+                "title": { "se": "SF1625 Envariabelanalys", "en": "" },
+                "url": ""
+            },
+            {
+                "title": { "se": "SF1624 Algebra och geometri", "en": "" },
+                "url": ""
+            },
+            {
+                "title": { "se": "SF1626 Flervariabelanalys", "en": "" },
+                "url": ""
+            },
+            {
+                "title": {
+                    "se": "SF1919 Sannolikhetsteori och statistik",
+                    "en": ""
+                },
+                "url": ""
+            },
+            {
+                "title": { "se": "SF1662 Diskret matematik", "en": "" },
+                "url": ""
+            }
+        ]
+    }
+]
