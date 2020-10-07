@@ -10,6 +10,7 @@ import CompanyIcon from '../../assets/icons/other/company.svg'
 import FacebookIcon from '../../assets/icons/other/facebook.svg'
 import InstagramIcon from '../../assets/icons/other/instagram.svg'
 import LinkedinIcon from '../../assets/icons/other/linkedin.svg'
+import CameraIcon from '../../assets/icons/other/camera.svg'
 
 import Countdown from '../../components/countdown/countdown'
 import { MBDDateContext } from '../../contexts/mbd-date-provider'
@@ -189,19 +190,24 @@ const Homepage: FC = () => {
                             </MBDDateContext.Consumer>
                         </TextSection>
                     }
-                    content={
-                        <ProfileCard
-                            imagePath='assets/team/placeholder.png'
-                            name={`${projectLeaders
-                                .map((leader, i) => {
-                                    return leader.name
-                                })
-                                .join(', ')}`}
-                            role={TranslationModel.translate({
-                                se: 'Projektledare',
-                                en: 'Project Leaders',
-                            })}
-                        />
+                    content={<>
+                            <ProfileCard
+                                imagePath='assets/team/project_leaders.jpg'
+                                name={`${projectLeaders
+                                    .map((leader, i) => {
+                                        return leader.name
+                                    })
+                                    .join(', ')}`}
+                                role={TranslationModel.translate({
+                                    se: 'Projektledare',
+                                    en: 'Project Leaders',
+                                })}
+                            />
+                            <div className='photographer-info'>
+                                <img src={CameraIcon} alt=''/>
+                                <a href='https://www.instagram.com/mikaelaphoto/' target='_blank' rel='noopener noreferrer'>Mikaela Gärde</a>
+                            </div>
+                        </>
                     }
                 />
             </ContentSection>
