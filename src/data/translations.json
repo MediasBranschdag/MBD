@@ -157,9 +157,9 @@
         "se": "Vilka är vi",
         "en": "Who are we"
     },
-    "exhibitor_package": {
-        "se": "Utställarpaketet",
-        "en": "Exhibitor Package"
+    "exhibitor_packages": {
+        "se": "Utställarpaket",
+        "en": "Exhibitor Packages"
     },
     "package_showcase_area": {
         "se": "Monterplats",
