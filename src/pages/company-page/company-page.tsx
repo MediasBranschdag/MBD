@@ -307,7 +307,7 @@ const Companypage = () => {
                                                         företagslounge
                                                     </li>
                                                     <li>
-                                                        Ett ståbord och fyra
+                                                        Två ståbord och fyra
                                                         stolar
                                                     </li>
                                                     <li>
