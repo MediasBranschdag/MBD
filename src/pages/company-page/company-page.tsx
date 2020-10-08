@@ -386,7 +386,7 @@ const Companypage = () => {
                                                         Access to company lounge
                                                     </li>
                                                     <li>
-                                                        One standing table and
+                                                        Two standing tables and
                                                         four chairs
                                                     </li>
                                                     <li>
