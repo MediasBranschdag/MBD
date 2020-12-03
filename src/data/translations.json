@@ -685,8 +685,24 @@
             "en": "Saved."
         }
     },
-    "what_is_media_technology": {
-        "se": "Vad är Medieteknik?",
-        "en": "What is Media Technology?"
+    "we_are_media_technology": {
+        "se": "Vi är Medieteknik",
+        "en": "We are Media Technology",
+        "masters": {
+            "se": "Masterprogram",
+            "en": "Masters"
+        },
+        "undergraduate_fields": {
+            "se": "Kandidatområden",
+            "en": "Undergraduate fields"
+        },
+        "courses_within": {
+            "se": "Kurser inom området",
+            "en": "Courses within the area"
+        },
+        "tracks": {
+            "se": "Inriktningar",
+            "en": "Tracks"
+        }
     }
 }

@@ -2,7 +2,7 @@
     {
         "title": { "se": "Gui/front end-design", "en": "Gui/front end-design" },
         "desc": {
-            "se": "Ett stort fokus inom vår inriktning är människa-datorinteraktion. En viktig aspekt av detta är hur användare interagerar med våra produkter. Därför lär sig våra studenter HTML och CSS och arbetar med frameworks som REACT. Vi har erfarenhet med att utveckla webbapplikationer/hemsidor som är både funktionella men även väldesignade.",
+            "se": "Ett stort fokus inom vår inriktning är människa-datorinteraktion. En viktig aspekt av detta är hur användare interagerar med våra produkter. Därför lär sig våra studenter HTML och CSS och arbetar med frameworks som React och Vue. Vi har erfarenhet med att utveckla webbapplikationer/hemsidor som är både funktionella men även väldesignade.",
             "en": "Test"
         },
         "courses": [
@@ -90,7 +90,7 @@
     {
         "title": {
             "se": "Entreprenörskap och ledarskap",
-            "en": "Computer Science"
+            "en": "Entrepreneurship and management"
         },
         "desc": {
             "se": "Medieteknikstudenter får en bra grund i entreprenörskap och ledarskap. Detta märks i det faktum att en stor del av våra alumner blir egenföretagare eller tar chefspositioner inom företag. I dessa kurser lär sig våra studenter om hur man driver projekt i team, entreprenörskap och marknadsföring tillsammans med en gedigen grund inom ekonomi.",
@@ -137,7 +137,7 @@
     {
         "title": { "se": "Signalbehandling", "en": "Signal processing" },
         "desc": {
-            "se": "Vi medietekniker har ett väldigt brett kunnande när det kommer till signalbehandling. Vi får inte bara kunskap om de djupare tekniska bitarna kring signalbehandling, utan vi får också veta hur man kan använda digital teknik i form av ljud och bild för en viss medieproduktion. De mer avancerade detaljerna kring signalbehandling lär vi oss om i andra kurser. Till en början lär vi oss grundligt om de fysikaliska egenskaperna kring ljud och ljus och hur dessa fenomen kan skapa begränsningar och villkor för teknik som vi använder. Lite senare börjar vi lära oss om olika typer av signaler och deras digitala representation och hur de kan modifieras med hjälp av olika filter. Sedan går vi in djupare i området kring fysikalisk akustik och ljudbehandling. Dessutom får vi kunskaper inom tekniska tillämpningar som bland annat hur mikrofoner och högtalare fungerar, hur man gör en digital representation av ljud och vad stereo och multikanaler är. Vi går också in på djupet kring fotometri och hur en digitalkamera och dess komponenter fungerar. Vi får en bred kunskap kring till exempel hur videosignaler upptas, lagras och distribueras med hjälp av komprimeringsalgoritmer och ger information om andra tekniska tillämpningar. Tredje året erbjuds vi medietekniker också att gå kurser som lär oss om exempel talteknologi och musikakustik. Talteknologin fokuserar mycket på muntlig interaktion mellan människor och datorer, samt kommunikationens grundpelare och analys av digitala signaler. Musikakustiken kollar på interaktionsaspekterna kring olika instrument och hur elektroakustiska instrument fungerar. ",
+            "se": "Vi medietekniker har ett väldigt brett kunnande när det kommer till signalbehandling. Vi får inte bara kunskap om de djupare tekniska bitarna kring signalbehandling, utan vi får också veta hur man kan använda digital teknik i form av ljud och bild för en viss medieproduktion. \n\nDe mer avancerade detaljerna kring signalbehandling lär vi oss om i andra kurser. Till en början lär vi oss grundligt om de fysikaliska egenskaperna kring ljud och ljus och hur dessa fenomen kan skapa begränsningar och villkor för teknik som vi använder. Lite senare börjar vi lära oss om olika typer av signaler och deras digitala representation och hur de kan modifieras med hjälp av olika filter. Sedan går vi in djupare i området kring fysikalisk akustik och ljudbehandling. Dessutom får vi kunskaper inom tekniska tillämpningar som bland annat hur mikrofoner och högtalare fungerar, hur man gör en digital representation av ljud och vad stereo och multikanaler är. \n\nVi går också in på djupet kring fotometri och hur en digitalkamera och dess komponenter fungerar. Vi får en bred kunskap kring till exempel hur videosignaler upptas, lagras och distribueras med hjälp av komprimeringsalgoritmer och ger information om andra tekniska tillämpningar. Tredje året erbjuds vi medietekniker också att gå kurser som lär oss om exempel talteknologi och musikakustik. Talteknologin fokuserar mycket på muntlig interaktion mellan människor och datorer, samt kommunikationens grundpelare och analys av digitala signaler. Musikakustiken kollar på interaktionsaspekterna kring olika instrument och hur elektroakustiska instrument fungerar. ",
             "en": "Test"
         },
         "courses": [
@@ -232,10 +232,10 @@
     {
         "title": {
             "se": "Sensorer och elektroniska komponenter",
-            "en": "Human-Computer Interaction"
+            "en": "Sensors and electronic components"
         },
         "desc": {
-            "se": "Medietekniker har även gedigen kunskap inom sensorprogrammering. Vi får lära oss om sensorer och ställdon kan programmeras i ett kommersiellt system som exempelvis arduinos. Vi får även en tydlig grund i hur sensorer och ställdon fungerar och hur de kan användas till olika syften. Dessutom lär vi oss att bygga enkla elektroniska kretsar med hjälp och får med oss kunskaper i digital logik och design av digital elektronik. De äldre årskullarna på media fram till de som började på KTH 2017, har däremot bredare kunskaper kring hur man kan bygga olika typer av kretsar som AC och DC och har lärt sig mer om hur man kan använda mikrokontroller i kretsarna. De har även en tydligare bild av hur elektroniken bakom sensorer fungerar och spetskunskaper när det kommer till att analysera olika kretsar och göra digitala konstruktioner av kretsar som ska lösa olika kombinatoriska problem.",
+            "se": "Medietekniker har även gedigen kunskap inom sensorprogrammering. Vi får lära oss om sensorer och ställdon kan programmeras i ett kommersiellt system som exempelvis arduinos. Vi får även en tydlig grund i hur sensorer och ställdon fungerar och hur de kan användas till olika syften. Dessutom lär vi oss att bygga enkla elektroniska kretsar med hjälp och får med oss kunskaper i digital logik och design av digital elektronik. \n\nDe äldre årskullarna på media fram till de som började på KTH 2017, har däremot bredare kunskaper kring hur man kan bygga olika typer av kretsar som AC och DC och har lärt sig mer om hur man kan använda mikrokontroller i kretsarna. De har även en tydligare bild av hur elektroniken bakom sensorer fungerar och spetskunskaper när det kommer till att analysera olika kretsar och göra digitala konstruktioner av kretsar som ska lösa olika kombinatoriska problem.",
             "en": "Test"
         },
         "courses": [

@@ -9,7 +9,10 @@ import phrases from '../../data/translations.json'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import Chip from '../chip/chip'
 
+import ExternalIcon from '../../assets/icons/other/external-link-outline.svg'
+
 export interface Field {
+    kth_link?: string
     title: Phrase
     desc: Phrase
     courses?: Array<{ title: Phrase; url: string }>
@@ -22,7 +25,7 @@ interface FieldCardProps {
     onMouseEnter?: () => void
     onMouseLeave?: () => void
     showDesc?: boolean
-    background?: string,
+    background?: string
 }
 
 const FieldCard: FC<FieldCardProps> = (props) => {
@@ -31,47 +34,97 @@ const FieldCard: FC<FieldCardProps> = (props) => {
     const [open, setOpen] = useState(false)
 
     useEffect(() => {
-        setOnMobile(windowDimensions.width < 700)
+        setOnMobile(windowDimensions.width < 800)
     }, [windowDimensions.width])
 
+    const openField = (e: any) => {
+        if (!e.target.className.includes('field-external')) {
+            setOpen(!open)
+        }
+    }
+
     return (
-        <div
-            className='field-card-container no-tap-highlight'
-        >
-            <Card
-                isClickable={true}
-                light={true}
-            >
+        <div className='field-card-container no-tap-highlight'>
+            <Card light={true}>
                 <div
-                    className={`field-card 
+                    className={`field-card no-tap-highlight  
                         ${open ? 'active' : ''} 
                         ${props.background ? 'background' : ''}
                     `}
-                    onClick={() => setOpen(!open)}
-                    style={{backgroundImage: `url('${props.background}')`}}
+                    onClick={openField}
+                    style={{ backgroundImage: `url('${props.background}')` }}
                 >
-                    <h2>{TranslationModel.translate(props.field.title)}</h2>
-                    { (props.showDesc && !onMobile) && <><br/>{TranslationModel.translate(props.field.desc)} </>}
+                    <h2>
+                        {TranslationModel.translate(props.field.title)}
+                        {!onMobile && props.field.kth_link && (
+                            <a
+                                href={props.field.kth_link}
+                                target='_blank'
+                                rel='noopener noreferrer'
+                            >
+                                <img
+                                    src={ExternalIcon}
+                                    alt=''
+                                    className='field-external'
+                                />
+                            </a>
+                        )}
+                    </h2>
+                    <div className='field-card-desc'>
+                        {props.showDesc && !onMobile && (
+                            <>
+                                <br />
+                                {props.field.tracks && (
+                                    <>
+                                        {props.field.tracks.map((track) => (
+                                            <div className='field-chip-cont' key={`${track.title.se}`}>
+                                                <Chip>
+                                                    {TranslationModel.translate(
+                                                        track.title
+                                                    )}
+                                                </Chip>
+                                            </div>
+                                        ))}
+                                    </>
+                                )}
+                            </>
+                        )}
+                    </div>
                 </div>
                 {open ? (
                     <ContentPadding>
-                        <TextSection>
-                            { (!props.showDesc || onMobile) && <>{TranslationModel.translate(props.field.desc)} <br /><br /></>}
-                            
-                            
-                            { props.field.courses && <>Kurser inom området:
-                            {props.field.courses.map((course) => (
-                                <Chip>
-                                    {TranslationModel.translate(course.title)}
-                                </Chip>
-                            ))}</>}
-                            { props.field.tracks && <>Inriktningar:
-                            {props.field.tracks.map((track) => (
-                                <Chip>
-                                    {TranslationModel.translate(track.title)}
-                                </Chip>
-                            ))}</>}
-                        </TextSection>
+                        <ContentPadding>
+                            <TextSection>
+                                {TranslationModel.translate(props.field.desc)}{' '}
+                                <br />
+                                {props.field.courses && (
+                                    <>
+                                        <h4>{TranslationModel.translate(phrases.we_are_media_technology.courses_within)}</h4>
+                                        {props.field.courses.map((course) => (
+                                            <div className='field-chip-cont' key={`${course.title.se}`}>
+                                                <Chip>
+                                                    {TranslationModel.translate(
+                                                        course.title
+                                                    )}
+                                                </Chip>
+                                            </div>
+                                        ))}
+                                    </>
+                                )}
+                                {props.field.tracks && onMobile && (
+                                    <>
+                                        <h4>{TranslationModel.translate(phrases.we_are_media_technology.tracks)}</h4>
+                                        {props.field.tracks.map((track) => (
+                                            <Chip>
+                                                {TranslationModel.translate(
+                                                    track.title
+                                                )}
+                                            </Chip>
+                                        ))}
+                                    </>
+                                )}
+                            </TextSection>
+                        </ContentPadding>
                     </ContentPadding>
                 ) : (
                     <></>

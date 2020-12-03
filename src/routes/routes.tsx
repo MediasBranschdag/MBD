@@ -7,7 +7,7 @@ import Contactpage from '../pages/contact-page/contact-page';
 //import Studentpage from '../pages/student-page/student-page';
 import Dinnerpage from '../pages/dinner-page/dinnerpage';
 import DinnerAdmin from '../pages/dinner-admin/dinner-admin';
-import WhatIsPage from '../pages/what-is-page/what-is-page';
+import WeArePage from '../pages/we-are-page/we-are-page';
 //import MapPage from '../pages/map-page/map-page';
 
 class Route {
@@ -26,7 +26,7 @@ class Route {
 
 const Routes = {
     homePage: new Route('/', phrases.start, Homepage),
-    whatIsPage: new Route('/medieteknik', phrases.what_is_media_technology, WhatIsPage),
+    whatIsPage: new Route('/medieteknik', phrases.we_are_media_technology, WeArePage),
     compnayPage: new Route('/company', phrases.for_companies, Companypage),
     //studentPage: new Route('/exhibitors', phrases.exhibitors, Studentpage),
     //mapPage: new Route('/map', phrases.map, MapPage),

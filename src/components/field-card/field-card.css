@@ -1,21 +1,46 @@
 
 .field-card-container {
-    padding-bottom: 1em;
+    padding: 1em;
 }
 
 .field-card-container h2 {
     margin: 0;
 }
 
+.field-card-container .field-external {
+    height: 0.8em;
+    padding-left: 0.2em;
+    cursor: pointer;
+}
+
+.field-card-container .field-external:hover {
+    filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(370deg) brightness(104%) contrast(97%);
+}
+
+.field-card-container h4 {
+    margin: 1em 0 0 0;
+}
+
+.field-card-container .field-chip-cont {
+    display: inline-flex;
+}
+
 @media screen and (max-width: 800px) {
     .field-card-container h2 {
         text-align: center;
     }
+
+    .field-card {   
+        max-height: 100px;
+        height: 100px;
+    }
+
+    .field-card-container .field-chip-cont {
+        display: block;
+    }
 }
 
-
 .field-card {
-    width: 100%;
     padding: 20px;
     box-sizing: border-box;
 
@@ -28,7 +53,19 @@
     border-radius: 10px;
     -webkit-border-radius: 10px;
 
+    cursor: pointer;
+
 }
+
+
+@media screen and (max-width: 800px) {
+    .field-card {   
+        max-height: 120px;
+        height: 120px;
+        justify-content: center;
+    }
+}
+
 
 .field-card.background {
     color: #fff;
