@@ -1,38 +1,75 @@
 import React, { FC, Fragment } from 'react'
 
-//import IntroScreen from '../../components/intro-screen/intro-screen';
-
 import Footer from '../../components/footer/footer'
 
 import TranslationModel from '../../model/translationModel'
 import phrases from '../../data/translations.json'
 import ContentSection, {
+    ContentSectionBackground,
     ContentSectionSize,
 } from '../../components/layout/content-section/content-section'
 
-import Background from '../../assets/backgrounds/kth_library.jpg'
+import Background from '../../assets/backgrounds/kth_stone_ground.jpg'
 import FieldCard from '../../components/field-card/field-card'
 import SectionTitle from '../../components/section-title/section-title'
 
 import UndergraduateFields from './undergraduate-fields.json'
 import Masters from './master-fields.json'
 
-import IntroScreenTitle from '../../components/intro-screen/intro-screen-title/intro-screen-title'
-import CenterBackground from '../../components/center-background/center-background'
+import TerminalIcon from '../../assets/icons/other/terminal.svg';
+import ProfileIcon from '../../assets/icons/other/profileIcon_black.svg';
+import MathIcon from '../../assets/icons/other/math.svg';
+
+import AlumniInterviews from '../../components/alumni-interviews/alumni-interviews'
+import IntroScreen from '../../components/intro-screen/intro-screen'
+import IntroScreenButtons from '../../components/intro-screen/intro-screen-buttons/intro-screen-buttons'
 
 const WeArePage: FC = () => {
     return (
         <div className='what-is-page'>
-            <CenterBackground background={Background}>
-                <IntroScreenTitle noGradient bottomPadding>
+            <IntroScreen
+                backgroundImage={Background}
+                title={TranslationModel.translate(phrases.we_are_media_technology)}
+            >
+                <IntroScreenButtons
+                    buttons={[
+                        {
+                            title: TranslationModel.translate(
+                                phrases.we_are_media_technology.alumni_interviews
+                            ),
+                            iconPath: ProfileIcon,
+                            scrollTargetID: 'alumni-interviews',
+                        },
+                        {
+                            title: TranslationModel.translate(
+                                phrases.we_are_media_technology.masters
+                            ),
+                            iconPath: TerminalIcon,
+                            scrollTargetID: 'master-programmes',
+                        },
+                        {
+                            title: TranslationModel.translate(
+                                phrases.we_are_media_technology.undergraduate_fields
+                            ),
+                            iconPath: MathIcon,
+                            scrollTargetID: 'undergraduate-fields',
+                        }
+                    ]}
+                />
+            </IntroScreen>
+
+            <div id='alumni-interviews' />
+            <ContentSection size={ContentSectionSize.large}>
+                <SectionTitle>
                     {TranslationModel.translate(
-                        phrases.we_are_media_technology
+                        phrases.we_are_media_technology.alumni_interviews
                     )}
-                </IntroScreenTitle>
-            </CenterBackground>
+                </SectionTitle>
+                <AlumniInterviews />
+            </ContentSection>
 
             <div id='master-programmes' />
-            <ContentSection size={ContentSectionSize.normal}>
+            <ContentSection background={ContentSectionBackground.dark}>
                 <SectionTitle>
                     {TranslationModel.translate(
                         phrases.we_are_media_technology.masters
@@ -51,7 +88,9 @@ const WeArePage: FC = () => {
                         </div>
                     ))}
                 </div>
-                <br />
+            </ContentSection>
+            <div id='undergraduate-fields' />
+            <ContentSection>
                 <SectionTitle>
                     {TranslationModel.translate(
                         phrases.we_are_media_technology.undergraduate_fields

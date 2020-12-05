@@ -688,6 +688,10 @@
     "we_are_media_technology": {
         "se": "Vi är Medieteknik",
         "en": "We are Media Technology",
+        "alumni_interviews": {
+            "se": "Alumnintervjuer",
+            "en": "Alumni interviews"
+        },
         "masters": {
             "se": "Masterprogram",
             "en": "Masters"

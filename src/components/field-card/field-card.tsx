@@ -45,7 +45,7 @@ const FieldCard: FC<FieldCardProps> = (props) => {
 
     return (
         <div className='field-card-container no-tap-highlight'>
-            <Card light={true}>
+            <Card light isClickable>
                 <div
                     className={`field-card no-tap-highlight  
                         ${open ? 'active' : ''} 
@@ -70,14 +70,17 @@ const FieldCard: FC<FieldCardProps> = (props) => {
                             </a>
                         )}
                     </h2>
-                    <div className='field-card-desc'>
+                    <div>
                         {props.showDesc && !onMobile && (
                             <>
                                 <br />
                                 {props.field.tracks && (
                                     <>
                                         {props.field.tracks.map((track) => (
-                                            <div className='field-chip-cont' key={`${track.title.se}`}>
+                                            <div
+                                                className='field-chip-cont'
+                                                key={`${track.title.se}`}
+                                            >
                                                 <Chip>
                                                     {TranslationModel.translate(
                                                         track.title
@@ -92,16 +95,24 @@ const FieldCard: FC<FieldCardProps> = (props) => {
                     </div>
                 </div>
                 {open ? (
-                    <ContentPadding>
+                    <div className='field-card-desc'>
                         <ContentPadding>
                             <TextSection>
-                                {TranslationModel.translate(props.field.desc)}{' '}
+                                {TranslationModel.translate(props.field.desc)}
                                 <br />
                                 {props.field.courses && (
                                     <>
-                                        <h4>{TranslationModel.translate(phrases.we_are_media_technology.courses_within)}</h4>
+                                        <h4>
+                                            {TranslationModel.translate(
+                                                phrases.we_are_media_technology
+                                                    .courses_within
+                                            )}
+                                        </h4>
                                         {props.field.courses.map((course) => (
-                                            <div className='field-chip-cont' key={`${course.title.se}`}>
+                                            <div
+                                                className='field-chip-cont'
+                                                key={`${props.field.title.se}_${course.title.se}`}
+                                            >
                                                 <Chip>
                                                     {TranslationModel.translate(
                                                         course.title
@@ -113,7 +124,12 @@ const FieldCard: FC<FieldCardProps> = (props) => {
                                 )}
                                 {props.field.tracks && onMobile && (
                                     <>
-                                        <h4>{TranslationModel.translate(phrases.we_are_media_technology.tracks)}</h4>
+                                        <h4>
+                                            {TranslationModel.translate(
+                                                phrases.we_are_media_technology
+                                                    .tracks
+                                            )}
+                                        </h4>
                                         {props.field.tracks.map((track) => (
                                             <Chip>
                                                 {TranslationModel.translate(
@@ -125,7 +141,7 @@ const FieldCard: FC<FieldCardProps> = (props) => {
                                 )}
                             </TextSection>
                         </ContentPadding>
-                    </ContentPadding>
+                    </div>
                 ) : (
                     <></>
                 )}

@@ -1,0 +1,112 @@
+[
+    {
+        "name": "Lucas Grönborg",
+        "master": {
+            "se": "Interaktiv Medieteknik",
+            "en": "Interactive Media Technology"
+        },
+        "picture": "assets/alumni/lucas_grönborg.jpg",
+        "job": {
+            "se": "Systemutvecklare, Valtech",
+            "en": "System Developer, Valtech"
+        },
+        "linkedIn": "https://www.linkedin.com/in/lucas-gr%C3%B6nborg-62023ba6/",
+        "questions": [
+            {
+                "question": {
+                    "se": "Var jobbar du idag och med vad?",
+                    "en": ""
+                },
+                "answer": {
+                    "se": "Jag jobbar med frontendutveckling på ett IT-konsultbolag som heter Valtech.",
+                    "en": ""
+                }
+            },
+            {
+                "question": {
+                    "se": "Hur kom det sig att du valde Medieteknik på KTH?",
+                    "en": ""
+                },
+                "answer": {
+                    "se": "Efter gymnasiet hade jag, och fortfarande har, flertalet intressen som gick hand i hand med medieteknik såsom videospel, musik och film. Medieteknik är ju det tekniska bakom dessa. Dessutom var jag osäker på hur tekniskt intresserad jag var och jämfört med andra program på KTH så väver medieteknik även in mjukare ämnen som design i utbildning. Så det kändes som en självklar utbildning för mig att söka till.",
+                    "en": ""
+                }
+            },
+            {
+                "question": {
+                    "se": "På vilket sätt skulle du säga att man som medieteknikstudent är attraktiv på arbetsmarknaden?",
+                    "en": ""
+                },
+                "answer": {
+                    "se": "Som medietekniker läser man både tekniska kurser men även kurser inom design och samhällsvetenskap. Det gör att vi får ett bra helhetsperspektiv och har lätt att kommunicera med andra discipliner i ett projekt än det man själv jobbar med. Tex. underlättar det om en utvecklare har förståelse för designprocessen eller en designer förstår hur det tekniska fungerar.",
+                    "en": ""
+                }
+            },
+            {
+                "question": {
+                    "se": "Vad är det främsta du fick med dig från medieteknik ut i arbetslivet?",
+                    "en": ""
+                },
+                "answer": {
+                    "se": "Massor av vänner och bekanta! Det nätverket är ovärderligt när man kommer ut i arbetslivet. Förutom vänner för livet så kanske du får höra från någon tidigare medietekniker om ett intressant jobb du inte hört om annars eller kanske till och med rekommenderar dig till en roll du verkligen vill ha. \n\nMedieteknik är ett av de mindre programmen på KTH. Det betyder att det är svårt att inte lära känna många av studenterna på programmet över alla årskurser. Om man deltar i mottagningen är det omöjligt och speciellt om man deltagit i 7 år, hehe.",
+                    "en": ""
+                }
+            }
+        ]
+    },
+    {
+        "name": "Lucas Grönborg",
+        "master": {
+            "se": "Interaktiv Medieteknik",
+            "en": "Interactive Media Technology"
+        },
+        "picture": "assets/alumni/lucas_grönborg.jpg",
+        "job": {
+            "se": "Systemutvecklare, Valtech",
+            "en": "System Developer, Valtech"
+        },
+        "linkedIn": "https://www.linkedin.com/in/lucas-gr%C3%B6nborg-62023ba6/",
+        "questions": [
+            {
+                "question": {
+                    "se": "Var jobbar du idag och med vad?",
+                    "en": ""
+                },
+                "answer": {
+                    "se": "Jag jobbar med frontendutveckling på ett IT-konsultbolag som heter Valtech.",
+                    "en": ""
+                }
+            },
+            {
+                "question": {
+                    "se": "Hur kom det sig att du valde Medieteknik på KTH?",
+                    "en": ""
+                },
+                "answer": {
+                    "se": "Efter gymnasiet hade jag, och fortfarande har, flertalet intressen som gick hand i hand med medieteknik såsom videospel, musik och film. Medieteknik är ju det tekniska bakom dessa. Dessutom var jag osäker på hur tekniskt intresserad jag var och jämfört med andra program på KTH så väver medieteknik även in mjukare ämnen som design i utbildning. Så det kändes som en självklar utbildning för mig att söka till.",
+                    "en": ""
+                }
+            },
+            {
+                "question": {
+                    "se": "På vilket sätt skulle du säga att man som medieteknikstudent är attraktiv på arbetsmarknaden?",
+                    "en": ""
+                },
+                "answer": {
+                    "se": "Som medietekniker läser man både tekniska kurser men även kurser inom design och samhällsvetenskap. Det gör att vi får ett bra helhetsperspektiv och har lätt att kommunicera med andra discipliner i ett projekt än det man själv jobbar med. Tex. underlättar det om en utvecklare har förståelse för designprocessen eller en designer förstår hur det tekniska fungerar.",
+                    "en": ""
+                }
+            },
+            {
+                "question": {
+                    "se": "Vad är det främsta du fick med dig från medieteknik ut i arbetslivet?",
+                    "en": ""
+                },
+                "answer": {
+                    "se": "Massor av vänner och bekanta! Det nätverket är ovärderligt när man kommer ut i arbetslivet. Förutom vänner för livet så kanske du får höra från någon tidigare medietekniker om ett intressant jobb du inte hört om annars eller kanske till och med rekommenderar dig till en roll du verkligen vill ha. \n\nMedieteknik är ett av de mindre programmen på KTH. Det betyder att det är svårt att inte lära känna många av studenterna på programmet över alla årskurser. Om man deltar i mottagningen är det omöjligt och speciellt om man deltagit i 7 år, hehe.",
+                    "en": ""
+                }
+            }
+        ]
+    }
+]
