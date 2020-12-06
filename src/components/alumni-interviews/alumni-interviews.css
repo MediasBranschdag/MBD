@@ -1,10 +1,3 @@
-.alumni-interviews h1 {
+.alumni-interviews h2 {
     margin-bottom: 0.3em;
-}
-
-@media screen and (max-width: 700px) {
-    .alumni-interviews h1 {
-        text-align: center;
-        margin: 1em 0;
-    }
 }

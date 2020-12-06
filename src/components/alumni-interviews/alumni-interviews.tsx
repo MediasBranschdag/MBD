@@ -8,7 +8,6 @@ import interviews from './alumni-interviews.json'
 
 export interface AlumniInterview {
     name: string
-    master: Phrase
     picture: string
     job: Phrase
     linkedIn?: string
@@ -19,16 +18,15 @@ const AlumniInterviews: FC<{}> = (props) => {
     return (
         <div className='alumni-interviews'>
             {interviews.map((alumni: AlumniInterview, i) => (
-                <Fragment key={alumni.name}>
+                <Fragment key={`${alumni.name}_${i}`}>
                     <TextWithContent
                         text={
                             <TextSection>
-                                <h1>
-                                    {alumni.name},{' '}
-                                    {TranslationModel.translate(alumni.master)}
-                                </h1>
-                                {alumni.questions.map((q) => (
-                                    <>
+                                <h2>
+                                    {alumni.name}
+                                </h2>
+                                {alumni.questions.map((q, j) => (
+                                    <Fragment key={`${q.question.se}_${j}`}>
                                         <h4 style={{ marginBottom: 0 }}>
                                             {TranslationModel.translate(
                                                 q.question
@@ -39,7 +37,7 @@ const AlumniInterviews: FC<{}> = (props) => {
                                                 q.answer
                                             )}
                                         </p>
-                                    </>
+                                    </Fragment>
                                 ))}
                             </TextSection>
                         }
