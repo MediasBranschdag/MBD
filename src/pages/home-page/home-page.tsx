@@ -306,9 +306,7 @@ const Homepage: FC = () => {
                 <ContentSection>
                     <SectionTitle>
                         Medias branschdag{' '}
-                        {TranslationModel.translate(phrases.on_instagram)
-                            ?.toString()
-                            .toLowerCase()}
+                        {TranslationModel.translate(phrases.on_instagram)}
                     </SectionTitle>
                     <div className='homepage-instagram-section'>
                         {instagramPosts ? (
@@ -318,7 +316,6 @@ const Homepage: FC = () => {
                                         key={post.id}
                                         imageUrl={post.imageUrl}
                                         linkToPost={post.linkToPost}
-                                        likes={post.numberOfLikes}
                                     />
                                 )
                             })
