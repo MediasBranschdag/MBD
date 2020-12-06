@@ -4,6 +4,8 @@
     include_once('Models/exhibitDateModel.php');
     require_once('./Models/teamModel.php');
 
+    include 'googleConfig.php';
+
     class DinnerPartyModel extends DatabaseModel {
 
         public function __construct() {
@@ -44,6 +46,63 @@
                   return ($item->email === $email);
               });
               return count($results) > 0 || $email === 'branschdag@medieteknik.com';
+        }
+
+        public function updateGoogleSheet() {
+            header('Access-Control-Allow-Origin: *');
+
+            $clearEndpoint = $_GET['clearEndpoint'];
+            $putEndpoint = $_GET['putEndpoint'];
+            $guestValues = json_decode($_POST['guestValues']);
+            $token = $_GET['token'];
+
+            $jsonData = array(
+                'values' => $guestValues
+            );
+                
+            $jsonDataEncoded = json_encode($jsonData);
+
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => $clearEndpoint . '?key=' . $GOOGLE_API_KEY,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_HTTPHEADER => array(
+                  'cache-control: no-cache',
+                  'Authorization: Bearer ' . $token
+                ),
+              ));
+              
+            $response = json_decode(curl_exec($curl));
+            $err = curl_error($curl);
+            
+            curl_close($curl);
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => $putEndpoint . '?key=' . $GOOGLE_API_KEY . '&valueInputOption=RAW',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'PUT',
+                CURLOPT_POSTFIELDS =>  $jsonDataEncoded,
+                CURLOPT_HTTPHEADER => array(
+                    'Content-Type: application/json',
+                    'cache-control: no-cache',
+                    'Authorization: Bearer ' . $token
+                ),
+            ));
+              
+            $response = json_decode(curl_exec($curl));
+            $err = curl_error($curl);
+            
+            curl_close($curl);
+
+            return $response;
+
         }
 
         public function getDinnerParty() {
@@ -332,6 +391,9 @@
                     break;
                 case 'get-allergies':
                     $data = $eventModel->getAllergies();
+                    break;
+                case 'update-sheet':
+                    $data = $eventModel->updateGoogleSheet();
                     break;
                 default:
                     $data = $eventModel->getDinnerParty();
