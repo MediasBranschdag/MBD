@@ -2,7 +2,6 @@ import BACKEND_PATH from '../backend-environment'
 import axios from 'axios'
 import { Phrase } from './translationModel'
 import phrases from '../data/translations.json'
-import credentials from '../credentials.json'
 
 const DINNER_PARTY_FILE = 'getDinnerParty.php'
 
@@ -262,7 +261,8 @@ export async function updateGoogleSheet(accessToken: string): Promise<string> {
     const guests = await getGuests(accessToken)
 
     const googleSheetsEndpoint = `https://sheets.googleapis.com/v4/spreadsheets/${dinnerParty.googleSheetsId}/values`
-    const keyParameter = `?key=${credentials.google.apiKey}`
+    const clearEndpoint = `${googleSheetsEndpoint}/A:${guests.length > 0 ? String.fromCharCode(64 + Object.keys(guests[0]).length) : 'Z'}:clear/`
+    const putEndpoint = `${googleSheetsEndpoint}/A1/`
 
     const guestValues =
         guests.length > 0
@@ -284,28 +284,15 @@ export async function updateGoogleSheet(accessToken: string): Promise<string> {
                       .map((guest) => Object.values(guest)),
               ]
             : guests
-    axios
-        .post(
-            `${googleSheetsEndpoint}/A:${guests.length > 0 ? String.fromCharCode(64 + Object.keys(guests[0]).length) : 'Z'}:clear/${keyParameter}`,
-            {},
-            {
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            }
-        )
-        .then(() => {
-            axios.put(
-                `${googleSheetsEndpoint}/A1/${keyParameter}&valueInputOption=RAW`,
-                {
-                    values: guestValues,
-                },
-                {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                }
-            )
+
+    let formData = new FormData()
+    formData.append('guestValues', JSON.stringify(guestValues))
+    await axios
+        .post(BACKEND_PATH + DINNER_PARTY_FILE + 
+            `?action=update-sheet&token=${accessToken}&clearEndpoint=${clearEndpoint}&putEndpoint=${putEndpoint}`,
+            formData)
+        .catch((err) => {
+            throw err
         })
     return `https://docs.google.com/spreadsheets/d/${dinnerParty.googleSheetsId}/`
 }
