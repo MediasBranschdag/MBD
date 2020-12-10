@@ -14,7 +14,7 @@ import TextSection, {
     TextSectionAlignment,
 } from '../../components/text-section/text-section'
 import { Button, ButtonTypes } from '../../components/button/button'
-import TextWithContent from '../../components/text-with-content/text-with-content'
+//import TextWithContent from '../../components/text-with-content/text-with-content'
 
 import TicketIcon from '../../assets/icons/other/tickets_black.svg'
 import BoothIcon from '../../assets/icons/other/booth_black.svg'
@@ -22,7 +22,7 @@ import QuestionIcon from '../../assets/icons/other/question_mark_black.svg'
 import MBDLogoBlack from '../../assets/mbd-logo/mbd-logo-black.svg'
 
 import IntroScreenBackground from '../../assets/backgrounds/red_flower_dark_blur.jpg'
-import MapBackground from '../../assets/backgrounds/map_nymble.jpg'
+//import MapBackground from '../../assets/backgrounds/map_nymble.jpg'
 import { getSalesTeamMemebers, TeamMember } from '../../model/teamModel'
 import SectionTitle from '../../components/section-title/section-title'
 import ProfileCard from '../../components/profile-card/profile-card'
@@ -89,9 +89,9 @@ const Companypage = () => {
                             scrollTargetID: 'companypage-sign-up',
                         },
                         {
-                            title: TranslationModel.translate(phrases.the_fair),
+                            title: TranslationModel.translate(phrases.sales_team),
                             iconPath: MBDLogoBlack,
-                            scrollTargetID: 'companypage-fair',
+                            scrollTargetID: 'companypage-contact',
                         },
                     ]}
                 />
@@ -207,36 +207,17 @@ const Companypage = () => {
                     </TextSection>
                     <div className='companypage-offer'>
                         <Card light>
-                            <ContentPadding>
+                            <ContentPadding><ContentPadding>
                                 {TranslationModel.translate({
                                     se: (
                                         <>
                                             <h4>Standard</h4>
-                                            <h3>20 000 kr</h3>
+                                            <h3>10 000 kr</h3>
                                             <br />
                                             <p>
                                                 <ul>
                                                     <li>
-                                                        6 m<sup>2</sup>{' '}
-                                                        monterplats
-                                                    </li>
-                                                    <li>
-                                                        Två sittningsbiljetter
-                                                    </li>
-                                                    <li>
-                                                        Tillgång till
-                                                        företagslounge
-                                                    </li>
-                                                    <li>
-                                                        Ett ståbord och två
-                                                        stolar
-                                                    </li>
-                                                    <li>
-                                                        Lunch och fika för två
-                                                    </li>
-                                                    <li>
-                                                        En personlig
-                                                        företagsvärd
+                                                        Utställningsplats på vår digitala platform
                                                     </li>
                                                     <li>
                                                         Exponering på hemsida
@@ -249,30 +230,12 @@ const Companypage = () => {
                                     en: (
                                         <>
                                             <h4>Standard</h4>
-                                            <h3>20 000 SEK</h3>
+                                            <h3>10 000 SEK</h3>
                                             <br />
                                             <p>
                                                 <ul>
                                                     <li>
-                                                        6 m<sup>2</sup> showcase
-                                                        area
-                                                    </li>
-                                                    <li>
-                                                        Two dinner party tickets
-                                                    </li>
-                                                    <li>
-                                                        Access to company lounge
-                                                    </li>
-                                                    <li>
-                                                        One standing table and
-                                                        two chairs
-                                                    </li>
-                                                    <li>
-                                                        Lunch and fika for two
-                                                        company representatives
-                                                    </li>
-                                                    <li>
-                                                        Personal company host
+                                                        A spot on our digital fair platform
                                                     </li>
                                                     <li>
                                                         Active promotion on our
@@ -283,172 +246,7 @@ const Companypage = () => {
                                         </>
                                     ),
                                 })}
-                            </ContentPadding>
-                        </Card>
-                        <Card light>
-                            <ContentPadding>
-                                {TranslationModel.translate({
-                                    se: (
-                                        <>
-                                            <h4>Huvudsponsor</h4>
-                                            <h3>50 000 kr</h3>
-                                            <h5>Begränsat till ett företag</h5>
-                                            <p>
-                                                <ul>
-                                                    <li>
-                                                        8 m<sup>2</sup>{' '}
-                                                        monterplats
-                                                    </li>
-                                                    <li>
-                                                        Fyra sittningsbiljetter
-                                                    </li>
-                                                    <li>
-                                                        Tillgång till
-                                                        företagslounge
-                                                    </li>
-                                                    <li>
-                                                        Två ståbord och fyra
-                                                        stolar
-                                                    </li>
-                                                    <li>
-                                                        Lunch och fika för fyra
-                                                    </li>
-                                                    <li>
-                                                        Två personliga
-                                                        företagsvärdar
-                                                    </li>
-                                                    <li>
-                                                        Exponering på hemsida
-                                                        och våra sociala medier
-                                                        samt i sektionslokalen
-                                                    </li>
-                                                    <li>
-                                                        Er logga på
-                                                        företagsvärdars kläder
-                                                    </li>
-                                                    <li>
-                                                        Intervju med en
-                                                        företagsrepresentant
-                                                        från er som publiceras i
-                                                        sociala medier
-                                                    </li>
-                                                    <li>
-                                                        Möjlighet att hålla ett
-                                                        event med oss utan extra
-                                                        kostnad
-                                                        <ul>
-                                                            <li>
-                                                                Exempelvis en
-                                                                lunchföreläsning,
-                                                                pub eller AW
-                                                            </li>
-                                                            <li>
-                                                                Mat till 50
-                                                                personer ingår
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        En annons publicerad i
-                                                        två av våra kanaler
-                                                        <ul>
-                                                            <li>
-                                                                Våra sociala
-                                                                medier eller
-                                                                Medieteknik-sektionens
-                                                                slutna
-                                                                Facebook-grupp
-                                                                med över 400
-                                                                medlemmar
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </p>
-                                        </>
-                                    ),
-                                    en: (
-                                        <>
-                                            <h4>Main sponsor</h4>
-                                            <h3>50 000 SEK</h3>
-                                            <h5>Limited to one company</h5>
-                                            <p>
-                                                <ul>
-                                                    <li>
-                                                        8 m<sup>2</sup> showcase
-                                                        area
-                                                    </li>
-                                                    <li>
-                                                        Four dinner party
-                                                        tickets
-                                                    </li>
-                                                    <li>
-                                                        Access to company lounge
-                                                    </li>
-                                                    <li>
-                                                        Two standing tables and
-                                                        four chairs
-                                                    </li>
-                                                    <li>
-                                                        Lunch and fika for four
-                                                        company representatives
-                                                    </li>
-                                                    <li>
-                                                        Two personal company
-                                                        hosts
-                                                    </li>
-                                                    <li>
-                                                        Active promotion on our
-                                                        website, social media
-                                                        and student division
-                                                        premises
-                                                    </li>
-                                                    <li>
-                                                        Your logo displayed on
-                                                        company hosts' clothes
-                                                    </li>
-                                                    <li>
-                                                        Interview with one of
-                                                        your representatives
-                                                        published on our social
-                                                        media
-                                                    </li>
-                                                    <li>
-                                                        Opportunity to hold an
-                                                        event with us at no
-                                                        extra charge
-                                                        <ul>
-                                                            <li>
-                                                                For example a
-                                                                lunch lecture,
-                                                                pub or AW
-                                                            </li>
-                                                            <li>
-                                                                Food for 50 people included
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        One advertisement
-                                                        published in two of our
-                                                        channels
-                                                        <ul>
-                                                            <li>
-                                                                Our social media
-                                                                or the private
-                                                                Media Technology
-                                                                chapter Facebook
-                                                                group with over
-                                                                400 members
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </p>
-                                        </>
-                                    ),
-                                })}
-                            </ContentPadding>
+                            </ContentPadding></ContentPadding>
                         </Card>
                     </div>
                     <TextSection align={TextSectionAlignment.center}>
@@ -458,9 +256,6 @@ const Companypage = () => {
                                     <span>
                                         Kontakta oss gärna för frågor eller
                                         information om andra paketlösningar!
-                                        <br />
-                                        För samtliga paket ingår
-                                        avbeställningsskydd.
                                     </span>
                                 ),
                                 en: (
@@ -468,9 +263,6 @@ const Companypage = () => {
                                         Contact us for questions or to get
                                         information about other package
                                         solutions!
-                                        <br />
-                                        Cancellation insurance is included for
-                                        each package.
                                     </span>
                                 ),
                             })}
@@ -498,7 +290,7 @@ const Companypage = () => {
                 </div>
             </ContentSection>
 
-            {/* Fair section */}
+            {/* Fair section
             <div id='companypage-fair' className='companypage-fair'>
                 <div
                     className='companypage-map-background'
@@ -615,7 +407,7 @@ const Companypage = () => {
                         }
                     />
                 </ContentSection>
-            </div>
+            </div> */}
 
             {/* Company contact section */}
             <div id='companypage-contact'>

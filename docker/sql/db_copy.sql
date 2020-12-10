@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: MBD-mysql:3306
--- Generation Time: Jul 19, 2020 at 06:44 PM
--- Server version: 5.7.30
--- PHP Version: 7.4.5
+-- Generation Time: Dec 10, 2020 at 04:08 PM
+-- Server version: 5.7.29
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -478,7 +479,8 @@ INSERT INTO `positions` (`id`, `desc_se`, `desc_en`, `priority`) VALUES
 (5, 'Art Director', 'Art Director', 4),
 (6, 'Sittningsansvarig', 'Dinner Party Organizer', 4),
 (7, 'Logistikansvarig', 'Logistics', 4),
-(8, 'Webbutvecklare', 'Web Developer', 4);
+(8, 'Webbutvecklare', 'Web Developer', 4),
+(9, 'Eventansvarig', 'Event Organizer', 4);
 
 -- --------------------------------------------------------
 
@@ -502,9 +504,7 @@ INSERT INTO `team_involvement` (`id`, `personId`, `year`, `positionId`, `image`)
 (1, 1, 2021, 1, 'nicole.jpg'),
 (2, 2, 2021, 1, 'john.jpg'),
 (3, 3, 2021, 4, 'amanda.jpg'),
-(4, 4, 2021, 7, 'ebba.jpg'),
-(5, 5, 2021, 7, 'emily.jpg'),
-(6, 6, 2021, 6, 'malin.jpg'),
+(5, 5, 2021, 9, 'emily.jpg'),
 (7, 7, 2021, 8, 'mahmoud.jpg'),
 (8, 8, 2021, 8, 'ella_klara.jpg'),
 (9, 9, 2021, 5, 'louise.jpg'),
@@ -1598,7 +1598,7 @@ ALTER TABLE `persons`
 -- AUTO_INCREMENT for table `positions`
 --
 ALTER TABLE `positions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `team_involvement`
