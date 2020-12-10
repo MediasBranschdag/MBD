@@ -1,0 +1,24 @@
+.contactform {
+    display: flex;
+    column-gap: 1em;
+    row-gap: 1.5em;
+    flex-wrap: wrap;
+}
+
+.contactform .contact-input-info {
+    flex: 4.5;
+}
+
+.contactform .contact-input-message {
+    flex: 5.5;
+}
+
+@media screen and (max-width: 650px) {
+    .contactform {
+        flex-direction: column;
+    }
+
+    .contactform .contact-input-message {
+        height: 10em;
+    }
+}
