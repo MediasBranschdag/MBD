@@ -104,7 +104,7 @@ const Homepage: FC = () => {
                                                     {mbdDate.getStartMonth()}{' '}
                                                     {mbdDate.getStartYear()}
                                                 </b>{' '}
-                                                går <b>Medias Branschdag</b>, meditekniksektionen på <b>KTH</b>:s årliga{' '}
+                                                går <b>Medias Branschdag</b>, medietekniksektionen på <b>KTH</b>:s årliga{' '}
                                                 <b>arbetsmarknadsmässa</b>, av stapeln, denna gång <b>digitalt</b>!{' '}
                                                 <br />
                                                 <br />
