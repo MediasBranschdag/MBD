@@ -54,11 +54,14 @@ const AnimatedMBDLogo: FC = () => {
                 </svg>
             </div>
             <div>
+                
                 <div className="animated-logo-title">
                     <div className={`animated-logo-title-part ${logoPartActiveStep > 0 ? 'active' : ''}`}>MEDIAS </div>
                     <div className={`animated-logo-title-part ${logoPartActiveStep > 1 ? 'active' : ''}`}>BRANSCH</div>
                     <div className={`animated-logo-title-part ${logoPartActiveStep > 2 ? 'active' : ''}`}>DAG</div>
                 </div>
+                
+            <div className='digital-fair'>Digital edition</div>
                 <div className="animated-logo-info">
                     <div className="animated-logo-info-section">
                         <img src={CalendarIcon} alt="" />
@@ -75,7 +78,7 @@ const AnimatedMBDLogo: FC = () => {
                     <div className="animated-logo-info-section">
                         <img src={MapIcon} alt="" />
                         <Line lineType={LineType.horizontal}/>
-                        <div>NYMBLE</div>
+                        <div>ONLINE</div>
                     </div>
                 </div>
             </div>
