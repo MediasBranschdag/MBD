@@ -104,11 +104,8 @@ const Homepage: FC = () => {
                                                     {mbdDate.getStartMonth()}{' '}
                                                     {mbdDate.getStartYear()}
                                                 </b>{' '}
-                                                kommer kårhuset Nymble på{' '}
-                                                <b>KTH</b> öppna dörrarna för{' '}
-                                                <b>Medias Branschdag</b> -
-                                                Meditekniksektionens årliga{' '}
-                                                <b>arbetsmarknadsmässa</b>.{' '}
+                                                går <b>Medias Branschdag</b>, medietekniksektionen på <b>KTH</b>:s årliga{' '}
+                                                <b>arbetsmarknadsmässa</b>, av stapeln, denna gång <b>digitalt</b>!{' '}
                                                 <br />
                                                 <br />
                                                 {/*Programmering, webbutveckling, entreprenörskap, kommunikation, design &amp; signalbehandling är bara några av kompetenserna som genomsyrar mässan. Läs mer om medieteknik på fliken “Vad är medieteknik?“.*/}
@@ -158,7 +155,7 @@ const Homepage: FC = () => {
                                                     of {mbdDate.getStartMonth()}{' '}
                                                     {mbdDate.getStartYear()}
                                                 </b>{' '}
-                                                the doors will open for{' '}
+                                                the <b>digital</b> doors will open for{' '}
                                                 <b>Medias Branschdag</b> at{' '}
                                                 <b>KTH</b> - The Media
                                                 Technology chapter's annual{' '}
