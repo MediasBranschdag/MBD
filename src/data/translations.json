@@ -202,7 +202,7 @@
         "en": "th"
     },
     "sales_team": {
-        "se": "Våra företagsansvariga",
+        "se": "Företagsansvariga",
         "en": "Our sales team"
     },
     "search_other": {
@@ -407,8 +407,8 @@
             "en": "No"
         },
         "hold_events": {
-            "se": "Är ni intresserade av att hålla andra aktiviteter eller event i samband med Medias Branschdag? (t.ex. lunchföreläsning eller pub)",
-            "en": "Are you intrested in hosting other events in connection to Medias Branschdag? (e.g. lunch lecture or pub)"
+            "se": "Är ni intresserade av att hålla andra aktiviteter eller event i samband med Medias Branschdag? (t.ex. lunchföreläsning)",
+            "en": "Are you intrested in hosting other events in connection to Medias Branschdag? (e.g. lunch lecture)"
         },
         "opportunities_header": {
             "se": "Vi erbjuder studenter möjlighet till:",

@@ -158,13 +158,6 @@ function parseGuest(guestJson: any): Guest {
     }
 }
 
-export async function getGoogleAPIKey(): Promise<string> {
-    const response = await axios.get(
-        BACKEND_PATH + 'googleConfig.php'
-    )
-    return response.data ?? ""
-}
-
 export async function getDinnerParty(): Promise<DinnerParty | null> {
     const response = await axios.get(BACKEND_PATH + DINNER_PARTY_FILE)
     return response.data ? parseDinnerParty(response.data) : null
