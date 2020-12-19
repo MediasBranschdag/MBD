@@ -33,7 +33,7 @@ export class InstagramModel {
                 );
             }))
             .catch(r => {
-                
+                return []
             });
     }
 }
