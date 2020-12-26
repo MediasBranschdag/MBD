@@ -4,9 +4,10 @@
     padding: 4px 10px;
     font-size: 14px;
     margin: 5px 5px 5px 0;
+    transition: background-color 200ms ease;
 }
 
-.chip.selected {
+.chip.selected, .chip.clickable:hover {
     background-color: var(--theme-primary-color-normal);
 }
 

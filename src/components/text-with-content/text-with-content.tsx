@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import './text-with-content.css';
 
 
-const TextWithContent: FC<{text: React.ReactNode, content: React.ReactNode}> = (props) => {
+const TextWithContent: FC<{text: ReactNode, content: ReactNode, reverse?: Boolean }> = (props) => {
     return (
-        <div className='text-with-content'>
+        <div className={`text-with-content ${props.reverse ? 'reverse' : ''}`}>
             <div className="text-with-content-text">
                 {props.text}
             </div>
