@@ -26,12 +26,8 @@ class Route {
 
 const Routes = {
     homePage: new Route('/', phrases.start, Homepage),
-<<<<<<< HEAD
     whatIsPage: new Route('/medieteknik', phrases.we_are_media_technology, WeArePage),
     compnayPage: new Route('/company', phrases.for_companies, Companypage),
-=======
-    companyPage: new Route('/company', phrases.for_companies, Companypage),
->>>>>>> master
     //studentPage: new Route('/exhibitors', phrases.exhibitors, Studentpage),
     //mapPage: new Route('/map', phrases.map, MapPage),
     //dinnerPartyPage: new Route('/dinner', phrases.dinner_party, Dinnerpage),

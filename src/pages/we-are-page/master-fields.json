@@ -5,7 +5,7 @@
         "kth_link": "https://www.kth.se/en/studies/master/interactivemediatechnology/description-1.593765",
         "desc": {
             "se": "Fördjupade kunskaper för människans kognition och perception, om designprocesser och tekniker inom multimodala gränssnitt. Omfattar även kunskaper om den tekniska och mångvetenskapliga grund som medierna och deras teknik vilar på med fokus på design och teknikutveckling. Möjlighet att studera till robotik, maskininlärning, tal- och igenkänningsteknik samt visualisering i form av bl.a. datagrafik.",
-            "en": "Test"
+            "en": "In-depth knowledge about the human cognition and perception, design processes and technologies within multimodal interfaces. The master programme focuses on design and development of media technologies. Students can choose to delve into robotics, machine learning, speech recognition and visualization in the form of computer graphics."
         },
         "tracks": [
             {
@@ -56,7 +56,7 @@
         "kth_link": "https://www.kth.se/en/studies/master/computer-science/description-1.419974",
         "desc": {
             "se": "Mastern börjar med obligatoriska kurser inom avancerade algoritmer, artificiell intelligens, maskininlärning, datasäkerhet, internetprotokoll och forskningsmetodik. Efter detta väljer man en av åtta specialiseringar. Notera att de spåren i sig har flera valbara inriktningar och villkorligt valfria/valfria kurser vilket innebär att det även inom spåren kan finnas stor variation på utbildningen.",
-            "en": "Test"
+            "en": "The master begins with obligatory courses within advanced algorithms, AI, machine learning, data security, internet protocols and research methods. Students are then free to choose between eight tracks. It is worth noting that these tracks offer great freedom with many elective courses, giving a great variety of specialities for students."
         },
         "tracks": [
             {
@@ -147,7 +147,7 @@
         "kth_link": "https://www.kth.se/en/studies/master/machinelearning/description-1.48533",
         "desc": {
             "se": "Maskininlärning utvecklar algoritmer för att hitta mönster eller göra förutsägelser från empiriska data. Kurser i maskininlärning och artificiell intelligens (AI) följs av en avancerade nivåer och forskningsmetodik. Från andra terminen väljer studenter kurser från två områden: application domains within machine learning och theoretical machine learning. Dessa områden motsvarar kärnkompetensen hos en maskininlärningsexpert.",
-            "en": "Test"
+            "en": "Machine learning develops algorithms to find patterns and make predictions based on empirical data. Courses in machine learning and AI are followed by more advanced subjects and research methodology. After the second semester, students are able to choose courses from two areas: application domains within machine learning and theoretical machine learning."
         },
         "tracks": [
             {
@@ -178,7 +178,7 @@
         "kth_link": "https://www.kth.se/en/studies/master/ict-innovation",
         "desc": {
             "se": "Ger en teknisk utbildning inom kommunikations- och informationsteknik och erbjuder affärsinriktade kurser inom innovation och entreprenörskap. Kurser inom I&E (innovation och entreprenörskap) i mastern förbereder kommande ICT ingenjörer till ett entreprenöriellt tankesätt som ska bidra till en digital transformation.",
-            "en": "Test"
+            "en": "Provides a technical education within communication and information technology and offers business-centered courses within innovation and entrepreneurship. Courses within I&E (innovation and entrepreneurship) prepares future ICT engineers for an entrepreneurial way of thinking to aid in digitalization."
         },
         "tracks": [
             {

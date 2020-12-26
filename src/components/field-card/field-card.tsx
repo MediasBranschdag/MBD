@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC, useState, useEffect, Fragment } from 'react'
 import './field-card.css'
 import Card from '../card/card'
 import TextSection from '../text-section/text-section'
@@ -113,11 +113,13 @@ const FieldCard: FC<FieldCardProps> = (props) => {
                                                 className='field-chip-cont'
                                                 key={`${props.field.title.se}_${course.title.se}`}
                                             >
-                                                <Chip>
-                                                    {TranslationModel.translate(
-                                                        course.title
-                                                    )}
-                                                </Chip>
+                                                <a href={course.url} target='_blank' rel='noopener noreferrer'>
+                                                    <Chip clickable>
+                                                        {TranslationModel.translate(
+                                                            course.title
+                                                        )}
+                                                    </Chip>
+                                                </a>
                                             </div>
                                         ))}
                                     </>
@@ -131,11 +133,13 @@ const FieldCard: FC<FieldCardProps> = (props) => {
                                             )}
                                         </h4>
                                         {props.field.tracks.map((track) => (
-                                            <Chip>
-                                                {TranslationModel.translate(
-                                                    track.title
-                                                )}
-                                            </Chip>
+                                            <Fragment key={`${track.title.se}`}>
+                                                <Chip>
+                                                    {TranslationModel.translate(
+                                                        track.title
+                                                    )}
+                                                </Chip>
+                                            </Fragment>
                                         ))}
                                     </>
                                 )}
