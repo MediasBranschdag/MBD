@@ -1,0 +1,103 @@
+
+.field-card-container {
+    padding: 1em;
+}
+
+.field-card-container .card {
+    background-color: transparent;
+}
+
+
+.field-card-container h2 {
+    margin: 0;
+}
+
+.field-card-container .field-external {
+    height: 0.8em;
+    padding-left: 0.2em;
+    cursor: pointer;
+}
+
+.field-card-container .field-external:hover {
+    filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(370deg) brightness(104%) contrast(97%);
+}
+
+.field-card-container h4 {
+    margin: 1em 0 0 0;
+}
+
+.field-card-container .field-chip-cont {
+    display: inline-flex;
+}
+
+@media screen and (max-width: 800px) {
+    .field-card-container h2 {
+        text-align: center;
+    }
+
+    .field-card {   
+        max-height: 100px;
+        height: 100px;
+    }
+
+    .field-card-container .field-chip-cont {
+        display: block;
+    }
+}
+
+.field-card {
+    padding: 20px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;    
+    box-shadow: 0px -5px 10px 2px var(--theme-dark-color-light);
+    user-select: none;
+
+    border-radius: 10px 10px 0 0;
+    -webkit-border-radius: 10px 10px 0 0;
+
+    cursor: pointer;
+
+}
+
+.field-card-desc {
+    cursor: initial !important;
+    padding: 0 15px;
+    background-color: var(--theme-light-color-normal);
+    color: #000;
+}
+
+
+@media screen and (max-width: 800px) {
+    .field-card {   
+        max-height: 120px;
+        height: 120px;
+        justify-content: center;
+    }
+
+    .field-card-desc {
+        padding: 0;
+    }
+}
+
+
+.field-card.background {
+    color: #fff;
+    background-position: 0%;
+    background-size: cover;
+}
+
+.field-card-employments {
+    display: flex;
+    padding: 5px 0 5px;
+}
+
+.field-card-website {
+    flex: 1;
+}
+
+
+
+    

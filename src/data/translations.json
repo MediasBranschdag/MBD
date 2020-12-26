@@ -685,6 +685,30 @@
             "en": "Saved."
         }
     },
+    "we_are_media_technology": {
+        "se": "Vi är Medieteknik",
+        "en": "We are Media Technology",
+        "alumni_interviews": {
+            "se": "Alumnintervjuer",
+            "en": "Alumni interviews"
+        },
+        "masters": {
+            "se": "Masterprogram",
+            "en": "Masters"
+        },
+        "undergraduate_fields": {
+            "se": "Kandidatområden",
+            "en": "Undergraduate fields"
+        },
+        "courses_within": {
+            "se": "Kurser inom området",
+            "en": "Courses within the area"
+        },
+        "tracks": {
+            "se": "Inriktningar",
+            "en": "Tracks"
+        }
+    },
     "photo_thanks_start": {
         "se": "Stort tack till",
         "en": "Big thanks to"
