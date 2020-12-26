@@ -70,6 +70,13 @@
     height: 20px;
 }
 
+.digital-fair {
+    font-family: 'VT323', 'Open Sans', sans-serif;
+    text-align: right;
+    font-size: 2em;
+    color: var(--theme-light-color-light);
+}
+
 @media (max-width: 610px) {
     .animated-logo-title {
         font-size: 30px;
@@ -83,6 +90,10 @@
     .animated-logo-container {
         height: 200px;
         width: 200px;
+    }
+
+    .digital-fair {
+        font-size: 1.2em;
     }
 }
 

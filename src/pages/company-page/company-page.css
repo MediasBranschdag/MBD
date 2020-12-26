@@ -1,10 +1,26 @@
 .companypage-offer {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     column-gap: 25px;
     row-gap: 25px;
 
     margin-bottom: 25px;
+
+    color: var(--theme-text-dark);
+}
+
+.companypage-offer > div {
+    padding: 0 1em;
+    border: 1px solid #e5e3dd;
+}
+
+.companypage-offer h3, .companypage-offer h4, .companypage-offer h5 {
+    text-align: center;
+    margin: 0.5em 0;
+}
+
+.companypage-offer li {
+    padding: 0.3em 0;
 }
 
 .companypage-fair {

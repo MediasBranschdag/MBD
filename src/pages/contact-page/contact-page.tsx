@@ -1,8 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
 import './contact-page.css'
 
-//import IntroScreen from '../../components/intro-screen/intro-screen';
-
 import Footer from '../../components/footer/footer'
 
 import TranslationModel from '../../model/translationModel'
@@ -13,11 +11,10 @@ import ContentSection, {
 import { TeamMember, getAllTeamMembers } from '../../model/teamModel'
 import ProfileCard from '../../components/profile-card/profile-card'
 import TextSection from '../../components/text-section/text-section'
-import ContactForm from '../company-page/contact-form/contact-form'
+import ContactForm from './contact-form/contact-form'
 
-import Background from '../../assets/backgrounds/branches_buds.jpg'
-import IntroScreenTitle from '../../components/intro-screen/intro-screen-title/intro-screen-title'
-import CenterBackground from '../../components/center-background/center-background'
+import Background from '../../assets/backgrounds/team.jpg'
+import IntroScreen from '../../components/intro-screen/intro-screen'
 
 const Contactpage: FC = () => {
     const [pgMembers, setPgMembers] = useState<TeamMember[]>([])
@@ -29,19 +26,14 @@ const Contactpage: FC = () => {
 
     return (
         <div className='contactpage'>
-            {/* Image on PG, TODO add when we have a picture of the whole group
-            <IntroScreen 
-                title={TranslationModel.translate(phrases.the_project_group)}>
+            <IntroScreen
+                title={TranslationModel.translate(phrases.the_project_group)}
+            >
                 <div
-                    style={{backgroundImage: `url(${Background})`}}
-                    className="contactpage-background"></div>
-            </IntroScreen>*/}
-
-            <CenterBackground background={Background}>
-                <IntroScreenTitle bottomPadding>
-                    {TranslationModel.translate(phrases.the_project_group)}
-                </IntroScreenTitle>
-            </CenterBackground>
+                    style={{ backgroundImage: `url(${Background})` }}
+                    className='contactpage-background'
+                ></div>
+            </IntroScreen>
 
             {/* List of every memeber in PG */}
             <ContentSection>
@@ -61,16 +53,25 @@ const Contactpage: FC = () => {
                         )
                     })}
                 </div>
-            </ContentSection>
 
+                <div className='photographer-thanks'>
+                    {TranslationModel.translate(phrases.photo_thanks_start)}{' '}
+                    <a
+                        href='https://www.instagram.com/mikaelaphoto/'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                    >
+                        Mikaela Gärde
+                    </a>{' '}
+                    {TranslationModel.translate(phrases.photo_thanks_end)}!
+                </div>
+            </ContentSection>
             {/* Contact form*/}
             <ContentSection background={ContentSectionBackground.dark}>
                 <TextSection>
                     <h1>{TranslationModel.translate(phrases.contact_us)}!</h1>
 
                     <ContactForm />
-
-                    <h4>branschdag@medieteknik.com</h4>
                 </TextSection>
             </ContentSection>
 

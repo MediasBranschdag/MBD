@@ -102,8 +102,8 @@
         "en": "Show less"
     },
     "on_instagram": {
-        "se": "På Instagram",
-        "en": "On Instagram"
+        "se": "på Instagram",
+        "en": "on Instagram"
     },
     "follow_social_media": {
         "se": "Följ oss på sociala medier",
@@ -157,9 +157,9 @@
         "se": "Vilka är vi",
         "en": "Who are we"
     },
-    "exhibitor_package": {
-        "se": "Utställarpaketet",
-        "en": "Exhibitor Package"
+    "exhibitor_packages": {
+        "se": "Utställarpaket",
+        "en": "Exhibitor Packages"
     },
     "package_showcase_area": {
         "se": "Monterplats",
@@ -202,7 +202,7 @@
         "en": "th"
     },
     "sales_team": {
-        "se": "Våra företagsansvariga",
+        "se": "Företagsansvariga",
         "en": "Our sales team"
     },
     "search_other": {
@@ -407,8 +407,8 @@
             "en": "No"
         },
         "hold_events": {
-            "se": "Är ni intresserade av att hålla andra aktiviteter eller event i samband med Medias Branschdag? (t.ex. lunchföreläsning eller pub)",
-            "en": "Are you intrested in hosting other events in connection to Medias Branschdag? (e.g. lunch lecture or pub)"
+            "se": "Är ni intresserade av att hålla andra aktiviteter eller event i samband med Medias Branschdag? (t.ex. lunchföreläsning)",
+            "en": "Are you intrested in hosting other events in connection to Medias Branschdag? (e.g. lunch lecture)"
         },
         "opportunities_header": {
             "se": "Vi erbjuder studenter möjlighet till:",
@@ -708,5 +708,13 @@
             "se": "Inriktningar",
             "en": "Tracks"
         }
+    },
+    "photo_thanks_start": {
+        "se": "Stort tack till",
+        "en": "Big thanks to"
+    },
+    "photo_thanks_end": {
+        "se": "för foto",
+        "en": "for taking our photos"
     }
 }

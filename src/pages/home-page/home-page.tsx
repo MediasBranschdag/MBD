@@ -10,6 +10,7 @@ import CompanyIcon from '../../assets/icons/other/company.svg'
 import FacebookIcon from '../../assets/icons/other/facebook.svg'
 import InstagramIcon from '../../assets/icons/other/instagram.svg'
 import LinkedinIcon from '../../assets/icons/other/linkedin.svg'
+import CameraIcon from '../../assets/icons/other/camera.svg'
 
 import Countdown from '../../components/countdown/countdown'
 import { MBDDateContext } from '../../contexts/mbd-date-provider'
@@ -103,11 +104,8 @@ const Homepage: FC = () => {
                                                     {mbdDate.getStartMonth()}{' '}
                                                     {mbdDate.getStartYear()}
                                                 </b>{' '}
-                                                kommer kårhuset Nymble på{' '}
-                                                <b>KTH</b> öppna dörrarna för{' '}
-                                                <b>Medias Branschdag</b> -
-                                                Meditekniksektionens årliga{' '}
-                                                <b>arbetsmarknadsmässa</b>.{' '}
+                                                går <b>Medias Branschdag</b>, medietekniksektionen på <b>KTH</b>:s årliga{' '}
+                                                <b>arbetsmarknadsmässa</b>, av stapeln, denna gång <b>digitalt</b>!{' '}
                                                 <br />
                                                 <br />
                                                 {/*Programmering, webbutveckling, entreprenörskap, kommunikation, design &amp; signalbehandling är bara några av kompetenserna som genomsyrar mässan. Läs mer om medieteknik på fliken “Vad är medieteknik?“.*/}
@@ -157,7 +155,7 @@ const Homepage: FC = () => {
                                                     of {mbdDate.getStartMonth()}{' '}
                                                     {mbdDate.getStartYear()}
                                                 </b>{' '}
-                                                the doors will open for{' '}
+                                                the <b>digital</b> doors will open for{' '}
                                                 <b>Medias Branschdag</b> at{' '}
                                                 <b>KTH</b> - The Media
                                                 Technology chapter's annual{' '}
@@ -189,19 +187,24 @@ const Homepage: FC = () => {
                             </MBDDateContext.Consumer>
                         </TextSection>
                     }
-                    content={
-                        <ProfileCard
-                            imagePath='assets/team/placeholder.png'
-                            name={`${projectLeaders
-                                .map((leader, i) => {
-                                    return leader.name
-                                })
-                                .join(', ')}`}
-                            role={TranslationModel.translate({
-                                se: 'Projektledare',
-                                en: 'Project Leaders',
-                            })}
-                        />
+                    content={<>
+                            <ProfileCard
+                                imagePath='assets/team/project_leaders.jpg'
+                                name={`${projectLeaders
+                                    .map((leader, i) => {
+                                        return leader.name
+                                    })
+                                    .join(', ')}`}
+                                role={TranslationModel.translate({
+                                    se: 'Projektledare',
+                                    en: 'Project Leaders',
+                                })}
+                            />
+                            <div className='photographer-info'>
+                                <img src={CameraIcon} alt=''/>
+                                <a href='https://www.instagram.com/mikaelaphoto/' target='_blank' rel='noopener noreferrer'>Mikaela Gärde</a>
+                            </div>
+                        </>
                     }
                 />
             </ContentSection>
@@ -300,9 +303,7 @@ const Homepage: FC = () => {
                 <ContentSection>
                     <SectionTitle>
                         Medias branschdag{' '}
-                        {TranslationModel.translate(phrases.on_instagram)
-                            ?.toString()
-                            .toLowerCase()}
+                        {TranslationModel.translate(phrases.on_instagram)}
                     </SectionTitle>
                     <div className='homepage-instagram-section'>
                         {instagramPosts ? (
@@ -312,7 +313,6 @@ const Homepage: FC = () => {
                                         key={post.id}
                                         imageUrl={post.imageUrl}
                                         linkToPost={post.linkToPost}
-                                        likes={post.numberOfLikes}
                                     />
                                 )
                             })
