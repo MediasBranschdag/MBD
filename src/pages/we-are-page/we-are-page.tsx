@@ -6,7 +6,7 @@ import TranslationModel from '../../model/translationModel'
 import phrases from '../../data/translations.json'
 import ContentSection, {
     ContentSectionBackground,
-    //ContentSectionSize,
+    ContentSectionSize,
 } from '../../components/layout/content-section/content-section'
 
 import Background from '../../assets/backgrounds/kth_stone_ground.jpg'
@@ -18,9 +18,9 @@ import Masters from './master-fields.json'
 
 import TerminalIcon from '../../assets/icons/other/terminal.svg';
 import MathIcon from '../../assets/icons/other/math.svg';
-/*import ProfileIcon from '../../assets/icons/other/profileIcon_black.svg';
+import ProfileIcon from '../../assets/icons/other/profileIcon_black.svg';
 
-import AlumniInterviews from '../../components/alumni-interviews/alumni-interviews'*/
+import AlumniInterviews from '../../components/alumni-interviews/alumni-interviews'
 import IntroScreen from '../../components/intro-screen/intro-screen'
 import IntroScreenButtons from '../../components/intro-screen/intro-screen-buttons/intro-screen-buttons'
 
@@ -33,13 +33,13 @@ const WeArePage: FC = () => {
             >
                 <IntroScreenButtons
                     buttons={[
-                        /*{
+                        {
                             title: TranslationModel.translate(
                                 phrases.we_are_media_technology.alumni_interviews
                             ),
                             iconPath: ProfileIcon,
                             scrollTargetID: 'alumni-interviews',
-                        },*/
+                        },
                         {
                             title: TranslationModel.translate(
                                 phrases.we_are_media_technology.masters
@@ -58,7 +58,7 @@ const WeArePage: FC = () => {
                 />
             </IntroScreen>
 
-            {/*<div id='alumni-interviews' />
+            <div id='alumni-interviews' />
             <ContentSection size={ContentSectionSize.large}>
                 <SectionTitle>
                     {TranslationModel.translate(
@@ -66,7 +66,7 @@ const WeArePage: FC = () => {
                     )}
                 </SectionTitle>
                 <AlumniInterviews />
-            </ContentSection>*/}
+            </ContentSection>
 
             <div id='master-programmes' />
             <ContentSection background={ContentSectionBackground.dark}>
