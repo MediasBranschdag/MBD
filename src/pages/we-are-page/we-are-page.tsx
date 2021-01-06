@@ -16,9 +16,9 @@ import SectionTitle from '../../components/section-title/section-title'
 import UndergraduateFields from './undergraduate-fields.json'
 import Masters from './master-fields.json'
 
-import TerminalIcon from '../../assets/icons/other/terminal.svg';
-import MathIcon from '../../assets/icons/other/math.svg';
-import ProfileIcon from '../../assets/icons/other/profileIcon_black.svg';
+import TerminalIcon from '../../assets/icons/other/terminal.svg'
+import MathIcon from '../../assets/icons/other/math.svg'
+import ProfileIcon from '../../assets/icons/other/profileIcon_black.svg'
 
 import AlumniInterviews from '../../components/alumni-interviews/alumni-interviews'
 import IntroScreen from '../../components/intro-screen/intro-screen'
@@ -29,17 +29,12 @@ const WeArePage: FC = () => {
         <div className='what-is-page'>
             <IntroScreen
                 backgroundImage={Background}
-                title={TranslationModel.translate(phrases.we_are_media_technology)}
+                title={TranslationModel.translate(
+                    phrases.we_are_media_technology
+                )}
             >
                 <IntroScreenButtons
                     buttons={[
-                        {
-                            title: TranslationModel.translate(
-                                phrases.we_are_media_technology.alumni_interviews
-                            ),
-                            iconPath: ProfileIcon,
-                            scrollTargetID: 'alumni-interviews',
-                        },
                         {
                             title: TranslationModel.translate(
                                 phrases.we_are_media_technology.masters
@@ -49,24 +44,23 @@ const WeArePage: FC = () => {
                         },
                         {
                             title: TranslationModel.translate(
-                                phrases.we_are_media_technology.undergraduate_fields
+                                phrases.we_are_media_technology
+                                    .undergraduate_fields
                             ),
                             iconPath: MathIcon,
                             scrollTargetID: 'undergraduate-fields',
-                        }
+                        },
+                        {
+                            title: TranslationModel.translate(
+                                phrases.we_are_media_technology
+                                    .alumni_interviews
+                            ),
+                            iconPath: ProfileIcon,
+                            scrollTargetID: 'alumni-interviews',
+                        },
                     ]}
                 />
             </IntroScreen>
-
-            <div id='alumni-interviews' />
-            <ContentSection size={ContentSectionSize.large}>
-                <SectionTitle>
-                    {TranslationModel.translate(
-                        phrases.we_are_media_technology.alumni_interviews
-                    )}
-                </SectionTitle>
-                <AlumniInterviews />
-            </ContentSection>
 
             <div id='master-programmes' />
             <ContentSection background={ContentSectionBackground.dark}>
@@ -105,6 +99,15 @@ const WeArePage: FC = () => {
                         />
                     </Fragment>
                 ))}
+            </ContentSection>
+            <div id='alumni-interviews' />
+            <ContentSection size={ContentSectionSize.large}>
+                <SectionTitle>
+                    {TranslationModel.translate(
+                        phrases.we_are_media_technology.alumni_interviews
+                    )}
+                </SectionTitle>
+                <AlumniInterviews />
             </ContentSection>
 
             <Footer />
