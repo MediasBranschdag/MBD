@@ -69,6 +69,11 @@ const Homepage: FC = () => {
                     <MBDDateContext.Consumer>
                         {(mbdDate) => <Countdown mbdDate={mbdDate} />}
                     </MBDDateContext.Consumer>
+                    <a href='https://digital.mediasbranschdag.com'>
+                        <Button className={'btn--white'}>
+                            {TranslationModel.translate({se: 'Registrera dig för den digitala mässan', en: 'Register for the online fair'})}
+                        </Button>
+                    </a>
                 </div>
             </IntroScreen>
 
@@ -104,9 +109,12 @@ const Homepage: FC = () => {
                                                     {mbdDate.getStartMonth()}{' '}
                                                     {mbdDate.getStartYear()}
                                                 </b>{' '}
-                                                går <b>Medias Branschdag</b>, medietekniksektionen på <b>KTH</b>:s årliga{' '}
-                                                <b>arbetsmarknadsmässa</b>, av stapeln, denna gång <b>digitalt</b>!{' '}
-                                                <br />
+                                                går <b>Medias Branschdag</b>,
+                                                medietekniksektionen på{' '}
+                                                <b>KTH</b>:s årliga{' '}
+                                                <b>arbetsmarknadsmässa</b>, av
+                                                stapeln, denna gång{' '}
+                                                <b>digitalt</b>! <br />
                                                 <br />
                                                 {/*Programmering, webbutveckling, entreprenörskap, kommunikation, design &amp; signalbehandling är bara några av kompetenserna som genomsyrar mässan. Läs mer om medieteknik på fliken “Vad är medieteknik?“.*/}
                                                 Mässan ger inte bara{' '}
@@ -155,7 +163,8 @@ const Homepage: FC = () => {
                                                     of {mbdDate.getStartMonth()}{' '}
                                                     {mbdDate.getStartYear()}
                                                 </b>{' '}
-                                                the <b>digital</b> doors will open for{' '}
+                                                the <b>digital</b> doors will
+                                                open for{' '}
                                                 <b>Medias Branschdag</b> at{' '}
                                                 <b>KTH</b> - The Media
                                                 Technology chapter's annual{' '}
@@ -187,7 +196,8 @@ const Homepage: FC = () => {
                             </MBDDateContext.Consumer>
                         </TextSection>
                     }
-                    content={<>
+                    content={
+                        <>
                             <ProfileCard
                                 imagePath='assets/team/project_leaders.jpg'
                                 name={`${projectLeaders
@@ -201,8 +211,14 @@ const Homepage: FC = () => {
                                 })}
                             />
                             <div className='photographer-info'>
-                                <img src={CameraIcon} alt=''/>
-                                <a href='https://www.instagram.com/mikaelaphoto/' target='_blank' rel='noopener noreferrer'>Mikaela Gärde</a>
+                                <img src={CameraIcon} alt='' />
+                                <a
+                                    href='https://www.instagram.com/mikaelaphoto/'
+                                    target='_blank'
+                                    rel='noopener noreferrer'
+                                >
+                                    Mikaela Gärde
+                                </a>
                             </div>
                         </>
                     }
