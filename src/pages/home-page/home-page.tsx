@@ -37,6 +37,9 @@ import { getProjectLeaders, TeamMember } from '../../model/teamModel'
 import { NavLink } from 'react-router-dom'
 import { isMobile, isSafari } from 'react-device-detect'
 
+import NicoleSignature from '../../assets/signatures/nicole_nordlund.png'
+import JohnSignature from '../../assets/signatures/john_brink.png'
+
 const Homepage: FC = () => {
     const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([])
     const [projectLeaders, setProjectLeaders] = useState<TeamMember[]>([])
@@ -66,14 +69,20 @@ const Homepage: FC = () => {
             >
                 <div className='homepage-intro-content'>
                     <AnimatedMBDLogo />
+                    <div className='digital-button'>
+                        <a href='https://digital.mediasbranschdag.com'>
+                            <Button className={'btn--white'}>
+                                {TranslationModel.translate({
+                                    se:
+                                        'Klicka här för att gå till den digitala mässan',
+                                    en: 'Register for the online fair here',
+                                })}
+                            </Button>
+                        </a>
+                    </div>
                     <MBDDateContext.Consumer>
                         {(mbdDate) => <Countdown mbdDate={mbdDate} />}
                     </MBDDateContext.Consumer>
-                    <a href='https://digital.mediasbranschdag.com'>
-                        <Button className={'btn--white'}>
-                            {TranslationModel.translate({se: 'Registrera dig för den digitala mässan', en: 'Register for the online fair'})}
-                        </Button>
-                    </a>
                 </div>
             </IntroScreen>
 
@@ -90,110 +99,72 @@ const Homepage: FC = () => {
                                     TranslationModel.translate({
                                         se: (
                                             <span>
-                                                Arbetar du med medieteknik och
-                                                är i behov av kompetent personal
-                                                med en{' '}
-                                                <b>civilingenjörsutbildning</b>?
+                                                Nu är det inte långt kvar till
+                                                Medias Branschdag, den årliga
+                                                arbetsmarknadsmässan för
+                                                Medietekniksektionen på KTH. I
+                                                år kommer branschdagen gå av
+                                                stapeln den{' '}
+                                                {mbdDate.getStartDate()}:e{' '}
+                                                {mbdDate.getStartMonth()} och
+                                                för första gången någonsin -
+                                                digitalt på plattformen
+                                                Graduateland!
+                                                <br />
+                                                <br />
                                                 Studerar du medieteknik och
-                                                letar efter en framtida
+                                                letar efter din framtida
                                                 arbetsplats, extrajobb eller
-                                                examensjobb? Vet du vad
-                                                medieteknik är överhuvudtaget?
-                                                Oavsett vilken av dessa frågor
-                                                du funderar över - Medias
-                                                Branschdag är svaret! <br />
+                                                examensjobb? Eller är du
+                                                istället i behov av kompetent
+                                                personal med en
+                                                civilingenjörsutbildning?
+                                                Härligt, för oavsett är Medias
+                                                Branschdag lösningen!
                                                 <br />
-                                                Den{' '}
-                                                <b>
-                                                    {mbdDate.getStartDate()}e{' '}
-                                                    {mbdDate.getStartMonth()}{' '}
-                                                    {mbdDate.getStartYear()}
-                                                </b>{' '}
-                                                går <b>Medias Branschdag</b>,
-                                                medietekniksektionen på{' '}
-                                                <b>KTH</b>:s årliga{' '}
-                                                <b>arbetsmarknadsmässa</b>, av
-                                                stapeln, denna gång{' '}
-                                                <b>digitalt</b>! <br />
                                                 <br />
-                                                {/*Programmering, webbutveckling, entreprenörskap, kommunikation, design &amp; signalbehandling är bara några av kompetenserna som genomsyrar mässan. Läs mer om medieteknik på fliken “Vad är medieteknik?“.*/}
-                                                Mässan ger inte bara{' '}
-                                                <b>företag</b> chansen att
-                                                direkt kunna påverka studenters
-                                                intresse för er verksamhet, utan
-                                                även möjligheten att anställa
-                                                kompetenta studenter som matchar
-                                                era behov - allt från
-                                                deltidsjobb till examensarbete.
-                                                <b> Studenter</b> har på samma
-                                                sätt chansen att binda
-                                                värdefulla kontakter inför
-                                                framtiden, se utbudet av
-                                                arbetsmöjligheter och få ett
-                                                smakprov på vad framtiden har
-                                                att ge. Det kommer bli en dag
-                                                fylld av nya lärdomar, utbyten
-                                                och inspiration - allting samlat
+                                                Det kommer bli en dag fylld av
+                                                nya lärdomar, utbyten och
+                                                inspiration - allting samlat
                                                 under ett moln av
-                                                medieteknikanda.
-                                                <br />
-                                                <br />
-                                                Vi ses på branschdagen i{' '}
-                                                {mbdDate.getStartMonth()}!
+                                                medieteknikanda. Ses vi där?😏
                                             </span>
                                         ),
 
                                         en: (
                                             <span>
+                                                It's not much time left until
+                                                Medias Branschdag, the annual
+                                                job fair for the Media
+                                                Technology chapter at KTH. This
+                                                year the fair takes place on the{' '}
+                                                {mbdDate.getStartDate()}th{' '}
+                                                {mbdDate.getStartMonth()} and
+                                                for the first time ever - online
+                                                on the platform Graduateland!
+                                                <br />
+                                                <br />
                                                 Do you work in the Media
                                                 Technology field and are in need
                                                 of skilled employees? Are you
                                                 studying Media Technology and
                                                 searching for a job or a place
                                                 to write a thesis? Are you new
-                                                to Media Technology?
-                                                <br /> No matter who you are -
-                                                Medias Branschdag is here for
-                                                you!
+                                                to Media Technology? No matter
+                                                who you are - Medias Branschdag
+                                                is here for you!
                                                 <br />
                                                 <br />
-                                                On the{' '}
-                                                <b>
-                                                    {mbdDate.getStartDate()}th
-                                                    of {mbdDate.getStartMonth()}{' '}
-                                                    {mbdDate.getStartYear()}
-                                                </b>{' '}
-                                                the <b>digital</b> doors will
-                                                open for{' '}
-                                                <b>Medias Branschdag</b> at{' '}
-                                                <b>KTH</b> - The Media
-                                                Technology chapter's annual{' '}
-                                                <b>job fair</b>.<br />
-                                                <br />
-                                                {/*Programming, web development, entrepreneurship, communication, design and signal processing are just some of the skills found in our students and exhibitors. Read more about Media Technology here.*/}
-                                                The fair doesn't only give{' '}
-                                                <b>companies</b> the opportunity
-                                                to appeal to students, it also
-                                                helps you find skilled workers
-                                                for your needs.
-                                                <b> Students</b> can in the same
-                                                way connect and build their
-                                                network, discover jobs and get a
-                                                glimpse of their future. The day
-                                                will be filled with new
-                                                discoveries, connections and
-                                                inspiration in the name of Media
-                                                Technology.
-                                                <br />
-                                                <br />
-                                                We can’t wait to meet you at the
-                                                fair in{' '}
-                                                {mbdDate.getStartMonth()}!
+                                                Will we see you there?😏
                                             </span>
                                         ),
                                     })
                                 }
                             </MBDDateContext.Consumer>
+                            <div className='signature-cont'>
+                                <img src={NicoleSignature} alt='' />
+                                <img src={JohnSignature} alt='' />
+                            </div>
                         </TextSection>
                     }
                     content={
