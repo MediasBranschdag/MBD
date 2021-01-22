@@ -9,6 +9,7 @@ import Contactpage from '../pages/contact-page/contact-page';
 import DinnerAdmin from '../pages/dinner-admin/dinner-admin';
 import WeArePage from '../pages/we-are-page/we-are-page';
 //import MapPage from '../pages/map-page/map-page';
+import Eventpage from '../pages/event-page/event-page';
 
 class Route {
     path: string;
@@ -34,6 +35,8 @@ const Routes = {
     contactPage: new Route('/contact', phrases.contact, Contactpage),
     dinnerAdminPage: new Route('/dinner-admin', phrases.dinner_admin, DinnerAdmin, false),
     //eventPage: new Route('/event', phrases.events, Companypage),
+    eventPage: new Route('/event', phrases.events, Eventpage),
+    
 };
 
 
