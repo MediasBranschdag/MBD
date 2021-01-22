@@ -51,6 +51,19 @@
     border-bottom: 2px solid var(--theme-primary-color-normal);
 }
 
+.digital-button {
+    max-width: 320px;
+}
+
+.signature-cont {
+    display: flex;
+    width: 100%;
+}
+
+.signature-cont img {
+    max-width: 200px;
+}
+
 @media screen and (max-width: 700px) {
 
     .homepage-instagram-section {
@@ -70,5 +83,18 @@
     .read-more h1 {
         word-wrap: break-word;
         font-size: 24px;
+    }
+
+    .digital-button {
+        max-width: 250px;
+    }
+
+    .signature-cont {
+        justify-content: space-around;
+        margin-top: 15px;
+    }
+
+    .signature-cont img {
+        max-width: 130px;
     }
 }
