@@ -4,7 +4,10 @@ import Card from '../card/card'
 import TextSection from '../text-section/text-section'
 import { ContentPadding } from '../content-padding'
 import TranslationModel, { Phrase } from '../../model/translationModel'
-
+import dateIcon from '../../assets/icons/other/calendaricon.svg'
+import clock from '../../assets/icons/other/clock.svg'
+import location from '../../assets/icons/other/location.svg'
+import FBicon from '../../assets/icons/other/fbicon.svg'
 import phrases from '../../data/translations.json'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import Chip from '../chip/chip'
@@ -16,9 +19,10 @@ export interface Event {
     title: Phrase
     description: Phrase
     courses?: Array<{ title: Phrase; url: string }>
-    tracks?: Array<{ title: Phrase; desc: Phrase }>
+    tags?: Array<any>
     date: string
     time: string
+    location: string
 }
 
 interface EventCardProps {
@@ -76,16 +80,16 @@ const EventCard: FC<EventCardProps> = (props) => {
                         {props.showDesc && !onMobile && (
                             <>
                                 <br />
-                                {props.event.tracks && (
+                                {props.event.tags && (
                                     <>
-                                        {props.event.tracks.map((track) => (
+                                        {props.event.tags.map((tag) => (
                                             <div
                                                 className='event-chip-cont'
-                                                key={`${track.title.se}`}
+                                                key={`${tag.se}`}
                                             >
                                                 <Chip>
                                                     {TranslationModel.translate(
-                                                        track.title
+                                                        tag
                                                     )}
                                                 </Chip>
                                             </div>
@@ -99,6 +103,31 @@ const EventCard: FC<EventCardProps> = (props) => {
                 {open ? (
                     <div className='event-card-desc'>
                         <ContentPadding>
+                        <div className="event-info-strip">
+                            <span className="date-strip">
+                                <img className="date-time-icon" src={dateIcon} />
+                                <span className="info-strip-text">{props.event.date}</span>
+                            </span>
+
+                            <span className="date-strip">
+                                <img className="date-time-icon" src={clock}/>
+                            <span className="info-strip-text">{props.event.time}</span>
+                            </span>
+
+                            <span className="link-strip">
+                                <img className="date-time-icon" src={location}/>
+                            <span className="link-strip-text">
+                                <a href={props.event.location}>digital.mediasbranschdag.com</a>
+                                </span>
+                            </span>
+                            
+                            <span className="link-strip">
+                                <img className="date-time-icon" src={FBicon}/>
+                            <span className="link-strip-text">
+                                <a href={props.event.link}>Facebook Event</a>
+                                </span>
+                            </span>
+                        </div>
                             <TextSection>
                                 {TranslationModel.translate(props.event.description)}
                                 <br />
@@ -109,6 +138,29 @@ const EventCard: FC<EventCardProps> = (props) => {
                 ) : (
                     <div className='event-card-closed'>
                     <ContentPadding>
+                        <div className="event-info-strip">
+                            <span className="date-strip">
+                                <img className="date-time-icon" src={dateIcon} />
+                                <span className="info-strip-text">{props.event.date}</span>
+                            </span>
+                            <span className="date-strip">
+                                <img className="date-time-icon" src={clock}/>
+                            <span className="info-strip-text">{props.event.time}</span>
+                            </span>
+                            <span className="link-strip">
+                                <img className="date-time-icon" src={location}/>
+                            <span className="link-strip-text">
+                                <a href={props.event.location}>digital.mediasbranschdag.com</a>
+                                </span>
+                            </span>
+                            
+                            <span className="link-strip">
+                                <img className="date-time-icon" src={FBicon}/>
+                            <span className="link-strip-text">
+                                <a href={props.event.link}>Facebook Event</a>
+                                </span>
+                            </span>
+                        </div>
                         <TextSection>
                             {TranslationModel.translate(props.event.description)}
                             <br />

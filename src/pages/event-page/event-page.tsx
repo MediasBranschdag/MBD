@@ -14,15 +14,42 @@ import IntroScreen from '../../components/intro-screen/intro-screen'
 // import IntroText from '../../components/section-title/section-title'
 import { isMobile, isSafari } from 'react-device-detect'
 // import {getAllEvents} from '../../model/eventModel'
-import Masters from '../we-are-page/master-fields.json'
 import EventCard from '../../components/event-card/event-card'
 
 const Eventpage: FC = () => {
-   //  console.log(getAllEvents())
-    
     let events = [
     {
-    id: 1,
+        id: 1,
+        title: {
+            se: "Medias Digitala Branchdag",
+            en: "Medias Digitala Branchdag"},
+        date: '25 Februari 2021',
+        time: '10:00 - 16:00',
+        img: "image4",
+        link: "https://www.facebook.com/events/873160383445311",
+        tags: [
+            {
+                se: "IT",
+                en: "IT"
+            },
+            {
+                se: "Kommunikation",
+                en: "Communication"
+            },
+            {
+                se: "Programutveckling", 
+                en: "Software development"
+            }
+
+        ],
+        background: './assets/events/nymble_beach_flag.jpg',
+        location: 'https://digital.mediasbranschdag.com/',
+        description: {
+            se: "Den 25 februari 2021 är det äntligen dags för Medietekniks årliga branschdagsmässa, Medias Branschdag! För första gången någonsin kommer mässan att hållas digitalt genom onlinetjänsten Graduateland! Det innebär att oavsett var du befinner dig i vårt avlånga land så kommer du kunna vara med.\n\n Möt oss och företag på nätet och knyt värdefulla kontakter inför framtiden! Medias Branschdag ger inte bara studenter ett smakprov på vad arbetslivet har att ge, utan bidrar likväl till att företagen får ett smakprov av vad vi teknologer har att bidra med.",
+            en: "On the 25 of February 2021, it is finally time for Media Technology's annual fair Media's Branschdag! For the first time ever, the fair will be held digitally through the online service Graduateland! This means that no matter where you are in our elongated country, you will be able to participate. Meet us and companies online and make valuable contacts for the future! Fill in 'yes' on this event and stay updated on upcoming information!"}
+        },
+    {
+    id: 2,
     title: {
         se: "Medias Digitala Branchdag",
         en: "Medias Digital Fairday"},
@@ -32,12 +59,13 @@ const Eventpage: FC = () => {
     link: "https://www.youtube.com/watch?v=joCwJxI_5wY",
     tags: ["IT, Kommunikation, maskininlärning"],
     background: './assets/events/nymble_beach_flag.jpg',
+    location: 'location',
     description: {
         se: 'Den fjärde februari 2020 är det äntligen dags för Medietekniks årliga branschdagsmässa Medias Branschdag! Hit är ni varmt välkomna att knyta värdefulla kontakter och mingla bland relevanta och spännande företag. Medias Branschdag ger inte bara studenter ett smakprov på vad arbetslivet har att ge, utan bidrar likväl till att företagen får ett smakprov av vad vi teknologer har att bidra med. Branschdagen slår upp dörrarna klockan 10.00 och håller öppet till 16.00. Kvällen avslutas med en sittning som börjar klockan 18.00 och innan dess kan en avnjuta en härlig afterwork-presittning i vår fina sektionslokal META. Varmt välkomna!',
         en: "On the fourth of February 2020, it is finally time for Media Technology's annual fair Media's Branschdag! Here you are warmly welcomed to make valuable contacts and mingle among relevant and exciting companies. The fair will open its doors at 10:00 and is stay open until 16:00. The evening ends with a dinner that starts at 18:00 and before that one can enjoy a lovely afterwork in META. Warm welcome!"}
     },
     { 
-    id:2,
+    id:3,
     title: {
         se: "Föreläsning om Maskininlärning",
         en: "Lecture about Machine Learning"},
@@ -47,6 +75,7 @@ const Eventpage: FC = () => {
     link: "https://www.youtube.com/watch?v=CMbj8Wgxg1g",
     tags: ["IT, Kommunikation, maskininlärning"],
     background: './assets/events/dinner_pg_background.png',
+    location: 'location',
     description: {
         se: 'Vem är Schibsted? Varför är Schibsted rätt arbetsgivare för dig som nyexad medieteknikstudent? Hur ska du tänka för att bygga din karriär på ett framgångsrikt sätt?\r\n\r\nDetta får ni veta från Ian Vännman! Han är en tidigare medietekniskstudent som gått från helpdesken på Aftonbladet till grundare av Omni och som nu är Strategichef för Schibsted Media. \r\n\r\nInom Schibstedkoncernen ryms allt ifrån Aftonbladet, SvD, Blocket, Lendo, Letsdeal och Omni för att bara nämna några varumärken - Schibsted är alltså en riktig guldgruva för oss medietekniker!\r\n\r\nVi bjuder på lunch till de 50 första som dyker upp - och vi i Medias Branschdags projektgrupp har med 80 dagar kvar till branschdagen en överraskning du verkligen inte vill missa.... Så kom och inspireras med oss!',
         en: 'engelsk text'}

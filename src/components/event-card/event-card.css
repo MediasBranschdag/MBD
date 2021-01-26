@@ -70,7 +70,7 @@
 }
 
 .event-card-closed{
-    max-height: 150px;
+    max-height: 230px;
     cursor: initial !important;
     padding: 0 15px;
     color: #000;
@@ -87,6 +87,47 @@
 
 }
 
+.event-info-strip{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    margin-bottom: 10px;
+    
+}
+
+.date-time-icon{
+    height: 25px;
+    margin-right: 2%;
+}
+
+.date-strip{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 7px;
+}
+
+.info-strip-text{
+    vertical-align: middle;
+    font-weight: 500;
+}
+
+.link-strip-text{
+    vertical-align: middle;
+    font-weight: 500;
+}
+
+.link-strip{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 7px;
+}
+.link-strip-text:hover{
+    background-color: var(--theme-light-color-dark);
+}
+
+
 
 
 
@@ -98,6 +139,10 @@
     }
 
     .event-card-desc {
+        padding: 0;
+    }
+
+    .event-card-closed{
         padding: 0;
     }
 }
