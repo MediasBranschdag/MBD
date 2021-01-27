@@ -13,7 +13,7 @@ import './event-page.css'
 import IntroScreen from '../../components/intro-screen/intro-screen'
 // import IntroText from '../../components/section-title/section-title'
 import { isMobile, isSafari } from 'react-device-detect'
-// import {getAllEvents} from '../../model/eventModel'
+import {MBDEvent, getEvents} from '../../model/eventModel'
 import EventCard from '../../components/event-card/event-card'
 
 const Eventpage: FC = () => {
@@ -55,9 +55,10 @@ const Eventpage: FC = () => {
 
     const logoParts = 3;
     const [logoPartActiveStep, setLogoPartActiveStop] = useState(0);
+    const [trialEvents, setTrialEvents] = useState<MBDEvent[]>([])
 
     useEffect(() => {
-        
+        getEvents().then(setTrialEvents)
 
         // Active a logo part every half secound
         var timeout = setTimeout(() => {
@@ -71,6 +72,7 @@ const Eventpage: FC = () => {
         }
     }, [logoPartActiveStep]);
     
+    console.log(trialEvents)
     return (
         <div>  
             
