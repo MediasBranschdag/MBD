@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, Fragment } from 'react'
+import React, { FC, useState, useEffect} from 'react'
 import './event-card.css'
 import Card from '../card/card'
 import TextSection from '../text-section/text-section'
@@ -10,7 +10,8 @@ import location from '../../assets/icons/other/location.svg'
 import FBicon from '../../assets/icons/other/fbicon.svg'
 import phrases from '../../data/translations.json'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
-import Chip from '../chip/chip'
+// import Chip from '../chip/chip'
+import {Button} from '../button/button'
 
 import ExternalIcon from '../../assets/icons/other/external-link-outline.svg'
 
@@ -20,7 +21,7 @@ export interface Event {
     description: Phrase
     courses?: Array<{ title: Phrase; url: string }>
     tags?: Array<any>
-    date: string
+    date: Phrase
     time: string
     location: string
 }
@@ -76,7 +77,8 @@ const EventCard: FC<EventCardProps> = (props) => {
                             </a>
                         )}
                     </h2>
-                    <div>
+                    {/*
+                    <div className="event-tags-container">
                         {props.showDesc && !onMobile && (
                             <>
                                 <br />
@@ -98,33 +100,33 @@ const EventCard: FC<EventCardProps> = (props) => {
                                 )}
                             </>
                         )}
-                    </div>
+                                                    </div> */}
                 </div>
                 {open ? (
                     <div className='event-card-desc'>
                         <ContentPadding>
                         <div className="event-info-strip">
                             <span className="date-strip">
-                                <img className="date-time-icon" src={dateIcon} />
-                                <span className="info-strip-text">{props.event.date}</span>
+                                <img className="date-time-icon" src={dateIcon} alt=''/>
+                                <span className="info-strip-text">{TranslationModel.translate(props.event.date)}</span>
                             </span>
-
+                            
                             <span className="date-strip">
-                                <img className="date-time-icon" src={clock}/>
+                                <img className="date-time-icon" src={clock} alt=''/>
                             <span className="info-strip-text">{props.event.time}</span>
                             </span>
 
                             <span className="link-strip">
-                                <img className="date-time-icon" src={location}/>
+                                <img className="date-time-icon" src={location} alt=''/>
                             <span className="link-strip-text">
-                                <a href={props.event.location}>digital.mediasbranschdag.com</a>
+                                <a href={props.event.location} target="_blank" rel="noopener noreferrer">digital.mediasbranschdag.com</a>
                                 </span>
                             </span>
                             
                             <span className="link-strip">
-                                <img className="date-time-icon" src={FBicon}/>
+                                <img className="date-time-icon" src={FBicon} alt=''/>
                             <span className="link-strip-text">
-                                <a href={props.event.link}>Facebook Event</a>
+                                <a href={props.event.link} target="_blank" rel="noopener noreferrer">Facebook Event</a>
                                 </span>
                             </span>
                         </div>
@@ -133,6 +135,12 @@ const EventCard: FC<EventCardProps> = (props) => {
                                 <br />
                                 
                             </TextSection>
+                            <div className="readmore-button" onClick={openEvent}>
+                                <Button className='readmore-button-close'>{TranslationModel.translate(phrases.show_less)}</Button>
+                            </div>
+                            
+                            
+                            
                         </ContentPadding>
                     </div>
                 ) : (
@@ -140,24 +148,24 @@ const EventCard: FC<EventCardProps> = (props) => {
                     <ContentPadding>
                         <div className="event-info-strip">
                             <span className="date-strip">
-                                <img className="date-time-icon" src={dateIcon} />
-                                <span className="info-strip-text">{props.event.date}</span>
+                                <img className="date-time-icon" src={dateIcon} alt=''/>
+                                <span className="info-strip-text">{TranslationModel.translate(props.event.date)}</span>
                             </span>
                             <span className="date-strip">
-                                <img className="date-time-icon" src={clock}/>
+                                <img className="date-time-icon" src={clock} alt=''/>
                             <span className="info-strip-text">{props.event.time}</span>
                             </span>
                             <span className="link-strip">
-                                <img className="date-time-icon" src={location}/>
+                                <img className="date-time-icon" src={location} alt=''/>
                             <span className="link-strip-text">
-                                <a href={props.event.location}>digital.mediasbranschdag.com</a>
+                                <a href={props.event.location} target="_blank" rel="noopener noreferrer">digital.mediasbranschdag.com</a>
                                 </span>
                             </span>
                             
                             <span className="link-strip">
-                                <img className="date-time-icon" src={FBicon}/>
+                                <img className="date-time-icon" src={FBicon} alt=''/>
                             <span className="link-strip-text">
-                                <a href={props.event.link}>Facebook Event</a>
+                                <a href={props.event.link} target="_blank" rel="noopener noreferrer">Facebook Event</a>
                                 </span>
                             </span>
                         </div>
@@ -167,7 +175,9 @@ const EventCard: FC<EventCardProps> = (props) => {
                             
                         </TextSection>
                         <div className='fade-bottom'>
-                            
+                            <div className="readmore-button" onClick={openEvent}>
+                                <Button>{TranslationModel.translate(phrases.read_more)}</Button>
+                            </div>
                         </div>
                     </ContentPadding>
                 </div>

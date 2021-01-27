@@ -12,7 +12,7 @@
 
 
 .event-card-container h2 {
-    margin-top: 0px;
+    margin-top: 5px;
     text-align: center;
 }
 
@@ -34,6 +34,9 @@
     display: inline-flex;
 }
 
+.event-tags-container{
+    
+}
 
 
 @media screen and (max-width: 800px) {
@@ -58,7 +61,7 @@
     height: 170px;
     display: flex;
     flex-direction: column;
-    align-content: center;    
+    
     box-shadow: 0px -5px 10px 2px var(--theme-dark-color-light);
     user-select: none;
 
@@ -70,16 +73,40 @@
 }
 
 .event-card-closed{
-    max-height: 230px;
-    cursor: initial !important;
+    max-height: 260px;
+    overflow: hidden;
     padding: 0 15px;
     color: #000;
+    position: relative;
+    cursor: default;
 }
 
 .fade-bottom{
-    background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgb(255, 0, 0) 50%, rgb(255, 255, 255) 100%);
+    display: flex;
+    justify-content: center;
+    position: absolute; 
+    bottom: 0; 
+    left: 0;
+    width: 100%; 
+    text-align: center; 
+    margin: 0; padding: 30px 0; 
+    /* "transparent" only works here because == rgba(0,0,0,0) */
+    background-image: linear-gradient(to bottom, transparent, rgb(255, 255, 255));    
 }
+
+.readmore-button{
+    width: fit-content;
+    margin:auto;
+}
+
+.readmore-button-close{
+    width: fit-content;
+    background-color: white;
+    padding: 7px 12px;
+    margin-top: 7px;
+
+}
+
 .event-card-desc {
     cursor: initial !important;
     padding: 0 15px;
@@ -104,7 +131,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 7px;
+    margin-bottom: 8px;
 }
 
 .info-strip-text{
@@ -121,7 +148,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 7px;
+    margin-bottom: 8px;
 }
 .link-strip-text:hover{
     background-color: var(--theme-light-color-dark);
