@@ -14,6 +14,7 @@ import useWindowDimensions from '../../hooks/useWindowDimensions'
 import {Button} from '../button/button'
 
 import ExternalIcon from '../../assets/icons/other/external-link-outline.svg'
+import ExternalIconBlack from '../../assets/icons/other/external-link-black.svg'
 
 export interface Event {
     link?: string
@@ -119,14 +120,17 @@ const EventCard: FC<EventCardProps> = (props) => {
                             <span className="link-strip">
                                 <img className="date-time-icon" src={location} alt=''/>
                             <span className="link-strip-text">
-                                <a href={props.event.location} target="_blank" rel="noopener noreferrer">digital.mediasbranschdag.com</a>
+                                <a href={props.event.location} target="_blank" rel="noopener noreferrer">digital.mediasbranschdag.com <img className='event-open' src={ExternalIconBlack} alt=''/></a>
+    
                                 </span>
+                                
                             </span>
                             
                             <span className="link-strip">
                                 <img className="date-time-icon" src={FBicon} alt=''/>
                             <span className="link-strip-text">
-                                <a href={props.event.link} target="_blank" rel="noopener noreferrer">Facebook Event</a>
+                                <a href={props.event.link} target="_blank" rel="noopener noreferrer">Facebook Event <img className='event-open' src={ExternalIconBlack} alt=''/></a>
+
                                 </span>
                             </span>
                         </div>
@@ -158,14 +162,14 @@ const EventCard: FC<EventCardProps> = (props) => {
                             <span className="link-strip">
                                 <img className="date-time-icon" src={location} alt=''/>
                             <span className="link-strip-text">
-                                <a href={props.event.location} target="_blank" rel="noopener noreferrer">digital.mediasbranschdag.com</a>
+                                <a href={props.event.location} target="_blank" rel="noopener noreferrer">digital.mediasbranschdag.com <img className='event-open' src={ExternalIconBlack} alt=''/></a>
                                 </span>
                             </span>
                             
                             <span className="link-strip">
                                 <img className="date-time-icon" src={FBicon} alt=''/>
                             <span className="link-strip-text">
-                                <a href={props.event.link} target="_blank" rel="noopener noreferrer">Facebook Event</a>
+                                <a href={props.event.link} target="_blank" rel="noopener noreferrer">Facebook Event <img className='event-open' src={ExternalIconBlack} alt=''/></a>
                                 </span>
                             </span>
                         </div>
