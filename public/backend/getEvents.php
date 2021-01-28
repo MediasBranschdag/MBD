@@ -25,6 +25,8 @@
         public function init() {
             //Create model
             $eventModel = new EventModel();
+            
+            header("Access-Control-Allow-Origin: *");
 
             //Check request
             switch ($_GET['action']) {

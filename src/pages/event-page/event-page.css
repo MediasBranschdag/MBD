@@ -1,0 +1,42 @@
+.events{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 80px;
+}
+
+.event-intro-text{
+    font-weight: 900;
+    font-size: 35px;
+    line-height: 1;
+    margin: auto;
+    margin-bottom: 7%;
+    width: 60%;
+    padding: 10px;
+}
+
+
+
+.event-text-part {
+    display: inline-block;
+
+    white-space: pre;
+    color: var(--theme-light-color-dark);
+
+    transform: translateY(5px);
+    transition: all 750ms;
+}
+.event-text-part.active {
+    color: var(--theme-light-color-dark);
+
+    animation-name: jumping-text;
+    animation-duration: 0.75s;
+    transform: translateY(0px);
+}
+
+.fb-events{
+    border:none;
+    overflow:hidden;
+    margin: auto;
+}
+
+

@@ -16,7 +16,6 @@ interface MapMarkerProps {
 
 const CompanyMarker = React.memo<MapMarkerProps>(
     (props) => {
-        console.log('ReRender component');
         const createMarkerHTML = () => {
             return (
                 <div className="map-marker-container">
