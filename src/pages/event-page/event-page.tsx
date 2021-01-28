@@ -58,7 +58,7 @@ const Eventpage: FC = () => {
                 <div className="event-intro-text">
                     <div className={`event-text-part ${logoPartActiveStep > 0 ? 'active' : ''}`}>{TranslationModel.translate({ se: 'Våra', en: 'Our' })} </div>
                     <div className={`event-text-part ${logoPartActiveStep > 1 ? 'active' : ''}`}>{TranslationModel.translate({ se: 'aktuella', en: 'current' })} </div>
-                    <div className={`event-text-part ${logoPartActiveStep > 2 ? 'active' : ''}`}>{TranslationModel.translate({ se: 'event!', en: 'events!' })}</div>
+                    <div className={`event-text-part ${logoPartActiveStep > 2 ? 'active' : ''}`}>{TranslationModel.translate({ se: 'event', en: 'events!' })}</div>
                 </div>
             </IntroScreen>
 
