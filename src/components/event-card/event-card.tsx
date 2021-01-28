@@ -1,55 +1,25 @@
-import React, { FC, useState, useEffect} from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import './event-card.css'
 import Card from '../card/card'
 import TextSection from '../text-section/text-section'
 import { ContentPadding } from '../content-padding'
-import TranslationModel, { Phrase } from '../../model/translationModel'
+import TranslationModel from '../../model/translationModel'
 import dateIcon from '../../assets/icons/other/calendaricon.svg'
 import clock from '../../assets/icons/other/clock.svg'
 import location from '../../assets/icons/other/location.svg'
-import FBicon from '../../assets/icons/other/fbicon.svg'
+import FbIcon from '../../assets/icons/other/fbicon.svg'
 import phrases from '../../data/translations.json'
-import useWindowDimensions from '../../hooks/useWindowDimensions'
-// import Chip from '../chip/chip'
-import {Button} from '../button/button'
-
-import ExternalIcon from '../../assets/icons/other/external-link-outline.svg'
+import { Button } from '../button/button'
 import ExternalIconBlack from '../../assets/icons/other/external-link-black.svg'
-
-export interface Event {
-    link?: string
-    title: Phrase
-    description: Phrase
-    courses?: Array<{ title: Phrase; url: string }>
-    tags?: Array<any>
-    date: Phrase
-    time: string
-    location: string
-}
+import { Event } from '../../model/eventModel'
+import { isMobile } from 'react-device-detect'
 
 interface EventCardProps {
     event: Event
-    onClick: () => void
-    onMouseEnter?: () => void
-    onMouseLeave?: () => void
-    showDesc?: boolean
-    background?: string
 }
 
 const EventCard: FC<EventCardProps> = (props) => {
-    const windowDimensions = useWindowDimensions()
-    const [onMobile, setOnMobile] = useState(false)
     const [open, setOpen] = useState(false)
-
-    useEffect(() => {
-        setOnMobile(windowDimensions.width < 800)
-    }, [windowDimensions.width])
-
-    const openEvent = (e: any) => {
-        if (!e.target.className.includes('open-event')) {
-            setOpen(!open)
-        }
-    }
 
     return (
         <div className='event-card-container no-tap-highlight'>
@@ -57,135 +27,69 @@ const EventCard: FC<EventCardProps> = (props) => {
                 <div
                     className={`event-card no-tap-highlight  
                         ${open ? 'active' : ''} 
-                        ${props.background ? 'background' : ''}
+                        ${props.event.image ? 'background' : ''}
                     `}
-                    onClick={openEvent}
-                    style={{ backgroundImage: `url('${props.background}')` }}
-                >
-                    <h2>
-                        {TranslationModel.translate(props.event.title)}
-                        {!onMobile && props.event.link && (
-                            <a
-                                href={props.event.link}
-                                target='_blank'
-                                rel='noopener noreferrer'
-                            >
-                                <img
-                                    src={ExternalIcon}
-                                    alt=''
-                                    className='event-open'
-                                />
-                            </a>
-                        )}
-                    </h2>
-                    {/*
-                    <div className="event-tags-container">
-                        {props.showDesc && !onMobile && (
-                            <>
-                                <br />
-                                {props.event.tags && (
-                                    <>
-                                        {props.event.tags.map((tag) => (
-                                            <div
-                                                className='event-chip-cont'
-                                                key={`${tag.se}`}
-                                            >
-                                                <Chip>
-                                                    {TranslationModel.translate(
-                                                        tag
-                                                    )}
-                                                </Chip>
-                                            </div>
-                                        ))}
-                                    </>
-                                )}
-                            </>
-                        )}
-                                                    </div> */}
-                </div>
-                {open ? (
-                    <div className='event-card-desc'>
-                        <ContentPadding>
-                        <div className="event-info-strip">
-                            <span className="date-strip">
-                                <img className="date-time-icon" src={dateIcon} alt=''/>
-                                <span className="info-strip-text">{TranslationModel.translate(props.event.date)}</span>
-                            </span>
-                            
-                            <span className="date-strip">
-                                <img className="date-time-icon" src={clock} alt=''/>
-                            <span className="info-strip-text">{props.event.time}</span>
-                            </span>
-
-                            <span className="link-strip">
-                                <img className="date-time-icon" src={location} alt=''/>
-                            <span className="link-strip-text">
-                                <a href={props.event.location} target="_blank" rel="noopener noreferrer">digital.mediasbranschdag.com <img className='event-open' src={ExternalIconBlack} alt=''/></a>
-    
-                                </span>
-                                
-                            </span>
-                            
-                            <span className="link-strip">
-                                <img className="date-time-icon" src={FBicon} alt=''/>
-                            <span className="link-strip-text">
-                                <a href={props.event.link} target="_blank" rel="noopener noreferrer">Facebook Event <img className='event-open' src={ExternalIconBlack} alt=''/></a>
-
-                                </span>
-                            </span>
-                        </div>
-                            <TextSection>
-                                {TranslationModel.translate(props.event.description)}
-                                <br />
-                                
-                            </TextSection>
-                            <div className="readmore-button" onClick={openEvent}>
-                                <Button className='readmore-button-close'>{TranslationModel.translate(phrases.show_less)}</Button>
-                            </div>
-                            
-                            
-                            
-                        </ContentPadding>
-                    </div>
-                ) : (
-                    <div className='event-card-closed'>
+                    onClick={() => setOpen(!open)}
+                    style={{ backgroundImage: `url('${props.event.image}')` }}
+                />
+                <div className={open ? 'event-card-desc' : 'event-card-closed'}>
                     <ContentPadding>
                         <div className="event-info-strip">
+
+                            <h2>{TranslationModel.translate(props.event.title)}{!isMobile && props.event.fbLink && (
+                                <a
+                                    href={props.event.fbLink}
+                                    target='_blank'
+                                    rel='noopener noreferrer'
+                                >
+                                    <img
+                                        src={ExternalIconBlack}
+                                        alt=''
+                                        className='event-open'
+                                    />
+                                </a>
+                            )}</h2>
                             <span className="date-strip">
-                                <img className="date-time-icon" src={dateIcon} alt=''/>
-                                <span className="info-strip-text">{TranslationModel.translate(props.event.date)}</span>
+                                <img className="date-time-icon" src={dateIcon} alt='' />
+                                <span className="info-strip-text">{props.event.date}</span>
                             </span>
+
                             <span className="date-strip">
-                                <img className="date-time-icon" src={clock} alt=''/>
-                            <span className="info-strip-text">{props.event.time}</span>
+                                <img className="date-time-icon" src={clock} alt='' />
+                                <span className="info-strip-text">{props.event.time}</span>
                             </span>
+
                             <span className="link-strip">
-                                <img className="date-time-icon" src={location} alt=''/>
-                            <span className="link-strip-text">
-                                <a href={props.event.location} target="_blank" rel="noopener noreferrer">digital.mediasbranschdag.com <img className='event-open' src={ExternalIconBlack} alt=''/></a>
+                                <img className="date-time-icon" src={location} alt='' />
+                                <span className="link-strip-text">
+                                    {props.event.location.includes('http') ? <a href={props.event.location} target="_blank" rel="noopener noreferrer">{props.event.location.replace('https://', '').replace('/', '')} <img className='event-open' src={ExternalIconBlack} alt='' /></a>
+                                        : props.event.location}
+
                                 </span>
                             </span>
-                            
+
                             <span className="link-strip">
-                                <img className="date-time-icon" src={FBicon} alt=''/>
-                            <span className="link-strip-text">
-                                <a href={props.event.link} target="_blank" rel="noopener noreferrer">Facebook Event <img className='event-open' src={ExternalIconBlack} alt=''/></a>
+                                <img className="date-time-icon" src={FbIcon} alt='' />
+                                <span className="link-strip-text">
+                                    <a href={props.event.fbLink} target="_blank" rel="noopener noreferrer">Facebook Event <img className='event-open' src={ExternalIconBlack} alt='' /></a>
+
                                 </span>
                             </span>
                         </div>
                         <TextSection>
                             {TranslationModel.translate(props.event.description)}
                             <br />
-                            
+
                         </TextSection>
-                        <div className='fade-bottom'>
-                            <div className="readmore-button" onClick={openEvent}>
-                                <Button>{TranslationModel.translate(phrases.read_more)}</Button>
-                            </div>
-                        </div>
+                        {open ? <div className="readmore-button" onClick={() => setOpen(!open)}>
+                            <Button className='readmore-button-close'>{TranslationModel.translate(phrases.show_less)}</Button>
+                        </div> : <div className='fade-bottom'>
+                                <div className="readmore-button" onClick={() => setOpen(!open)}>
+                                    <Button>{TranslationModel.translate(phrases.read_more)}</Button>
+                                </div>
+                            </div>}
                     </ContentPadding>
                 </div>
-                )}
             </Card>
         </div>
     )
