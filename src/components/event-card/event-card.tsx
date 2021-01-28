@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC, useState } from 'react'
 import './event-card.css'
 import Card from '../card/card'
 import TextSection from '../text-section/text-section'

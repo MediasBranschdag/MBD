@@ -35,11 +35,6 @@
     display: inline-flex;
 }
 
-.event-tags-container{
-    
-}
-
-
 @media screen and (max-width: 800px) {
     .event-card-container h2 {
         text-align: center;
@@ -76,7 +71,7 @@
 }
 
 .event-card-closed{
-    max-height: 280px;
+    max-height: 300px;
     overflow: hidden;
     padding: 0 15px;
     color: #000;
@@ -175,7 +170,7 @@
 
     .event-card-closed{
         padding: 0;
-        max-height: 300px; 
+        max-height: 320px; 
     }
 }
 
