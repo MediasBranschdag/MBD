@@ -116,7 +116,7 @@
     display: flex;
     flex-direction: column;
     justify-content:space-between;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     
 }
 
@@ -170,7 +170,7 @@
 
     .event-card-closed{
         padding: 0;
-        max-height: 320px; 
+        max-height: 340px; 
     }
 }
 
