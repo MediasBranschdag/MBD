@@ -248,6 +248,89 @@ const Companypage = () => {
                                 })}
                             </ContentPadding></ContentPadding>
                         </Card>
+                        <div className='additional-offers'>
+                            <div>
+                                <Card light>
+                                    <ContentPadding><ContentPadding>
+                                        {TranslationModel.translate({
+                                            se: (
+                                                <>
+                                                    <h4>Event</h4>
+                                                    <h3>5 000 kr</h3>
+                                                    <br />
+                                                    <p>
+                                                        <ul>
+                                                            <li>
+                                                                Exempelvis en liveföreläsning, CV-workshop eller Q&A med studenter
+                                                    </li>
+                                                            <li>
+                                                                På eller före branschdagen
+                                                    </li>
+                                                        </ul>
+                                                    </p>
+                                                </>
+                                            ),
+                                            en: (
+                                                <>
+                                                    <h4>Event</h4>
+                                                    <h3>5 000 SEK</h3>
+                                                    <br />
+                                                    <p>
+                                                        <ul>
+                                                            <li>
+                                                                For example a live lecture, CV workshop or a Q&A with students
+                                                    </li>
+                                                            <li>
+                                                                Before or during the fair day
+                                                    </li>
+                                                        </ul>
+                                                    </p>
+                                                </>
+                                            ),
+                                        })}
+                                    </ContentPadding></ContentPadding>
+                                </Card></div>
+                            <Card light>
+                                <ContentPadding><ContentPadding>
+                                    {TranslationModel.translate({
+                                        se: (
+                                            <>
+                                                <h4>Annons</h4>
+                                                <h3>1 000 kr</h3>
+                                                <br />
+                                                <p>
+                                                    <ul>
+                                                        <li>
+                                                            På vår Facebook-sida, Instagram eller hemsida
+                                                    </li>
+                                                        <li>
+                                                            Annons visas i 7 dagar, pris gäller per kanal
+                                                    </li>
+                                                    </ul>
+                                                </p>
+                                            </>
+                                        ),
+                                        en: (
+                                            <>
+                                                <h4>Advert</h4>
+                                                <h3>1 000 SEK</h3>
+                                                <br />
+                                                <p>
+                                                    <ul>
+                                                        <li>
+                                                            On our Facebook, Instagram or website
+                                                    </li>
+                                                        <li>
+                                                            The advert is shown for 7 days, price is per channel
+                                                    </li>
+                                                    </ul>
+                                                </p>
+                                            </>
+                                        ),
+                                    })}
+                                </ContentPadding></ContentPadding>
+                            </Card>
+                        </div>
                     </div>
                     <TextSection align={TextSectionAlignment.center}>
                         <p>
@@ -418,11 +501,10 @@ const Companypage = () => {
                     </SectionTitle>
                     <div
                         style={{
-                            gridTemplateColumns: `repeat(${
-                                salesMembers.length > 4
-                                    ? 3
-                                    : salesMembers.length
-                            }, 1fr)`,
+                            gridTemplateColumns: `repeat(${salesMembers.length > 4
+                                ? 3
+                                : salesMembers.length
+                                }, 1fr)`,
                         }}
                         className='companypage-sales-members'
                     >
@@ -464,8 +546,8 @@ const Companypage = () => {
                         <CompanyLogoList companies={lastYearCompanies.all} />
                     </ContentSection>
                 ) : (
-                    <></>
-                )}
+                        <></>
+                    )}
             </div>
             <Footer />
         </div>
