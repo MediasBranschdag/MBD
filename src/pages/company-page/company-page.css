@@ -9,10 +9,6 @@
     color: var(--theme-text-dark);
 }
 
-.companypage-offer > div {
-    padding: 0 1em;
-    border: 1px solid #e5e3dd;
-}
 
 .companypage-offer h3, .companypage-offer h4, .companypage-offer h5 {
     text-align: center;
@@ -21,6 +17,19 @@
 
 .companypage-offer li {
     padding: 0.3em 0;
+}
+
+.additional-offers {
+    display: flex;
+    align-content: space-between;
+}
+
+.additional-offers div {
+    flex: 1 1 0;
+}   
+
+.additional-offers div:first-child {
+    margin-right: 1em;
 }
 
 .companypage-fair {
@@ -92,6 +101,21 @@
             rgba(255,255,255,0) 75%
         );
     }
+
+    .additional-offers {
+        display: 'flex';
+        flex-direction: column;
+    }
+
+    .additional-offers div {
+        flex: 0 1 auto;
+    }   
+
+    .additional-offers div:first-child {
+        margin-right: 0;
+        margin-bottom:1em;
+    }
+    
 }
 
 @media screen and (max-width: 500px) {
