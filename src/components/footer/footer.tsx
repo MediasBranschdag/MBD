@@ -10,7 +10,7 @@ import phrases from '../../data/translations.json';
 import { isMobile, isSafari } from 'react-device-detect';
 
 const Footer: FC<{}> = (props) => {
-    
+
     const preparing = (
         <ContentSection>
             <SectionTitle>
@@ -19,32 +19,33 @@ const Footer: FC<{}> = (props) => {
         </ContentSection>)
 
     const companyInfo = (<>
-        <ContentSection>
-            <SectionTitle>{TranslationModel.translate(phrases.main_sponsor)}</SectionTitle>
-            <div className="footer-main-sponsor">
-                <MBDCompanyContext.Consumer>
-                    {companies => {
-                        return companies.isMainSponsor.map(company => {
+        <MBDCompanyContext.Consumer>
+            {companies => {
+                return companies.isMainSponsor.length > 0 ? <ContentSection>
+                    <SectionTitle>{TranslationModel.translate(phrases.main_sponsor)}</SectionTitle>
+                    <div className="footer-main-sponsor">
+
+                        {companies.isMainSponsor.map(company => {
                             return <div key={company.id} className='footer-main-sponsor-item'>
-                                <img src={"/assets/companies/" + company.logo_path} alt=""/>
+                                <img src={"/assets/companies/" + company.logo_path} alt="" />
                             </div>
-                        })
-                    }}
-                </MBDCompanyContext.Consumer>
-            </div>
-        </ContentSection>
+                        })}
+                    </div>
+                </ContentSection> : null
+            }}
+        </MBDCompanyContext.Consumer>
 
         <ContentSection>
             <SectionTitle>{TranslationModel.translate(phrases.exhibitors)}</SectionTitle>
             <MBDCompanyContext.Consumer>
-                {companies => <CompanyLogoList companies={companies.isExhibitor}/>}
+                {companies => <CompanyLogoList companies={companies.isExhibitor} />}
             </MBDCompanyContext.Consumer>
         </ContentSection>
 
         <ContentSection>
             <SectionTitle>{TranslationModel.translate(phrases.thankyou_sponsor)}</SectionTitle>
             <MBDCompanyContext.Consumer>
-                {companies => <CompanyLogoList companies={companies.isSponsor}/>}
+                {companies => <CompanyLogoList companies={companies.isSponsor} />}
             </MBDCompanyContext.Consumer>
         </ContentSection>
     </>);
@@ -64,7 +65,7 @@ const Footer: FC<{}> = (props) => {
                             </a>
                             {isMobile && isSafari ? <></> :
                                 <>
-                                    <br/><br/>
+                                    <br /><br />
                                     <i>{TranslationModel.translate(phrases.intro_movie_credit)}</i>
                                 </>
                             }
