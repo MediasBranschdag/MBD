@@ -22,6 +22,7 @@ export class Company {
         public isSponsor: boolean,
         public isExhibitor: boolean,
         public isMainSponsor: boolean,
+        public isLecturer: boolean,
 
         public employments: Array<Employment>,
 
@@ -65,6 +66,7 @@ export default class CompanyModel {
                     company.isSponsor === '1',
                     company.isExhibitor === '1',
                     company.isMainSponsor === '1',
+                    company.isLecturer === '1',
                     employments
                 );
             })

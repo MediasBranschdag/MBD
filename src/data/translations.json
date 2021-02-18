@@ -121,6 +121,10 @@
         "se": "Utställare",
         "en": "Exhibitors"
     },
+    "lecturers": {
+        "se": "Föreläsare",
+        "en": "Lecturers"
+    },
     "thankyou_sponsor": {
         "se": "Vi tackar våra sponsorer",
         "en": "We want to thank our sponsors"

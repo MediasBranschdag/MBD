@@ -5,7 +5,8 @@ const defaultValue: CompanyInvolment = {
   all: [],
   isExhibitor: [],
   isSponsor: [],
-  isMainSponsor: []
+  isMainSponsor: [],
+  isLecturer: []
 }
 
 export const MBDCompanyContext = React.createContext<CompanyInvolment>(defaultValue);
@@ -15,6 +16,7 @@ export interface CompanyInvolment {
   isExhibitor: Array<Company>,
   isSponsor: Array<Company>,
   isMainSponsor: Array<Company>
+  isLecturer: Array<Company>
 }
 
 const MBDCompanyProvider: FC = (props) => {
@@ -27,6 +29,7 @@ const MBDCompanyProvider: FC = (props) => {
           isExhibitor: companies.filter(company => company.isExhibitor),
           isSponsor: companies.filter(company => company.isSponsor),
           isMainSponsor: companies.filter(company => company.isMainSponsor),
+          isLecturer: companies.filter(company => company.isLecturer),
         });
     })
   }, []);

@@ -91,6 +91,7 @@ class CompanyModel extends DatabaseModel {
         ci.isSponsor,
         ci.isExhibitor,
         ci.isMainSponsor,
+        ci.isLecturer,
         ci.seekingDescription_en,
         ci.seekingDescription_se,
         cmp.mapPositionY,

@@ -51,6 +51,9 @@ const Companypage = () => {
                 isMainSponsor: companies.filter(
                     (company) => company.isMainSponsor
                 ),
+                isLecturer: companies.filter(
+                    (company) => company.isMainSponsor
+                ),
             })
         })
     }, [])
