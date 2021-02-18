@@ -42,6 +42,19 @@ const Footer: FC<{}> = (props) => {
             </MBDCompanyContext.Consumer>
         </ContentSection>
 
+        <MBDCompanyContext.Consumer>
+            {companies => {
+                console.log(companies.isLecturer)
+                return companies.isLecturer.length > 0 ?
+                    <ContentSection>
+                        <SectionTitle>{TranslationModel.translate(phrases.lecturers)}</SectionTitle>
+                        <MBDCompanyContext.Consumer>
+                            {companies => <CompanyLogoList companies={companies.isLecturer} />}
+                        </MBDCompanyContext.Consumer>
+                    </ContentSection> : null
+            }}
+        </MBDCompanyContext.Consumer>
+
         <ContentSection>
             <SectionTitle>{TranslationModel.translate(phrases.thankyou_sponsor)}</SectionTitle>
             <MBDCompanyContext.Consumer>
