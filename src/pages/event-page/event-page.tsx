@@ -14,6 +14,9 @@ import { getEvents, Event } from '../../model/eventModel'
 import SectionTitle from '../../components/section-title/section-title'
 import Loader from '../../components/loader/loader'
 import TextSection, { TextSectionAlignment } from '../../components/text-section/text-section'
+// import IntroScreenButtons from '../../components/intro-screen/intro-screen-buttons/intro-screen-buttons'
+import { Button } from '../../components/button/button'
+// import { emphasize } from '@material-ui/core'
 
 const Eventpage: FC = () => {
 
@@ -23,14 +26,14 @@ const Eventpage: FC = () => {
 
     useEffect(() => {
         getEvents().then(e => {
-            setEvents(e.filter(e => new Date(e.date) >= new Date()))
-            setOldEvents(e.filter(e => new Date(e.date) < new Date()))
+            setEvents(e.filter(e => new Date(parseInt(e.date.split("-")[0]), parseInt(e.date.split("-")[1])-1, parseInt(e.date.split("-")[2]), parseInt(e.time.slice(-5, -3))) >= new Date()))
+            setOldEvents(e.filter(e => new Date(parseInt(e.date.split("-")[0]), parseInt(e.date.split("-")[1])-1, parseInt(e.date.split("-")[2]), parseInt(e.time.slice(-5, -3))) < new Date()))
         }).finally(() => setIsLoading(false))
     }, [])
 
-    const logoParts = 3;
-    const [logoPartActiveStep, setLogoPartActiveStop] = useState(0);
-
+    //const logoParts = 3;
+    //const [logoPartActiveStep, setLogoPartActiveStop] = useState(0);
+/*
     useEffect(() => {
         var timeout = setTimeout(() => {
             if (logoPartActiveStep < logoParts) {
@@ -42,6 +45,13 @@ const Eventpage: FC = () => {
             clearTimeout(timeout);
         }
     }, [logoPartActiveStep]);
+    */
+/*
+    var buttonsIntroEvents: { title: Phrase; scrollTargetID: React.ReactNode }[] = [];
+    events.map((e)=>(buttonsIntroEvents.push({title: e.title,
+        scrollTargetID: e.id})))*/
+
+    
 
     return (
         <div>
@@ -55,15 +65,33 @@ const Eventpage: FC = () => {
                         ? undefined
                         : require('../../assets/backgrounds/MotionGraphics_Trim.mp4')}>
 
-                <div className="event-intro-text">
-                    <div className={`event-text-part ${logoPartActiveStep > 0 ? 'active' : ''}`}>{TranslationModel.translate({ se: 'Våra', en: 'Our' })} </div>
-                    <div className={`event-text-part ${logoPartActiveStep > 1 ? 'active' : ''}`}>{TranslationModel.translate({ se: 'aktuella', en: 'current' })} </div>
-                    <div className={`event-text-part ${logoPartActiveStep > 2 ? 'active' : ''}`}>{TranslationModel.translate({ se: 'event', en: 'events!' })}</div>
+                    
+                <div className="event-summary">
+                <div className="event-button-graduateland">
+                    <a href='https://digital.mediasbranschdag.com'>
+                            <Button className={'btn--compact'}>
+                                {TranslationModel.translate({
+                                    se:
+                                        'Klicka här för att gå till den digitala mässan',
+                                    en: 'Register for the online fair here',
+                                })}
+                            </Button>
+                        </a>
+                        </div>    
+                {/*
+                    <div className="event-intro-text">
+                        <div className={`event-text-part ${logoPartActiveStep > 0 ? 'active' : ''}`}>{TranslationModel.translate({ se: 'Våra', en: 'Our' })} </div>
+                        <div className={`event-text-part ${logoPartActiveStep > 1 ? 'active' : ''}`}>{TranslationModel.translate({ se: 'aktuella', en: 'current' })} </div>
+                        <div className={`event-text-part ${logoPartActiveStep > 2 ? 'active' : ''}`}>{TranslationModel.translate({ se: 'event', en: 'events!' })}</div>
+                    </div>
+                */}
                 </div>
+                
+
             </IntroScreen>
 
             <ContentSection>
-                {isLoading ? <TextSection align={TextSectionAlignment.center}><Loader /></TextSection> : <div className='master-container'>
+                {isLoading ? <TextSection align={TextSectionAlignment.center}><Loader /></TextSection> : <div className='event-container'>
                     {events.map((event, i) => (
                         <div key={event.id + i}>
                             <EventCard
