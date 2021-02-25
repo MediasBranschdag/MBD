@@ -8,7 +8,7 @@ export class Event {
         public id: number,
         public title: Phrase,
         public description: Phrase,
-        public date: Date,
+        public date: string,
         public time: string,
         public location: string,
         public fbLink: string,
