@@ -46,6 +46,7 @@ import CompanyLogoList from '../../components/company-logo-list/company-logo-lis
 import { ContentPadding } from '../../components/content-padding'
 import Card from '../../components/card/card'
 import CompanyModel from '../../model/companyModel'
+import LanguageSelect from '../../components/navbar/language-select/language-select'
 
 const Temppage: FC = () => {
     const [salesMembers, setSalesMembers] = useState<TeamMember[]>([])
@@ -80,11 +81,14 @@ const Temppage: FC = () => {
     return (
         <div className='homepage'>
             {/* Logo and countdown */}
+
             <IntroScreen noButton={false}
 
             >
+                <LanguageSelect />
                 <div className='homepage-intro-content'>
                     <AnimatedMBDLogo />
+
                 </div>
             </IntroScreen>
             {/* Introduction page */}

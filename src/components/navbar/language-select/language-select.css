@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-self: center;
+    align-self:flex-end;
+    
 
     cursor: pointer;
     transition: all 0.25s;
@@ -18,13 +19,14 @@
 
 .language-select-text {
     margin-top: -5px;
+    margin-right: 100px;
     border-radius: 5px;
-
-    text-align: center;
+    justify-content: right;
     line-height: 1;
     text-transform: uppercase;
     font-weight: 900;
     font-size: 14px;
+
 
     background-color: var(--theme-dark-color-normal);
 }
