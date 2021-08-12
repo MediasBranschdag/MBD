@@ -65,7 +65,7 @@ const IntroScreen: FC<IntroScreenProps> = (props) => {
             <div className='intro-screen-scroll-button no-select'>
                 {!props.noButton ? (
                     <Button
-                        onClick={() => scroll.scrollTo(window.innerHeight - 66)}
+                        onClick={() => scroll.scrollTo(window.innerHeight)}
                         buttonType={ButtonTypes.icon}
                     >
                         <img src={ArrowDownIcon} alt='Down' />

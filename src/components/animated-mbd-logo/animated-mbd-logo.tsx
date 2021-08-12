@@ -5,6 +5,12 @@ import { Line, LineType } from '../lines/line';
 import CalendarIcon from '../../assets/icons/other/calendar_white.svg';
 import MapIcon from '../../assets/icons/other/map_location_white.svg';
 import { MBDDateContext } from '../../contexts/mbd-date-provider';
+import MailIcon from '../../assets/icons/other/mail-white-material.svg';
+import phrases from '../../data/translations.json'
+import TranslationModel from '../../model/translationModel'
+
+
+
 
 const AnimatedMBDLogo: FC = () => {
     const logoParts = 3;
@@ -59,27 +65,24 @@ const AnimatedMBDLogo: FC = () => {
                     <div className={`animated-logo-title-part ${logoPartActiveStep > 0 ? 'active' : ''}`}>MEDIAS </div>
                     <div className={`animated-logo-title-part ${logoPartActiveStep > 1 ? 'active' : ''}`}>BRANSCH</div>
                     <div className={`animated-logo-title-part ${logoPartActiveStep > 2 ? 'active' : ''}`}>DAG</div>
+
                 </div>
                 
-            <div className='digital-fair'>Digital edition</div>
                 <div className="animated-logo-info">
+               
+
                     <div className="animated-logo-info-section">
                         <img src={CalendarIcon} alt="" />
                         <Line lineType={LineType.horizontal}/>
                         <MBDDateContext.Consumer>
                             {mbdDate => 
                                 <div>
-                                    {mbdDate.getStartDate()} {mbdDate.getStartMonth()} {mbdDate.getStartYear()}
+                                     {TranslationModel.translate(phrases.months.february)} {"2022"}
                                 </div>
                             }
                         </MBDDateContext.Consumer>
                     </div>
-                    <Line lineType={LineType.vertical}/>
-                    <div className="animated-logo-info-section">
-                        <img src={MapIcon} alt="" />
-                        <Line lineType={LineType.horizontal}/>
-                        <div>ONLINE</div>
-                    </div>
+                    
                 </div>
             </div>
         </>

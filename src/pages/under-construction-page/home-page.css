@@ -1,0 +1,139 @@
+.homepage-intro-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+}
+
+.read-more-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.read-more {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+}
+
+.homepage-instagram-section {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    column-gap: 25px;
+    row-gap: 25px;
+}
+
+.homepage-social-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    max-width: 300px;
+    margin: auto;
+}
+
+.photographer-info {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 0.9em;
+    padding-top: 0.2em;
+}
+
+.photographer-info img {
+    height: 1em;
+    padding-right: 0.2em;
+}
+
+.photographer-info a {
+    border-bottom: 2px solid var(--theme-primary-color-normal);
+}
+
+.digital-button {
+    max-width: 320px;
+}
+
+.signature-cont {
+    display: flex;
+    width: 100%;
+}
+
+.signature-cont img {
+    max-width: 200px;
+}
+
+@media screen and (max-width: 700px) {
+
+    .homepage-instagram-section {
+        grid-template-columns: repeat(2, auto);
+        column-gap: 15px;
+        row-gap: 15px;
+    }
+    
+    .read-more-section {
+        flex-direction: column;
+    }
+
+    .read-more:nth-of-type(1) {
+        padding-bottom: 50px;
+    }
+
+    .read-more h1 {
+        word-wrap: break-word;
+        font-size: 24px;
+    }
+
+    .digital-button {
+        max-width: 250px;
+    }
+
+    .signature-cont {
+        justify-content: space-around;
+        margin-top: 15px;
+    }
+
+    .signature-cont img {
+        max-width: 130px;
+    }
+    .under-construction{
+        align-items: center;
+    }
+}
+/* Google Fonts */
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+
+/* Global */
+
+body{
+  padding-top: 66px;
+  color: rgba(255,255,255,.75);
+  background-color: rgb(25,25,25);  
+}
+.line-1{
+    position: relative;
+    top: 50%;  
+    width: 24em;
+    margin: 0 auto;
+    border-right: 2px solid rgba(255,255,255,.75);
+    font-size: 180%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+
+/* Animation */
+.anim-typewriter{
+  animation: typewriter 4s steps(44) 1s 1 normal both,
+             blinkTextCursor 500ms steps(44) infinite normal;
+}
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 24em;}
+}
+@keyframes blinkTextCursor{
+  from{border-right-color: rgba(255,255,255,.75);}
+  to{border-right-color: transparent;}
+}
