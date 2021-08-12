@@ -82,9 +82,10 @@
         "en": "CURRENTLY ONGOING"
     },
     "hello": {
-        "se": "Nej men hej",
+        "se": "Hej där",
         "en": "Hello there"
     },
+    
     "are_you_company": {
         "se": "Är du en företagsrepresentant?",
         "en": "Are you a company representative?"
@@ -221,6 +222,11 @@
         "se": "Förra årets medverkande",
         "en": "Last year's participants"
     },
+    "previous_year_participants": {
+        "se": "Tidigare medverkande",
+        "en": "Previous participants"
+    },
+
     "for_students": {
         "se": "För studenter",
         "en": "For students"

@@ -52,6 +52,7 @@
     padding: 17px;
     border-radius: 50%;
     text-align: center;
+    background-color: aliceblue;
 }
 .btn--icon--big {
     width: 40px;
