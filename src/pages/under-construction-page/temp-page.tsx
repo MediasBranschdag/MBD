@@ -81,14 +81,10 @@ const Temppage: FC = () => {
     return (
         <div className='homepage'>
             {/* Logo and countdown */}
-
-            <IntroScreen noButton={false}
-
-            >
+            <IntroScreen noButton={false}>
                 <LanguageSelect />
                 <div className='homepage-intro-content'>
                     <AnimatedMBDLogo />
-
                 </div>
             </IntroScreen>
             {/* Introduction page */}
