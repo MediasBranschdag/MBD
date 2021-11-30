@@ -8,7 +8,7 @@ import ReadMoreBackground from '../../assets/backgrounds/laptop.png'
 import AnimatedMBDLogo from '../../components/animated-mbd-logo/animated-mbd-logo'
 import CompanyIcon from '../../assets/icons/other/company.svg'
 import FacebookIcon from '../../assets/icons/other/facebook.svg'
-import InstagramIcon from '../../assets/icons/other/instagram.svg'
+import InstagramIcon from '../../assets/icons/other/instagram_white.svg'
 import LinkedinIcon from '../../assets/icons/other/linkedin.svg'
 import CameraIcon from '../../assets/icons/other/camera.svg'
 
@@ -57,34 +57,12 @@ const Homepage: FC = () => {
     return (
         <div className='homepage'>
             {/* Logo and countdown */}
-            <IntroScreen
-                backgroundImage={
-                    isMobile && isSafari ? IntroScreenBackground : undefined
-                }
-                backgroundVideo={
-                    isMobile && isSafari
-                        ? undefined
-                        : require('../../assets/backgrounds/header_video_s.mp4')
-                }
-            >
+            <IntroScreen noButton={false}>
                 <div className='homepage-intro-content'>
                     <AnimatedMBDLogo />
-                    <div className='digital-button'>
-                        <a href='https://digital.mediasbranschdag.com'>
-                            <Button className={'btn--white'}>
-                                {TranslationModel.translate({
-                                    se:
-                                        'Klicka här för att gå till den digitala mässan',
-                                    en: 'Register for the online fair here',
-                                })}
-                            </Button>
-                        </a>
-                    </div>
-                    <MBDDateContext.Consumer>
-                        {(mbdDate) => <Countdown mbdDate={mbdDate} />}
-                    </MBDDateContext.Consumer>
                 </div>
             </IntroScreen>
+
 
             {/* Introduction page */}
             <ContentSection background={ContentSectionBackground.light}>
@@ -99,35 +77,26 @@ const Homepage: FC = () => {
                                     TranslationModel.translate({
                                         se: (
                                             <span>
-                                                Nu är det inte långt kvar till
-                                                Medias Branschdag, den årliga
-                                                arbetsmarknadsmässan för
-                                                Medietekniksektionen på KTH. I
-                                                år kommer branschdagen gå av
-                                                stapeln den{' '}
+                                                Vad kul att just du hittat hit! Nedräkningen till Medias Branschdag 2022
+                                                har startat och den{' '}
                                                 {mbdDate.getStartDate()}:e{' '}
-                                                {mbdDate.getStartMonth()} och
-                                                för första gången någonsin -
-                                                digitalt på plattformen
-                                                Graduateland!
+                                                {mbdDate.getStartMonth()} är det äntligen dags.
+                                                Mässan kommer hållas i kårhuset Nymble på KTH campus Valhallavägen.
                                                 <br />
                                                 <br />
-                                                Studerar du medieteknik och
-                                                letar efter din framtida
-                                                arbetsplats, extrajobb eller
-                                                examensjobb? Eller är du
-                                                istället i behov av kompetent
-                                                personal med en
-                                                civilingenjörsutbildning?
-                                                Härligt, för oavsett är Medias
-                                                Branschdag lösningen!
+                                                Studerar du medieteknik, datateknik eller maskininlärning och letar efter
+                                                din framtida arbetsplats eller är ett företag som söker din
+                                                framtida kollega är Medias Branschdag dagen för dig. Mässan ger
+                                                dig som student möjlighet att hitta extrajobb, examensjobb eller
+                                                helt enkelt bara knyta värdefulla kontakter inför framtiden. Till
+                                                utställande företag garanterar vi en maxad dag med allt vad medieteknik
+                                                har att erbjuda. Helt enkelt något du inte vill missa!
+
+
                                                 <br />
                                                 <br />
-                                                Det kommer bli en dag fylld av
-                                                nya lärdomar, utbyten och
-                                                inspiration - allting samlat
-                                                under ett moln av
-                                                medieteknikanda. Ses vi där?😏
+                                                Ses vi där? Klart vi gör!
+
                                             </span>
                                         ),
 
@@ -161,10 +130,7 @@ const Homepage: FC = () => {
                                     })
                                 }
                             </MBDDateContext.Consumer>
-                            <div className='signature-cont'>
-                                <img src={NicoleSignature} alt='' />
-                                <img src={JohnSignature} alt='' />
-                            </div>
+
                         </TextSection>
                     }
                     content={
@@ -184,11 +150,11 @@ const Homepage: FC = () => {
                             <div className='photographer-info'>
                                 <img src={CameraIcon} alt='' />
                                 <a
-                                    href='https://www.instagram.com/mikaelaphoto/'
+                                    href='https://www.instagram.com/fotogruppen_medieteknik/'
                                     target='_blank'
                                     rel='noopener noreferrer'
                                 >
-                                    Mikaela Gärde
+                                    Johan Wangärd
                                 </a>
                             </div>
                         </>
@@ -312,45 +278,7 @@ const Homepage: FC = () => {
                 <></>
             )}
 
-            {/* Social media section */}
-            <ContentSection
-                size={ContentSectionSize.small}
-                background={ContentSectionBackground.dark}
-            >
-                <SectionTitle>
-                    {TranslationModel.translate(phrases.follow_social_media)}
-                </SectionTitle>
-                <div className='homepage-social-buttons'>
-                    <a
-                        href='https://www.facebook.com/mediasbranschdag/'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                    >
-                        <Button buttonType={ButtonTypes.bigIcon}>
-                            <img src={FacebookIcon} alt='' />
-                        </Button>
-                    </a>
-                    <a
-                        href='https://www.instagram.com/mediasbranschdag/'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                    >
-                        <Button buttonType={ButtonTypes.bigIcon}>
-                            <img src={InstagramIcon} alt='' />
-                        </Button>
-                    </a>
 
-                    <a
-                        href='https://www.linkedin.com/company/medias-branschdag/'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                    >
-                        <Button buttonType={ButtonTypes.bigIcon}>
-                            <img src={LinkedinIcon} alt='' />
-                        </Button>
-                    </a>
-                </div>
-            </ContentSection>
             <Footer />
         </div>
     )

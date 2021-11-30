@@ -1,8 +1,12 @@
+.homepage {
+    background-color: var(--theme-dark-color-normal);
+}
+
 .homepage-intro-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     margin: auto;
 }
