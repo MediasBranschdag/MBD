@@ -42,6 +42,7 @@ const Footer: FC<{}> = (props) => {
             </MBDCompanyContext.Consumer>
         </ContentSection>
 
+
         <MBDCompanyContext.Consumer>
             {companies => {
                 console.log(companies.isLecturer)
@@ -67,8 +68,11 @@ const Footer: FC<{}> = (props) => {
         <MBDCompanyContext.Consumer>
             {companies => {
                 return <div className='footer'>
-                    {companies.all.length > 0 ? companyInfo : preparing}
+
+                    {/*{companies.all.length > 0 ? companyInfo : preparing}*/}
+
                     <ContentSection background={ContentSectionBackground.dark} size={ContentSectionSize.large}>
+
                         <div className='footer-bottom-background'></div>
                         <TextSection align={isMobile ? TextSectionAlignment.center : TextSectionAlignment.left}>
                             Sektionen för Medieteknik, KTH
@@ -79,7 +83,6 @@ const Footer: FC<{}> = (props) => {
                             {isMobile && isSafari ? <></> :
                                 <>
                                     <br /><br />
-                                    <i>{TranslationModel.translate(phrases.intro_movie_credit)}</i>
                                 </>
                             }
                         </TextSection>

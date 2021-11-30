@@ -19,6 +19,7 @@
 .navbar-padding {
     box-sizing: border-box;
     padding: 12px;
+    padding-left: 0px;
 }
 
 .navbar-leading {
@@ -40,12 +41,15 @@
 }
 
 .navbar-mbd-logo {
+    padding-left: 18px;
     width: auto;
     height: 100%;
 }
 
 .side-logo {
     height: 100%;
+
+   
 }
 
 .navbar-trailing-item {
@@ -53,7 +57,7 @@
 }
 
 .navbar-link {
-    padding: 10px;
+    padding-right: 18px;
 
     font-weight: bold;
     transition: color 0.5s;
@@ -63,6 +67,9 @@
 .navbar-link.active,
 .navbar-link:hover {
     color: var(--theme-primary-color-normal);
+}
+.side-logo:hover {
+    cursor: pointer;
 }
 
 .navbar-mobile-menu-button {

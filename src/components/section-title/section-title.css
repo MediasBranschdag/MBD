@@ -1,10 +1,22 @@
-.section-title-container {
+.title-section {
     margin-bottom: 30px;
 
-    text-align: center;
     font-weight: bold;
     font-size: 30px;
 }
+
+.title-section-left {
+    text-align: left;
+}
+
+.title-section-center {
+    text-align: center;
+}
+
+.title-section-right {
+    text-align: right;
+}
+
 
 .section-title {
     display: inline-block;

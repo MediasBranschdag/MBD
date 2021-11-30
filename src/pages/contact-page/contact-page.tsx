@@ -15,6 +15,7 @@ import ContactForm from './contact-form/contact-form'
 
 import Background from '../../assets/backgrounds/team.jpg'
 import IntroScreen from '../../components/intro-screen/intro-screen'
+import SectionTitle from '../../components/section-title/section-title'
 
 const Contactpage: FC = () => {
     const [pgMembers, setPgMembers] = useState<TeamMember[]>([])
@@ -57,11 +58,11 @@ const Contactpage: FC = () => {
                 <div className='photographer-thanks'>
                     {TranslationModel.translate(phrases.photo_thanks_start)}{' '}
                     <a
-                        href='https://www.instagram.com/mikaelaphoto/'
+                        href='https://www.instagram.com/fotogruppen_medieteknik/'
                         target='_blank'
                         rel='noopener noreferrer'
                     >
-                        Mikaela Gärde
+                        Johan Wangärd
                     </a>{' '}
                     {TranslationModel.translate(phrases.photo_thanks_end)}!
                 </div>
