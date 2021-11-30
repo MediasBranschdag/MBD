@@ -1,10 +1,16 @@
 import React, { FC } from 'react';
 import './section-title.css';
 
+export enum TitleSectionAlignment {
+    left = 'title-section-left',
+    center = 'title-section-center',
+    right = 'title-section-right',
 
-const SectionTitle: FC = (props) => {
+}
+
+const SectionTitle: FC<{ align?: TitleSectionAlignment }> = (props) => {
     return (
-        <div className='section-title-container'>
+        <div className={'title-section ' + props.align}>
             <div className='section-title'>
                 <span className='section-title-text'>
                     {props.children}
@@ -15,3 +21,6 @@ const SectionTitle: FC = (props) => {
 }
 
 export default SectionTitle;
+
+
+

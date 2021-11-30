@@ -1,0 +1,11 @@
+#wearepage-intro {
+    max-width: 750px;
+    position: relative;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2em;
+    padding: 5vw;
+    border-radius: 2.5vw;
+    background-color: var(--theme-primary-color-normal);
+}

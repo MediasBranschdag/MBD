@@ -3,30 +3,15 @@
     flex-direction: column;
     justify-content: space-between;
     align-self:flex-end;
+    padding: 8px;
     
-
     cursor: pointer;
     transition: all 0.25s;
 }
 .language-select:hover {
-    color: var(--theme-primary-color-normal);
     transform: scale(1.1);
 }
 
 .language-select-globe {
     width: 23px;
-}
-
-.language-select-text {
-    margin-top: -5px;
-    margin-right: 70px;
-    border-radius: 5px;
-    justify-content: right;
-    line-height: 1;
-    text-transform: uppercase;
-    font-weight: 900;
-    font-size: 14px;
-
-
-    background-color: var(--theme-dark-color-normal);
 }

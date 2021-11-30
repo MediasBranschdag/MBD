@@ -54,8 +54,8 @@
         "en": "Loading"
     },
     "start": {
-        "se": "Start",
-        "en": "Start"
+        "se": "",
+        "en": ""
     },
     "february": {
         "se": "Februari",
@@ -142,6 +142,10 @@
         "se": "För företag",
         "en": "For companies"
     },
+    "for_students": {
+        "se": "För studenter",
+        "en": "For students"
+    },
     "about_us": {
         "se": "Om oss",
         "en": "About us"
@@ -227,10 +231,7 @@
         "en": "Previous participants"
     },
 
-    "for_students": {
-        "se": "För studenter",
-        "en": "For students"
-    },
+   
     "dinner_party": {
         "se": "Sittningen",
         "en": "Dinner Party"
@@ -698,6 +699,15 @@
     "we_are_media_technology": {
         "se": "Vi är Medieteknik",
         "en": "We are Media Technology",
+        "about_media_technology": {
+            "se": "Om Medieteknik",
+            "en": "About Media Technology"
+        },
+        "what_is_media_technology": {
+            "se": "Vad är Medieteknik",
+            "en": "What is Media Technology"
+        },
+        
         "alumni_interviews": {
             "se": "Alumnintervjuer",
             "en": "Alumni interviews"

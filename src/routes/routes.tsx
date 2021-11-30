@@ -27,18 +27,19 @@ class Route {
 }
 
 const Routes = {
-    homePage: new Route('/', phrases.start, Temppage),
+    //homePage: new Route('/', phrases.start, Temppage),
 
-    //homePage: new Route('/', phrases.start, Homepage),
-    //whatIsPage: new Route('/medieteknik', phrases.we_are_media_technology, WeArePage),
-    //compnayPage: new Route('/company', phrases.for_companies, Companypage),
-    //studentPage: new Route('/exhibitors', phrases.exhibitors, Studentpage),
+    homePage: new Route('/', phrases.start, Homepage),
+    whatIsPage: new Route('/medieteknik', phrases.we_are_media_technology.about_media_technology, WeArePage),
+    compnayPage: new Route('/company', phrases.for_companies, Companypage),
+    //studentPage: new Route('/exhibitors', phrases.for_students, Studentpage),
+    contactPage: new Route('/contact', phrases.contact, Contactpage),
+
     //mapPage: new Route('/map', phrases.map, MapPage),
     //dinnerPartyPage: new Route('/dinner', phrases.dinner_party, Dinnerpage),
-    //contactPage: new Route('/contact', phrases.contact, Contactpage),
     //dinnerAdminPage: new Route('/dinner-admin', phrases.dinner_admin, DinnerAdmin, false),
     //eventPage: new Route('/event', phrases.events, Companypage),
-    //eventPage: new Route('/event', phrases.events, Eventpage),    
+    //eventPage: new Route('/event', phrases.events, Eventpage),
 };
 
 
