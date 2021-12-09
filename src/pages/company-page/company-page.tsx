@@ -191,17 +191,24 @@ const Companypage = () => {
                                     ),
                                     en: (
                                         <>
-                                            <h4>Standard</h4>
-                                            <h3>10 000 SEK</h3>
+                                            <h4>Main Sponsorship</h4>
+                                            <h3>50 000 SEK</h3>
                                             <br />
                                             <p>
                                                 <ul>
                                                     <li>
-                                                        A spot on our digital fair platform
+                                                        8m2 for stand, two standing tables and four chairs and two personal company hosts                                                    </li>
+                                                    <li>
+                                                        Four dinner tickets, access to the corporate lounge as well as lunch and coffee for four
                                                     </li>
                                                     <li>
-                                                        Active promotion on our
-                                                        website and social media
+                                                        Exposure on the website, social media, the back of clothes during the fair
+                                                    </li>
+                                                    <li>
+                                                        <b>Event:</b> For example a lunch lecture or a pub
+                                                    </li>
+                                                    <li>
+                                                        <b>Advert:</b> On website, Instagram and Facebook
                                                     </li>
                                                 </ul>
                                             </p>
@@ -236,16 +243,18 @@ const Companypage = () => {
                                     en: (
                                         <>
                                             <h4>Standard</h4>
-                                            <h3>10 000 SEK</h3>
+                                            <h3>20 000 SEK</h3>
                                             <br />
                                             <p>
                                                 <ul>
                                                     <li>
-                                                        A spot on our digital fair platform
+                                                        6m2 for stand, a standing table and two chairs and a personal company host
                                                     </li>
                                                     <li>
-                                                        Active promotion on our
-                                                        website and social media
+                                                        Two dinner tickets, access to the corporate lounge and lunch and coffee for two
+                                                    </li>
+                                                    <li>
+                                                        Exposure on the website and in social media
                                                     </li>
                                                 </ul>
                                             </p>
@@ -281,17 +290,19 @@ const Companypage = () => {
                                     ),
                                     en: (
                                         <>
-                                            <h4>Standard</h4>
-                                            <h3>10 000 SEK</h3>
+                                            <h4>Startup / Non-profit*</h4>
+                                            <h3>5000 SEK</h3>
                                             <br />
                                             <p>
                                                 <ul>
                                                     <li>
-                                                        A spot on our digital fair platform
+                                                        2m2 for stand, a standing table and two chairs and a personal company hosts
                                                     </li>
                                                     <li>
-                                                        Active promotion on our
-                                                        website and social media
+                                                        Two dinner tickets, access to the corporate lounge and lunch and coffee for two
+                                                    </li>
+                                                    <li>
+                                                        Exposure on the website and in social media
                                                     </li>
                                                 </ul>
                                             </p>
@@ -328,7 +339,7 @@ const Companypage = () => {
                                             en: (
                                                 <>
                                                     <h4>Event</h4>
-                                                    <h3>5 000 SEK</h3>
+                                                    <h3>7 000 SEK</h3>
                                                     <br />
                                                     <p>
                                                         <ul>
@@ -397,9 +408,7 @@ const Companypage = () => {
                                 ),
                                 en: (
                                     <span>
-                                        Contact us for questions or to get
-                                        information about other package
-                                        solutions!
+                                        <i>* The Startup / Non-profit package is only offered to non-profit organizations and smaller startups</i>
                                     </span>
                                 ),
                             })}
