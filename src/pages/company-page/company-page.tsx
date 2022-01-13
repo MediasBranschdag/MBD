@@ -50,13 +50,11 @@ const Companypage = () => {
                                         TranslationModel.translate({
                                             se: (
                                                 <span>
-                                                    Mässan startar den{' '}
+                                                    Mässan kommer äga rum{' '}
                                                     <b>
-                                                        {mbdDate.getStartDate()}
-                                                        e{' '}
-                                                        {mbdDate.getStartMonth()}{' '}
+                                                        {"våren"}{' '}
                                                         {mbdDate.getStartYear()}
-                                                        ,{' '}
+                                                        {' '}
                                                     </b>{' '}
                                                     och innehåller en heldag
                                                     spännande företag. Vi kommer
@@ -95,11 +93,9 @@ const Companypage = () => {
                                                 <span>
                                                     The job fair starts the{' '}
                                                     <b>
-                                                        {mbdDate.getStartDate()}
-                                                        th{' '}
-                                                        {mbdDate.getStartMonth()}{' '}
+                                                        {"spring"}{' '}
                                                         {mbdDate.getStartYear()}
-                                                        ,{' '}
+                                                        {' '}
                                                     </b>{' '}
                                                     and consists of a whole day
                                                     of exciting companies happy

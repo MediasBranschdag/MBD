@@ -9,3 +9,17 @@
     border-radius: 2.5vw;
     background-color: var(--theme-primary-color-normal);
 }
+
+.media-background {
+    position: absolute;
+    z-index: -1;
+    height: 200%;
+    width: 200%;
+    top: -50%;
+    left: -50%;
+
+    background-size: auto 100%;
+    background-position: center;
+
+    transform: translateX(175px);
+}

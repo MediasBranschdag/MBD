@@ -86,6 +86,11 @@
         "en": "Hello there"
     },
     
+    "spring": {
+        "se": "Våren",
+        "en": "Spring"
+    },
+    
     "are_you_company": {
         "se": "Är du en företagsrepresentant?",
         "en": "Are you a company representative?"
@@ -454,6 +459,8 @@
                 "se": "Event (t.ex. AW)",
                 "en": "Events (e.g. AW)"
             }
+            
+
         }
     },
     "dinner_page": {
