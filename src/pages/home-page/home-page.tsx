@@ -90,7 +90,6 @@ const Homepage: FC = () => {
                                                 utställande företag garanterar vi en maxad dag med allt vad medieteknik
                                                 har att erbjuda. Helt enkelt något du inte vill missa!
 
-
                                                 <br />
                                                 <br />
                                                 Ses vi där? Klart vi gör!
@@ -100,29 +99,21 @@ const Homepage: FC = () => {
 
                                         en: (
                                             <span>
-                                                It's not much time left until
-                                                Medias Branschdag, the annual
-                                                job fair for the Media
-                                                Technology chapter at KTH. This
-                                                year the fair takes place on the{' '}
-                                                {mbdDate.getStartDate()}th{' '}
-                                                {mbdDate.getStartMonth()} and
-                                                for the first time ever - online
-                                                on the platform Graduateland!
+
+                                                Fancy seeing you here! Because of the current situation and restrictions
+                                                we have decided on postponing the fair from the 3rd of February 2022 to a later date.
+                                                We are aiming for a warm spring day in 2022. The fair will take place in the student union
+                                                house Nymble at KTH campus Valhallavägen.
                                                 <br />
                                                 <br />
-                                                Do you work in the Media
-                                                Technology field and are in need
-                                                of skilled employees? Are you
-                                                studying Media Technology and
-                                                searching for a job or a place
-                                                to write a thesis? Are you new
-                                                to Media Technology? No matter
-                                                who you are - Medias Branschdag
-                                                is here for you!
+                                                If you are a media technology, computer science or machine learning student looking for a future employer
+                                                or a company looking for your future employee Media Branchday is the place to be.
+                                                The fair gives students the opportunity to find a part-time job, thises job or
+                                                valuable contact for the future. For companies, we are guaranteeing a full day with
+                                                everything Media technology has to offer. You don't want to miss this!
                                                 <br />
                                                 <br />
-                                                Will we see you there?😏
+                                                Will we see you there? Of course we will!
                                             </span>
                                         ),
                                     })
