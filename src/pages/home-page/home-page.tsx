@@ -77,11 +77,9 @@ const Homepage: FC = () => {
                                     TranslationModel.translate({
                                         se: (
                                             <span>
-                                                Vad kul att just du hittat hit! Nedräkningen till Medias Branschdag 2022
-                                                har startat och den{' '}
-                                                {mbdDate.getStartDate()}:e{' '}
-                                                {mbdDate.getStartMonth()} är det äntligen dags.
-                                                Mässan kommer hållas i kårhuset Nymble på KTH campus Valhallavägen.
+                                                Vad kul att just du hittat hit! På grund av rådande situation har vi beslutat att skjuta på
+                                                mässan från den 3:e februari 2022 till ett senare datum. Vi siktar nu på ett varmt vårdatum 2022. Mässan kommer hållas
+                                                i kårhuset Nymble på KTH campus Valhallavägen.
                                                 <br />
                                                 <br />
                                                 Studerar du medieteknik, datateknik eller maskininlärning och letar efter
