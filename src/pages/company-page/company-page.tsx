@@ -52,8 +52,7 @@ const Companypage = () => {
                                                 <span>
                                                     Mässan kommer äga rum{' '}
                                                     <b>
-                                                        {"våren"}{' '}
-                                                        {mbdDate.getStartYear()}
+                                                        {7} {TranslationModel.translate(phrases.months.april)} {mbdDate.getStartYear()}
                                                         {' '}
                                                     </b>{' '}
                                                     och innehåller en heldag
@@ -93,8 +92,7 @@ const Companypage = () => {
                                                 <span>
                                                     The job fair starts the{' '}
                                                     <b>
-                                                        {"spring"}{' '}
-                                                        {mbdDate.getStartYear()}
+                                                        {7} {TranslationModel.translate(phrases.months.april)} {mbdDate.getStartYear()}
                                                         {' '}
                                                     </b>{' '}
                                                     and consists of a whole day
