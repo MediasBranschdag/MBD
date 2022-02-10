@@ -77,9 +77,7 @@ const Homepage: FC = () => {
                                     TranslationModel.translate({
                                         se: (
                                             <span>
-                                                Vad kul att just du hittat hit! På grund av rådande situation har vi beslutat att skjuta på
-                                                mässan från den 3:e februari 2022 till ett senare datum. Vi siktar nu på ett varmt vårdatum 2022. Mässan kommer hållas
-                                                i kårhuset Nymble på KTH campus Valhallavägen.
+                                                Vad kul att just du hittat hit! Medias Branschdag kommer att äga rum {7} {TranslationModel.translate(phrases.months.april)} {2022} i kårhuset Nymble på KTH campus Valhallavägen.
                                                 <br />
                                                 <br />
                                                 Studerar du medieteknik, datateknik eller maskininlärning och letar efter
@@ -100,9 +98,7 @@ const Homepage: FC = () => {
                                         en: (
                                             <span>
 
-                                                Fancy seeing you here! Because of the current situation and restrictions
-                                                we have decided on postponing the fair from the 3rd of February 2022 to a later date.
-                                                We are aiming for a warm spring day in 2022. The fair will take place in the student union
+                                                Fancy seeing you here! The fair will take place on the 7th of {TranslationModel.translate(phrases.months.april)} {2022} in the student union
                                                 house Nymble at KTH campus Valhallavägen.
                                                 <br />
                                                 <br />
