@@ -23,7 +23,23 @@
     padding: 15px;
 }
 
+
 .company-card.disabled {
+    opacity: 0.2;
+}
+
+
+.company-card.eyevinn {
+    background-color: black;
+}
+
+.company-card.eyevinn.active {
+    height: 70px;
+    padding: 15px;
+}
+
+
+.company-card.eyevinn.disabled {
     opacity: 0.2;
 }
 
