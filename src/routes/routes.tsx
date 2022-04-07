@@ -33,7 +33,7 @@ const Routes = {
     whatIsPage: new Route('/medieteknik', phrases.we_are_media_technology.about_media_technology, WeArePage),
     compnayPage: new Route('/company', phrases.for_companies, Companypage),
     studentPage: new Route('/exhibitors', phrases.exhibitors, Studentpage),
-    //mapPage: new Route('/map', phrases.map, MapPage),
+    mapPage: new Route('/map', phrases.map, MapPage),
 
     contactPage: new Route('/contact', phrases.contact, Contactpage),
 
