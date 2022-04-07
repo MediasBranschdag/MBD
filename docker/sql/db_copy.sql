@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: MBD-mysql:3306
--- Tid vid skapande: 31 mars 2022 kl 16:53
+-- Tid vid skapande: 07 apr 2022 kl 02:17
 -- Serverversion: 5.7.37
 -- PHP-version: 7.4.20
 
@@ -281,11 +281,19 @@ CREATE TABLE `company_map_position` (
 
 INSERT INTO `company_map_position` (`companyID`, `year`, `mapPositionX`, `mapPositionY`, `customOrder`) VALUES
 ('academicwork', 2020, 62, 38, 20),
+('agilecontent', 2022, 107, 45, 2),
+('alster', 2022, 65, 31, 6),
+('bencha', 2022, 127, 31, 11),
 ('bonniernews', 2020, 51, 63, 3),
+('columbiaroad', 2022, 127, 48, 1),
 ('conversionista', 2020, 62, 28, 27),
+('conversionista', 2022, 95, 75, 23),
 ('curamando', 2020, 62, 19, 26),
+('curamando', 2022, 87, 75, 22),
+('devoteam', 2022, 88, 50, 4),
 ('digpro', 2020, 43, 50, 10),
 ('dynabyte', 2020, 40, 63, 2),
+('eyevinn', 2022, 91, 69, 21),
 ('findout', 2020, 56, 55, 8),
 ('foi', 2020, 51, 9, 24),
 ('forvalter', 2020, 50, 42, 15),
@@ -293,23 +301,38 @@ INSERT INTO `company_map_position` (`companyID`, `year`, `mapPositionX`, `mapPos
 ('hsustain', 2020, 62, 42, 17),
 ('if', 2020, 74, 47, 13),
 ('isotop', 2020, 53, 38, 19),
+('levels', 2022, 102, 31, 9),
 ('linkedin', 2020, 10, 51, 31),
+('mindroad', 2022, 104, 59, 12),
 ('nightli', 2020, 67, 50, 12),
 ('nordicmorninggroup', 2020, 58, 9, 25),
+('ohmansfonder', 2022, 77, 31, 7),
 ('protendering', 2020, 40, 55, 6),
+('prototyp', 2022, 94, 45, 3),
 ('redbee', 2020, 58, 63, 4),
 ('schibsted', 2020, 51, 24, 30),
+('schibsted', 2022, 115, 31, 10),
+('softube', 2022, 89, 31, 8),
 ('sr', 2020, 45, 42, 14),
+('sr', 2022, 100, 86, 18),
 ('startuplifers', 2020, 64, 56, 9),
+('storykit', 2022, 70, 62, 15),
+('studybuddy', 2022, 109, 70, 20),
 ('sverigesingenjorer', 2020, 72, 63, 5),
+('sverigesingenjorer', 2022, 90, 86, 18),
 ('svt', 2020, 48, 19, 28),
 ('teamengine', 2020, 38, 34, 21),
 ('tietoevry', 2020, 56, 42, 16),
 ('toptracer', 2020, 60, 50, 11),
+('toptracer', 2022, 73, 82, 17),
+('trafikverket', 2022, 72, 72, 16),
 ('unionen', 2020, 54, 19, 29),
+('unionen', 2022, 109, 80, 19),
 ('voyley', 2020, 46, 55, 7),
+('weknowit', 2022, 100, 50, 5),
 ('westmediasystem', 2020, 45, 38, 18),
 ('xlent', 2020, 40, 14, 23),
+('xlent', 2022, 92, 59, 13),
 ('yabs', 2020, 34, 60, 1);
 
 -- --------------------------------------------------------
