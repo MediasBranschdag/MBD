@@ -7,34 +7,11 @@ import MBDDateProvider from './contexts/mbd-date-provider';
 import MBDCompanyProvider from './contexts/mbd-company-provider';
 import { theme } from './theme/material-ui'
 import { ThemeProvider } from '@material-ui/core/styles';
+import Temppage from './pages/home-page/home-page';
 
 const App: FC = () => {
     return (
-        <ThemeProvider theme={theme}>
-            <Router>
-                <div className="App">
-                    <Navbar />
-                    <PageWrapper>
-                        <MBDCompanyProvider>
-                            <MBDDateProvider>
-                                <Switch>
-                                    {
-                                        Object.values(Routes).map(route => {
-                                            return <Route
-                                                exact
-                                                key={route.path}
-                                                path={route.path}
-                                                component={route.component}
-                                            />
-                                        })
-                                    }
-                                </Switch>
-                            </MBDDateProvider>
-                        </MBDCompanyProvider>
-                    </PageWrapper>
-                </div>
-            </Router>
-        </ThemeProvider>
+        <div>Page under construction!</div>
     );
 }
 
