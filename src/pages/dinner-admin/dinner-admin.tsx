@@ -5,7 +5,7 @@ import GoogleLogin, {
 } from 'react-google-login'
 import './dinner-admin.css'
 import IntroScreen from '../../components/intro-screen/intro-screen'
-import TranslationModel, { Phrase } from '../../model/translationModel'
+import TranslationModel, { Phrase } from '../model/translationModel'
 import phrases from '../../data/translations.json'
 import DinnerPgBackground from '../../assets/backgrounds/dinner_pg_background.png'
 import ContentSection, {
@@ -13,7 +13,7 @@ import ContentSection, {
     ContentSectionSize,
 } from '../../components/layout/content-section/content-section'
 import { Button, ButtonTypes } from '../../components/button/button'
-import { getAllTeamMembers } from '../../model/teamModel'
+import { getAllTeamMembers } from '../model/teamModel'
 import TextSection from '../../components/text-section/text-section'
 import { ContentPadding } from '../../components/content-padding'
 import Footer from '../../components/footer/footer'
@@ -34,7 +34,7 @@ import {
     getDinnerParty,
     updateDinnerParty,
     guestPhrasesPlural,
-} from '../../model/dinnerPartyModel'
+} from '../model/dinnerPartyModel'
 import CourseStats from '../../components/course-stats/course-stats'
 import QuantityTable from '../../components/quantity-table/quantity-table'
 import Loader from '../../components/loader/loader'
@@ -185,19 +185,14 @@ const DinnerAdmin: FC<{}> = (props) => {
         return dinnerParty ? (
             <>
                 <SectionTitle>
-                    {TranslationModel.translate(
-                        phrases.dinner_admin.manage
-                    )}
+                    {TranslationModel.translate(phrases.dinner_admin.manage)}
                 </SectionTitle>
                 <InputInfo
                     placeholderHeader
                     noCard
                     inputType='date'
                     name='bookingStart'
-                    max={
-                        dinnerParty?.bookingEnd.toLocaleDateString() ??
-                        null
-                    }
+                    max={dinnerParty?.bookingEnd.toLocaleDateString() ?? null}
                     onInput={(value) =>
                         setDinnerParty(
                             dinnerParty
@@ -225,10 +220,7 @@ const DinnerAdmin: FC<{}> = (props) => {
                     noCard
                     inputType='date'
                     name='bookingEnd'
-                    min={
-                        dinnerParty?.bookingStart.toLocaleDateString() ??
-                        null
-                    }
+                    min={dinnerParty?.bookingStart.toLocaleDateString() ?? null}
                     onInput={(value) =>
                         setDinnerParty(
                             dinnerParty

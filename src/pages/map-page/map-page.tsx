@@ -1,54 +1,66 @@
-import React, { FC, useEffect, useState, useRef, MutableRefObject, HtmlHTMLAttributes, ForwardRefExoticComponent, RefAttributes } from 'react';
-import './map-page.css';
+import React, {
+    FC,
+    useEffect,
+    useState,
+    useRef,
+    MutableRefObject,
+    HtmlHTMLAttributes,
+    ForwardRefExoticComponent,
+    RefAttributes,
+} from 'react'
+import './map-page.css'
 
 import L from 'leaflet'
-import TranslationModel from '../../model/translationModel';
-import phrases from '../../data/translations.json';
-import { MBDCompanyContext } from '../../contexts/mbd-company-provider';
-import CompanyCard from '../../components/company-card/company-card';
+import TranslationModel from '../model/translationModel'
+import phrases from '../../data/translations.json'
+import { MBDCompanyContext } from '../../contexts/mbd-company-provider'
+import CompanyCard from '../../components/company-card/company-card'
 
-import { Map, ImageOverlay, Marker } from 'react-leaflet';
-import MapImage from '../../assets/map_nymble_svg.svg';
-import { Company } from '../../model/companyModel';
-import CompanyMarker from '../../components/map-marker/company-marker';
-import { setActiveLink } from 'react-scroll/modules/mixins/scroller';
-import { prependOnceListener } from 'cluster';
+import { Map, ImageOverlay, Marker } from 'react-leaflet'
+import MapImage from '../../assets/map_nymble_svg.svg'
+import { Company } from '../model/companyModel'
+import CompanyMarker from '../../components/map-marker/company-marker'
+import { setActiveLink } from 'react-scroll/modules/mixins/scroller'
+import { prependOnceListener } from 'cluster'
 
 interface MapDataState {
-    mapImage: string,
-    mapHeight: number,
-    mapWidth: number,
+    mapImage: string
+    mapHeight: number
+    mapWidth: number
 }
 
-export type Handle<T> = T extends ForwardRefExoticComponent<RefAttributes<infer T2>> ? T2 : never;
+export type Handle<T> = T extends ForwardRefExoticComponent<
+    RefAttributes<infer T2>
+>
+    ? T2
+    : never
 
 const MapPage: FC = () => {
-
-    const [mapData, setMapData] = useState<MapDataState | null>(null)
-    const [hoverCompanyID, setHoverCompanyID] = useState<string | null>(null)
-    const maxBoundFactor = 1.1;
+    const [mapData, setMapData] = useState<MapDataState | null>(null)
+    const [hoverCompanyID, setHoverCompanyID] = useState<string | null>(null)
+    const maxBoundFactor = 1.1
 
     useEffect(() => {
-        var img = new Image();
-        img.src = MapImage;
-        img.addEventListener("load", function() {
-            const imageRation = this.naturalHeight / this.naturalWidth;
+        var img = new Image()
+        img.src = MapImage
+        img.addEventListener('load', function () {
+            const imageRation = this.naturalHeight / this.naturalWidth
             setMapData({
                 mapImage: MapImage,
                 mapHeight: 1,
-                mapWidth: 1 / imageRation
-            });
-        });
+                mapWidth: 1 / imageRation,
+            })
+        })
     }, [])
 
     const markCompany = (company: Company) => {
-        setHoverCompanyID(company.id);
-        markCompanyMarker(company.id);
+        setHoverCompanyID(company.id)
+        markCompanyMarker(company.id)
     }
 
     const unMarkCompany = () => {
-        setHoverCompanyID(null);
-        markCompanyMarker(null);
+        setHoverCompanyID(null)
+        markCompanyMarker(null)
     }
 
     /**
@@ -58,100 +70,125 @@ const MapPage: FC = () => {
      * If an other solution is found, you are more than welcome to fix it. Send a
      * main to adajon@kth.se and write how you did it :D
      */
-    const markCompanyMarker = (companyID: string | null) => {
+    const markCompanyMarker = (companyID: string | null) => {
         // Inactivate all markers
-        const allCompanyMarkers = document.getElementsByClassName(getCompanyMarkerClass());
+        const allCompanyMarkers = document.getElementsByClassName(
+            getCompanyMarkerClass()
+        )
         Array.from(allCompanyMarkers).forEach((companyMarker) => {
-            companyMarker.classList.remove('active');
-        });
+            companyMarker.classList.remove('active')
+        })
 
         // Activate the targeted marker
         if (companyID) {
-            const markerElement = document.getElementById(getComapnyMarkerID(companyID)) as HTMLDivElement;
+            const markerElement = document.getElementById(
+                getComapnyMarkerID(companyID)
+            ) as HTMLDivElement
             if (markerElement) {
-                markerElement.classList.add('active');
+                markerElement.classList.add('active')
             }
         }
     }
 
     const getComapnyMarkerID = (companyID: string) => {
-        return `company-marker-id-${companyID}`;
+        return `company-marker-id-${companyID}`
     }
 
-    const getCompanyMarkerClass = () => 'company-marker-class';
-    
+    const getCompanyMarkerClass = () => 'company-marker-class'
+
     return (
-        <div className="map-page">
-            <div className="map-page-company-list-container">
-                <div className="map-page-company-list">
+        <div className='map-page'>
+            <div className='map-page-company-list-container'>
+                <div className='map-page-company-list'>
                     <MBDCompanyContext.Consumer>
-                        {companies => {
-                            return companies.isExhibitor.map(company => {
-                                return <CompanyCard
-                                    key={company.id}
-                                    onClick={() => {}}
-                                    onMouseEnter={() => markCompany(company)}
-                                    onMouseLeave={() => unMarkCompany()}
-                                    isActive={company.id === hoverCompanyID}
-                                    company={company} />
-                            });
+                        {(companies) => {
+                            return companies.isExhibitor.map((company) => {
+                                return (
+                                    <CompanyCard
+                                        key={company.id}
+                                        onClick={() => {}}
+                                        onMouseEnter={() =>
+                                            markCompany(company)
+                                        }
+                                        onMouseLeave={() => unMarkCompany()}
+                                        isActive={company.id === hoverCompanyID}
+                                        company={company}
+                                    />
+                                )
+                            })
                         }}
                     </MBDCompanyContext.Consumer>
-                    <div className="map-page-company-list-end">
+                    <div className='map-page-company-list-end'>
                         <h4>
-                            {TranslationModel.translate(phrases.no_more_to_show)}
+                            {TranslationModel.translate(
+                                phrases.no_more_to_show
+                            )}
                         </h4>
                     </div>
                 </div>
             </div>
-            <div className="map-page-blur-print-container">
-                {
-                    mapData !== null
-                    ?
-                        <Map
-                            className="map-page-blur-print"
-                            center={[mapData.mapHeight / 2, mapData.mapWidth / 2]}
-                            zoom={9.5}
-                            maxZoom={11}
-                            minZoom={9}
-                            maxBounds={[
-                                [
-                                    -mapData.mapHeight * (maxBoundFactor - 1), 
-                                    -mapData.mapWidth * (maxBoundFactor - 1)
-                                ], 
-                                [
-                                    mapData.mapHeight * maxBoundFactor, 
-                                    mapData.mapWidth * maxBoundFactor
-                                ]
+            <div className='map-page-blur-print-container'>
+                {mapData !== null ? (
+                    <Map
+                        className='map-page-blur-print'
+                        center={[mapData.mapHeight / 2, mapData.mapWidth / 2]}
+                        zoom={9.5}
+                        maxZoom={11}
+                        minZoom={9}
+                        maxBounds={[
+                            [
+                                -mapData.mapHeight * (maxBoundFactor - 1),
+                                -mapData.mapWidth * (maxBoundFactor - 1),
+                            ],
+                            [
+                                mapData.mapHeight * maxBoundFactor,
+                                mapData.mapWidth * maxBoundFactor,
+                            ],
+                        ]}
+                        attributionControl={false}
+                        zoomControl={false}
+                    >
+                        <ImageOverlay
+                            zIndex={-1}
+                            crossOrigin={false}
+                            url={MapImage}
+                            bounds={[
+                                [0, 0],
+                                [mapData.mapHeight, mapData.mapWidth],
                             ]}
-                            attributionControl={false}
-                            zoomControl={false}>
-                            <ImageOverlay
-                                zIndex={-1}
-                                crossOrigin={false}
-                                url={MapImage}
-                                bounds={[[0, 0], [mapData.mapHeight, mapData.mapWidth]]}/>
-                            <MBDCompanyContext.Consumer>
-                                {companies => {
-                                    return companies.isExhibitor.map((company, index) => {
-                                        return <CompanyMarker
-                                            id={getComapnyMarkerID(company.id)}
-                                            className={getCompanyMarkerClass()}
-                                            mouseEnter={() => markCompany(company)}
-                                            mouseLeave={() => unMarkCompany()}
-                                            key={company.id}
-                                            company={company}
-                                            number={index + 1}/>
-                                    })
-                                }}
-                            </MBDCompanyContext.Consumer>
-                        </Map>
-                    :
-                        <></>
-                }
+                        />
+                        <MBDCompanyContext.Consumer>
+                            {(companies) => {
+                                return companies.isExhibitor.map(
+                                    (company, index) => {
+                                        return (
+                                            <CompanyMarker
+                                                id={getComapnyMarkerID(
+                                                    company.id
+                                                )}
+                                                className={getCompanyMarkerClass()}
+                                                mouseEnter={() =>
+                                                    markCompany(company)
+                                                }
+                                                mouseLeave={() =>
+                                                    unMarkCompany()
+                                                }
+                                                key={company.id}
+                                                company={company}
+                                                number={index + 1}
+                                            />
+                                        )
+                                    }
+                                )
+                            }}
+                        </MBDCompanyContext.Consumer>
+                    </Map>
+                ) : (
+                    <></>
+                )}
             </div>
         </div>
-    );
+    )
 }
 
-export default MapPage;
+export default MapPage

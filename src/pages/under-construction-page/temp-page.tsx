@@ -24,18 +24,18 @@ import TextSection, {
     TextSectionAlignment,
 } from '../../components/text-section/text-section'
 
-import TranslationModel from '../../model/translationModel'
+import TranslationModel from '../model/translationModel'
 import phrases from '../../data/translations.json'
 import TextWithContent from '../../components/text-with-content/text-with-content'
 import ProfileCard from '../../components/profile-card/profile-card'
 import CenterBackground from '../../components/center-background/center-background'
 import CircleIcon from '../../components/circle-icon/circle-icon'
 import { Button, ButtonTypes } from '../../components/button/button'
-import { InstagramModel, InstagramPost } from '../../model/instagramModel'
+import { InstagramModel, InstagramPost } from '../model/instagramModel'
 import InstagramCard from '../../components/instagram-post/instagram-card'
 import SectionTitle from '../../components/section-title/section-title'
 import Footer from '../../components/footer/footer'
-import { getProjectLeaders, TeamMember } from '../../model/teamModel'
+import { getProjectLeaders, TeamMember } from '../model/teamModel'
 import { NavLink } from 'react-router-dom'
 import { isMobile, isSafari } from 'react-device-detect'
 
@@ -45,14 +45,13 @@ import { CompanyInvolment } from '../../contexts/mbd-company-provider'
 import CompanyLogoList from '../../components/company-logo-list/company-logo-list'
 import { ContentPadding } from '../../components/content-padding'
 import Card from '../../components/card/card'
-import CompanyModel from '../../model/companyModel'
+import CompanyModel from '../model/companyModel'
 import LanguageSelect from '../../components/navbar/language-select/language-select'
 
 const Temppage: FC = () => {
     const [salesMembers, setSalesMembers] = useState<TeamMember[]>([])
-    const [lastYearCompanies, setLastYearCompanies] = useState<
-        CompanyInvolment
-    >()
+    const [lastYearCompanies, setLastYearCompanies] =
+        useState<CompanyInvolment>()
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -77,7 +76,6 @@ const Temppage: FC = () => {
             ?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
     }
 
-
     return (
         <div className='homepage'>
             {/* Logo and countdown */}
@@ -91,28 +89,25 @@ const Temppage: FC = () => {
             <ContentSection background={ContentSectionBackground.light}>
                 <div id='companypage-who-are-we'>
                     <TextSection>
-                        <h1>
-                            {TranslationModel.translate(phrases.hello)}!
-                        </h1>
+                        <h1>{TranslationModel.translate(phrases.hello)}!</h1>
                         <MBDDateContext.Consumer>
                             {(mbdDate) =>
                                 TranslationModel.translate({
                                     se: (
                                         <span>
-                                            Vad kul att just du hittat hit!
-                                            Vi är studenter från
+                                            Vad kul att just du hittat hit! Vi
+                                            är studenter från
                                             civilingenjörsprogrammet i
-                                            Medieteknik på KTH och Medias Branschdag
-                                            är vår årliga arbetsmarknadsmässa.
-                                            Vi medietekniker är förutom grymma
-                                            programmerare, också
-                                            speciellt bra på att kommunicera
-                                            mellan människor och organisationer i hela samhället.
-                                            Vi har
-                                            masterprogram inom interaktiva
-                                            medier, datalogi och
+                                            Medieteknik på KTH och Medias
+                                            Branschdag är vår årliga
+                                            arbetsmarknadsmässa. Vi
+                                            medietekniker är förutom grymma
+                                            programmerare, också speciellt bra
+                                            på att kommunicera mellan människor
+                                            och organisationer i hela samhället.
+                                            Vi har masterprogram inom
+                                            interaktiva medier, datalogi och
                                             maskininlärning.
-
                                             <br />
                                             <br />
                                             Välkommen!
@@ -138,11 +133,12 @@ const Temppage: FC = () => {
                                             foundation and endless of
                                             possibilities within the tech
                                             sector. These students will be
-                                            present at our job fair {' '}
+                                            present at our job fair{' '}
                                             <b>
-                                                {TranslationModel.translate(phrases.months.february)}{' '}
-                                                {' '}
-                                                {2022}{' '}
+                                                {TranslationModel.translate(
+                                                    phrases.months.february
+                                                )}{' '}
+                                                {2023}{' '}
                                             </b>
                                             and we want you to join them. To be
                                             seen at Medias Branschdag is a
@@ -161,7 +157,6 @@ const Temppage: FC = () => {
                                 })
                             }
                         </MBDDateContext.Consumer>
-
                     </TextSection>
                 </div>
             </ContentSection>
@@ -188,51 +183,42 @@ const Temppage: FC = () => {
                                                     civilingenjörsstudenter på
                                                     KTH?
                                                     <br />
-                                                    Maila oss om hur ni kan delta
-                                                    i Medias Branschdag{' '}
-                                                    {2022}.
+                                                    Maila oss om hur ni kan
+                                                    delta i Medias Branschdag{' '}
+                                                    {2023}.
                                                 </span>
                                             ),
                                             en: (
                                                 <span>
                                                     Read more about how you can
                                                     participate in Medias
-                                                    Branschdag{' '}
-                                                    {2022}.
-                                                    Your future employees are
-                                                    waiting for you!
+                                                    Branschdag {2023}. Your
+                                                    future employees are waiting
+                                                    for you!
                                                 </span>
                                             ),
                                         })
                                     }
-
                                 </MBDDateContext.Consumer>
-
 
                                 <br />
                                 <br />
                                 <div className='intro-screen-scroll-button no-select'>
-                                    <Button buttonType={ButtonTypes.normalCompact} >
-                                        <a href="mailto:branschdag@medieteknik.com">{TranslationModel.translate(phrases.contact_us)}</a>
+                                    <Button
+                                        buttonType={ButtonTypes.normalCompact}
+                                    >
+                                        <a href='mailto:branschdag@medieteknik.com'>
+                                            {TranslationModel.translate(
+                                                phrases.contact_us
+                                            )}
+                                        </a>
                                     </Button>
                                 </div>
                             </div>
-
-
-
-
-
                         </div>
                     </TextSection>
-
                 </ContentSection>
-
             </CenterBackground>
-
-
-
-
-
         </div>
     )
 }

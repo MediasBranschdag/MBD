@@ -3,7 +3,7 @@ import './field-card.css'
 import Card from '../card/card'
 import TextSection from '../text-section/text-section'
 import { ContentPadding } from '../content-padding'
-import TranslationModel, { Phrase } from '../../model/translationModel'
+import TranslationModel, { Phrase } from '../../pages/model/translationModel'
 
 import phrases from '../../data/translations.json'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
@@ -113,7 +113,11 @@ const FieldCard: FC<FieldCardProps> = (props) => {
                                                 className='field-chip-cont'
                                                 key={`${props.field.title.se}_${course.title.se}`}
                                             >
-                                                <a href={course.url} target='_blank' rel='noopener noreferrer'>
+                                                <a
+                                                    href={course.url}
+                                                    target='_blank'
+                                                    rel='noopener noreferrer'
+                                                >
                                                     <Chip clickable>
                                                         {TranslationModel.translate(
                                                             course.title

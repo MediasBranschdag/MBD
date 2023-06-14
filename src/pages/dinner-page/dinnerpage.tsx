@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './dinnerpage.css'
 
-import TranslationModel from '../../model/translationModel'
+import TranslationModel from '../model/translationModel'
 import phrases from '../../data/translations.json'
 import Footer from '../../components/footer/footer'
 import IntroScreen from '../../components/intro-screen/intro-screen'
@@ -22,7 +22,7 @@ import DinnerPgBackground from '../../assets/backgrounds/dinner_pg_background.pn
 import AfterpartyBackground from '../../assets/backgrounds/afterparty.jpg'
 import SectionTitle from '../../components/section-title/section-title'
 import GuestForm, { renderClosedGuestForm } from './guest-form/guest-form'
-import { DinnerParty, getDinnerParty } from '../../model/dinnerPartyModel'
+import { DinnerParty, getDinnerParty } from '../model/dinnerPartyModel'
 import Loader from '../../components/loader/loader'
 import CenterContent from '../../components/center-content/center-content'
 
@@ -250,7 +250,9 @@ const Dinnerpage = () => {
                                 dinnerParty.afterpartyEventLink ? (
                                     <div className='link-button-container'>
                                         <a
-                                            href={dinnerParty.afterpartyEventLink}
+                                            href={
+                                                dinnerParty.afterpartyEventLink
+                                            }
                                             target='_blank'
                                             rel='noopener noreferrer'
                                         >

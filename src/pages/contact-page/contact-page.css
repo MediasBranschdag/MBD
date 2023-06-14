@@ -8,7 +8,7 @@
 
     background-attachment: scroll;
     background-size: cover;
-    background-position: bottom;
+    background-position: top;
 }
 
 .contactpage-pg-members {
@@ -31,7 +31,8 @@
 @media screen and (max-width: 900px) {
     .contactpage-background {
         background-position: 0% 90%;
-        animation: paning-background-animation 30s cubic-bezier(0.2,0,0.8,1) infinite;
+        animation: paning-background-animation 30s cubic-bezier(0.2, 0, 0.8, 1)
+            infinite;
     }
     .contactpage-pg-members {
         grid-template-columns: repeat(2, 1fr);
@@ -46,10 +47,18 @@
 
 /* Animation */
 @keyframes paning-background-animation {
-	0% { background-position: 0% 100%; }
-	50% { background-position: 90% 100%; }
+    0% {
+        background-position: 0% 100%;
+    }
+    50% {
+        background-position: 90% 100%;
+    }
 }
 @keyframes paning-background-animation {
-	50% { background-position: 90% 100%; }
-	100% { background-position: 0% 100%; }
+    50% {
+        background-position: 90% 100%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
 }

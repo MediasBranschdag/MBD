@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import './quantity-table.css'
-import TranslationModel, { Phrase } from '../../model/translationModel'
+import TranslationModel, { Phrase } from '../../pages/model/translationModel'
 import phrases from '../../data/translations.json'
 import { Divider } from '@material-ui/core'
 
@@ -46,9 +46,9 @@ const QuantityTable: FC<QuantityTableProps> = (props) => {
                         <span>
                             {props.items.reduce(
                                 (a, b) =>
-                                    parseInt((a as unknown) as string) +
+                                    parseInt(a as unknown as string) +
                                     (parseInt(
-                                        (b.quantity as unknown) as string
+                                        b.quantity as unknown as string
                                     ) || 0),
                                 0
                             )}
