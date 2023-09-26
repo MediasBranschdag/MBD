@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './company-page.css'
-
+import {Button} from "../../components/button/button"
 import { MBDDateContext } from '../../contexts/mbd-date-provider'
 import TranslationModel from '../model/translationModel'
 import phrases from '../../data/translations.json'
@@ -50,12 +50,14 @@ const Companypage = () => {
                                                 <span>
                                                     Mässan kommer äga rum{' '}
                                                     <b>
-                                                        {16}{' '}
+                                                        våren 2024
+                                                    
+                                                        {/*{16}{' '}
                                                         {TranslationModel.translate(
                                                             phrases.months
                                                                 .february
                                                         )}{' '}
-                                                        {2023}{' '}
+                                                        {2023}{' '}*/}
                                                     </b>{' '}
                                                     och innehåller en heldag
                                                     spännande företag. Vi kommer
@@ -92,14 +94,15 @@ const Companypage = () => {
                                             ),
                                             en: (
                                                 <span>
-                                                    The job fair starts the{' '}
+                                                    The job fair starts in{' '}
                                                     <b>
-                                                        {16}{' '}
+                                                        spring 2024
+                                                        {/*{16}{' '}
                                                         {TranslationModel.translate(
                                                             phrases.months
                                                                 .february
                                                         )}{' '}
-                                                        {2023}{' '}
+                                                        {2023}{' '}*/}
                                                     </b>{' '}
                                                     and consists of a whole day
                                                     of exciting companies happy
@@ -159,6 +162,18 @@ const Companypage = () => {
                         </SectionTitle>
                     </TextSection>
                     <div className='companypage-offer'>
+                    {TranslationModel.translate({
+                                        se: (
+                                            <>
+                                            <p className="text-center">Mer information kommer snart...</p>
+                                            </>),
+                                        en: (
+                                            <>
+                                            <p className="text-center">More information coming soon...</p>
+                                            </>)
+                                            })}
+                    </div>
+                    {/*<div className='companypage-offer'>
                         <Card light>
                             <ContentPadding>
                                 <ContentPadding>
@@ -513,7 +528,7 @@ const Companypage = () => {
                                 </ContentPadding>
                             </Card>
                         </div>
-                    </div>
+                    </div>*/}
                 </div>
             </ContentSection>
             {/* Email us section */}
