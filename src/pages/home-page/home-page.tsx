@@ -137,7 +137,7 @@ const Homepage: FC = () => {
                     content={
                         <>
                             <ProfileCard
-                                imagePath='assets/team/project_leaders.jpg'
+                                imagePath='assets/team/PM.jpg'
                                 name={`${projectLeaders
                                     .map((leader, i) => {
                                         return leader.name
