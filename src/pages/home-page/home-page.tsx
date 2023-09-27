@@ -76,14 +76,7 @@ const Homepage: FC = () => {
                                     TranslationModel.translate({
                                         se: (
                                             <span>
-                                                Vad kul att just du hittat hit!
-                                                Medias Branschdag kommer att äga
-                                                rum {16}{' '}
-                                                {TranslationModel.translate(
-                                                    phrases.months.february
-                                                )}{' '}
-                                                {2023} i kårhuset Nymble på KTH
-                                                campus Valhallavägen.
+                                            Vad kul att just du hittat hit! Medias Branschdag äger rum under våren 2024 i kårhuset Nymble på KTH campus Valhallavägen.
                                                 <br />
                                                 <br />
                                                 Studerar du medieteknik,
@@ -111,11 +104,7 @@ const Homepage: FC = () => {
                                         en: (
                                             <span>
                                                 Fancy seeing you here! The fair
-                                                will take place on the 16th of{' '}
-                                                {TranslationModel.translate(
-                                                    phrases.months.february
-                                                )}{' '}
-                                                {2023} in the student union
+                                               takes place in spring {2024} in the student union
                                                 house Nymble at KTH campus
                                                 Valhallavägen.
                                                 <br />
@@ -153,7 +142,7 @@ const Homepage: FC = () => {
                                     .map((leader, i) => {
                                         return leader.name
                                     })
-                                    .join(', ')}`}
+                                    .join('')}`}
                                 role={TranslationModel.translate({
                                     se: 'Projektledare',
                                     en: 'Project Leaders',

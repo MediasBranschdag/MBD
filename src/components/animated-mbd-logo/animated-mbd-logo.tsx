@@ -98,11 +98,11 @@ const AnimatedMBDLogo: FC = () => {
                         <MBDDateContext.Consumer>
                             {(mbdDate) => (
                                 <div>
-                                    {16}{' '}
-                                    {TranslationModel.translate(
-                                        phrases.months.february
-                                    )}{' '}
-                                    {2023}
+                                    {TranslationModel.translate({
+                                        se: ("våren"),
+                                        en: ("spring")
+                                    })}{' '}
+                                    {2024}
                                 </div>
                             )}
                         </MBDDateContext.Consumer>
