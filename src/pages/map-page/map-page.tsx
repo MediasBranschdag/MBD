@@ -97,6 +97,16 @@ const MapPage: FC = () => {
     const getCompanyMarkerClass = () => 'company-marker-class'
 
     return (
+        <div>{TranslationModel.translate({
+            se: (
+                <>
+                <h1 style={{textAlign:"center", padding:"3rem"}}>Mer information kommer snart...</h1>
+                </>),
+            en: (
+                <>
+                <h1 style={{textAlign:"center", padding:"3rem"}}>More information coming soon...</h1>
+                </>)
+                })/*
         <div className='map-page'>
             <div className='map-page-company-list-container'>
                 <div className='map-page-company-list'>
@@ -187,7 +197,8 @@ const MapPage: FC = () => {
                     <></>
                 )}
             </div>
-        </div>
+            </div>
+            */}</div>
     )
 }
 

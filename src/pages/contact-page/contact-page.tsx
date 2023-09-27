@@ -58,7 +58,7 @@ const Contactpage: FC = () => {
                 <div className='photographer-thanks'>
                     {TranslationModel.translate(phrases.photo_thanks_start)}{' '}
                     <a
-                        href='https://www.instagram.com/fotogruppen_medieteknik/'
+                        href='https://www.linkedin.com/in/johan-wang%C3%A4rd-1b0b501b5/'
                         target='_blank'
                         rel='noopener noreferrer'
                     >
