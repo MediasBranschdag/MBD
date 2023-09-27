@@ -22,18 +22,18 @@ import TextSection, {
     TextSectionAlignment,
 } from '../../components/text-section/text-section'
 
-import TranslationModel from '../../model/translationModel'
+import TranslationModel from '../model/translationModel'
 import phrases from '../../data/translations.json'
 import TextWithContent from '../../components/text-with-content/text-with-content'
 import ProfileCard from '../../components/profile-card/profile-card'
 import CenterBackground from '../../components/center-background/center-background'
 import CircleIcon from '../../components/circle-icon/circle-icon'
 import { Button, ButtonTypes } from '../../components/button/button'
-import { InstagramModel, InstagramPost } from '../../model/instagramModel'
+import { InstagramModel, InstagramPost } from '../model/instagramModel'
 import InstagramCard from '../../components/instagram-post/instagram-card'
 import SectionTitle from '../../components/section-title/section-title'
 import Footer from '../../components/footer/footer'
-import { getProjectLeaders, TeamMember } from '../../model/teamModel'
+import { getProjectLeaders, TeamMember } from '../model/teamModel'
 import { NavLink } from 'react-router-dom'
 import { isMobile, isSafari } from 'react-device-detect'
 
@@ -63,7 +63,6 @@ const Homepage: FC = () => {
                 </div>
             </IntroScreen>
 
-
             {/* Introduction page */}
             <ContentSection background={ContentSectionBackground.light}>
                 <TextWithContent
@@ -77,45 +76,73 @@ const Homepage: FC = () => {
                                     TranslationModel.translate({
                                         se: (
                                             <span>
-                                                Vad kul att just du hittat hit! Medias Branschdag kommer att äga rum {7} {TranslationModel.translate(phrases.months.april)} {2022} i kårhuset Nymble på KTH campus Valhallavägen.
+                                                Vad kul att just du hittat hit!
+                                                Medias Branschdag kommer att äga
+                                                rum {16}{' '}
+                                                {TranslationModel.translate(
+                                                    phrases.months.february
+                                                )}{' '}
+                                                {2023} i kårhuset Nymble på KTH
+                                                campus Valhallavägen.
                                                 <br />
                                                 <br />
-                                                Studerar du medieteknik, datateknik eller maskininlärning och letar efter
-                                                din framtida arbetsplats eller är ett företag som söker din
-                                                framtida kollega är Medias Branschdag dagen för dig. Mässan ger
-                                                dig som student möjlighet att hitta extrajobb, examensjobb eller
-                                                helt enkelt bara knyta värdefulla kontakter inför framtiden. Till
-                                                utställande företag garanterar vi en maxad dag med allt vad medieteknik
-                                                har att erbjuda. Helt enkelt något du inte vill missa!
-
+                                                Studerar du medieteknik,
+                                                datateknik eller maskininlärning
+                                                och letar efter din framtida
+                                                arbetsplats eller är ett företag
+                                                som söker din framtida kollega
+                                                är Medias Branschdag dagen för
+                                                dig. Mässan ger dig som student
+                                                möjlighet att hitta extrajobb,
+                                                examensjobb eller helt enkelt
+                                                bara knyta värdefulla kontakter
+                                                inför framtiden. Till
+                                                utställande företag garanterar
+                                                vi en maxad dag med allt vad
+                                                medieteknik har att erbjuda.
+                                                Helt enkelt något du inte vill
+                                                missa!
                                                 <br />
                                                 <br />
                                                 Ses vi där? Klart vi gör!
-
                                             </span>
                                         ),
 
                                         en: (
                                             <span>
-
-                                                Fancy seeing you here! The fair will take place on the 7th of {TranslationModel.translate(phrases.months.april)} {2022} in the student union
-                                                house Nymble at KTH campus Valhallavägen.
+                                                Fancy seeing you here! The fair
+                                                will take place on the 16th of{' '}
+                                                {TranslationModel.translate(
+                                                    phrases.months.february
+                                                )}{' '}
+                                                {2023} in the student union
+                                                house Nymble at KTH campus
+                                                Valhallavägen.
                                                 <br />
                                                 <br />
-                                                If you are a media technology, computer science or machine learning student looking for a future employer
-                                                or a company looking for your future employee Media Branchday is the place to be.
-                                                The fair gives students the opportunity to find a part-time job, thises job or
-                                                valuable contact for the future. For companies, we are guaranteeing a full day with
-                                                everything Media technology has to offer. You don't want to miss this!
+                                                If you are a media technology,
+                                                computer science or machine
+                                                learning student looking for a
+                                                future employer or a company
+                                                looking for your future employee
+                                                Media Branchday is the place to
+                                                be. The fair gives students the
+                                                opportunity to find a part-time
+                                                job, thises job or valuable
+                                                contact for the future. For
+                                                companies, we are guaranteeing a
+                                                full day with everything Media
+                                                technology has to offer. You
+                                                don't want to miss this!
                                                 <br />
                                                 <br />
-                                                Will we see you there? Of course we will!
+                                                Will we see you there? Of course
+                                                we will!
                                             </span>
                                         ),
                                     })
                                 }
                             </MBDDateContext.Consumer>
-
                         </TextSection>
                     }
                     content={
@@ -172,7 +199,10 @@ const Homepage: FC = () => {
                                                     <br />
                                                     Läs mer om hur ni kan delta
                                                     i Medias Branschdag{' '}
-                                                    {mbdDate.getStartYear()}.
+                                                    {
+                                                        /*mbdDate.getStartYear()*/ 2023 // Need to hardcode as server connection is not working
+                                                    }
+                                                    .
                                                 </span>
                                             ),
                                             en: (
@@ -180,8 +210,10 @@ const Homepage: FC = () => {
                                                     Read more about how you can
                                                     participate in Medias
                                                     Branschdag{' '}
-                                                    {mbdDate.getStartYear()}.
-                                                    Your future employees are
+                                                    {
+                                                        /*mbdDate.getStartYear()*/ 2023 // Need to hardcode as server connection is not working
+                                                    }
+                                                    . Your future employees are
                                                     waiting for you!
                                                 </span>
                                             ),
@@ -262,7 +294,6 @@ const Homepage: FC = () => {
             ) : (
                 <></>
             )}
-
 
             <Footer />
         </div>

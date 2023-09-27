@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 import { InputInfo } from '../../../components/input-info/input-info'
-import TranslationModel from '../../../model/translationModel'
+import TranslationModel from '../../model/translationModel'
 import phrases from '../../../data/translations.json'
 import { Button, ButtonTypes } from '../../../components/button/button'
 

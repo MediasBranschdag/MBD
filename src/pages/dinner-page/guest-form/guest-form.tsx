@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, useEffect, FC } from 'react'
 import './guest-form.css'
 
-import TranslationModel, { Phrase } from '../../../model/translationModel'
+import TranslationModel, { Phrase } from '../../model/translationModel'
 import phrases from '../../../data/translations.json'
 import { InputInfo } from '../../../components/input-info/input-info'
 import {
@@ -29,11 +29,10 @@ import {
     DinnerParty,
     addGuest,
     GuestType,
-} from '../../../model/dinnerPartyModel'
+} from '../../model/dinnerPartyModel'
 import Loader from '../../../components/loader/loader'
 import Confetti from '../../../components/confetti/confetti'
 import CenterContent from '../../../components/center-content/center-content'
-
 
 export const renderClosedGuestForm = () => (
     <MBDDateContext.Consumer>

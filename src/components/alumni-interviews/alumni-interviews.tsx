@@ -1,7 +1,7 @@
 import React, { FC, Fragment } from 'react'
 import './alumni-interviews.css'
 import TextSection from '../text-section/text-section'
-import TranslationModel, { Phrase } from '../../model/translationModel'
+import TranslationModel, { Phrase } from '../../pages/model/translationModel'
 import TextWithContent from '../text-with-content/text-with-content'
 import ProfileCard from '../profile-card/profile-card'
 import interviews from './alumni-interviews.json'
@@ -22,9 +22,7 @@ const AlumniInterviews: FC<{}> = (props) => {
                     <TextWithContent
                         text={
                             <TextSection>
-                                <h2>
-                                    {alumni.name}
-                                </h2>
+                                <h2>{alumni.name}</h2>
                                 {alumni.questions.map((q, j) => (
                                     <Fragment key={`${q.question.se}_${j}`}>
                                         <h4 style={{ marginBottom: 0 }}>

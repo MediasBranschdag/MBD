@@ -10,7 +10,7 @@
 }
 
 
-.companypage-offer h3, .companypage-offer h4, .companypage-offer h5 {
+.companypage-offer p, .companypage-offer h3, .companypage-offer h4, .companypage-offer h5 {
     text-align: center;
     margin: 0.5em 0;
 }

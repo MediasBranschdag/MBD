@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import { CourseQuanitity } from '../../model/dinnerPartyModel'
-import { Phrase } from '../../model/translationModel'
+import { CourseQuanitity } from '../../pages/model/dinnerPartyModel'
+import { Phrase } from '../../pages/model/translationModel'
 import QuantityTable from '../quantity-table/quantity-table'
 
 interface CourseTableProps {

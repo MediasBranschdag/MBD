@@ -3,12 +3,12 @@ import './contact-page.css'
 
 import Footer from '../../components/footer/footer'
 
-import TranslationModel from '../../model/translationModel'
+import TranslationModel from '../model/translationModel'
 import phrases from '../../data/translations.json'
 import ContentSection, {
     ContentSectionBackground,
 } from '../../components/layout/content-section/content-section'
-import { TeamMember, getAllTeamMembers } from '../../model/teamModel'
+import { TeamMember, getAllTeamMembers } from '../model/teamModel'
 import ProfileCard from '../../components/profile-card/profile-card'
 import TextSection from '../../components/text-section/text-section'
 import ContactForm from './contact-form/contact-form'
@@ -58,7 +58,7 @@ const Contactpage: FC = () => {
                 <div className='photographer-thanks'>
                     {TranslationModel.translate(phrases.photo_thanks_start)}{' '}
                     <a
-                        href='https://www.instagram.com/fotogruppen_medieteknik/'
+                        href='https://www.linkedin.com/in/johan-wang%C3%A4rd-1b0b501b5/'
                         target='_blank'
                         rel='noopener noreferrer'
                     >
