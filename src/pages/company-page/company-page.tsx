@@ -161,19 +161,9 @@ const Companypage = () => {
                             )}
                         </SectionTitle>
                     </TextSection>
-                    <div className='companypage-offer'>
-                    {TranslationModel.translate({
-                                        se: (
-                                            <>
-                                            <p className="text-center">Mer information kommer snart...</p>
-                                            </>),
-                                        en: (
-                                            <>
-                                            <p className="text-center">More information coming soon...</p>
-                                            </>)
-                                            })}
-                    </div>
-                    {/*<div className='companypage-offer'>
+                
+                </div>
+                    {<div className='companypage-offer'>
                         <Card light>
                             <ContentPadding>
                                 <ContentPadding>
@@ -181,7 +171,7 @@ const Companypage = () => {
                                         se: (
                                             <>
                                                 <h4>Huvudsponsorpaket</h4>
-                                                <h3>60 000kr</h3>
+                                                <h3>59 500kr</h3>
                                                 <br />
                                                 <p>
                                                     <ul>
@@ -212,12 +202,15 @@ const Companypage = () => {
                                                             <b>Event:</b>{' '}
                                                             Exempelvis en
                                                             lunchföreläsning
-                                                            eller pub
+                                                            eller pub. Mat till 50 personer
+                                                            ingår. Kostnad för drinkbiljetter
+                                                            tillkommer á 30 kr.
                                                         </li>
                                                         <li>
-                                                            <b>Annons:</b> På
-                                                            hemsida, Instagram
-                                                            och Facebook
+                                                            <b>Annons:</b> På vår webbsida,
+                                                             Instagram och Facebook. 
+                                                             Annonserna är uppe i sju dagar. 
+                                                              Gäller för 2 kanaler.
                                                         </li>
                                                     </ul>
                                                 </p>
@@ -226,7 +219,7 @@ const Companypage = () => {
                                         en: (
                                             <>
                                                 <h4>Main Sponsorship</h4>
-                                                <h3>60 000 SEK</h3>
+                                                <h3>59 500 SEK</h3>
                                                 <br />
                                                 <p>
                                                     <ul>
@@ -259,7 +252,9 @@ const Companypage = () => {
                                                         <li>
                                                             <b>Advert:</b> On
                                                             website, Instagram
-                                                            and Facebook
+                                                            and Facebook. Advert 
+                                                            is up for seven days. 
+                                                            2 channels are included.
                                                         </li>
                                                     </ul>
                                                 </p>
@@ -528,8 +523,7 @@ const Companypage = () => {
                                 </ContentPadding>
                             </Card>
                         </div>
-                    </div>*/}
-                </div>
+                    </div>}
             </ContentSection>
             {/* Email us section */}
             <ContentSection background={ContentSectionBackground.dark}>
