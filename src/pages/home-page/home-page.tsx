@@ -76,7 +76,7 @@ const Homepage: FC = () => {
                                     TranslationModel.translate({
                                         se: (
                                             <span>
-                                            Vad kul att just du hittat hit! Medias Branschdag äger rum under våren 2024 i kårhuset Nymble på KTH campus Valhallavägen.
+                                            Vad kul att just du hittat hit! Medias Branschdag äger rum den 21 mars 2024 i kårhuset Nymble på KTH campus Valhallavägen.
                                                 <br />
                                                 <br />
                                                 Studerar du medieteknik,
@@ -104,7 +104,7 @@ const Homepage: FC = () => {
                                         en: (
                                             <span>
                                                 Fancy seeing you here! The fair
-                                               takes place in spring {2024} in the student union
+                                               takes place the 21st of March 2024 in the student union
                                                 house Nymble at KTH campus
                                                 Valhallavägen.
                                                 <br />

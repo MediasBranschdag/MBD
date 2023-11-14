@@ -202,5 +202,26 @@
                 }
             }
         ]
+    },
+    {
+        "title": { "se": "Hållbar digitalisering (ny master)", "en": "Sustainable digitalization (new master)" },
+        "background": "./assets/masters/MSc-Sustainable-Digitalisation.jpg",
+        "kth_link": "https://www.kth.se/en/studies/master/sustainable-digitalisation/msc-sustainable-digitalisation-1.1262643",
+        "desc": {
+            "se": "Masterprogrammet i Hållbar digitalisering ger djupa kunskaper kring de hållbarhetsutmaningar industrin möter inom digitalisering, och medför expertis inom det omfattande arbete som krävs för att skapa en bättre värld.",
+            "en": "The master’s programme in Sustainable Digitalisation provides you with skills and competencies to work with sustainability challenges where digitalisation has the potential to play an essential role in service of the world."
+        },
+        "tracks": [
+            {
+                "title": {
+                    "se": "Inga spår för tillfället",
+                    "en": "No tracks at this time"
+                },
+                "desc": {
+                    "se": "",
+                    "en": ""
+                }
+            }
+        ]
     }
 ]

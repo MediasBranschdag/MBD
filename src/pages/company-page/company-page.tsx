@@ -50,7 +50,7 @@ const Companypage = () => {
                                                 <span>
                                                     Mässan kommer äga rum{' '}
                                                     <b>
-                                                        våren 2024
+                                                        21 mars 2024
                                                     
                                                         {/*{16}{' '}
                                                         {TranslationModel.translate(
@@ -96,7 +96,7 @@ const Companypage = () => {
                                                 <span>
                                                     The job fair starts in{' '}
                                                     <b>
-                                                        spring 2024
+                                                        March 21st 2024
                                                         {/*{16}{' '}
                                                         {TranslationModel.translate(
                                                             phrases.months

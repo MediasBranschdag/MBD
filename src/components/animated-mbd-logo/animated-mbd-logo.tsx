@@ -99,8 +99,8 @@ const AnimatedMBDLogo: FC = () => {
                             {(mbdDate) => (
                                 <div>
                                     {TranslationModel.translate({
-                                        se: ("våren"),
-                                        en: ("spring")
+                                        se: ("21 mars"),
+                                        en: ("March 21st")
                                     })}{' '}
                                     {2024}
                                 </div>
