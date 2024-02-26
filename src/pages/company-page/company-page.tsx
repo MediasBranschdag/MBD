@@ -271,7 +271,7 @@ const Companypage = () => {
                                         se: (
                                             <>
                                                 <h4>Standardpaket</h4>
-                                                <h3>30 000kr</h3>
+                                                <h3>29 500kr</h3>
                                                 <br />
                                                 <p>
                                                     <ul>
@@ -302,7 +302,7 @@ const Companypage = () => {
                                         en: (
                                             <>
                                                 <h4>Standard</h4>
-                                                <h3>30 000 SEK</h3>
+                                                <h3>29 500 SEK</h3>
                                                 <br />
                                                 <p>
                                                     <ul>
@@ -333,75 +333,6 @@ const Companypage = () => {
                                 </ContentPadding>
                             </ContentPadding>
                         </Card>
-                        <Card light>
-                            <ContentPadding>
-                                <ContentPadding>
-                                    {TranslationModel.translate({
-                                        se: (
-                                            <>
-                                                <h4>
-                                                    Monter i vår sektionslokal
-                                                </h4>
-                                                <h3>5000 kr, 11:00-14:00</h3>
-                                                <br />
-                                                <p>
-                                                    <ul>
-                                                        <li>
-                                                            1000 kr/timme efter
-                                                            14:00
-                                                        </li>
-                                                        <li>
-                                                            I vår sektionslokal
-                                                            META samlas många
-                                                            studenter för att
-                                                            plugga, luncha eller
-                                                            bara för att hänga.
-                                                            Detta är en perfekt
-                                                            plats att stå under
-                                                            en förmiddag och
-                                                            knyta kontakter med
-                                                            framtidens
-                                                            medietekniska
-                                                            ingenjörer
-                                                        </li>
-                                                    </ul>
-                                                </p>
-                                            </>
-                                        ),
-                                        en: (
-                                            <>
-                                                <h4>
-                                                    Booth at the chapter hall
-                                                </h4>
-                                                <h3>5000 kr, 11:00-14:00</h3>
-                                                <br />
-                                                <p>
-                                                    <ul>
-                                                        <li>
-                                                            1000 kr/hour after
-                                                            14:00
-                                                        </li>
-                                                        <li>
-                                                            In our chapter hall,
-                                                            META, many students
-                                                            gathers to study,
-                                                            have lunch or just
-                                                            hanging out. This is
-                                                            a perfect place to
-                                                            stand during the day
-                                                            and make contacts
-                                                            with the future
-                                                            media technology
-                                                            engineers
-                                                        </li>
-                                                    </ul>
-                                                </p>
-                                            </>
-                                        ),
-                                    })}
-                                </ContentPadding>
-                            </ContentPadding>
-                        </Card>
                         <div className='additional-offers'>
                             <div>
                                 <Card light>
@@ -411,31 +342,25 @@ const Companypage = () => {
                                                 se: (
                                                     <>
                                                         <h4>Event</h4>
-                                                        <h3>7000kr</h3>
+                                                        <h3>6 900kr</h3>
                                                         <br />
                                                         <p>
                                                             <ul>
                                                                 <li>
-                                                                    Exempelvis
-                                                                    en
-                                                                    liveföreläsning,
-                                                                    CV-workshop
-                                                                    eller Q&A
-                                                                    med
-                                                                    studenter
+                                                                Ett event är ett perfekt tillfälle för er att komma
+                                                                ännu närmare studenterna, exempelvis genom
+                                                                en pub eller lunchföreläsning.
+                                                                
                                                                 </li>
                                                                 <li>
-                                                                    På eller
-                                                                    före
-                                                                    branschdagen
+                                                                Vill ni ha hjälp med planeringen eller bolla
+                                                                eventideér?
+                                                                Kontakta branschdag@medieteknik.com så
+                                                                hjälper vi er!
                                                                 </li>
                                                                 <li>
-                                                                    Vid mat
-                                                                    tillkommer
-                                                                    en kostnad á
-                                                                    120kr/biljett.
-                                                                    Drinkbiljetter
-                                                                    á 30kr.
+                                                                Vid mat tillkommer en kostnad á 120kr/biljett. 
+                                                                Drinkbiljetter á 30kr.
                                                                 </li>
                                                             </ul>
                                                         </p>
@@ -444,22 +369,22 @@ const Companypage = () => {
                                                 en: (
                                                     <>
                                                         <h4>Event</h4>
-                                                        <h3>7 000 SEK</h3>
+                                                        <h3>6 900 SEK</h3>
                                                         <br />
                                                         <p>
                                                             <ul>
-                                                                <li>
-                                                                    For example
-                                                                    a live
-                                                                    lecture, CV
-                                                                    workshop or
-                                                                    a Q&A with
-                                                                    students
+                                                            <li>
+                                                                An event is a perfect opportunity for you to network 
+                                                                even more with the students, for example through a 
+                                                                pub or a lunch lecture.
+                                                                
                                                                 </li>
                                                                 <li>
-                                                                    Before or
-                                                                    during the
-                                                                    fair day
+                                                                Would you like help with planning or brainstorming ideas?
+                                                                Contact us at branschdag@medieteknik.com and we will help you!
+                                                                </li>
+                                                                <li>
+                                                                    Foor food there is an additional 120kr per food ticket, and 30kr per drink ticket.
                                                                 </li>
                                                             </ul>
                                                         </p>
@@ -477,20 +402,20 @@ const Companypage = () => {
                                             se: (
                                                 <>
                                                     <h4>Annons</h4>
-                                                    <h3>1 000 kr</h3>
+                                                    <h3>900 kr per kanal</h3>
                                                     <br />
                                                     <p>
                                                         <ul>
                                                             <li>
-                                                                På vår
-                                                                Facebook-sida,
-                                                                Instagram eller
-                                                                hemsida
+                                                            Vill ni synas lite extra på vår webbsida,
+                                                            Instagram eller Facebook? Eller har ni
+                                                            kanske en ledig tjänst som ni vill annonsera
+                                                            till våra studenter? Passa då på att
+                                                            annonsera på någon av våra
+                                                            kommunikationskanaler!
                                                             </li>
                                                             <li>
-                                                                Annons visas i 7
-                                                                dagar, pris
-                                                                gäller per kanal
+                                                                Annonsen är uppe i 7 dagar.
                                                             </li>
                                                         </ul>
                                                     </p>
@@ -499,20 +424,19 @@ const Companypage = () => {
                                             en: (
                                                 <>
                                                     <h4>Advert</h4>
-                                                    <h3>1 000 SEK</h3>
+                                                    <h3>900 SEK per channel</h3>
                                                     <br />
                                                     <p>
                                                         <ul>
-                                                            <li>
-                                                                On our Facebook,
-                                                                Instagram or
-                                                                website
+                                                        <li>
+                                                            Would you like some exposure on our website, 
+                                                            Instagram or Facebook? Our do you have a vacancy 
+                                                            that you want to advertise to our students?
+                                                            Don't miss the opportunity to advertise on
+                                                            our social media channels!
                                                             </li>
                                                             <li>
-                                                                The advert is
-                                                                shown for 7
-                                                                days, price is
-                                                                per channel
+                                                                The advert is shown for 7 days.
                                                             </li>
                                                         </ul>
                                                     </p>

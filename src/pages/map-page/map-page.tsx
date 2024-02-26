@@ -97,16 +97,7 @@ const MapPage: FC = () => {
     const getCompanyMarkerClass = () => 'company-marker-class'
 
     return (
-        <div>{TranslationModel.translate({
-            se: (
-                <>
-                <h1 style={{textAlign:"center", padding:"3rem"}}>Mer information kommer snart...</h1>
-                </>),
-            en: (
-                <>
-                <h1 style={{textAlign:"center", padding:"3rem"}}>More information coming soon...</h1>
-                </>)
-                })/*
+        <div>
         <div className='map-page'>
             <div className='map-page-company-list-container'>
                 <div className='map-page-company-list'>
@@ -163,8 +154,8 @@ const MapPage: FC = () => {
                             crossOrigin={false}
                             url={MapImage}
                             bounds={[
-                                [0, 0],
-                                [mapData.mapHeight, mapData.mapWidth],
+                                [-0.85*mapData.mapHeight, -0.45*mapData.mapHeight],
+                                [2.4*mapData.mapHeight, 1.5*mapData.mapWidth],
                             ]}
                         />
                         <MBDCompanyContext.Consumer>
@@ -198,7 +189,7 @@ const MapPage: FC = () => {
                 )}
             </div>
             </div>
-            */}</div>
+            </div>
     )
 }
 

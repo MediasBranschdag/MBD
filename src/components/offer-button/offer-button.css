@@ -1,0 +1,47 @@
+.offer-button {
+    position: relative;
+    height: 30px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.offer-button div {
+    position: absolute;
+    height: 5px;
+    width: 60%;
+    background-color: #000;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    opacity: 1;
+}
+
+.offer-button div:nth-child(1) {
+    left: 25%;
+    transform: rotate(-60deg);
+}
+.offer-button div:nth-child(2) {
+    transform: rotate(60deg);
+}
+
+.offer-button div:nth-child(3) {
+    opacity: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.offer-button div:nth-child(4) {
+    bottom: 0;
+    opacity: 0;
+}
+
+.offer-button.active div {
+    background-color: #ffd521;
+}
+.offer-button.active div:nth-child(1) {
+    transform: rotate(-120deg);
+    opacity: 1;
+}
+.offer-button.active div:nth-child(2) {
+    transform: rotate(120deg);
+    opacity: 1;
+}
