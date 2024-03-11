@@ -120,11 +120,6 @@ const MapPage: FC = () => {
                         }}
                     </MBDCompanyContext.Consumer>
                     <div className='map-page-company-list-end'>
-                        <h4>
-                            {TranslationModel.translate(
-                                phrases.no_more_to_show
-                            )}
-                        </h4>
                     </div>
                 </div>
             </div>
@@ -154,8 +149,8 @@ const MapPage: FC = () => {
                             crossOrigin={false}
                             url={MapImage}
                             bounds={[
-                                [-0.85*mapData.mapHeight, -0.45*mapData.mapHeight],
-                                [2.4*mapData.mapHeight, 1.5*mapData.mapWidth],
+                                [-1.55*mapData.mapHeight, -0.6*mapData.mapHeight],
+                                [2.2*mapData.mapHeight, 1.9*mapData.mapWidth],
                             ]}
                         />
                         <MBDCompanyContext.Consumer>

@@ -305,16 +305,6 @@ const Studentpage = () => {
     )
 
     return (
-        <div>{TranslationModel.translate({
-            se: (
-                <>
-                <h1 style={{textAlign:"center", padding:"3rem"}}>Mer information kommer snart...</h1>
-                </>),
-            en: (
-                <>
-                <h1 style={{textAlign:"center", padding:"3rem"}}>More information coming soon...</h1>
-                </>)
-                })/*
         <div className='studentpage'>
             <div id='studentpage-exhibitors'>
                 <ContentSection>
@@ -340,7 +330,6 @@ const Studentpage = () => {
             </div>
             <Footer />
         </div>
-        */}</div>
     )
 }
 
