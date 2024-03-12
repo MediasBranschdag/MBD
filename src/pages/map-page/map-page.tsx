@@ -82,7 +82,7 @@ const MapPage: FC = () => {
         // Activate the targeted marker
         if (companyID) {
             const markerElement = document.getElementById(
-                getComapnyMarkerID(companyID)
+                getCompanyMarkerID(companyID)
             ) as HTMLDivElement
             if (markerElement) {
                 markerElement.classList.add('active')
@@ -90,7 +90,7 @@ const MapPage: FC = () => {
         }
     }
 
-    const getComapnyMarkerID = (companyID: string) => {
+    const getCompanyMarkerID = (companyID: string) => {
         return `company-marker-id-${companyID}`
     }
 
@@ -103,7 +103,8 @@ const MapPage: FC = () => {
                 <div className='map-page-company-list'>
                     <MBDCompanyContext.Consumer>
                         {(companies) => {
-                            return companies.isExhibitor.map((company) => {
+                            return companies.isExhibitor.sort((a, b) => a.mapOrder - b.mapOrder)
+                            .map((company) => {
                                 return (
                                     <CompanyCard
                                         key={company.id}
@@ -159,7 +160,7 @@ const MapPage: FC = () => {
                                     (company, index) => {
                                         return (
                                             <CompanyMarker
-                                                id={getComapnyMarkerID(
+                                                id={getCompanyMarkerID(
                                                     company.id
                                                 )}
                                                 className={getCompanyMarkerClass()}

@@ -276,7 +276,7 @@ const Studentpage = () => {
                                         ))
                         )
                         return companies.isExhibitor
-                            .sort(sortByName)
+                            .sort((a, b) => a.mapOrder - b.mapOrder)
                             .sort(sortByMatchingEmployments)
                             .map((company) => {
                                 return (
