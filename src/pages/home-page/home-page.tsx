@@ -78,11 +78,11 @@ const Homepage: FC = () => {
                                             <span>
                                                 Vad kul att just du hittat hit!
                                                 Medias Branschdag kommer att äga
-                                                rum {16}{' '}
+                                                rum {20}{' '}
                                                 {TranslationModel.translate(
-                                                    phrases.months.february
+                                                    phrases.months.march
                                                 )}{' '}
-                                                {2023} i kårhuset Nymble på KTH
+                                                {2025} i kårhuset Nymble på KTH
                                                 campus Valhallavägen.
                                                 <br />
                                                 <br />
@@ -111,11 +111,11 @@ const Homepage: FC = () => {
                                         en: (
                                             <span>
                                                 Fancy seeing you here! The fair
-                                                will take place on the 16th of{' '}
+                                                will take place on the 20th of{' '}
                                                 {TranslationModel.translate(
-                                                    phrases.months.february
+                                                    phrases.months.march
                                                 )}{' '}
-                                                {2023} in the student union
+                                                {2025} in the student union
                                                 house Nymble at KTH campus
                                                 Valhallavägen.
                                                 <br />
@@ -162,11 +162,11 @@ const Homepage: FC = () => {
                             <div className='photographer-info'>
                                 <img src={CameraIcon} alt='' />
                                 <a
-                                    href='https://www.instagram.com/fotogruppen_medieteknik/'
+                                    href='http://linkedin.com/in/favourezennaya'
                                     target='_blank'
                                     rel='noopener noreferrer'
                                 >
-                                    Johan Wangärd
+                                    Favour Ezennaya
                                 </a>
                             </div>
                         </>
@@ -200,7 +200,7 @@ const Homepage: FC = () => {
                                                     Läs mer om hur ni kan delta
                                                     i Medias Branschdag{' '}
                                                     {
-                                                        /*mbdDate.getStartYear()*/ 2023 // Need to hardcode as server connection is not working
+                                                        /*mbdDate.getStartYear()*/ 2025 // Need to hardcode as server connection is not working
                                                     }
                                                     .
                                                 </span>

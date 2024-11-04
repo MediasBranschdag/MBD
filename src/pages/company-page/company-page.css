@@ -9,6 +9,11 @@
     color: var(--theme-text-dark);
 }
 
+ul {
+    margin-top: 0.1em;
+    border-top: 1px #eee solid;
+    padding: 0px 30px;
+}
 
 .companypage-offer p, .companypage-offer h3, .companypage-offer h4, .companypage-offer h5 {
     text-align: center;

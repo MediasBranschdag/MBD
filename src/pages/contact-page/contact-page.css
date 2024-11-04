@@ -45,6 +45,21 @@
     }
 }
 
+.intro-screen-title {
+    padding: 35px 35px 0px 35px;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+    width: 100%;
+
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 40px;
+    text-align: center;
+    color: #ffd521;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.0));
+}
+
 /* Animation */
 @keyframes paning-background-animation {
     0% {

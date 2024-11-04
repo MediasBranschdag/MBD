@@ -6,6 +6,9 @@ interface CardProps {
     className?: string,
     light?: boolean,
     unselected?: boolean,
+    gold?: boolean,
+    silver?: boolean,
+    bronze?: boolean
 }
 
 const Card: FC<CardProps> = (props) => {
@@ -15,6 +18,15 @@ const Card: FC<CardProps> = (props) => {
     }
     if (props.light) {
         className += 'card--light ';
+    }
+    if (props.gold) {
+        className += 'card--gold ';
+    }
+    if (props.silver) {
+        className += 'card--silver ';
+    }
+    if (props.bronze) {
+        className += 'card--bronze ';
     }
     if (props.unselected) {
         className += 'card--unselected ';
