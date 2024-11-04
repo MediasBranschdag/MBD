@@ -27,14 +27,18 @@ const Contactpage: FC = () => {
 
     return (
         <div className='contactpage'>
+            <div className="intro-screen-title">{TranslationModel.translate(phrases.the_project_group)}</div>
+
+            {/*
             <IntroScreen
                 title={TranslationModel.translate(phrases.the_project_group)}
             >
+                
                 <div
                     style={{ backgroundImage: `url(${Background})` }}
                     className='contactpage-background'
-                ></div>
-            </IntroScreen>
+                ></div> 
+            </IntroScreen>*/}
 
             {/* List of every memeber in PG */}
             <ContentSection>
@@ -54,7 +58,8 @@ const Contactpage: FC = () => {
                         )
                     })}
                 </div>
-
+                
+                {/*
                 <div className='photographer-thanks'>
                     {TranslationModel.translate(phrases.photo_thanks_start)}{' '}
                     <a
@@ -66,6 +71,8 @@ const Contactpage: FC = () => {
                     </a>{' '}
                     {TranslationModel.translate(phrases.photo_thanks_end)}!
                 </div>
+                */}
+
             </ContentSection>
             {/* Contact form*/}
             <ContentSection background={ContentSectionBackground.dark}>

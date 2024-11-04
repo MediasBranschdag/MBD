@@ -18,6 +18,7 @@ import SectionTitle, {
 
 import Card from '../../components/card/card'
 import { ContentPadding } from '../../components/content-padding'
+import { ContentPaddingThin } from '../../components/content-padding-thin'
 import TextWithContent from '../../components/text-with-content/text-with-content'
 import ContactForm from '../contact-page/contact-form/contact-form'
 
@@ -50,14 +51,14 @@ const Companypage = () => {
                                                 <span>
                                                     Mässan kommer äga rum{' '}
                                                     <b>
-                                                        våren 2024
+                                                        {/*våren 2025*/}
                                                     
-                                                        {/*{16}{' '}
+                                                        {20}{' '}
                                                         {TranslationModel.translate(
                                                             phrases.months
-                                                                .february
+                                                                .march
                                                         )}{' '}
-                                                        {2023}{' '}*/}
+                                                        {2025}{' '}
                                                     </b>{' '}
                                                     och innehåller en heldag
                                                     spännande företag. Vi kommer
@@ -96,13 +97,13 @@ const Companypage = () => {
                                                 <span>
                                                     The job fair starts in{' '}
                                                     <b>
-                                                        spring 2024
-                                                        {/*{16}{' '}
+                                                        {/*spring 2025*/}
+                                                        {20}{'th '}
                                                         {TranslationModel.translate(
                                                             phrases.months
-                                                                .february
+                                                                .march
                                                         )}{' '}
-                                                        {2023}{' '}*/}
+                                                        {2025}{' '}
                                                     </b>{' '}
                                                     and consists of a whole day
                                                     of exciting companies happy
@@ -173,51 +174,58 @@ const Companypage = () => {
                                             </>)
                                             })}
                     </div>
-                    {/*<div className='companypage-offer'>
-                        <Card light>
-                            <ContentPadding>
-                                <ContentPadding>
+                    {<div className='companypage-offer'>
+                        <Card light gold>
+                            <ContentPaddingThin>
+                                <Card light>
                                     {TranslationModel.translate({
                                         se: (
                                             <>
-                                                <h4>Huvudsponsorpaket</h4>
-                                                <h3>60 000kr</h3>
+                                                <br/>
+                                                <h3>Guldpaketet</h3>
+                                                <h3>58 000kr</h3>
                                                 <br />
                                                 <p>
+                                                    <b>På Branchdagen:</b>
                                                     <ul>
                                                         <li>
-                                                            8m2 för monter, två
-                                                            ståbord och fyra
-                                                            stolar samt två
-                                                            personliga
-                                                            företagsvärdar
+                                                            8m² för monter centralt på mässan
+                                                        </li>
+                                                        <li>
+                                                            Två ståbord och fyra stolar
+                                                        </li>
+                                                        <li>
+                                                            Två personliga företagsvärdar
                                                         </li>
                                                         <li>
                                                             Fyra
-                                                            sittningsbiljetter,
-                                                            tillgång till
-                                                            företagslounge samt
+                                                            sittningsbiljetter samt
                                                             lunch och fika för
                                                             fyra
                                                         </li>
                                                         <li>
                                                             Exponering på
-                                                            hemsida, sociala
-                                                            medier, ryggen på
+                                                            hemsida, våra sociala
+                                                            medier samt på
                                                             kläder under
-                                                            branschdagen och i
-                                                            sektionslokalen
+                                                            branschdagen
                                                         </li>
+                                                    </ul>
+                                                    <b>Event:</b>{' '}
+                                                    <ul>
                                                         <li>
-                                                            <b>Event:</b>{' '}
                                                             Exempelvis en
                                                             lunchföreläsning
-                                                            eller pub
+                                                            eller pub - mat till 50 personer ingår<br></br>
+                                                            Kostnad för drinkbiljetter tillkommer á 30kr
                                                         </li>
+                                                    </ul>
+                                                    <b>Annons:</b>
+                                                    <ul>
                                                         <li>
-                                                            <b>Annons:</b> På
+                                                            På
                                                             hemsida, Instagram
-                                                            och Facebook
+                                                            och Facebook.
                                                         </li>
                                                     </ul>
                                                 </p>
@@ -225,80 +233,83 @@ const Companypage = () => {
                                         ),
                                         en: (
                                             <>
-                                                <h4>Main Sponsorship</h4>
-                                                <h3>60 000 SEK</h3>
+                                                <br/>
+                                                <h3>Gold Package</h3>
+                                                <h3>SEK 58 000</h3>
                                                 <br />
                                                 <p>
+                                                    <b>On the day of the fair:</b>
                                                     <ul>
                                                         <li>
-                                                            8m2 for stand, two
-                                                            standing tables and
-                                                            four chairs and two
-                                                            personal company
-                                                            hosts{' '}
+                                                            8m² for a stand
                                                         </li>
                                                         <li>
-                                                            Four dinner tickets,
-                                                            access to the
-                                                            corporate lounge as
-                                                            well as lunch and
-                                                            coffee for four
+                                                            Two standing tables and four chairs
                                                         </li>
                                                         <li>
-                                                            Exposure on the
-                                                            website, social
-                                                            media, the back of
-                                                            clothes during the
-                                                            fair
+                                                            Two personal company hosts
                                                         </li>
                                                         <li>
-                                                            <b>Event:</b> For
-                                                            example a lunch
-                                                            lecture or a pub
+                                                            Four dinner tickets, and lunch and coffee for four
                                                         </li>
                                                         <li>
-                                                            <b>Advert:</b> On
-                                                            website, Instagram
-                                                            and Facebook
+                                                            Exposure on the website, our social media and on clothes during the fair
+                                                        </li>
+                                                    </ul>
+                                                    <b>Event:</b>{' '}
+                                                    <ul>
+                                                        <li>
+                                                            For example a lunch lecture or a pub - food for 50 people is included<br></br>
+                                                            The cost of drink tickets is SEK 30 per ticket
+                                                        </li>
+                                                    </ul>
+                                                    <b>Advert:</b>
+                                                    <ul>
+                                                        <li>
+                                                            On website, Instagram and Facebook
                                                         </li>
                                                     </ul>
                                                 </p>
                                             </>
                                         ),
                                     })}
-                                </ContentPadding>
-                            </ContentPadding>
+                                </Card>
+                            </ContentPaddingThin>
                         </Card>
-                        <Card light>
-                            <ContentPadding>
-                                <ContentPadding>
+                        <Card light silver>
+                            <ContentPaddingThin>
+                                <Card light>
                                     {TranslationModel.translate({
                                         se: (
                                             <>
-                                                <h4>Standardpaket</h4>
-                                                <h3>30 000kr</h3>
+                                                <br/>
+                                                <h3>Silverpaketet</h3>
+                                                <h3>36 000kr</h3>
                                                 <br />
                                                 <p>
+                                                    <b>På Branchdagen:</b>
                                                     <ul>
                                                         <li>
-                                                            6m2 för monter, ett
-                                                            ståbord och två
-                                                            stolar samt en
+                                                            6m² för monter
+                                                        </li>
+                                                        <li>
+                                                            Ett ståbord och två stolar
+                                                        </li>
+                                                        <li>
+                                                            En
                                                             personlig
                                                             företagsvärd
                                                         </li>
                                                         <li>
                                                             Två
-                                                            sittningsbiljetter,
-                                                            tillgång till
-                                                            företagslounge samt
+                                                            sittningsbiljetter samt
                                                             lunch och fika för
                                                             två
                                                         </li>
                                                         <li>
                                                             Exponering på
-                                                            hemsida och i
-                                                            sociala medier
+                                                            hemsida och våra sociala
+                                                            medier
                                                         </li>
                                                     </ul>
                                                 </p>
@@ -306,68 +317,68 @@ const Companypage = () => {
                                         ),
                                         en: (
                                             <>
-                                                <h4>Standard</h4>
-                                                <h3>30 000 SEK</h3>
+                                                <br/>
+                                                <h3>Silverpaketet</h3>
+                                                <h3>SEK 36 000</h3>
                                                 <br />
                                                 <p>
+                                                    <b>On the day of the fair:</b>
                                                     <ul>
                                                         <li>
-                                                            6m2 for stand, a
-                                                            standing table and
-                                                            two chairs and a
-                                                            personal company
-                                                            host
+                                                            6m² for a stand
                                                         </li>
                                                         <li>
-                                                            Two dinner tickets,
-                                                            access to the
-                                                            corporate lounge and
-                                                            lunch and coffee for
-                                                            two
+                                                            One standing table and two chairs
                                                         </li>
                                                         <li>
-                                                            Exposure on the
-                                                            website and in
-                                                            social media
+                                                            One personal company host
+                                                        </li>
+                                                        <li>
+                                                            Two dinner tickets, and lunch and coffee for two
+                                                        </li>
+                                                        <li>
+                                                            Exposure on the website and our social media
                                                         </li>
                                                     </ul>
                                                 </p>
                                             </>
                                         ),
                                     })}
-                                </ContentPadding>
-                            </ContentPadding>
+                                </Card>
+                            </ContentPaddingThin>
                         </Card>
-                        <Card light>
-                            <ContentPadding>
-                                <ContentPadding>
+                        <Card light bronze>
+                            <ContentPaddingThin>
+                                <Card light>
                                     {TranslationModel.translate({
                                         se: (
                                             <>
-                                                <h4>
-                                                    Monter i vår sektionslokal
-                                                </h4>
-                                                <h3>5000 kr, 11:00-14:00</h3>
+                                                <br/>
+                                                <h3>Bronspaketet</h3>
+                                                <h3>27 000kr</h3>
                                                 <br />
                                                 <p>
+                                                    <b>På Branchdagen:</b>
                                                     <ul>
                                                         <li>
-                                                            1000 kr/timme efter
-                                                            14:00
+                                                            4m² för monter
                                                         </li>
                                                         <li>
-                                                            I vår sektionslokal
-                                                            META samlas många
-                                                            studenter för att
-                                                            plugga, luncha eller
-                                                            bara för att hänga.
-                                                            Detta är en perfekt
-                                                            plats att stå under
-                                                            en förmiddag och
-                                                            knyta kontakter med
-                                                            framtidens
-                                                            medietekniska
-                                                            ingenjörer
+                                                            Ett
+                                                            ståbord
+                                                        </li>
+                                                        <li>
+                                                            En
+                                                            företagsvärd
+                                                        </li>
+                                                        <li>
+                                                            Fika för
+                                                            två
+                                                        </li>
+                                                        <li>
+                                                            Exponering på
+                                                            hemsida och våra sociala
+                                                            medier
                                                         </li>
                                                     </ul>
                                                 </p>
@@ -375,37 +386,35 @@ const Companypage = () => {
                                         ),
                                         en: (
                                             <>
-                                                <h4>
-                                                    Booth at the chapter hall
-                                                </h4>
-                                                <h3>5000 kr, 11:00-14:00</h3>
+                                                <br/>
+                                                <h3>Bronspaketet</h3>
+                                                <h3>SEK 27 000</h3>
                                                 <br />
                                                 <p>
+                                                    <b>On the day of the fair:</b>
                                                     <ul>
                                                         <li>
-                                                            1000 kr/hour after
-                                                            14:00
+                                                            4m² for a stand
                                                         </li>
                                                         <li>
-                                                            In our chapter hall,
-                                                            META, many students
-                                                            gathers to study,
-                                                            have lunch or just
-                                                            hanging out. This is
-                                                            a perfect place to
-                                                            stand during the day
-                                                            and make contacts
-                                                            with the future
-                                                            media technology
-                                                            engineers
+                                                            One standing table
+                                                        </li>
+                                                        <li>
+                                                            One company host
+                                                        </li>
+                                                        <li>
+                                                            Coffee for two
+                                                        </li>
+                                                        <li>
+                                                            Exposure on the website and our social media
                                                         </li>
                                                     </ul>
                                                 </p>
                                             </>
                                         ),
                                     })}
-                                </ContentPadding>
-                            </ContentPadding>
+                                </Card>
+                            </ContentPaddingThin>
                         </Card>
                         <div className='additional-offers'>
                             <div>
@@ -415,8 +424,8 @@ const Companypage = () => {
                                             {TranslationModel.translate({
                                                 se: (
                                                     <>
-                                                        <h4>Event</h4>
-                                                        <h3>7000kr</h3>
+                                                        <h3>Event</h3>
+                                                        <h3>15 000kr</h3>
                                                         <br />
                                                         <p>
                                                             <ul>
@@ -448,8 +457,8 @@ const Companypage = () => {
                                                 ),
                                                 en: (
                                                     <>
-                                                        <h4>Event</h4>
-                                                        <h3>7 000 SEK</h3>
+                                                        <h3>Event</h3>
+                                                        <h3>SEK 15 000</h3>
                                                         <br />
                                                         <p>
                                                             <ul>
@@ -466,6 +475,7 @@ const Companypage = () => {
                                                                     during the
                                                                     fair day
                                                                 </li>
+                                                                <br/>
                                                             </ul>
                                                         </p>
                                                     </>
@@ -481,7 +491,7 @@ const Companypage = () => {
                                         {TranslationModel.translate({
                                             se: (
                                                 <>
-                                                    <h4>Annons</h4>
+                                                    <h3>Annons</h3>
                                                     <h3>1 000 kr</h3>
                                                     <br />
                                                     <p>
@@ -503,8 +513,8 @@ const Companypage = () => {
                                             ),
                                             en: (
                                                 <>
-                                                    <h4>Advert</h4>
-                                                    <h3>1 000 SEK</h3>
+                                                    <h3>Advert</h3>
+                                                    <h3>SEK 1 000</h3>
                                                     <br />
                                                     <p>
                                                         <ul>
@@ -528,7 +538,7 @@ const Companypage = () => {
                                 </ContentPadding>
                             </Card>
                         </div>
-                    </div>*/}
+                    </div>}
                 </div>
             </ContentSection>
             {/* Email us section */}
