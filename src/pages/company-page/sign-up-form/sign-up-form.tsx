@@ -172,6 +172,7 @@ const SignUpForm: FC = () => {
             holdEvents ? phrases.sign_up.yes : phrases.sign_up.no
         )}\n\n`
         //Opportunities
+        /*
         let opps: string[] = []
         for (const opp in _.pickBy(oppSelect)) {
             opps = [...opps, opp]
@@ -179,6 +180,8 @@ const SignUpForm: FC = () => {
         message += `${TranslationModel.translate(
             phrases.sign_up.opportunities_header
         )}:\n${opps.join(', ')}\n\n`
+*/
+
         //Subject
         formData.append(
             'subject',
