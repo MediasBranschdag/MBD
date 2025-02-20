@@ -14,13 +14,18 @@ interface ProfileCardProps {
 }
 
 const ProfileCard: FC<ProfileCardProps> = (props) => {
+    if (props.name.length > 21) {
+        var profile_card_name = "profile-card-name-short"; // For longer names, slightly smaller font size
+    } else {
+        var profile_card_name = "profile-card-name";
+    }
     return (
         <Card>
             <div className='profile-card'>
                 <div style={{backgroundImage: `url('${props.imagePath}')`}} className='profile-card-image'>
                     <div className='profile-card-info-container'>
                         <div className='profile-card-info'>
-                            <div className='profile-card-name'>
+                            <div className={profile_card_name}>
                                 {props.name}
                             </div>
                             <div className='profile-card-role'>

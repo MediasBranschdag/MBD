@@ -39,7 +39,13 @@
 }
 
 .profile-card-name {
-    font-size: 16px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.profile-card-name-short {
+    font-size: 15px;
+    letter-spacing: -0.8px;
     font-weight: bold;
 }
 
