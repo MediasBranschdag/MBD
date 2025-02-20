@@ -16,6 +16,7 @@ import ContactForm from './contact-form/contact-form'
 import Background from '../../assets/backgrounds/team.jpg'
 import IntroScreen from '../../components/intro-screen/intro-screen'
 import SectionTitle from '../../components/section-title/section-title'
+import BigBG from '../../assets/backgrounds/kth_stone_ground.jpg'
 
 const Contactpage: FC = () => {
     const [pgMembers, setPgMembers] = useState<TeamMember[]>([])
@@ -29,6 +30,7 @@ const Contactpage: FC = () => {
         <div className='contactpage'>
             <div className="intro-screen-title">{TranslationModel.translate(phrases.the_project_group)}</div>
 
+            {/*IntroScreen for a group picture (or other pic to appear at the top)*/}
             {/*
             <IntroScreen
                 title={TranslationModel.translate(phrases.the_project_group)}

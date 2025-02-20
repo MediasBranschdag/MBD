@@ -162,6 +162,7 @@ const Companypage = () => {
                             )}
                         </SectionTitle>
                     </TextSection>
+                    {/*
                     <div className='companypage-offer'>
                     {TranslationModel.translate({
                                         se: (
@@ -173,7 +174,7 @@ const Companypage = () => {
                                             <p className="text-center">More information coming soon...</p>
                                             </>)
                                             })}
-                    </div>
+                    </div>*/}
                     {<div className='companypage-offer'>
                         <Card light gold>
                             <ContentPaddingThin>

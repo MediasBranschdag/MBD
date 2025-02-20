@@ -1,3 +1,10 @@
+.contactpage {
+    background-image: url("../../assets/backgrounds/kth_stone_ground_bright.jpg");
+    background-size: cover;
+    background-position-x: center;
+    overflow: hidden;
+}
+
 .contactpage-background {
     position: absolute;
     z-index: -1;
@@ -53,7 +60,6 @@
 
     text-transform: uppercase;
     font-weight: 900;
-    font-size: 40px;
     text-align: center;
     color: #ffd521;
 
