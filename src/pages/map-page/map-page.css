@@ -45,3 +45,27 @@
         display: none;
     }
 }
+
+.masskarta-container {
+    background-image: url("../../assets/backgrounds/leaf_dark_blur.jpg");
+    background-size: cover;
+}
+
+.masskarta {
+    background-image: url("../../assets/backgrounds/masskarta25.png");
+    background-size: contain;
+    width:650px;
+    margin: 0 auto;
+    height:1000px;
+    background-repeat: no-repeat;
+
+    -webkit-box-shadow: 0px 9px 43px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 9px 43px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 9px 43px 0px rgba(0,0,0,0.75);
+}
+
+@media screen and (max-width: 650px) {
+    .masskarta {
+        width:100%;
+    }
+}

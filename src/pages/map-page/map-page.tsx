@@ -96,8 +96,17 @@ const MapPage: FC = () => {
 
     const getCompanyMarkerClass = () => 'company-marker-class'
 
+    
+
     return (
-        /*<div>{TranslationModel.translate({
+        <div className="masskarta-container">
+            <div className="masskarta">
+            </div>
+        </div>
+
+
+        /* 
+        <div>{TranslationModel.translate({
             se: (
                 <>
                 <h1 style={{textAlign:"center", padding:"3rem"}}>Mer information kommer snart...</h1>
@@ -106,13 +115,15 @@ const MapPage: FC = () => {
                 <>
                 <h1 style={{textAlign:"center", padding:"3rem"}}>More information coming soon...</h1>
                 </>)
-                })*/
+                })}</div>)
+               
         <div className='map-page'>
             <div className='map-page-company-list-container'>
                 <div className='map-page-company-list'>
                     <MBDCompanyContext.Consumer>
                         {(companies) => {
                             return companies.isExhibitor.map((company) => {
+                                console.log(company)
                                 return (
                                     <CompanyCard
                                         key={company.id}
@@ -198,6 +209,6 @@ const MapPage: FC = () => {
                 )}
             </div>
             </div>
-            )}
+            */)}
     
 export default MapPage
