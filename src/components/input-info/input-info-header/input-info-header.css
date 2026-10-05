@@ -4,7 +4,8 @@
     padding-bottom: 5px;
 }
 
-.input-info-header.obligatory::after {
+
+.input-info-header.obligatory:after {
     content: ' *';
     color: var(--theme-text-error);
 }

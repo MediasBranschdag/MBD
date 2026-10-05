@@ -9,38 +9,39 @@ import './student-page.css'
 
 import TranslationModel from '../model/translationModel'
 import phrases from '../../data/translations.json'
-import Footer from '../../components/footer/footer'
 import ContentSection from '../../components/layout/content-section/content-section'
 import TextSection, {
     TextSectionAlignment,
 } from '../../components/text-section/text-section'
 import { Button } from '../../components/button/button'
 
-import Close from '../../assets/icons/other/close_outline.svg'
-import SectionTitle from '../../components/section-title/section-title'
 import { Company } from '../model/companyModel'
 import { MBDCompanyContext } from '../../contexts/mbd-company-provider'
 import CompanyCard from '../../components/company-card/company-card'
-import LoadingText from '../../components/loading-text'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import Chip from '../../components/chip/chip'
 
+import IntroScreenTitle from '../../components/intro-screen/intro-screen-title/intro-screen-title'
+import SectionTitle, {TitleSectionAlignment} from '../../components/section-title/section-title'
+import { Card } from '@material-ui/core'
+import Tag from '../../components/tag/tag'
+import Close from '../../assets/icons/other/close_outline.svg'
+
+import masskarta from '../../assets/masskarta2026.jpg'
+
 const Studentpage = () => {
-    const companiesContext = useContext(MBDCompanyContext)
-    const closedDescriptionHeight = 300
+    //const companiesContext = useContext(MBDCompanyContext) //gets company data from nearest provider (mbd-company-provider.tsx)
 
     const windowDimensions = useWindowDimensions()
 
     const [companyDescriptionRef, _setCompanyDescriptionRef] =
         useState<HTMLDivElement>()
     const [activeCompany, _setActiveCompany] = useState<Company | null>(null)
-    const [descriptionOpen, _setDescriptionOpen] = useState<boolean>(false)
-    const [descriptionHeight, _setDescriptionHeight] = useState<number>(
-        closedDescriptionHeight
-    )
     const [showMore, _setShowMore] = useState(true)
     const [onMobile, _setOnMobile] = useState(false)
     const [employments, _setEmployments]: any = useState({})
+    const [mainSponsor, _setMainSponsor] = useState<Company>()
+    const [showMapPopup, _setShowMapPopup] = useState(false)
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -50,23 +51,12 @@ const Studentpage = () => {
         _setOnMobile(windowDimensions.width < 700)
     }, [windowDimensions.width])
 
-    useEffect(() => {
-        if (!onMobile)
-            _setActiveCompany(
-                companiesContext.isMainSponsor[0] ??
-                    companiesContext.isExhibitor[0]
-            )
-    }, [onMobile, companiesContext.isMainSponsor, companiesContext.isExhibitor])
-
     const getActiveEmployments = () => {
         return Object.keys(employments).filter((id) => employments[id])
     }
 
     const onCompanyRefChange = useCallback((node) => {
         _setCompanyDescriptionRef(node)
-        if (node !== null) {
-            _setShowMore(node.scrollHeight! > closedDescriptionHeight)
-        }
     }, [])
 
     const changeActiveCompany = (company: Company) => {
@@ -78,17 +68,6 @@ const Studentpage = () => {
                 behavior: 'smooth',
                 top: document.getElementById('active-company')?.offsetTop! - 90,
             })
-        toggleDescription(true)
-    }
-
-    const toggleDescription = (forceClose: boolean = false) => {
-        const shouldClose = descriptionOpen || forceClose
-        _setDescriptionOpen(!shouldClose)
-        _setDescriptionHeight(
-            shouldClose
-                ? closedDescriptionHeight
-                : companyDescriptionRef?.scrollHeight ?? 200
-        )
     }
 
     const sortByName = (a: Company, b: Company) => {
@@ -101,31 +80,44 @@ const Studentpage = () => {
 
     const getActiveCompanyContent = () => {
         if (activeCompany === null || activeCompany === undefined) {
-            return <LoadingText />
+            return
         }
 
         return (
             <div className='student-page'>
-                <h2>{activeCompany.name}</h2>
-                <div>
-                    <div className='studentpage-active-company-right'>
-                        <div
-                            className='studentpage-active-company-logo'
-                            style={{
-                                backgroundImage: `url('/assets/companies/${activeCompany.logo_path}')`,
-                            }}
-                        />
-                        <div className='studentpage-active-company-employments'>
-                            {activeCompany.employments.map((employment) => (
-                                <Chip key={'chip_' + employment.id} selected>
-                                    {TranslationModel.translate(
-                                        employment.name
-                                    )}
-                                </Chip>
-                            ))}
-                        </div>
-                    </div>
+                <div className='studentpage-active-company-header'>
+                    <h2>{activeCompany.name}</h2>
+                    {activeCompany.isMainSponsor ? (
+                        <Tag gold className='tag'>
+                            {TranslationModel.translate(phrases.main_sponsor)}
+                        </Tag>
+                        ) : activeCompany.isSponsor ? (
+                        <Tag silver className='tag'>
+                            {TranslationModel.translate(phrases.silver_sponsor)}
+                        </Tag>
+                        ) : null}
 
+                    {activeCompany.isLecturer && (
+                            <Tag gray className='tag'>
+                                {TranslationModel.translate(
+                                    phrases.lecturers
+                                )}
+                            </Tag>
+                           
+                    )}
+
+                    <button
+                        type='button'
+                        className='studentpage-close-button close no-tap-highlight'
+                        onClick={() => _setActiveCompany(null)}
+                    >
+                         <img src={Close} alt='close' />
+
+                    </button>
+                </div>
+
+                <div className='active-company'>
+               
                     <div
                         className='studentpage-company-description'
                         dangerouslySetInnerHTML={{
@@ -134,17 +126,36 @@ const Studentpage = () => {
                                     activeCompany.getDescription()
                                 )?.toString() ?? '',
                         }}
-                    ></div>
+                    />
+                    <div className='studentpage-active-company-left'>
+
+                        <div
+                            className='studentpage-active-company-logo'
+                            style={{
+                                backgroundImage: `url('/assets/companies/${activeCompany.logo_path}')`,
+                            }}
+                        />
+                        <div className='studentpage-active-company-actions'>
+                            <a
+                                href={`http://${activeCompany?.url}`}
+                                target='_blank'
+                                rel='noopener noreferrer'
+                            >
+                                <Button>
+                                    {TranslationModel.translate(
+                                        phrases.go_to_companies
+                                    )}
+                                </Button>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
-                {showMore && !descriptionOpen ? (
-                    <div className='studentpage-company-description-overflow'></div>
-                ) : (
-                    <></>
-                )}
             </div>
         )
     }
 
+    // All of the information from the database such as Description, CompanyName, and image (not link to website) AND Buttons
     const exhibitors = (
         <>
             {onMobile ? (
@@ -154,41 +165,9 @@ const Studentpage = () => {
                     <div
                         key={activeCompany?.id}
                         ref={onCompanyRefChange}
-                        style={{
-                            height: `${descriptionHeight}px`,
-                        }}
                         className='studentpage-company-description'
                     >
                         <TextSection>{getActiveCompanyContent()}</TextSection>
-                    </div>
-                    <div className='studentpage-active-company-actions'>
-                        {showMore ? (
-                            <Button
-                                onClick={toggleDescription}
-                                className='studentpage-show-more-button'
-                            >
-                                {descriptionOpen
-                                    ? TranslationModel.translate(
-                                          phrases.show_less
-                                      )
-                                    : TranslationModel.translate(
-                                          phrases.read_more
-                                      )}
-                            </Button>
-                        ) : (
-                            <></>
-                        )}
-                        <a
-                            href={`http://${activeCompany?.url}`}
-                            target='_blank'
-                            rel='noopener noreferrer'
-                        >
-                            <Button>
-                                {TranslationModel.translate(
-                                    phrases.go_to_companies
-                                )}
-                            </Button>
-                        </a>
                     </div>
                 </div>
             )}
@@ -248,12 +227,6 @@ const Studentpage = () => {
                                                 )}
                                             </Chip>
                                         ))}
-                                    <div
-                                        className='employments-clear no-tap-highlight'
-                                        onClick={() => _setEmployments({})}
-                                    >
-                                        <img src={Close} alt='clear' />
-                                    </div>
                                 </>
                             ) : (
                                 <></>
@@ -305,22 +278,53 @@ const Studentpage = () => {
     )
 
     return (
-        /*
-        <div>{TranslationModel.translate({
-            se: (
-                <>
-                <h1 style={{textAlign:"center", padding:"3rem"}}>Mer information kommer snart...</h1>
-                </>),
-            en: (
-                <>
-                <h1 style={{textAlign:"center", padding:"3rem"}}>More information coming soon...</h1>
-                </>)
-                })}</div>*/
+        //In preperation- text
+        // <CenterContent>
+        //     <div style={{color: "white"}}>
+        //     {TranslationModel.translate({
+        //         se: (
+        //             <>
+        //                 <h1>Mer information kommer snart...</h1>
+        //             </>
+        //         ),
+        //         en: (
+        //             <>
+        //                 <h1>More information coming soon...</h1>
+        //             </>
+        //         ),
+        //     })}
+        // </div>
+        // </CenterContent>
+
         <div className='studentpage'>
             <div id='studentpage-exhibitors'>
+                <IntroScreenTitle noGradient={true} bottomPadding={true}>
+                    {TranslationModel.translate(phrases.exhibitors)}
+                </IntroScreenTitle>
+                <TextSection align={TextSectionAlignment.center}>
+                    {TranslationModel.translate({
+                        se: (
+                            <span>
+                                Är du student? Här hittar du information om
+                                årets utställare som deltar i branschdagen!
+                                Kanske din nästa arbetsplats?
+                            </span>
+                        ),
+                        en: (
+                            <span>
+                                Are you a student? Here you will find
+                                information about this years participants in the
+                                career fair! Maybe your next employer will be
+                                there?
+                            </span>
+                        ),
+                    })}
+                </TextSection>
                 <ContentSection>
-                    <SectionTitle>
-                        {TranslationModel.translate(phrases.exhibitors)}
+                    <SectionTitle align={TitleSectionAlignment.center}>
+                        {TranslationModel.translate(
+                            phrases.this_years_exhibitors
+                        )}
                     </SectionTitle>
                     <MBDCompanyContext.Consumer>
                         {(companies) => {
@@ -338,10 +342,18 @@ const Studentpage = () => {
                         }}
                     </MBDCompanyContext.Consumer>
                 </ContentSection>
+                <ContentSection>
+                    <SectionTitle align={TitleSectionAlignment.center}>
+                        {TranslationModel.translate(
+                            phrases.map
+                        )}
+                    </SectionTitle>
+                    <div className='map-image-container'>  
+                        <img src={masskarta} alt='map' className='map-image'/>
+                    </div>
+                </ContentSection>
             </div>
-            <Footer />
         </div>
-        
     )
 }
 

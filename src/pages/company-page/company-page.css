@@ -1,12 +1,12 @@
-.companypage-offer {
-    display: grid;
-    grid-template-columns: 1fr;
-    column-gap: 25px;
-    row-gap: 25px;
+.companypage {
+    color: white;
+    width: 100%;
+}
 
-    margin-bottom: 25px;
-
-    color: var(--theme-text-dark);
+.fill {
+    height: 35em;
+    width: 22em;
+    position: relative;
 }
 
 ul {
@@ -15,32 +15,93 @@ ul {
     padding: 0px 30px;
 }
 
-.companypage-offer p, .companypage-offer h3, .companypage-offer h4, .companypage-offer h5 {
-    text-align: center;
+.companypage-fair {
+    position: relative;
+    overflow: hidden;
+}
+
+.companypage-offer{
+    color: var(--theme-text-dark);
+}
+
+.companypage-offer p {
+    text-align: left;
     margin: 0.5em 0;
+    font-size: small;
+}
+
+.companypage-offer h3 {
+    text-align: center;
 }
 
 .companypage-offer li {
     padding: 0.3em 0;
 }
 
+.main-offers {
+    display: flex;
+    justify-content: center;   
+    align-items: center;        
+    gap: 20px;
+}
+
 .additional-offers {
     display: flex;
-    align-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.additional-offers div {
-    flex: 1 1 0;
-}   
-
-.additional-offers div:first-child {
-    margin-right: 1em;
+.offer-card {
+    width: 15em;
 }
 
-.companypage-fair {
-    position: relative;
-    overflow: hidden;
+.navigation-cards-company {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 40px 40px 40px;
 }
+
+.add-ons { /* Used in texts.tsx */
+    padding-left: 1.2em;
+    padding-bottom: 1em;
+    position: absolute;
+    bottom: 0;
+    font-style: italic;
+}
+
+/* Tablet screen size */
+@media screen and (max-width: 849px) {
+
+    .main-offers {
+        display: flex;
+        flex-direction: column;
+        flex: 0 1 auto;
+        gap: 20px;
+    }
+
+
+    .fill {
+        height: auto;
+    }
+
+    .add-ons {
+        position: initial;
+        bottom: initial;
+        font-style: italic;
+        
+    }
+
+    .navigation-cards-company {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 30px;
+    }
+    
+}
+
+
+/* BELOW IS NO LONGER IN USE */
 
 .companypage-map-background {
     position: absolute;
@@ -85,12 +146,7 @@ ul {
     }
 }
 
-@media screen and (max-width: 700px) {
-    .companypage-offer {
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: 15px;
-        row-gap: 15px;
-    }
+@media screen and (max-width: 849px) {
 
     .companypage-see-map-box {
         height: 125px;
@@ -106,28 +162,11 @@ ul {
             rgba(255,255,255,0) 75%
         );
     }
-
-    .additional-offers {
-        display: 'flex';
-        flex-direction: column;
-    }
-
-    .additional-offers div {
-        flex: 0 1 auto;
-    }   
-
-    .additional-offers div:first-child {
-        margin-right: 0;
-        margin-bottom:1em;
-    }
     
 }
 
 @media screen and (max-width: 500px) {
-    .companypage-offer {
-        column-gap: 0;
-        grid-template-columns: repeat(1, 1fr);
-    }
+
     .companypage-sales-members {
         grid-template-columns: repeat(1, 1fr) !important;
     }

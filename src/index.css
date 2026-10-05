@@ -8,6 +8,7 @@ body, input, textarea {
 
 body {
   margin: 0;
+  height: 100%;
   background-color: var(--theme-light-color-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -19,3 +20,10 @@ a {
   color: unset;
   text-decoration: none;
 }
+
+.App{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+

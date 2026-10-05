@@ -46,10 +46,12 @@
     }
 }
 
-.masskarta-container {
+/* .masskarta-container {
     background-image: url("../../assets/backgrounds/leaf_dark_blur.jpg");
     background-size: cover;
-}
+    margin: 0 auto;
+    height:1000px;
+} */
 
 .masskarta {
     background-image: url("../../assets/backgrounds/masskarta25.png");

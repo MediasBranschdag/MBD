@@ -1,0 +1,27 @@
+.slideC {
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  width: 362px;
+  margin: 0 auto;
+  height:35em;
+  align-self: center;
+
+}
+
+.slide {
+  transition: transform 500ms ease 0s, opacity 500ms ease 0s,
+    visibility 500ms ease 0s;
+  top: 0;
+  cursor: pointer;
+  position: absolute;
+
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+

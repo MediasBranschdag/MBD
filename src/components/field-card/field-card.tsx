@@ -62,6 +62,7 @@ const FieldCard: FC<FieldCardProps> = (props) => {
                                 target='_blank'
                                 rel='noopener noreferrer'
                             >
+                                
                                 <img
                                     src={ExternalIcon}
                                     alt=''

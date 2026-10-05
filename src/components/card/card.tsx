@@ -8,7 +8,8 @@ interface CardProps {
     unselected?: boolean,
     gold?: boolean,
     silver?: boolean,
-    bronze?: boolean
+    bronze?: boolean,
+    transparent?: boolean
 }
 
 const Card: FC<CardProps> = (props) => {
@@ -30,6 +31,9 @@ const Card: FC<CardProps> = (props) => {
     }
     if (props.unselected) {
         className += 'card--unselected ';
+    }
+    if (props.transparent) {
+        className += 'card--transparent '
     }
 
     return (

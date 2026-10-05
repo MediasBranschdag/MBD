@@ -1,0 +1,46 @@
+[
+    {
+        "id": 1,
+        "name": {
+            "se": "Projektledare",
+            "en": "Project Leaders"
+        },
+        "email": "naringsliv@medieteknik.com",
+        "image": "./assets/team/projectleaders.jpg",
+        "image_order": ["1", "2"],
+        "member_key": "leaders"
+    },
+    {
+        "id": 2,
+        "name": {
+            "se": "Företagsgruppen",
+            "en": "Sales Team"
+        },
+        "email": "foretag@nlg.medieteknik.com",
+        "image": "./assets/team/sales.jpg",
+        "image_order": ["3", "5", "4", "6", "7", "8"],
+        "member_key": "sales"
+    },
+    {
+        "id": 3,
+        "name": {
+            "se": "Eventgruppen",
+            "en": "Event Team"
+        },
+        "email": "event@nlg.medieteknik.com",
+        "image": "./assets/team/event.jpg",
+        "image_order": ["9", "11", "10", "12"],
+        "member_key": "event"
+    },
+    {
+        "id": 4,
+        "name": {
+            "se": "Marknadsföringsgruppen",
+            "en": "Marketing Team"
+        },
+        "email": "pr@nlg.medieteknik.com",
+        "image": "./assets/team/marketing.jpg",
+        "image_order": ["15", "13", "18", "16", "14", "17"],
+        "member_key": "marketing"
+    }
+]

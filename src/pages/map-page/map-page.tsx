@@ -22,6 +22,7 @@ import { Company } from '../model/companyModel'
 import CompanyMarker from '../../components/map-marker/company-marker'
 import { setActiveLink } from 'react-scroll/modules/mixins/scroller'
 import { prependOnceListener } from 'cluster'
+import CenterContent from '../../components/center-content/center-content'
 
 interface MapDataState {
     mapImage: string
@@ -100,11 +101,25 @@ const MapPage: FC = () => {
 
     return (
         <div className="masskarta-container">
-            <div className="masskarta">
+            <div >
+                <CenterContent>
+            <div style={{color: "white"}}>
+            {TranslationModel.translate({
+                se: (
+                    <>
+                        <h1>Mer information kommer snart...</h1>
+                    </>
+                ),
+                en: (
+                    <>
+                        <h1>More information coming soon...</h1>
+                    </>
+                ),
+            })}
+        </div>
+        </CenterContent>
             </div>
         </div>
-
-
         /* 
         <div>{TranslationModel.translate({
             se: (

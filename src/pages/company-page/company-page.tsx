@@ -1,556 +1,313 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback, useRef } from 'react'
 import './company-page.css'
-import {Button} from "../../components/button/button"
-import { MBDDateContext } from '../../contexts/mbd-date-provider'
 import TranslationModel from '../model/translationModel'
 import phrases from '../../data/translations.json'
-import Footer from '../../components/footer/footer'
-import ContentSection, {
-    ContentSectionBackground,
-} from '../../components/layout/content-section/content-section'
-import TextSection, {
-    TextSectionAlignment,
-} from '../../components/text-section/text-section'
-import MapBackground from '../../assets/backgrounds/map_nymble.jpg'
-import SectionTitle, {
-    TitleSectionAlignment,
-} from '../../components/section-title/section-title'
+
+import IntroScreenTitle from '../../components/intro-screen/intro-screen-title/intro-screen-title'
+import ContentSection from '../../components/layout/content-section/content-section'
+import TextSection, {TextSectionAlignment} from '../../components/text-section/text-section'
+import SectionTitle, {TitleSectionAlignment} from '../../components/section-title/section-title'
 
 import Card from '../../components/card/card'
 import { ContentPadding } from '../../components/content-padding'
 import { ContentPaddingThin } from '../../components/content-padding-thin'
 import TextWithContent from '../../components/text-with-content/text-with-content'
-import ContactForm from '../contact-page/contact-form/contact-form'
+import { Button, ButtonTypes } from '../../components/button/button'
+
+import Slider from '../../components/carousel/carousel'
+import NavigationCard from '../../components/navigation-card/navigation-card'
+
+
+import companyBackgroundImage from '../../assets/backgrounds/laptop.png'
+import companyIcon from '../../assets/icons/other/company.svg'
+import studentBackgroundImage from '../../assets/backgrounds/kth_stone_ground.jpg'
+import studentIcon from '../../assets/icons/other/book.png'
+import MapBackground from '../../assets/backgrounds/map_nymble.jpg'
+
+import useWindowDimensions from '../../hooks/useWindowDimensions'
+
+import texts from './texts'
+
 
 const Companypage = () => {
+
+    /* Changing the hash based on scroll position */
+    const allSections = useRef<HTMLDivElement[]>([]);   
+
+    // Adds sections to ref array (simply add id to sections to be included)
+    const elemRef = useCallback((el: HTMLDivElement | null) => {
+        if (el && !allSections.current.includes(el)) {
+            allSections.current.push(el);
+        }
+    }, []);
+
+
+    useEffect(() => {
+        const onScroll = () => {
+            if (window.pageYOffset < 150) { // Remove hash at top of page
+                window.history.replaceState(null, "", window.location.pathname);
+            }
+
+            allSections.current.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top > 0 && rect.top < 150) {
+                    window.history.replaceState(null, "", `#${section.id}`);
+                }
+            });
+        };
+
+        window.addEventListener("scroll", onScroll);
+
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+        };
+    }, []);
+
+
+
+    /* Used for conditionally rendering carousel with sponsor packages */
+    const windowDimensions = useWindowDimensions();
+    const [onDesktop, _setOnDesktop] = useState(false);
+
+    useEffect(() => {
+            _setOnDesktop(windowDimensions.width >= 850)
+        }, [windowDimensions.width]);
+
+    
+    /* Opening the correct PDF based on app language */
+    const openPDF = () => {
+        const lang = TranslationModel.getLanguage();
+        const link =
+        lang === 'se'
+        ? './assets/docs/NLG_ProduktKatalog_2526.pdf'
+        : './assets/docs/NLG_ProductCatalog_2526.pdf';
+        
+        window.open(
+            link
+        )
+        
+    }
+
+    /* Array of main sponsor packages */
+    const mainOffers = [
+        {id: 1,
+        card: (
+        <Card light gold>
+            <ContentPaddingThin>
+                <Card light className="fill">
+                    {TranslationModel.translate({
+                    se: texts.gold.se,
+                    en: texts.gold.en,
+                    })}
+                </Card>
+            </ContentPaddingThin>
+        </Card>)
+        },
+
+        {id: 2, 
+        card: (
+        <Card light silver>
+            <ContentPaddingThin>
+                <Card light className="fill">
+                    {TranslationModel.translate({
+                    se: texts.silver.se,
+                    en: texts.silver.en,
+                    })}
+                </Card>
+            </ContentPaddingThin>
+        </Card>)
+        },
+
+        {id: 3,
+        card: (
+        <Card light bronze>
+            <ContentPaddingThin>
+                <Card light className="fill">
+                    {TranslationModel.translate({
+                    se: texts.bronze.se,
+                    en: texts.bronze.en,
+                    })}
+                </Card>
+            </ContentPaddingThin>
+        </Card>)
+        }
+    ]
+
+    
     return (
         <div className='companypage'>
-            <div id='companypage-fair' className='companypage-fair'>
-                <div
-                    className='companypage-map-background'
-                    style={{ backgroundImage: `url(${MapBackground})` }}
-                ></div>
-                <div className='companypage-map-background-fade'></div>
+
+            <IntroScreenTitle noGradient = {true}>{TranslationModel.translate(phrases.for_companies)}</IntroScreenTitle>
+            <div  className='companypage-fair'>
+                
                 <ContentSection>
+                    {/* About the fair + map */}
                     <TextWithContent
                         text={
                             <TextSection>
-                                <h1>
+                                <h2>
                                     <SectionTitle
                                         align={TitleSectionAlignment.left}
                                     >
                                         {TranslationModel.translate(
-                                            phrases.the_fair
+                                            phrases.about_the_fair
                                         )}
                                     </SectionTitle>
-                                </h1>
-                                <MBDDateContext.Consumer>
-                                    {(mbdDate) =>
-                                        TranslationModel.translate({
-                                            se: (
-                                                <span>
-                                                    Mässan kommer äga rum{' '}
-                                                    <b>
-                                                        {/*våren 2025*/}
-                                                    
-                                                        {20}{' '}
-                                                        {TranslationModel.translate(
-                                                            phrases.months
-                                                                .march
-                                                        )}{' '}
-                                                        {2025}{' '}
-                                                    </b>{' '}
-                                                    och innehåller en heldag
-                                                    spännande företag. Vi kommer
-                                                    att hålla till i THS kårhus,
-                                                    Nymble, som ligger på{' '}
-                                                    <b>
-                                                        Drottning Kristinas väg
-                                                        15
-                                                    </b>{' '}
-                                                    vid Kungliga Tekniska
-                                                    Högskolan.
-                                                    <br />
-                                                    <br />
-                                                    Under dagen är mässan öppen
-                                                    för alla studenter på KTH,
-                                                    men vi riktar oss särskilt
-                                                    mot medieteknikstudenter då
-                                                    dessa har ett brett intresse
-                                                    för design, programmering,
-                                                    och entreprenörskap. Ett
-                                                    perfekt tillfälle för ditt
-                                                    företag att hitta studenter
-                                                    för framtiden!
-                                                    <br />
-                                                    <br />
-                                                    Dagen avslutas med en stor
-                                                    sittning där era
-                                                    företagsrepresentanter har
-                                                    möjlighet att komma och äta
-                                                    och mingla med våra
-                                                    studenter i en mer
-                                                    avslappnad miljö.
-                                                </span>
-                                            ),
-                                            en: (
-                                                <span>
-                                                    The job fair starts in{' '}
-                                                    <b>
-                                                        {/*spring 2025*/}
-                                                        {20}{'th '}
-                                                        {TranslationModel.translate(
-                                                            phrases.months
-                                                                .march
-                                                        )}{' '}
-                                                        {2025}{' '}
-                                                    </b>{' '}
-                                                    and consists of a whole day
-                                                    of exciting companies happy
-                                                    to network with students. It
-                                                    is held in THS Student Union
-                                                    building, Nymble, that is
-                                                    located at{' '}
-                                                    <b>
-                                                        Drottnings Kristinas väg
-                                                        15 at KTH
-                                                    </b>
-                                                    .
-                                                    <br />
-                                                    <br />
-                                                    During the day the fair is
-                                                    open to all students at KTH,
-                                                    but is specifically targeted
-                                                    at Media Technology students
-                                                    since these have a great
-                                                    interest in design,
-                                                    programming and
-                                                    entrepreneurship. A perfect
-                                                    occasion for your company to
-                                                    find your future employees!
-                                                    <br />
-                                                    <br />
-                                                    At the end of the day a big
-                                                    dinner party is held where
-                                                    your company representatives
-                                                    can attend and network with
-                                                    our students in a more
-                                                    relaxed setting.
-                                                </span>
-                                            ),
-                                        })
-                                    }
-                                </MBDDateContext.Consumer>
+                                </h2>
+                                {TranslationModel.translate({
+                                    se: (
+                                        <span>
+                                            {texts.about_the_fair.se}
+                                            <Button buttonType={ButtonTypes.normalCompact} onClick={openPDF}>
+                                                {TranslationModel.translate(phrases.product_catalog)}
+                                            </Button>
+                                        </span>
+                                    ),
+                                    en: (
+                                        <span>
+                                            {texts.about_the_fair.en}
+                                            <Button buttonType={ButtonTypes.normalCompact} onClick={openPDF}>
+                                                {TranslationModel.translate(phrases.product_catalog)}
+                                            </Button>
+                                        </span>
+                                        
+                                    ),
+                                })
+                                }
                             </TextSection>
                         }
+                        
                         content={
-                            // This is used to make the icon on the map background
-                            // visibale on small screens
-                            <div className='companypage-see-map-box'></div>
+                            /* Map image */
+                            <div style={{width: '350px', height: '350px', overflow: 'hidden', borderRadius: '20px'}}>
+                                <img src={MapBackground} style={{width: '250%', height: '250%', objectFit: 'cover', transform: 'translate(-35%, -30%)'}}/>
+                            </div>
+                            
                         }
                     />
+                    
                 </ContentSection>
             </div>
+            
             <ContentSection>
                 <br />
                 {/* Package section */}
-                <div id='companypage-package'>
+                <div id='packages' ref={elemRef}>   {/* Allows for scrolling and hash changes */}
+                    <SectionTitle align={TitleSectionAlignment.center}>
+                        {TranslationModel.translate(
+                            phrases.exhibitor_packages
+                        )}
+                    </SectionTitle>
+                    
+                    <div className="companypage-offer">
+                        {
+                            onDesktop ?
+                            <Slider activeSlide={0} data={mainOffers}/>
+                            :
+                            <div className='companypage-offer'>
+                                <div className="main-offers">
+                                    {mainOffers.map((offer)=>(
+                                        <div key={offer.id}>
+                                            {offer.card}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            
+            
+            <ContentSection>
+                 <br />
+                {/* Extras section */}
+                <div>
                     <TextSection align={TextSectionAlignment.center}>
                         <SectionTitle align={TitleSectionAlignment.center}>
                             {TranslationModel.translate(
-                                phrases.exhibitor_packages
+                                phrases.company_addons
                             )}
                         </SectionTitle>
                     </TextSection>
-                    {/*
-                    <div className='companypage-offer'>
-                    {TranslationModel.translate({
-                                        se: (
-                                            <>
-                                            <p className="text-center">Mer information kommer snart...</p>
-                                            </>),
-                                        en: (
-                                            <>
-                                            <p className="text-center">More information coming soon...</p>
-                                            </>)
-                                            })}
-                    </div>*/}
-                    {<div className='companypage-offer'>
-                        <Card light gold>
-                            <ContentPaddingThin>
-                                <Card light>
-                                    {TranslationModel.translate({
-                                        se: (
-                                            <>
-                                                <br/>
-                                                <h3>Guldpaketet</h3>
-                                                <h3>58 000kr</h3>
-                                                <br />
-                                                <p>
-                                                    <b>På Branchdagen:</b>
-                                                    <ul>
-                                                        <li>
-                                                            8m² för monter centralt på mässan
-                                                        </li>
-                                                        <li>
-                                                            Två ståbord och fyra stolar
-                                                        </li>
-                                                        <li>
-                                                            Två personliga företagsvärdar
-                                                        </li>
-                                                        <li>
-                                                            Fyra
-                                                            sittningsbiljetter samt
-                                                            lunch och fika för
-                                                            fyra
-                                                        </li>
-                                                        <li>
-                                                            Exponering på
-                                                            hemsida, våra sociala
-                                                            medier samt på
-                                                            kläder under
-                                                            branschdagen
-                                                        </li>
-                                                    </ul>
-                                                    <b>Event:</b>{' '}
-                                                    <ul>
-                                                        <li>
-                                                            Exempelvis en
-                                                            lunchföreläsning
-                                                            eller pub - mat till 50 personer ingår<br></br>
-                                                            Kostnad för drinkbiljetter tillkommer á 30kr
-                                                        </li>
-                                                    </ul>
-                                                    <b>Annons:</b>
-                                                    <ul>
-                                                        <li>
-                                                            På
-                                                            hemsida, Instagram
-                                                            och Facebook.
-                                                        </li>
-                                                    </ul>
-                                                </p>
-                                            </>
-                                        ),
-                                        en: (
-                                            <>
-                                                <br/>
-                                                <h3>Gold Package</h3>
-                                                <h3>SEK 58 000</h3>
-                                                <br />
-                                                <p>
-                                                    <b>On the day of the fair:</b>
-                                                    <ul>
-                                                        <li>
-                                                            8m² for a stand
-                                                        </li>
-                                                        <li>
-                                                            Two standing tables and four chairs
-                                                        </li>
-                                                        <li>
-                                                            Two personal company hosts
-                                                        </li>
-                                                        <li>
-                                                            Four dinner tickets, and lunch and coffee for four
-                                                        </li>
-                                                        <li>
-                                                            Exposure on the website, our social media and on clothes during the fair
-                                                        </li>
-                                                    </ul>
-                                                    <b>Event:</b>{' '}
-                                                    <ul>
-                                                        <li>
-                                                            For example a lunch lecture or a pub - food for 50 people is included<br></br>
-                                                            The cost of drink tickets is SEK 30 per ticket
-                                                        </li>
-                                                    </ul>
-                                                    <b>Advert:</b>
-                                                    <ul>
-                                                        <li>
-                                                            On website, Instagram and Facebook
-                                                        </li>
-                                                    </ul>
-                                                </p>
-                                            </>
-                                        ),
-                                    })}
-                                </Card>
-                            </ContentPaddingThin>
-                        </Card>
-                        <Card light silver>
-                            <ContentPaddingThin>
-                                <Card light>
-                                    {TranslationModel.translate({
-                                        se: (
-                                            <>
-                                                <br/>
-                                                <h3>Silverpaketet</h3>
-                                                <h3>36 000kr</h3>
-                                                <br />
-                                                <p>
-                                                    <b>På Branchdagen:</b>
-                                                    <ul>
-                                                        <li>
-                                                            6m² för monter
-                                                        </li>
-                                                        <li>
-                                                            Ett ståbord och två stolar
-                                                        </li>
-                                                        <li>
-                                                            En
-                                                            personlig
-                                                            företagsvärd
-                                                        </li>
-                                                        <li>
-                                                            Två
-                                                            sittningsbiljetter samt
-                                                            lunch och fika för
-                                                            två
-                                                        </li>
-                                                        <li>
-                                                            Exponering på
-                                                            hemsida och våra sociala
-                                                            medier
-                                                        </li>
-                                                    </ul>
-                                                </p>
-                                            </>
-                                        ),
-                                        en: (
-                                            <>
-                                                <br/>
-                                                <h3>Silverpaketet</h3>
-                                                <h3>SEK 36 000</h3>
-                                                <br />
-                                                <p>
-                                                    <b>On the day of the fair:</b>
-                                                    <ul>
-                                                        <li>
-                                                            6m² for a stand
-                                                        </li>
-                                                        <li>
-                                                            One standing table and two chairs
-                                                        </li>
-                                                        <li>
-                                                            One personal company host
-                                                        </li>
-                                                        <li>
-                                                            Two dinner tickets, and lunch and coffee for two
-                                                        </li>
-                                                        <li>
-                                                            Exposure on the website and our social media
-                                                        </li>
-                                                    </ul>
-                                                </p>
-                                            </>
-                                        ),
-                                    })}
-                                </Card>
-                            </ContentPaddingThin>
-                        </Card>
-                        <Card light bronze>
-                            <ContentPaddingThin>
-                                <Card light>
-                                    {TranslationModel.translate({
-                                        se: (
-                                            <>
-                                                <br/>
-                                                <h3>Bronspaketet</h3>
-                                                <h3>27 000kr</h3>
-                                                <br />
-                                                <p>
-                                                    <b>På Branchdagen:</b>
-                                                    <ul>
-                                                        <li>
-                                                            4m² för monter
-                                                        </li>
-                                                        <li>
-                                                            Ett
-                                                            ståbord
-                                                        </li>
-                                                        <li>
-                                                            En
-                                                            företagsvärd
-                                                        </li>
-                                                        <li>
-                                                            Fika för
-                                                            två
-                                                        </li>
-                                                        <li>
-                                                            Exponering på
-                                                            hemsida och våra sociala
-                                                            medier
-                                                        </li>
-                                                    </ul>
-                                                </p>
-                                            </>
-                                        ),
-                                        en: (
-                                            <>
-                                                <br/>
-                                                <h3>Bronspaketet</h3>
-                                                <h3>SEK 27 000</h3>
-                                                <br />
-                                                <p>
-                                                    <b>On the day of the fair:</b>
-                                                    <ul>
-                                                        <li>
-                                                            4m² for a stand
-                                                        </li>
-                                                        <li>
-                                                            One standing table
-                                                        </li>
-                                                        <li>
-                                                            One company host
-                                                        </li>
-                                                        <li>
-                                                            Coffee for two
-                                                        </li>
-                                                        <li>
-                                                            Exposure on the website and our social media
-                                                        </li>
-                                                    </ul>
-                                                </p>
-                                            </>
-                                        ),
-                                    })}
-                                </Card>
-                            </ContentPaddingThin>
-                        </Card>
-                        <div className='additional-offers'>
-                            <div>
-                                <Card light>
+                    
+                    <div className="companypage-offer">
+                        {/* Something odd happens here between screen width 700 and 715, but I can't find it */}
+                        <div className="additional-offers">
+
+                            {texts.extras.map((extra, index) => (
+                                <Card light className="offer-card" key={index}>
                                     <ContentPadding>
-                                        <ContentPadding>
                                             {TranslationModel.translate({
-                                                se: (
-                                                    <>
-                                                        <h3>Event</h3>
-                                                        <h3>15 000kr</h3>
-                                                        <br />
-                                                        <p>
-                                                            <ul>
-                                                                <li>
-                                                                    Exempelvis
-                                                                    en
-                                                                    liveföreläsning,
-                                                                    CV-workshop
-                                                                    eller Q&A
-                                                                    med
-                                                                    studenter
-                                                                </li>
-                                                                <li>
-                                                                    På eller
-                                                                    före
-                                                                    branschdagen
-                                                                </li>
-                                                                <li>
-                                                                    Vid mat
-                                                                    tillkommer
-                                                                    en kostnad á
-                                                                    120kr/biljett.
-                                                                    Drinkbiljetter
-                                                                    á 30kr.
-                                                                </li>
-                                                            </ul>
-                                                        </p>
-                                                    </>
-                                                ),
-                                                en: (
-                                                    <>
-                                                        <h3>Event</h3>
-                                                        <h3>SEK 15 000</h3>
-                                                        <br />
-                                                        <p>
-                                                            <ul>
-                                                                <li>
-                                                                    For example
-                                                                    a live
-                                                                    lecture, CV
-                                                                    workshop or
-                                                                    a Q&A with
-                                                                    students
-                                                                </li>
-                                                                <li>
-                                                                    Before or
-                                                                    during the
-                                                                    fair day
-                                                                </li>
-                                                                <br/>
-                                                            </ul>
-                                                        </p>
-                                                    </>
-                                                ),
+                                                se: extra.se,
+                                                en: extra.en,
                                             })}
                                         </ContentPadding>
-                                    </ContentPadding>
                                 </Card>
-                            </div>
-                            <Card light>
-                                <ContentPadding>
-                                    <ContentPadding>
-                                        {TranslationModel.translate({
-                                            se: (
-                                                <>
-                                                    <h3>Annons</h3>
-                                                    <h3>1 000 kr</h3>
-                                                    <br />
-                                                    <p>
-                                                        <ul>
-                                                            <li>
-                                                                På vår
-                                                                Facebook-sida,
-                                                                Instagram eller
-                                                                hemsida
-                                                            </li>
-                                                            <li>
-                                                                Annons visas i 7
-                                                                dagar, pris
-                                                                gäller per kanal
-                                                            </li>
-                                                        </ul>
-                                                    </p>
-                                                </>
-                                            ),
-                                            en: (
-                                                <>
-                                                    <h3>Advert</h3>
-                                                    <h3>SEK 1 000</h3>
-                                                    <br />
-                                                    <p>
-                                                        <ul>
-                                                            <li>
-                                                                On our Facebook,
-                                                                Instagram or
-                                                                website
-                                                            </li>
-                                                            <li>
-                                                                The advert is
-                                                                shown for 7
-                                                                days, price is
-                                                                per channel
-                                                            </li>
-                                                        </ul>
-                                                    </p>
-                                                </>
-                                            ),
-                                        })}
-                                    </ContentPadding>
-                                </ContentPadding>
-                            </Card>
+                            ))}
                         </div>
-                    </div>}
+                    </div>
                 </div>
             </ContentSection>
-            {/* Email us section */}
-            <ContentSection background={ContentSectionBackground.dark}>
-                <TextSection>
-                    <h1>{TranslationModel.translate(phrases.contact_us)}!</h1>
 
-                    <ContactForm />
-                </TextSection>
+            {/* Navigation cards to other pages */}
+            <ContentSection style={{ marginTop: '0px'}}>
+
+                <div className='navigation-cards-company'>
+                    <NavigationCard 
+                        backgroundImage={companyBackgroundImage}
+                        icon={companyIcon}
+                        title= {TranslationModel.translate(
+                          {
+                                se: (<span>
+                                    Vill ni kontakta oss
+                                </span>),
+                                en: (<span>
+                                    Do you want to reach us
+                                </span>),
+                            })
+                        }
+                        description={TranslationModel.translate({
+                                se: (
+                                    <span>
+                                        Är du intresserad av att delta i Medias Branschdag? Kontakta oss!
+                                    </span>
+                                ),
+                                en: (
+                                    <span>
+                                        Are you interested in participating in Medias Branschdag? Contct us!
+                                    </span>
+                                ),
+                            })}
+                        buttonText= {TranslationModel.translate(phrases.contact_us)}
+                        nav="/contact"
+                    />
+
+                    <NavigationCard 
+                        backgroundImage={studentBackgroundImage}
+                        icon={studentIcon}
+                        title={TranslationModel.translate(phrases.we_are_media_technology.what_is_media_technology)}
+                        description={TranslationModel.translate({
+                                se: (
+                                    <span>
+                                      Lär mer om vår utbildning här
+                                    </span>
+                                ),
+                                en: (
+                                    <span>
+                                        Read more about our education here
+                                    </span>
+                                ),
+                            })}
+                        buttonText= {TranslationModel.translate(phrases.read_more)}
+                        nav="/medieteknik"
+                    />
+                </div>
             </ContentSection>
-            <Footer />
+            
+        </ContentSection>
+
+            
+
         </div>
     )
 }

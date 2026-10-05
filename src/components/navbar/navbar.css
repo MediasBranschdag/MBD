@@ -1,4 +1,6 @@
-.navbar {
+
+/* NAVBAR BASE */
+ .navbar {
     position: fixed;
     left: 0;
     right: 0;
@@ -9,35 +11,18 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-
+    
     box-shadow: 0px -5px 20px 5px var(--theme-dark-color-normal);
     color: var(--theme-text-bright);
     background-color: var(--theme-dark-color-normal);
 }
 
-.navbar-padding {
-    box-sizing: border-box;
-    padding: 12px;
-    padding-left: 0px;
-}
-
+/* MBD-LOGO SECTION */
 .navbar-leading {
     height: 100%;
-}
-
-.navbar-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.navbar-trailing {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    padding-left: 0;
 }
 
 .navbar-mbd-logo {
@@ -46,19 +31,27 @@
     height: 100%;
 }
 
-.side-logo {
-    height: 100%;
-
-   
+/* CONTENT SECTION */
+.navbar-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.navbar-trailing-item {
-    margin-left: 14px
+.navbar-list {
+    display: flex;
+    flex-direction: row;
+    
 }
+
+.navbar-item {
+  position: relative;
+} 
 
 .navbar-link {
-    padding-right: 18px;
-
+    padding: 10px;
     font-weight: bold;
     transition: color 0.5s;
     cursor: pointer;
@@ -67,22 +60,70 @@
 .navbar-link.active,
 .navbar-link:hover {
     color: var(--theme-primary-color-normal);
-}
-.side-logo:hover {
-    cursor: pointer;
+    
 }
 
+/* DROPDOWN MENU (DESKTIOP) */
+.dropdown-menu {
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  z-index: 1000;
+
+  padding: 10px 0;
+  min-width: 150px;
+
+  background-color: var(--theme-dark-color-normal);
+  box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+  color: white;
+  
+  list-style: none;
+  border: none;
+  border-radius: 5%;
+}
+
+.dropdown-menu  li {
+  padding: 5px 15px;
+}
+
+.dropdown-menu  li:hover {
+  background-color: var(--theme-dark-color-light);
+}
+
+.dropdown-menu .navbar-link {
+    padding: 0;
+}
+
+/* Hide mobile dropwdown on desktop*/
+.mobile-dropdown-menu {
+    display: none;
+}
+
+/* TRAILING SECTION */
+.navbar-trailing {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar-trailing-item {
+    padding: 8px;
+}
+
+
+/* MOBILE MENU BUTTON (HIDDEN ON DESKTOP) */
 .navbar-mobile-menu-button {
     display: none;
 }
 
 
+
+/* MOBILE STYLES */
 @media (max-width: 850px) {
-    .side-logo {
-        display: none;
-    }
     .navbar-mobile-menu-button {
         display: block;
+        padding-right: 18px;
     }
 
     .navbar-content {
@@ -95,17 +136,16 @@
 
         flex-direction: column;
         justify-content: space-around;
+        text-align: center;
 
-        background-color: var(--theme-dark-color-dark);
+        background-color: var(--theme-dark-color-normal);
+        box-shadow: 0px -5px 20px 5px var(--theme-dark-color-normal);
 
+        /* Hide by default */
         opacity: 0;
         visibility: hidden;
         transform: translateX(25%);
         transition: transform 0.5s, opacity 0.5s, visibility 0.5s;
-    }
-
-    .navbar-link {
-        font-size: 20px;
     }
 
     .navbar-content.active {
@@ -113,4 +153,49 @@
         opacity: 1;
         visibility: visible;
     }
+
+    .navbar-list {
+        flex-direction: column;
+    }
+
+     .navbar-item {
+        padding: 20px;
+    }
+
+    .navbar-link {
+        font-size: 25px;
+    }
+
+    #line {
+        display: none;
+    } 
+
+   /* Mobile dropdown menu styles */
+    .mobile-dropdown-menu {
+        display: flex;
+        flex-direction: column;
+        margin: 15px;
+        list-style: none;
+        border: none;
+
+    }
+    
+    .mobile-dropdown-menu li {
+        margin: 10px;
+    }
+
+    .mobile-dropdown-menu .navbar-link {
+        font-size: 18px;
+        font-style: italic;
+        font-weight: 450;
+
+    }
+
+    /* Hide desktop dropdown on mobile */
+    .dropdown-menu {
+        display: none;
+    }
+
 }
+
+    

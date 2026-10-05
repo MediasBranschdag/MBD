@@ -137,7 +137,7 @@ class CompanyController {
                 }
                 break;
 
-            case 'current-year-exhibitor':
+            case 'current-year-exhibitor': //This case is currently in use
                 $data = $companyModel->getCurrentYearExhibitor();
                 break;
 

@@ -120,7 +120,7 @@ const GuestForm: FC<DinnerParty> = (props) => {
         var obligatoryFields = [
             { field: name, desc: phrases.dinner_page.guest_form.full_name },
             { field: personId, desc: phrases.dinner_page.guest_form.person_id },
-            { field: email, desc: phrases.email },
+            { field: email, desc: phrases.contact_form.email },
             { field: type, desc: phrases.dinner_page.guest_form.what_type },
             { field: drinks, desc: phrases.dinner_page.guest_form.drink },
             { field: starter, desc: phrases.dinner_page.guest_form.starter },
@@ -320,7 +320,7 @@ const GuestForm: FC<DinnerParty> = (props) => {
                 inputType='text'
                 name='email'
                 onInput={setEmail}
-                placeholder={TranslationModel.translate(phrases.email)}
+                placeholder={TranslationModel.translate(phrases.contact_form.email)}
                 defaultValue={email}
             />
             <br />
@@ -606,7 +606,7 @@ const GuestForm: FC<DinnerParty> = (props) => {
                                         buttonType={ButtonTypes.normalCompact}
                                     >
                                         {TranslationModel.translate(
-                                            phrases.send
+                                            phrases.contact_form.send
                                         )}
                                     </Button>
                                 )}

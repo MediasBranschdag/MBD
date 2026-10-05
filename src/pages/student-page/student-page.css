@@ -1,3 +1,16 @@
+.active-company {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.student-page {
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    background-color: rgba(107, 107, 107, 0.8);
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
 .studentpage-companies-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -7,21 +20,70 @@
 .studentpage-active-company {
     margin-bottom: 25px;
 }
-
-.studentpage-active-company-right {
+.studentpage-active-company-header {
     display: flex;
-    float: right;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.studentpage-active-company-header h2 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.studentpage-close-button {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.close {
+    position: absolute;
+    right: 5px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+}
+
+.close:hover {
+    opacity: 1;
+}
+
+.close:before,
+.close:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: white;
+}
+
+.close:before {
+    transform: rotate(45deg);
+}
+
+.close:after {
+    transform: rotate(-45deg);
+}
+
+.studentpage-active-company-left {
+    display: flex;
     flex-direction: column;
-    padding-left: 10px;
-    width: 250px;
+    /* align-items: center; */
 }
 
 .studentpage-active-company-logo {
+    flex: 0 0 100px;
+    height: 100px;
     background-size: contain;
     background-repeat: no-repeat;
-    width: inherit;
-    height: 75px;
+    background-position: center;
+    justify-content: center;
 }
+
 
 .studentpage-active-company-employments, .studentpage-employments {
     display: flex;
@@ -53,21 +115,30 @@
 
 .studentpage-company-description {
     position: relative;
-    overflow: hidden;
-    transition: height 0.5s;
+    flex: 1 1 0;
+    min-width: 0;
+    /* height: auto; */
+    /* overflow: hidden;
+    transition: height 0.5s; */
 }
 
-.studentpage-company-description-overflow {
+.in-preperataion-text {
+    text-align: center;
+    padding: 3rem;
+}
+
+/* The gradient is now removed, used to be a white gradient when the background was white.*/
+/* .studentpage-company-description-overflow {
     bottom: 0;
     left: 0;
     right: 0;
     height: 40px;
     background: linear-gradient(
         var(--theme-light-color-normal-transparent),
-        var(--theme-light-color-normal)
+        var(--theme-dark-color-dark)
     );
     position: absolute;
-}
+} */
 
 .studentpage-show-more-button {
     margin-right: 10px;
@@ -95,4 +166,15 @@
     .studentpage-employments .filter { 
         width: 100%
     }
+
+}
+
+.map-image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.map-image {
+    width: 80%;
+    cursor: pointer;
 }

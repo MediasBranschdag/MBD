@@ -15,6 +15,7 @@
 
     display: flex;
     align-items: center;    
+    
     box-shadow: 0px -5px 10px 2px var(--theme-dark-color-light);
 }
 

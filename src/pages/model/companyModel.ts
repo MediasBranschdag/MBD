@@ -1,6 +1,7 @@
 import BACKEND_PATH from '../../backend-environment'
 import { Phrase } from './translationModel'
 
+// TypeScript defining types
 interface Employment {
     id: number
     name: Phrase
@@ -50,14 +51,16 @@ export type companyAction =
     | 'current-year-exhibitor'
 
 export default class CompanyModel {
-    static getCompanies(action: companyAction): Promise<Array<Company>> {
+    static getCompanies(action: companyAction): Promise<Array<Company>> { //fethcing with action = current-year-involvement
         return fetch(BACKEND_PATH + `companyMC.php?action=${action}`)
             .then((r) => r.json())
             .then((parsedResponse) => {
                 if (parsedResponse === false) {
+                    
                     return []
                 }
                 return parsedResponse.map((company: any) => {
+                   
                     let employments = JSON.parse(company.employmentsArray) ?? []
                     employments = employments.sort(function (
                         a: Employment,
@@ -65,7 +68,7 @@ export default class CompanyModel {
                     ) {
                         return a.priority - b.priority
                     })
-                    return new Company(
+                    const companyObject = new Company(
                         company.id,
                         company.name,
                         company.description_se,
@@ -75,12 +78,15 @@ export default class CompanyModel {
                         company.mapPositionX,
                         company.mapPositionY,
                         company.mapOrder,
-                        company.isSponsor === '1',
-                        company.isExhibitor === '1',
-                        company.isMainSponsor === '1',
-                        company.isLecturer === '1',
+                        company.isSponsor === 1,
+                        company.isExhibitor === 1,
+                        company.isMainSponsor === 1,
+                        company.isLecturer === 1,
                         employments
                     )
+                    
+                    return companyObject;
+                
                 })
             })
     }

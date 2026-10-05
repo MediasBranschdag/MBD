@@ -9,57 +9,104 @@ import BACKEND_PATH from '../../../backend-environment'
 import LoadingText from '../../../components/loading-text'
 
 const ContactForm: FC = () => {
-    const [name, setName] = useState('')
+    const [companyName, setCompanyName] = useState('')
+    const [contactPerson, setContactPerson] = useState('')
     const [email, setEmail] = useState('')
-    const [subject, setSubject] = useState('')
     const [message, setMessage] = useState('')
 
     const [doneMessage, setDoneMessage] = useState<React.ReactNode>('')
     const [loading, setLoading] = useState(false)
+    const [messageSent, setMessageSent] = useState(false)
 
     const sendEmail = () => {
         let formData = new FormData()
-        formData.append('name', name)
+        formData.append('companyName', companyName)
+        formData.append('contactPerson', contactPerson)
         formData.append('email', email)
-        formData.append('subject', subject)
+        formData.append('subject', "Mejl från Kontaktformulär") //pre-created subject for email
         formData.append('message', message)
 
         setLoading(true)
         fetch(BACKEND_PATH + 'sendMail.php', {
             method: 'POST',
             body: formData,
-        })
-            .then(() =>
-                setDoneMessage(
-                    TranslationModel.translate({
-                        se: 'Ditt meddelande är skickat.',
-                        en: 'Your message is sent.',
-                    })
-                )
-            )
-            .catch(() =>
+        }) 
+            .then(async (res) => {
+                const text = await res.text();
+                if(text.trim() ==='1') {
+                    setDoneMessage(
+                        TranslationModel.translate({
+                            se: 'Ditt meddelande är skickat.',
+                            en: 'Your message is sent.',
+                        })
+                    );
+                    setMessageSent(true);
+                } else {
+                    throw new Error('Mail failed')
+                }
+            })
+            .catch( () => {
                 setDoneMessage(
                     TranslationModel.translate({
                         se: 'Något gick fel, testa gärna igen.',
-                        en: 'Something went wrong, pls test again.',
+                        en: 'Something went wrong, please try again.',
                     })
                 )
-            )
-            .finally(() => setLoading(false))
+            })
+            .finally( () => setLoading(false))
     }
 
     return (
         <div>
-            <form className='contactform' onSubmit={() => sendEmail()}>
+            {/* Conditional rendering: shows form iv messageSent is false, shows the other div if true*/}
+            { messageSent ? 
+                <div className='message-sent'>
+                    <p>{TranslationModel.translate(phrases.contact_form.message_sent)}</p>
+                    <Button
+                            buttonType={ButtonTypes.normalCompact}
+                            onClick= {() => setMessageSent(false)}
+                        >
+                            {loading ? (
+                                <LoadingText />
+                            ) : (
+                                TranslationModel.translate(phrases.contact_form.send_again)
+                            )}
+                    </Button>
+                </div>
+                :
+                <form className='contactform' onSubmit={(e) => {
+                e.preventDefault(); 
+                sendEmail();       
+            }}
+            >
                 <div className='contact-input-info'>
                     <div>
+                        {/* InputInfo = input fields */}
                         <InputInfo
-                            name='name'
-                            onInput={setName}
+                            name='företagsnamn'
+                            onInput={setCompanyName}
                             inputType='text'
                             placeholder={TranslationModel.translate(
-                                phrases.name
+                                phrases.sign_up.company_name
                             )}
+                            placeholderHeader = {true}
+                            obligatory = {true}
+                            required = {true}
+                        />
+                    </div>
+                    <br />
+                    <div>
+                        <InputInfo
+                            name='kontaktperson'
+                            onInput={setContactPerson}
+                            inputType='text'
+                            placeholder={TranslationModel.translate(
+                                phrases.contact_form.contact_person
+                            )}
+                            placeholderHeader = {true}
+                            obligatory = {true}
+                            required = {true}
+
                         />
                     </div>
                     <br />
@@ -67,53 +114,51 @@ const ContactForm: FC = () => {
                         <InputInfo
                             name='email'
                             onInput={setEmail}
-                            inputType='text'
+                            inputType='email'
                             placeholder={TranslationModel.translate(
-                                phrases.email
+                                phrases.contact_form.email
                             )}
-                        />
-                    </div>
-                    <br />
-                    <div>
-                        <InputInfo
-                            name='subject'
-                            onInput={setSubject}
-                            inputType='text'
-                            placeholder={TranslationModel.translate(
-                                phrases.subject
-                            )}
+                            placeholderHeader = {true}
+                            obligatory = {true}
+                            required = {true}
+
                         />
                     </div>
                 </div>
+                {/* Message text  */}
                 <div className='contact-input-message'>
                     <InputInfo
                         name='message'
                         onInput={setMessage}
                         inputType='textarea'
                         placeholder={TranslationModel.translate(
-                            phrases.message
+                            phrases.contact_form.message
                         )}
+                        placeholderHeader = {true}
+                        obligatory = {true}
+                        required = {true}
+
                     />
                 </div>
+                {/* Submit button */}
+                <div>
+                    <button className='submit-form-button'>
+                       <Button
+                         buttonType={ButtonTypes.normalCompact}
+                       >
+                        {loading ? (
+                            <LoadingText />
+                        ) : (
+                            TranslationModel.translate(phrases.contact_form.send)
+                        )}
+                       </Button>
+                    </button>
+                </div>
             </form>
-            {doneMessage ? <p>{doneMessage}</p> : ''}
-            <br />
-            <Button
-                onClick={() => sendEmail()}
-                buttonType={ButtonTypes.normalCompact}
-            >
-                {loading ? (
-                    <LoadingText />
-                ) : (
-                    TranslationModel.translate(phrases.send)
-                )}
-            </Button>
-
-            <a href='mailto:branschdag@medieteknik.com'>
-                <h4>branschdag@medieteknik.com</h4>
-            </a>
+            }
+            {doneMessage ? <p>{doneMessage}</p> : ''} 
         </div>
     )
-}
+}   
 
 export default ContactForm

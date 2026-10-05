@@ -17,7 +17,7 @@ const LanguageSelect: FC = (props) => {
             {TranslationModel.getLanguage() === 'se' ? (
                 <img
                     src={
-                        'https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png'
+                        'https://upload.wikimedia.org/wikipedia/commons/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg'
                     }
                     alt={'English flag'}
                     style={{ width: '35px', height: '23px' }}
@@ -25,7 +25,7 @@ const LanguageSelect: FC = (props) => {
             ) : (
                 <img
                     src={
-                        'https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Flag_of_Sweden.svg/1200px-Flag_of_Sweden.svg.png'
+                        'https://upload.wikimedia.org/wikipedia/commons/4/4c/Flag_of_Sweden.svg'
                     }
                     alt={'Swedish flag'}
                     style={{ width: '35px', height: '23px' }}

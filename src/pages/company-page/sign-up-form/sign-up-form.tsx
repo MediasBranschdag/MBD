@@ -314,7 +314,7 @@ const SignUpForm: FC = () => {
                     {loading ? (
                         <LoadingText />
                     ) : (
-                        TranslationModel.translate(phrases.send)
+                        TranslationModel.translate(phrases.contact_form.send)
                     )}
                 </Button>
             )}

@@ -1,5 +1,5 @@
-.homepage {
-    background-color: var(--theme-dark-color-normal);
+.homepage-text {
+    font-size: 18px;
 }
 
 .homepage-intro-content {
@@ -11,24 +11,28 @@
     margin: auto;
 }
 
-.read-more-section {
+.navigation-cards-home {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding: 40px 40px 40px 40px;
 }
 
-.read-more {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-
+@media screen and (max-width: 850px) {
+    .navigation-cards-home {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 30px;
+    }
 }
+
+/* CSS for the instragram section
 
 .homepage-instagram-section {
     display: grid;
     grid-template-columns: repeat(3, auto);
     column-gap: 25px;
     row-gap: 25px;
-}
+}   
 
 .homepage-social-buttons {
     display: flex;
@@ -66,11 +70,14 @@
 
 .signature-cont img {
     max-width: 200px;
-}
+} */
 
-@media screen and (max-width: 700px) {
+/* .read-more-section {
+    display: flex;
+    justify-content: space-between;
+} */
 
-    .homepage-instagram-section {
+/* .homepage-instagram-section {
         grid-template-columns: repeat(2, auto);
         column-gap: 15px;
         row-gap: 15px;
@@ -100,5 +107,4 @@
 
     .signature-cont img {
         max-width: 130px;
-    }
-}
+    } */

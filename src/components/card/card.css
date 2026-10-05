@@ -35,3 +35,7 @@
 .card--bronze {
     background: linear-gradient(338deg, #ee7411 0%, #ffa069 63%, rgb(255, 245, 234) 120%);
 }
+
+.card--transparent {
+    background-color: transparent;
+}

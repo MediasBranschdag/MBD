@@ -54,8 +54,8 @@
         "en": "Loading"
     },
     "start": {
-        "se": "",
-        "en": ""
+        "se": "Hem",
+        "en": "Home"
     },
     "february": {
         "se": "Februari",
@@ -112,8 +112,8 @@
         "en": "on Instagram"
     },
     "follow_social_media": {
-        "se": "Följ oss på sociala medier",
-        "en": "Follow us on social media"
+        "se": "Följ oss",
+        "en": "Follow us"
     },
     "main_sponsor": {
         "se": "Huvudsponsor",
@@ -123,9 +123,21 @@
         "se": "Huvudsponsorer",
         "en": "Main sponsors"
     },
+    "sponsored_by": {
+        "se": "Sponsrat av",
+        "en": "Sponsored by"
+    },
+    "silver_sponsor": {
+        "se": "Silver Sponsorer",
+        "en": "Silver Sponsors"
+    },
     "exhibitors": {
         "se": "Utställare",
         "en": "Exhibitors"
+    },
+    "this_years_exhibitors": {
+        "se": "Årets Utställare",
+        "en": "This Years Exhibitors"
     },
     "lecturers": {
         "se": "Föreläsare",
@@ -143,6 +155,10 @@
         "se": "Introfilm gjord av Kommunikationsnämnden.",
         "en": "Intro movie made by Kommunikationsnämnden."
     },
+    "company": {
+        "se": "Företag",
+        "en": "Company"
+    },
     "for_companies": {
         "se": "För företag",
         "en": "For companies"
@@ -150,6 +166,11 @@
     "for_students": {
         "se": "För studenter",
         "en": "For students"
+    },
+
+    "location": {
+        "se": "Plats",
+        "en": "Location"
     },
     
     "about_us": {
@@ -164,6 +185,10 @@
         "se": "Mässan",
         "en": "The fair"
     },
+    "about_the_fair": {
+        "se": "Om Medias Branschdag",
+        "en": "About Medias Branschdag"
+    },
     "company_contact": {
         "se": "Företagskontakter",
         "en": "Contact"
@@ -172,9 +197,17 @@
         "se": "Vilka är vi",
         "en": "Who are we"
     },
+    "product_catalog": {
+        "se": "Produktkatalog",
+        "en": "Product Catalog"
+    },
     "exhibitor_packages": {
         "se": "Utställarpaket",
         "en": "Exhibitor Packages"
+    },
+    "company_addons": {
+        "se": "Andra erbjudanden",
+        "en": "Other offers"
     },
     "package_showcase_area": {
         "se": "Monterplats",
@@ -216,7 +249,7 @@
         "se": "e",
         "en": "th"
     },
-    "sales_team": {
+    "our_sales_team": {
         "se": "Företagsansvariga",
         "en": "Our sales team"
     },
@@ -282,6 +315,22 @@
         "se": "Projektgruppen",
         "en": "The Project Group"
     },
+    "project_leaders": {
+        "se": "Projektledarna",
+        "en": "Project Leaders"
+    },
+    "sales_team": {
+        "se": "Företagsgruppen",
+        "en": "Sales team"
+    },
+    "event_team": {
+        "se": "Eventgruppen",
+        "en": "Event team"
+    },
+    "marketing_team": {
+        "se": "Marknadsföringsgruppen",
+        "en": "Marketing team"
+    },
     "project_leader": {
         "se": "Projektledare",
         "en": "Project Leader"
@@ -323,28 +372,46 @@
         "en": "for taking our photos!"
     },
     "contact_us": {
-        "se": "Maila oss",
+        "se": "Kontakta oss",
         "en": "Contact us"
     },
-    "name": {
-        "se": "Namn",
-        "en": "Name"
-    },
-    "email": {
-        "se": "E-post",
-        "en": "E-mail"
-    },
-    "subject": {
-        "se": "Ämne",
-        "en": "Subject"
-    },
-    "message": {
-        "se": "Meddelande",
-        "en": "Message"
-    },
-    "send": {
-        "se": "Skicka",
-        "en": "Send"
+    "contact_form": {
+        "contact_information": {
+            "se": "Kontakta oss genom att fylla i detta formulär, eller mejla direkt till foretag@nlg.medieteknik.com",
+            "en": "Contact us by using this form, or email directly at foretag@nlg.medieteknik.com"
+        },
+        "contact_form": {
+            "se": "Kontaktformulär",
+            "en": "Contact form"
+        },
+        "contact_person": {
+            "se": "Kontaktperson",
+            "en": "Contact person"
+        },
+        "email": {
+            "se": "E-post",
+            "en": "E-mail"
+        },
+        "subject": {
+            "se": "Ämne",
+            "en": "Subject"
+        },
+        "message": {
+            "se": "Meddelande",
+            "en": "Message"
+        },
+        "send": {
+            "se": "Skicka",
+            "en": "Send"
+        }, 
+        "message_sent": {
+            "se": "Tack för ditt mejl, vi hör av oss så snart som möjligt",
+            "en": "Thank you for your email, we will be in touch shortly"
+        }, 
+        "send_again": {
+            "se": "Skicka ett nytt meddelande",
+            "en": "Send a new message"
+        }
     },
     "map": {
         "se": "Mässkarta",
@@ -401,7 +468,7 @@
         },
         "contact_email": {
             "se": "E-post",
-            "en": "Contact email"
+            "en": "E-mail"
         },
         "invoice_address": {
             "se": "Faktureringsaddress",
@@ -722,11 +789,15 @@
         },
         "masters": {
             "se": "Masterprogram",
-            "en": "Masters"
+            "en": "Master programmes"
         },
         "undergraduate_fields": {
             "se": "Kandidatområden",
-            "en": "Undergraduate fields"
+            "en": "Bachelor's Fields"
+        },
+         "undergraduate_degrgee": {
+            "se": "Kandidatprogrammet",
+            "en": "Bachelor's degree"
         },
         "courses_within": {
             "se": "Kurser inom området",

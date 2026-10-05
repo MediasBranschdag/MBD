@@ -21,6 +21,14 @@
                     $data = $teamModel->getProjectLeaders();
                     break;
                 
+                case 'event-responsible':
+                    $data = $teamModel->getEventResponsible();
+                    break;
+                
+                case 'marketing-responsible':
+                    $data = $teamModel->getMarketingResponsible();
+                    break;
+                
                 default:
                     $data = $teamModel->getAllTeamMembers();
                     break;

@@ -69,7 +69,7 @@ const CompanyCard: FC<CompanyCardProps> = (props) => {
                 </div>
                 {props.showDesc && onMobile ? (
                     <ContentPadding>
-                        <TextSection>
+                        <TextSection color='black'>
                             <h2>{props.company.name}</h2>
                             <div className='company-card-employments'>
                                 {props.company.employments.map((employment) => (

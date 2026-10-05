@@ -12,6 +12,7 @@ const defaultValue: CompanyInvolment = {
 export const MBDCompanyContext =
     React.createContext<CompanyInvolment>(defaultValue)
 
+// defines TypeScrupt Types for the context value    
 export interface CompanyInvolment {
     all: Array<Company>
     isExhibitor: Array<Company>
@@ -22,7 +23,7 @@ export interface CompanyInvolment {
 
 const MBDCompanyProvider: FC = (props) => {
     const [companies, setCompanies] = useState<CompanyInvolment>(defaultValue)
-
+    // useEffect runs on mount aka when the MBDCompnayProvider first appears and then stored in a state
     useEffect(() => {
         CompanyModel.getCompanies('current-year-involvement').then(
             (companies) => {

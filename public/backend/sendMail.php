@@ -3,17 +3,20 @@
 
     $mailContent = $_POST;
 
-    $to = "branschdag@medieteknik.com";
+    $to = "foretag@nlg.medieteknik.com";
 
-	$subject = $mailContent['subject'];
-    $name = $mailContent['name'];
+    $subject = $mailContent['subject'];
+    $comapanyName = $mailContent['companyName'];
+    $contactPerson = $mailContent['contactPerson'];
     $senderMail = $mailContent['email'];
 
-    $message = "Från: " . $name . "\n"
+    $message = 
+    "Från företaget: " . $comapanyName . "\n"
+    . "Kontaktperson: " . $contactPerson . "\n\n"
     . "Kontaktas via: " . $senderMail . "\n\n"
     . "Meddelande:" . "\n" . $mailContent['message'];
 
-    $headers = "From: notifikation@branschdag.com";
+    $headers = "webb@nlg.medieteknik.com"; //Has to be a valid end existing email to work
 	if( mail($to,$subject,$message,$headers) ){
         echo true;
     }

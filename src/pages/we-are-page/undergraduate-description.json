@@ -1,0 +1,19 @@
+{
+  "undergraduate_description": {
+    "year_1": {
+        "se": "Det första året på civilingenjörsprogrammet inom Medieteknik börjar med en introduktion till medieteknikområdet. Studenter lär sig att använda, förklara och tillämpa de viktigaste grundläggande begreppen och problemlösningsmetoderna från matematik och naturvetenskapliga kurser. Dessutom får studenter grundläggande kunskaper för att konstruera program i Python.",
+        "en":  "The first year of the Master of Science in Engineering programme in Media Technology begins with an introduction the the programme and the field of media technology. Students learn to use, explain, and apply the most important fundamental concepts and problem-solving methods for mathematics and natural science courses. In addition, students acquire basic knowledge in programming using Python."
+    },
+    "year_2": {
+        "se": "Under det andra året är det fördjupning och breddning av kunskaper som gäller, genom grundkurser och fortsättningskurser inom bland annat matematik, datalogi och design. Dessutom läses kurser som är specifika för medieteknik, som sensorprogrammering och maskininlärning, samt kurser om den teknik som används för att producera och konsumera olika typer av media och medieinnehåll, från fotografi och video till ljud. ",
+        "en":  "During the second year, the focus is on deepening and broadening knowledge through foundational and advanced courses in, for example, mathematics, computer science, and design. In addition, students take courses specific to media technology, such as sensor programming and machine learning, as well as courses covering the technologies used to produce and consume various types of media and media content, ranging from photography and video to audio."
+    },
+     "year_3": {
+        "se": "I det tredje året fördjupas och breddas tidigare förvärvade kunskaper genom ytterligare kurser inom programmering och programutveckling, såsom webbprogrammering. Utöver det lär sig studenterna om industriell ekonomi, entreprenörskap och hållbar utveckling. Året avslutas med ett kandidatexamensarbete där studenterna utreder och analyserar ett medietekniskt relevant problem.",
+        "en": "In the third year, previously acquired knowledge is complemented through additional courses in programming and software development, such as web development. Students also learn about industrial economics, entrepreneurship, and sustainability. Finally, students complete their bachelor’s degree thesis, in which they investigate and analyze a media technology-related problem of interest. "
+    }
+    
+  }
+  
+
+}

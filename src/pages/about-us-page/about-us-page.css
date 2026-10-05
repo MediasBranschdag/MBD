@@ -1,0 +1,56 @@
+.aboutpage-teams {
+    margin-top: 50px;
+}
+
+.aboutpage-pg-members {
+    display: grid;
+    column-gap: 20px;
+    row-gap: 20px;
+}
+
+.aboutpage-pg-members.three-columns {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.aboutpage-pg-members.two-columns {
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.nlg-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.team-img {
+    width: 80%;
+    margin-bottom: 35px;
+}
+
+/* If you'd want to give credits to photographers */
+/* .photographer-thanks {
+    padding-top: 2em;
+    text-align: center;
+}
+
+.photographer-thanks a {
+    font-weight: bold;
+    border-bottom: 2px solid var(--theme-primary-color-normal);
+} */
+
+
+@media screen and (max-width: 900px) {
+    .aboutpage-pg-members.two-columns, .aboutpage-pg-members.three-columns{
+        grid-template-columns: repeat(2, 1fr);
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .aboutpage-pg-members.two-columns, .aboutpage-pg-members.three-columns{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

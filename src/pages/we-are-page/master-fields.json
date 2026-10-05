@@ -1,206 +1,63 @@
 [
     {
+        "id": 1,
         "title": { "se": "Interaktiv Medieteknik", "en": "Interactive Media Technology" },
         "background": "./assets/masters/interactive_media_technology.jpg",
-        "kth_link": "https://www.kth.se/en/studies/master/interactivemediatechnology/description-1.593765",
+        "kth_link": "https://www.kth.se/en/studies/master/interactive-media-technology/msc-interactive-media-technology-1.593765",
         "desc": {
-            "se": "Fördjupade kunskaper för människans kognition och perception, om designprocesser och tekniker inom multimodala gränssnitt. Omfattar även kunskaper om den tekniska och mångvetenskapliga grund som medierna och deras teknik vilar på med fokus på design och teknikutveckling. Möjlighet att studera till robotik, maskininlärning, tal- och igenkänningsteknik samt visualisering i form av bl.a. datagrafik.",
-            "en": "In-depth knowledge about the human cognition and perception, design processes and technologies within multimodal interfaces. The master programme focuses on design and development of media technologies. Students can choose to delve into robotics, machine learning, speech recognition and visualization in the form of computer graphics."
+            "se":  "Masterprogrammet Interaktiv Medieteknik fördjupar kunskaper inom design, utveckling och utvärdering av interaktiva produkter och multimodala gränssnitt. Det omfattar även kunskaper inom människor-datorinteraktion, om designprocessen, samt att det finns möjligheter att fördjupa sig i olika områden, bl.a. visualisering, tal- och bildigenkänningsteknik, robotik och maskininlärning.",
+            "en": "The master program Interactive Media Technology deepens skills and knowledge in design, development, and evaluation of interactive products and multimodal interfaces. It also encompasses knowledge in human-computer interaction, the design process, and provides opportunities to delve into different areas such as visualization, speech- and image recognition, robotics, and machine learning."
         },
         "tracks": [
-            {
-                "title": {
-                    "se": "Physical interaction design",
-                    "en": "Physical interaction design"
-                },
-                "desc": {
-                    "se": "Interaktion via fysiska sinnen och kunskap inom prototypframtagning. Spåret fokuserar på interaktionsdesign där man lägger tonvikt på konkreta och förkroppsliga aspekter av användarupplevelsen. Utforskar s.k. “state-of-the-art” system och teknik samt samtida forskning på området. Tillämpningsområden sträcker sig från industriella fall, till hälsa och välbefinnande, transport, sport, lek och underhållning. Med människokroppen som utgångspunkt utformar man och bygger nya former av interaktion som tar hänsyn till estetiska, etiska, ergonomiska och materiella aspekter av nya tekniska apparater.",
-                    "en": "Physical interaction design"
-                }
-            },
-            {
-                "title": {
-                    "se": "Sonic media",
-                    "en": "Sonic media"
-                },
-                "desc": {
-                    "se": "Studerar teknologi och kommunikation inom musik. Spåret närmar sig hela ljud- och musikkommunikationskedjan ur en tvärvetenskaplig synvinkel genom att tillhandahålla kunskap om de senaste forskningsresultaten, metoderna, teknologierna och verktygen. Inkluderar principer för ljud i interaktion, användning av ljudåterkoppling i sport, rehabilitering och terapi, sonifiering, kommunikation av känslor, uppfattning och analys av kroppsrörelse.",
-                    "en": "Physical interaction design"
-                }
-            },
-            {
-                "title": {
-                    "se": "Visual media",
-                    "en": "Visual media"
-                },
-                "desc": {
-                    "se": "Datorspelsdesign, grafik och visualisering. Innefattar kompetenser inom html, css, Javascript. Spåret ger specialkunskaper om metoder, tekniker och verktyg för interaktiv grafik och visualisering. Täcker ett brett spektrum av funktionalitet från speldesign, över till publiksimulering till interaktiv infografik.",
-                    "en": "Physical interaction design"
-                }
-            },
-            {
-                "title": {
-                    "se": "Human-Computer Interaction",
-                    "en": "Human-Computer Interaction"
-                },
-                "desc": {
-                    "se": "Datorspelsdesign, grafik och visualisering. Innefattar kompetenser inom html, css, Javascript. Spåret ger specialkunskaper om metoder, tekniker och verktyg för interaktiv grafik och visualisering. Täcker ett brett spektrum av funktionalitet från speldesign, över till publiksimulering till interaktiv infografik.",
-                    "en": "Physical interaction design"
-                }
-            }
+            
         ]
     },
     {
+        "id": 2,
         "title": { "se": "Datalogi", "en": "Computer Sience" },
         "background": "./assets/masters/computer_science.jpg",
         "kth_link": "https://www.kth.se/en/studies/master/computer-science/description-1.419974",
         "desc": {
-            "se": "Mastern börjar med obligatoriska kurser inom avancerade algoritmer, artificiell intelligens, maskininlärning, datasäkerhet, internetprotokoll och forskningsmetodik. Efter detta väljer man en av åtta specialiseringar. Notera att de spåren i sig har flera valbara inriktningar och villkorligt valfria/valfria kurser vilket innebär att det även inom spåren kan finnas stor variation på utbildningen.",
-            "en": "The master begins with obligatory courses within advanced algorithms, AI, machine learning, data security, internet protocols and research methods. Students are then free to choose between eight tracks. It is worth noting that these tracks offer great freedom with many elective courses, giving a great variety of specialities for students."
+            "se": "Masterprogrammet Datalogi ämnar att skapa en bred bas för studier inom datavetenskap med möjlighet att specialisera sig inom ett visst område. Fokus finns på avancerade algoritmer, AI, internetprotokoll, samt datorsäkerhet. Flera specialiseringsspår finns och inkluderar bland annat interaktionsdesign, kognitiva system, mjukvaruteknik och visualisering.",
+            "en": "The master program Computer Science aims to create a broad base for studies within computer science with possibilities to specialize within a certain area. There is a focus on advanced algorithms, AI, internet protocols, and cyber security. Many specialization tracks exist which include interaction design, cognitive systems, software technology, visualization, and more."
         },
-        "tracks": [
-            {
-                "title": {
-                    "se": "Data Science",
-                    "en": "Data Science"
-                },
-                "desc": {
-                    "se": "Interaktion via fysiska sinnen och kunskap inom prototypframtagning. Spåret fokuserar på interaktionsdesign där man lägger tonvikt på konkreta och förkroppsliga aspekter av användarupplevelsen. Utforskar s.k. “state-of-the-art” system och teknik samt samtida forskning på området. Tillämpningsområden sträcker sig från industriella fall, till hälsa och välbefinnande, transport, sport, lek och underhållning. Med människokroppen som utgångspunkt utformar man och bygger nya former av interaktion som tar hänsyn till estetiska, etiska, ergonomiska och materiella aspekter av nya tekniska apparater.",
-                    "en": "Physical interaction design"
-                }
-            },
-            {
-                "title": {
-                    "se": "Interaction Design",
-                    "en": "Interaction Design"
-                },
-                "desc": {
-                    "se": "Studerar teknologi och kommunikation inom musik. Spåret närmar sig hela ljud- och musikkommunikationskedjan ur en tvärvetenskaplig synvinkel genom att tillhandahålla kunskap om de senaste forskningsresultaten, metoderna, teknologierna och verktygen. Inkluderar principer för ljud i interaktion, användning av ljudåterkoppling i sport, rehabilitering och terapi, sonifiering, kommunikation av känslor, uppfattning och analys av kroppsrörelse.",
-                    "en": "Physical interaction design"
-                }
-            },
-            {
-                "title": {
-                    "se": "Cognitive Systems",
-                    "en": "Cognitive Systems"
-                },
-                "desc": {
-                    "se": "Datorspelsdesign, grafik och visualisering. Innefattar kompetenser inom html, css, Javascript. Spåret ger specialkunskaper om metoder, tekniker och verktyg för interaktiv grafik och visualisering. Täcker ett brett spektrum av funktionalitet från speldesign, över till publiksimulering till interaktiv infografik.",
-                    "en": "Physical interaction design"
-                }
-            },
-            {
-                "title": {
-                    "se": "Scientific Computing",
-                    "en": "Scientific Computing"
-                },
-                "desc": {
-                    "se": "Datorspelsdesign, grafik och visualisering. Innefattar kompetenser inom html, css, Javascript. Spåret ger specialkunskaper om metoder, tekniker och verktyg för interaktiv grafik och visualisering. Täcker ett brett spektrum av funktionalitet från speldesign, över till publiksimulering till interaktiv infografik.",
-                    "en": "Physical interaction design"
-                }
-            },
-            {
-                "title": {
-                    "se": "Software Technology",
-                    "en": "Software Technology"
-                },
-                "desc": {
-                    "se": "Datorspelsdesign, grafik och visualisering. Innefattar kompetenser inom html, css, Javascript. Spåret ger specialkunskaper om metoder, tekniker och verktyg för interaktiv grafik och visualisering. Täcker ett brett spektrum av funktionalitet från speldesign, över till publiksimulering till interaktiv infografik.",
-                    "en": "Physical interaction design"
-                }
-            },
-            {
-                "title": {
-                    "se": "Security and Privacy",
-                    "en": "Security and Privacy"
-                },
-                "desc": {
-                    "se": "Datorspelsdesign, grafik och visualisering. Innefattar kompetenser inom html, css, Javascript. Spåret ger specialkunskaper om metoder, tekniker och verktyg för interaktiv grafik och visualisering. Täcker ett brett spektrum av funktionalitet från speldesign, över till publiksimulering till interaktiv infografik.",
-                    "en": "Physical interaction design"
-                }
-            },
-            {
-                "title": {
-                    "se": "Theoretical Computer Science",
-                    "en": "Theoretical Computer Science"
-                },
-                "desc": {
-                    "se": "Datorspelsdesign, grafik och visualisering. Innefattar kompetenser inom html, css, Javascript. Spåret ger specialkunskaper om metoder, tekniker och verktyg för interaktiv grafik och visualisering. Täcker ett brett spektrum av funktionalitet från speldesign, över till publiksimulering till interaktiv infografik.",
-                    "en": "Physical interaction design"
-                }
-            },
-            {
-                "title": {
-                    "se": "Visualisation and Interactive Graphics",
-                    "en": "Visualisation and Interactive Graphics"
-                },
-                "desc": {
-                    "se": "Datorspelsdesign, grafik och visualisering. Innefattar kompetenser inom html, css, Javascript. Spåret ger specialkunskaper om metoder, tekniker och verktyg för interaktiv grafik och visualisering. Täcker ett brett spektrum av funktionalitet från speldesign, över till publiksimulering till interaktiv infografik.",
-                    "en": "Physical interaction design"
-                }
-            }
-        ]
+        "tracks": []
     },
     {
+        "id": 3,
         "title": { "se": "Maskininlärning", "en": "Machine learning" },
         "background": "./assets/masters/machine_learning.jpg",
-        "kth_link": "https://www.kth.se/en/studies/master/machinelearning/description-1.48533",
+        "kth_link": "https://www.kth.se/en/studies/master/machine-learning/msc-machine-learning-1.48533",
         "desc": {
-            "se": "Maskininlärning utvecklar algoritmer för att hitta mönster eller göra förutsägelser från empiriska data. Kurser i maskininlärning och artificiell intelligens (AI) följs av en avancerade nivåer och forskningsmetodik. Från andra terminen väljer studenter kurser från två områden: application domains within machine learning och theoretical machine learning. Dessa områden motsvarar kärnkompetensen hos en maskininlärningsexpert.",
-            "en": "Machine learning develops algorithms to find patterns and make predictions based on empirical data. Courses in machine learning and AI are followed by more advanced subjects and research methodology. After the second semester, students are able to choose courses from two areas: application domains within machine learning and theoretical machine learning."
+            "se": "Masterprogrammet Maskininlärning fördjupar sig i hur algoritmer för mönsterigenkänning och förutsägning av data utvecklas, samt hur man applicerar och studerar dessa i modeller och praktiska observationer. Fokus finns även i att jobba med att praktiskt applicera kunskap för att lösa verkliga problem, efter att ha utvecklat en stabil grund inom ämnesområdet.",
+            "en": "The master program Machine Learning delves into how algorithms for pattern recognition and data prediction are developed, as well as how to apply and study these models and practical observations. There is also focus on working towards practically applying knowledge to solve real problems, after having developed a solid base in the area."
         },
         "tracks": [
-            {
-                "title": {
-                    "se": "Application domains within machine learning",
-                    "en": "Application domains within machine learning"
-                },
-                "desc": {
-                    "se": "Interaktion via fysiska sinnen och kunskap inom prototypframtagning. Spåret fokuserar på interaktionsdesign där man lägger tonvikt på konkreta och förkroppsliga aspekter av användarupplevelsen. Utforskar s.k. “state-of-the-art” system och teknik samt samtida forskning på området. Tillämpningsområden sträcker sig från industriella fall, till hälsa och välbefinnande, transport, sport, lek och underhållning. Med människokroppen som utgångspunkt utformar man och bygger nya former av interaktion som tar hänsyn till estetiska, etiska, ergonomiska och materiella aspekter av nya tekniska apparater.",
-                    "en": "Physical interaction design"
-                }
-            },
-            {
-                "title": {
-                    "se": "Theoretical machine learning",
-                    "en": "Theoretical machine learning"
-                },
-                "desc": {
-                    "se": "Studerar teknologi och kommunikation inom musik. Spåret närmar sig hela ljud- och musikkommunikationskedjan ur en tvärvetenskaplig synvinkel genom att tillhandahålla kunskap om de senaste forskningsresultaten, metoderna, teknologierna och verktygen. Inkluderar principer för ljud i interaktion, användning av ljudåterkoppling i sport, rehabilitering och terapi, sonifiering, kommunikation av känslor, uppfattning och analys av kroppsrörelse.",
-                    "en": "Physical interaction design"
-                }
-            }
+           
         ]
     },
     {
+        "id": 4,
         "title": { "se": "ICT Innovation", "en": "ICT Innovation" },
         "background": "./assets/masters/ict_innovation.jpg",
         "kth_link": "https://www.kth.se/en/studies/master/ict-innovation",
         "desc": {
-            "se": "Ger en teknisk utbildning inom kommunikations- och informationsteknik och erbjuder affärsinriktade kurser inom innovation och entreprenörskap. Kurser inom I&E (innovation och entreprenörskap) i mastern förbereder kommande ICT ingenjörer till ett entreprenöriellt tankesätt som ska bidra till en digital transformation.",
-            "en": "Provides a technical education within communication and information technology and offers business-centered courses within innovation and entrepreneurship. Courses within I&E (innovation and entrepreneurship) prepares future ICT engineers for an entrepreneurial way of thinking to aid in digitalization."
+            "se": "Masterprogrammet ICT Innovation kombinerar teknisk kompetens med färdigheter inom innovation och entreprenörskap, för att skapa en stark bas som kan kombineras med specialisering inom ett visst område. De möjligheter till specialisering som finns är autonoma system, datalogi, människa-datorinteraktion, visualisering, samt moln- och nätverksinfrastruktur och HPC.",
+            "en": "The master program ICT Innovation combines technical competence with skills in innovation and entrepreneurship to create a solid base which can be combined with specialization within a certain area. There are opportunities to specialize in autonomous systems, computer science, human-computer interaction, visualization, as well as cloud- and network infrastructure and HPC."
+        },
+        "tracks": []
+    },
+    {
+        "id": 5,
+        "title": { "se": "Hållbar Digitalisering", "en": "Sustainable Digitalisation" },
+        "background": "./assets/masters/sustainable_digitalisation.jpg",
+        "kth_link": "https://www.kth.se/en/studies/master/sustainable-digitalisation",
+        "desc": {
+            "se": "Masterprogrammet Hållbar Digitalisering fokuserar på att utveckla förmågor inom ledarskap för komplexa processer och hur digitalisering ska användas för att skapa och öka de hållbara processer som krävs för ett hållbart samhälle. Förmågor som kommunikation, kritiskt tänkande, organisatoriskt ledarskap, och integrerad problemlösning utvecklas och stärks inom programmet.",
+            "en": "The master program Sustainable Digitalization focused on developing skills in leadership for complex processes and how digitalization should be used to create and improve the sustainable processes needed for a sustainable society. Skills such as communication, critical thinking, organizational leadership, and integrated problem solving are developed and strengthened within the program."
         },
         "tracks": [
-            {
-                "title": {
-                    "se": "Visual Computing and Communication",
-                    "en": "Visual Computing and Communication"
-                },
-                "desc": {
-                    "se": "Datorspelsdesign, grafik och visualisering. Innefattar kompetenser inom html, css, Javascript. Spåret ger specialkunskaper om metoder, tekniker och verktyg för interaktiv grafik och visualisering. Täcker ett brett spektrum av funktionalitet från speldesign, över till publiksimulering till interaktiv infografik.",
-                    "en": "Physical interaction design"
-                }
-            },
-            {
-                "title": {
-                    "se": "Human Computer Interaction and Design",
-                    "en": "Human Computer Interaction and Design"
-                },
-                "desc": {
-                    "se": "Datorspelsdesign, grafik och visualisering. Innefattar kompetenser inom html, css, Javascript. Spåret ger specialkunskaper om metoder, tekniker och verktyg för interaktiv grafik och visualisering. Täcker ett brett spektrum av funktionalitet från speldesign, över till publiksimulering till interaktiv infografik.",
-                    "en": "Physical interaction design"
-                }
-            }
+            
         ]
     }
 ]

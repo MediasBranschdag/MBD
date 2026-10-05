@@ -1,9 +1,26 @@
 [
     {
-        "title": { "se": "Gui/front end-design", "en": "Gui/front end-design" },
+        "title": { "se": "Praktisk Kunskap", "en": "Practical Knowledge"},
         "desc": {
-            "se": "Ett stort fokus inom vår inriktning är människa-datorinteraktion. En viktig aspekt av detta är hur användare interagerar med våra produkter. Därför lär sig våra studenter HTML och CSS och arbetar med ramverk som React och Vue. Vi har erfarenhet med att utveckla webbapplikationer/hemsidor som är både funktionella men även väldesignade.",
-            "en": "A major focus area in our programme is human-computer interaction. An essential key to succeed in this area is to have knowledge about how users interact with our products. Therefore, our students learn HTML and CSS as well as frameworks such as React and Vue. We have experience in developing web applications and websites that are both functional and well designed."
+            "se": "Utbildningen ger möjligheten för studenter att utföra yrkesträning (praktik) ute på en arbetsplats. Detta kan göras inom kandidaten, som en del av kandidatexamensarbetet eller ej, men även inom mastern. Detta är ett utmärkt tillfälle för studenter att ge sig ut på arbetsmarknaden tidigt. Är ditt företag intresserade av att husa praktikanter hos er? Besök kursidan nedan:",
+            "en": "The program gives students the possibilty to perform practical work at an employer in the field. This can be done during the bachelors, as part of the thesis or not, but also during the master studies. This is an excellent opportunity for students to get out into the field early on. Is your company interested in hosting interns? Visit the course site below:"
+        },
+        "courses": [
+            {
+                "title": {
+                    "se": "DM1998 Ingenjörsinriktad yrkesträning",
+                    "en": "DM1998 Engineering Training Course"
+                },
+                "url": "https://www.kth.se/student/kurser/kurs/DM1998"
+            }
+        ]
+
+    },
+    {
+        "title": { "se": "Interaktiva Program", "en": "Interactive Programs" },
+        "desc": {
+            "se": "Ett stort fokus inom vår inriktning är människa-datorinteraktion. En viktig aspekt av detta är hur användare interagerar med våra produkter. Därför lär sig våra studenter att arbeta med ramverk som React och Vue, men även att räkna och programmera grafiska gränssnitt. Vi har erfarenhet med att utveckla webbapplikationer/hemsidor som är både funktionella men även väldesignade.",
+            "en": "A big focus within our program is human-computer interaction. An important aspect of this is how users interact with our products. Because of this, our students learn to work with frameworks like Vue and React, but also programming and computing graphical interfaces. We have experience developing web applications that are both functional and well-designed."
         },
         "courses": [
             {
@@ -15,25 +32,25 @@
             },
             {
                 "title": {
-                    "se": "DM2518 Mobilutveckling med webbteknologier",
-                    "en": "DM2518 Mobile Development with Web Technologies"
-                },
-                "url": "https://www.kth.se/student/kurser/kurs/DM2518"
-            },
-            {
-                "title": {
                     "se": "DH2323 Datorgrafik med interaktion",
                     "en": "DH2323 Computer Graphics and Interaction"
                 },
                 "url": "https://www.kth.se/student/kurser/kurs/DH2323"
+            },
+            {
+                "title": {
+                    "se": "DH1622 Människa-datorinteraktion, inledande kurs",
+                    "en": "DH1622 Human-Computer Interaction, Introductory Course"
+                },
+                "url": "https://www.kth.se/student/kurser/kurs/DH1622"
             }
         ]
     },
     {
         "title": { "se": "Programmering", "en": "Programming" },
         "desc": {
-            "se": "I programmeringskurserna programmerar vi i språken Python och Java och får grundläggande kunskaper inom språken för att sedan även övergå till en mer avancerad nivå. \n\nProgrammeringsspråk och verktyg vi lär oss:\n Språk: Python, Java, Javascript\n Design: HTML, CSS\n Ramverk: React, Angular, Vue, Redux",
-            "en": "In the programming courses we program in the languages Python and Java. At first we gain basic knowledge in order to later move on to an advanced level. \n\nProgramming languages and tools that we learn:\n Languages: Python, Java, Javascript\n Design: HTML, CSS\n Frameworks: React, Angular, Vue, Redux"
+            "se": "I programmeringskurserna programmerar vi i språken Python och Java och får grundläggande kunskaper inom språken för att sedan även övergå till en mer avancerad nivå. \n\nProgrammeringsspråk och verktyg vi lär oss:\n Språk: Python, Java, Javascript, SQL, C#, m.m\n Design: HTML, CSS\n Ramverk: React, Vue, Redux",
+            "en": "In the programming courses we program in the languages Python and Java. At first we gain basic knowledge in order to later move on to an advanced level. \n\nProgramming languages and tools that we learn:\n Languages: Python, Java, Javascript, SQL, C#, etc.\n Design: HTML, CSS\n Frameworks: React, Vue, Redux"
         },
         "courses": [
             {
@@ -59,10 +76,10 @@
             },
             {
                 "title": {
-                    "se": "DD1385 Programutvecklingsteknik",
-                    "en": "DD1385 Software Engineering"
+                    "se": "DH2642 Interaktionsprogrammering och dynamiska webben",
+                    "en": "DH2642 Interaction Programming and the Dynamic Web"
                 },
-                "url": "https://www.kth.se/student/kurser/kurs/DD1385"
+                "url": "https://www.kth.se/student/kurser/kurs/DH2642"
             }
         ]
     },
@@ -98,8 +115,8 @@
     },
     {
         "title": {
-            "se": "Entreprenörskap och ledarskap",
-            "en": "Entrepreneurship and management"
+            "se": "Entreprenörskap och Ledarskap",
+            "en": "Entrepreneurship and Management"
         },
         "desc": {
             "se": "Medieteknikstudenter får en bra grund i entreprenörskap och ledarskap. Detta märks i det faktum att en stor del av våra alumner blir egenföretagare eller tar chefspositioner inom företag. I dessa kurser lär sig våra studenter om hur man driver projekt i team, entreprenörskap och marknadsföring tillsammans med en gedigen grund inom ekonomi.",
@@ -108,10 +125,17 @@
         "courses": [
             {
                 "title": {
-                    "se": "ME1039 Industriell Ekonomi och Entreprenörskap inom Media och IKT",
-                    "en": "ME1039 Industrial Management and Entrepreneurship for Media and ICT"
+                    "se": "ME1003 Industriell ekonomi, grundkurs",
+                    "en": "ME1003 Industrial Management, Basic Course"
                 },
-                "url": "https://www.kth.se/student/kurser/kurs/ME1039"
+                "url": "https://www.kth.se/student/kurser/kurs/ME1003"
+            },
+            {
+                "title": {
+                    "se": "ME1042 Entreprenörskap inom Media och IKT",
+                    "en": "ME1042 Entrepreneurship for Media and ICT"
+                },
+                "url": "https://www.kth.se/student/kurser/kurs/ME1042"
             },
             {
                 "title": {
@@ -122,10 +146,10 @@
             },
             {
                 "title": {
-                    "se": "ME2015 Projektledning: ledning och styrning av projekt",
-                    "en": "ME2015 Project Management: Leadership and Control"
+                    "se": "ME2016 Projektledning: ledning och styrning av projekt",
+                    "en": "ME2016 Project Management: Leadership and Control"
                 },
-                "url": "https://www.kth.se/student/kurser/kurs/ME2015"
+                "url": "https://www.kth.se/student/kurser/kurs/ME2016"
             },
             {
                 "title": {
@@ -133,18 +157,11 @@
                     "en": "ME2163 Leading People and Organizations in Different Contexts"
                 },
                 "url": "https://www.kth.se/student/kurser/kurs/ME2163"
-            },
-            {
-                "title": {
-                    "se": "AD1RD1 Reflekterande Designprocess",
-                    "en": "AD1RD1 Reflective Design Process"
-                },
-                "url": "https://www.kth.se/student/kurser/kurs/AD1RD1"
             }
         ]
     },
     {
-        "title": { "se": "Signalbehandling", "en": "Signal processing" },
+        "title": { "se": "Signalbehandling", "en": "Signal Processing" },
         "desc": {
             "se": "Vi medietekniker har ett brett kunnande när det kommer till signalbehandling. Vi har inte enbart kunskaper om de tekniska bitarna kring signalbehandling, utan även hur man använder digital teknik i form av ljud och bild inom medieproduktion. Vi lär oss grundligt om de fysikaliska egenskaperna hos ljud, ljus och bild och hur dessa fenomen kan skapa begränsningar och villkor för teknik. Hit hör även kunskaper om olika typer av signaler och deras digitala representation och hur de kan modifieras med hjälp av filter. \n\nVi lär oss om akustik och ljudbehandling, tekniska tillämpningar som mikrofoner och högtalare samt hur man gör en digital representation av ljud. Vi är även kompetenta inom fotometri och hur en digitalkamera och dess komponenter fungerar. En stor del av vår kompetens kretsar kring hur videosignaler upptas, lagras och distribueras med hjälp av komprimeringsalgoritmer. \n\nTredje året erbjuds vi kurser inom talteknologi och musikakustik. Talteknologin fokuserar mycket på muntlig interaktion mellan människor och datorer. Musikakustiken handlar om elektroakustiska instrument och interaktionsaspekterna kring dessa.",
             "en": "We media technology students have a broad knowledge when it comes to signal processing. We’re good at not only handling the technical aspects but also how to use digital technology like sound and picture in media production. At first we learn about the physical properties of sound, picture and light and how these phenomena can create limitations and conditions for technology. Later, we learn how to modify signals by utilizing filters. \n\nWe learn about acoustics and sound processing, technical applications such as microphones and speakers and how to make a digital representation of sound. We are also competent in photometry and how a digital camera and its components work. A big part of our expertise revolves around how video signals are recorded, stored and distributed with the help of compression algorithms. \n\nThe third year we are offered courses in speech technology and music acoustics. Speech technology focuses on the oral interaction between humans and computers. Music acoustics is about electroacoustic instruments and the interaction aspects around them."
@@ -212,7 +229,7 @@
         },
         "desc": {
             "se": "I MDI- kurserna studerar vi informationsteknologi och gränssnitt för ett bra samspel mellan datorer och människor. För användbara lösningar beroende på mottagare, inkluderar att man tar hänsyn till kulturer, miljö och person. Vi studerar kommunikation genom media samt relationen mellan skapare och mottagare.",
-            "en": "In the human-computer courses we study information technology and interfaces for creating good interaction between humans and computers. For useful solutions, depending on who the recipient is, we learn how to take in account cultures, environments and personality. We study communication through media as well as the relationship between creator and recipient."
+            "en": "In the HCI courses we study information technology and interfaces for creating good interaction between humans and computers. For useful solutions, depending on who the recipient is, we learn how to take in account cultures, environments and personality. We study communication through media as well as the relationship between creator and recipient."
         },
         "courses": [
             {
@@ -252,13 +269,6 @@
             },
             {
                 "title": {
-                    "se": "DM2077 Mediejuridik",
-                    "en": "DM2077 Media Law"
-                },
-                "url": "https://www.kth.se/student/kurser/kurs/DM2077"
-            },
-            {
-                "title": {
                     "se": "DM2556 Interkulturell kommunikation",
                     "en": "DM2556 Intercultural communication"
                 },
@@ -270,24 +280,17 @@
                     "en": "DM2624 Human Centered Technology for Disabilities"
                 },
                 "url": "https://www.kth.se/student/kurser/kurs/DM2624"
-            },
-            {
-                "title": {
-                    "se": "DM2578 Social Media Technologies",
-                    "en": "DM2578 Social Media Technologies"
-                },
-                "url": "https://www.kth.se/student/kurser/kurs/DM2578"
             }
         ]
     },
     {
         "title": {
-            "se": "Sensorer och elektroniska komponenter",
-            "en": "Sensors and electronic components"
+            "se": "Fysisk Interaktion",
+            "en": "Physical Interaction"
         },
         "desc": {
-            "se": "Medietekniker har god kunskap inom sensorprogrammering. Vi lär oss om hur sensorer och ställdon kan programmeras i ett kommersiellt system, exempelvis Arduino, och hur konstellationen kan användas i olika syften. Dessutom lär vi oss designa digital elektroteknik och att bygga elektroniska kretsar.\n\n De äldre årskullarna (startår 2017) har ytterligare kunskaper i att bygga kretsar som AC och DC, samt hur man använder sig av mikrokontroller i kretsarna. De har en bredare bild av hur elektroniken bakom sensorer fungerar och spetskunskaper när det kommer till att skapa digitala konstruktioner av kretsar för att lösa olika kombinatoriska problem.",
-            "en": "Media technicians have a solid knowledge in sensor programming. We learn how sensors and actuators can be programmed in a commercial system, for example Arduino, and how they can be used for different purposes. In addition, we learn to design electrical engineering and how to build electronic circuits. \n\nThe older cohorts at our programme (starting 2017) also have additional knowledge about circuits such as AC and DC as well as microcontrollers in the circuits. They also have a more in depth understanding of the electronics behind sensors and how to make digital constructions of circuits to solve different combinatorial problems."
+            "se": "Medietekniker har god kunskap inom sensorprogrammering. Vi lär oss om hur sensorer och ställdon kan programmeras i ett kommersiellt system, exempelvis Arduino, och hur konstellationen kan användas i olika syften. Dessutom lär vi oss designa digital elektroteknik och att bygga elektroniska kretsar.",
+            "en": "Media technicians have a solid knowledge in sensor programming. We learn how sensors and actuators can be programmed in a commercial system, for example Arduino, and how they can be used for different purposes. In addition, we learn to design electrical engineering and how to build electronic circuits."
         },
         "courses": [
             {
@@ -296,18 +299,11 @@
                     "en": "DM1588 Sensor Programming for Media Technology"
                 },
                 "url": "https://www.kth.se/student/kurser/kurs/DM1588"
-            },
-            {
-                "title": {
-                    "se": "MF1035 Elektroteknik, Media",
-                    "en": "MF1035 Electrical Engineering, Basic Course Media"
-                },
-                "url": "https://www.kth.se/student/kurser/kurs/MF1035"
             }
         ]
     },
     {
-        "title": { "se": "Maskininlärning", "en": "Machine learning" },
+        "title": { "se": "Maskininlärning", "en": "Machine Learning" },
         "desc": {
             "se": "Studenter på medieteknik får även i ett tidigt stadium lära sig om maskininlärning och hur det används i olika sammanhang. De får också ta del av hur man arbetar när det kommer till maskininlärning och hur man använder sig av de två stora metoderna inom området, det vill säga väglett och icke-väglett lärande. För dessa metoder lär man sig mer om olika typer av algoritmer.",
             "en": "Media technicians learn at an early stage about machine learning and how it is utilized in different contexts. We also learn how to use the two major methods in the field: guided and non-guided learning. For these methods, you learn more about different types of algorithms."
@@ -319,6 +315,13 @@
                     "en": "DM1590 Machine Learning for Media Technology"
                 },
                 "url": "https://www.kth.se/student/kurser/kurs/DM1590"
+            },
+            {
+                "title": {
+                    "se": "DM1580 Videoteknik",
+                    "en": "DM1580 Video Technology"
+                },
+                "url": "https://www.kth.se/student/kurser/kurs/DM1580"
             }
         ]
     },

@@ -1,0 +1,27 @@
+.tag {
+    height: 15px;
+    padding: 3px 6px;
+    border-radius: 20px;
+    
+    font-size: 8px;
+    align-content: center;
+    box-shadow: black 0px 1px 3px;
+}
+
+.tag--gold {
+    color: #6D3C18;
+    background: linear-gradient(338deg, rgba(255,215,0,1) 0%, rgb(241, 210, 29) 63%, rgba(255,255,255,1) 120%);
+}
+
+.tag--silver {
+    color: rgb(39, 39, 39);
+    background: linear-gradient(338deg, #bdbded 0%, #ededed 63%, rgba(255,255,255,1) 120%);
+}
+.tag--bronze {
+    color: #6D3C18;
+    background: linear-gradient(338deg, #ee7411 0%, #ffa069 63%, rgb(255, 245, 234) 120%);
+}
+
+.tag--gray {
+    background-color: gray;
+}
